@@ -1,0 +1,29 @@
+term,context
+cassonetto coibentato,structure
+guarnizione termoacustica,sealing
+monoblocco,window_frame
+spalla coibentata,insulation
+sottobancale,structure
+avvolgibile in alluminio,shading
+chiusura oscurante,shading
+nodo primario,construction
+nodo secondario,construction
+controtelaio,installation
+barriera al vapore,insulation
+nastro autoespandente,sealing
+vite di fissaggio,hardware
+ponte termico,physics
+trasmittanza termica,physics
+abbattimento acustico,physics
+efficienza energetica,ecology
+tenuta all'aria,performance
+tenuta all'acqua,performance
+carico del vento,performance
+formazione di muffa,problem
+condensa superficiale,problem
+isolamento a cappotto,construction
+riqualificazione del foro finestra,renovation
+posa in opera qualificata,installation
+sigillatura del giunto,action
+coibentazione,action
+ristrutturazione non invasiva,renovation

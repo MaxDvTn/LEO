@@ -141,4 +141,4 @@ lightning_logs/
 checkpoints/
 checkpoints_backup_*/
 *.log
-data/
+# data/
