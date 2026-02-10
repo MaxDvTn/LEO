@@ -1,6 +1,6 @@
 # LEO - Language Extraction and Optimization
 
-![LEO Logo](images/LEO_logo02.svg)
+![LEO Logo](images/LEO_logo05.svg)
 
 ## Multilingual NMT Fine-Tuning with LoRA & NLLB
 
