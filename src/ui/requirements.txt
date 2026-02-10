@@ -1,0 +1,9 @@
+transformers>=4.38.0
+peft>=0.10.0
+torch
+sentencepiece
+accelerate
+bitsandbytes
+# Pin huggingface_hub to avoid HfFolder import error in Gradio
+# Update: Using modern Gradio (>=5.16.0) fixed the conflict, no pin needed.
+gradio>=5.16.0

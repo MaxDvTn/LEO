@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="L.E.O. - The Neural Vitruvian logo">
+  <defs>
+    <style>
+      :root{
+        --green:#2FAE66;   /* Roverplastik Green */
+        --blue:#1E6BE3;    /* Tech Blue */
+        --ink:#2B2F33;     /* Dark Grey */
+        --bg:#ffffff;
+      }
+      .frame{ fill:none; stroke:var(--ink); stroke-width:22; stroke-linejoin:round; }
+      .net-line{ stroke:var(--ink); stroke-width:4; stroke-linecap:round; opacity:.9; }
+      .net-line.blue{ stroke:var(--blue); opacity:.95; }
+      .node{ fill:var(--ink); }
+      .node.g{ fill:var(--green); }
+      .node.b{ fill:var(--blue); }
+      .word{ fill:var(--ink); font-family: Inter, Montserrat, Arial, sans-serif; font-weight:800; letter-spacing:1px; }
+      .dot{ fill:var(--ink); }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="var(--bg)"/>
+
+  <!-- MARK: "The Neural Vitruvian" (window frame + neural mesh with subtle L-geometry) -->
+  <g id="mark" transform="translate(40,40)">
+    <!-- window frame -->
+    <rect class="frame" x="0" y="0" width="260" height="260" rx="18"/>
+
+    <!-- neural lines (kept inside margins) -->
+    <g id="network" transform="translate(18,18)">
+      <!-- core mesh -->
+      <line class="net-line" x1="52"  y1="32"  x2="180" y2="58"/>
+      <line class="net-line blue" x1="180" y1="58"  x2="210" y2="126"/>
+      <line class="net-line" x1="210" y1="126" x2="170" y2="188"/>
+      <line class="net-line" x1="170" y1="188" x2="86"  y2="210"/>
+      <line class="net-line blue" x1="86"  y1="210" x2="62"  y2="156"/>
+      <line class="net-line" x1="62"  y1="156" x2="52"  y2="32"/>
+
+      <!-- subtle "L" scaffold (denser nodes on left + bottom) -->
+      <line class="net-line" x1="58" y1="40"  x2="58" y2="212"/>
+      <line class="net-line" x1="58" y1="212" x2="188" y2="212"/>
+
+      <!-- extra connections to suggest NN (and Vitruvian-like proportion hints) -->
+      <line class="net-line" x1="58"  y1="92"  x2="132" y2="76"/>
+      <line class="net-line blue" x1="132" y1="76"  x2="180" y2="58"/>
+      <line class="net-line" x1="58"  y1="156" x2="128" y2="132"/>
+      <line class="net-line" x1="128" y1="132" x2="210" y2="126"/>
+      <line class="net-line blue" x1="128" y1="132" x2="170" y2="188"/>
+      <line class="net-line" x1="92"  y1="212" x2="128" y2="132"/>
+
+      <!-- nodes -->
+      <circle class="node g" cx="58"  cy="40"  r="8"/>
+      <circle class="node"   cx="58"  cy="92"  r="7"/>
+      <circle class="node"   cx="58"  cy="156" r="7"/>
+      <circle class="node g" cx="58"  cy="212" r="8"/>
+
+      <circle class="node"   cx="92"  cy="212" r="7"/>
+      <circle class="node"   cx="132" cy="212" r="7"/>
+      <circle class="node b" cx="188" cy="212" r="8"/>
+
+      <circle class="node"   cx="132" cy="76"  r="7"/>
+      <circle class="node b" cx="180" cy="58"  r="8"/>
+      <circle class="node b" cx="210" cy="126" r="8"/>
+      <circle class="node"   cx="170" cy="188" r="7"/>
+      <circle class="node"   cx="86"  cy="210" r="7"/>
+      <circle class="node"   cx="62"  cy="156" r="7"/>
+      <circle class="node"   cx="52"  cy="32"  r="7"/>
+      <circle class="node"   cx="180" cy="160" r="7"/>
+      <circle class="node g" cx="128" cy="132" r="8"/>
+    </g>
+  </g>
+
+  <!-- WORDMARK: L.E.O. with square "seal/pixel" dots -->
+  <g id="wordmark" transform="translate(360,85)">
+    <text class="word" x="0" y="140" font-size="120">L</text>
+    <rect class="dot" x="95" y="98" width="22" height="22" rx="3"/>
+    <text class="word" x="140" y="140" font-size="120">E</text>
+    <rect class="dot" x="245" y="98" width="22" height="22" rx="3"/>
+    <text class="word" x="290" y="140" font-size="120">O</text>
+    <rect class="dot" x="405" y="98" width="22" height="22" rx="3"/>
+
+    <!-- optional small descriptor (delete if you want ultra-minimal) -->
+    <text x="0" y="205" font-size="28" font-family="Inter, Montserrat, Arial, sans-serif" fill="var(--ink)" opacity=".75">
+      Local Neural Translation for Technical Manuals
+    </text>
+  </g>
+</svg>

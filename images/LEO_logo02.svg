@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="L.E.O. - The Neural Vitruvian logo">
+  <defs>
+    <style>
+      :root{
+        --green:#2FAE66;   /* Roverplastik Green */
+        --blue:#1E6BE3;    /* Tech Blue */
+        --ink:#222428;     /* Darker, sharper Grey */
+        --mid-grey:#64748b; /* For neutral nodes */
+        --bg:#ffffff;
+      }
+      .frame{ fill:none; stroke:var(--ink); stroke-width:22; stroke-linejoin:round; }
+      
+      /* NEW: Gradient for translation flow */
+      .net-flow { stroke: url(#translateGrad); stroke-width: 5; stroke-linecap: round; opacity: 0.9; }
+      .net-static { stroke: var(--mid-grey); stroke-width: 3; opacity: 0.5; }
+
+      .node{ fill:var(--mid-grey); }
+      .node.g{ fill:var(--green); }
+      .node.b{ fill:var(--blue); }
+      
+      /* Animation: Pulse */
+      .pulse { animation: pulseAnim 3s infinite ease-in-out; }
+      @keyframes pulseAnim {
+        0%, 100% { r: 8px; opacity: 1; }
+        50% { r: 10px; opacity: 0.7; }
+      }
+      .pulse-delay { animation-delay: 1.5s; }
+
+      .word{ fill:var(--ink); font-family: Inter, Montserrat, Arial, sans-serif; font-weight:800; letter-spacing:1px; }
+      .dot{ fill:var(--ink); }
+      .tagline { fill:var(--ink); font-family: Inter, Montserrat, Arial, sans-serif; font-weight:500; letter-spacing: 0.5px;}
+    </style>
+    
+    <linearGradient id="translateGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:var(--green);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:var(--blue);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="var(--bg)"/>
+
+  <g id="mark" transform="translate(40,40)">
+    <rect class="frame" x="0" y="0" width="260" height="260" rx="18"/>
+
+    <g id="network" transform="translate(20,20)">
+      
+      <line class="net-flow" x1="40" y1="60"  x2="110" y2="110"/>
+      <line class="net-flow" x1="40" y1="160" x2="110" y2="110"/>
+      <line class="net-flow" x1="40" y1="160" x2="110" y2="200"/>
+      
+      <line class="net-flow" x1="110" y1="110" x2="180" y2="70"/>
+      <line class="net-flow" x1="110" y1="110" x2="180" y2="150"/>
+      <line class="net-flow" x1="110" y1="200" x2="180" y2="150"/>
+      <line class="net-flow" x1="110" y1="200" x2="190" y2="210"/>
+
+      <line class="net-static" x1="110" y1="110" x2="110" y2="200"/>
+      <line class="net-static" x1="180" y1="70" x2="180" y2="150"/>
+
+      <circle class="node g pulse" cx="40"  cy="60"  r="8"/>
+      <circle class="node g pulse" cx="40"  cy="160" r="8"/>
+
+      <circle class="node" cx="110" cy="110" r="7"/>
+      <circle class="node" cx="110" cy="200" r="7"/>
+
+      <circle class="node b pulse pulse-delay" cx="180" cy="70"  r="8"/>
+      <circle class="node b pulse pulse-delay" cx="180" cy="150" r="8"/>
+      <circle class="node b" cx="190" cy="210" r="7"/>
+    </g>
+  </g>
+
+  <g id="wordmark" transform="translate(350,85)">
+    <text class="word" x="0" y="140" font-size="120">L</text>
+    <rect class="dot" x="95" y="98" width="22" height="22" rx="3"/>
+    <text class="word" x="140" y="140" font-size="120">E</text>
+    <rect class="dot" x="245" y="98" width="22" height="22" rx="3"/>
+    <text class="word" x="290" y="140" font-size="120">O</text>
+    <rect class="dot" x="405" y="98" width="22" height="22" rx="3"/>
+
+    <text class="tagline" x="2" y="205" font-size="26">
+      Local Neural Translation for Technical Manuals
+    </text>
+  </g>
+</svg>
