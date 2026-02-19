@@ -103,14 +103,11 @@ def save_gold_row(row_data):
     df_row.to_csv(GOLD_FILE, mode='a', header=header, index=False)
 
 # --- 6. INTERFACCIA PRINCIPALE ---
-col_logo, col_title = st.columns([4, 4])
-with col_logo:
-    # Usiamo il logo SVG con un fallback per la larghezza
+_, col_mid, _ = st.columns([1, 6, 1])
+with col_mid:
     st.image("images/LEO_logo05.svg", width=480)
-
-with col_title:
-    st.title("L.E.O. Data Factory")
-    st.markdown("**Roverplastik Neural Translation Project** | *Validation Interface*")
+    # Riduciamo lo spazio usando un margine superiore negativo nel CSS del paragrafo
+    st.markdown("<p style='text-align: center; margin-top: -100px;'><b>Roverplastik Neural Translation Project</b> | <i>Validation Interface</i></p>", unsafe_allow_html=True)
 
 # Caricamento Dati
 full_df = load_data()
@@ -120,32 +117,81 @@ if full_df is None:
     st.info("Esegui prima lo script 'scripts/run_gen.py' per generare i dati!")
     st.stop()
 
-# --- SIDEBAR: FILTRI E STATISTICHE ---
+# --- 6. SIDEBAR: NAVIGATION & STATS ---
 st.sidebar.divider()
-st.sidebar.subheader("🎯 Filtro Lingua")
-
-# Mapping per il filtro (aggiungiamo "Tutte")
-filter_options = ["Tutte"] + list(LANG_MAP.keys())
-filter_labels = ["🌍 Tutte le lingue"] + [LANG_MAP[k] for k in LANG_MAP.keys()]
-
-selected_lang_label = st.sidebar.selectbox(
-    "Seleziona lingua su cui lavorare:",
-    options=filter_labels,
-    index=0
+app_mode = st.sidebar.radio(
+    "🚀 Scegli Attività:",
+    ["Validazione AI", "Inserimento Manuale"],
+    help="Validazione: correggi i dati dell'IA. Inserimento: aggiungi nuove frasi da zero."
 )
 
-# Convertiamo la label di nuovo in codice lingua
-selected_lang = "Tutte"
-if selected_lang_label != "🌍 Tutte le lingue":
-    selected_lang = [k for k, v in LANG_MAP.items() if v == selected_lang_label][0]
+# Sezione Filtri (Solo per Validazione)
+if app_mode == "Validazione AI":
+    st.sidebar.subheader("🎯 Filtro Lingua")
+    filter_labels = ["🌍 Tutte le lingue"] + [LANG_MAP[k] for k in LANG_MAP.keys()]
+    selected_lang_label = st.sidebar.selectbox(
+        "Seleziona lingua su cui lavorare:",
+        options=filter_labels,
+        index=0
+    )
+    
+    # Convertiamo la label in codice lingua
+    selected_lang = "Tutte"
+    if selected_lang_label != "🌍 Tutte le lingue":
+        selected_lang = [k for k, v in LANG_MAP.items() if v == selected_lang_label][0]
+    
+    # Filtriamo il dataframe per la validazione
+    if selected_lang == "Tutte":
+        df = full_df
+    else:
+        df = full_df[full_df['target_lang'] == selected_lang].reset_index(drop=True)
+else: # app_mode == "Inserimento Manuale"
+    selected_lang = "Tutte" # Default per inserimento, non usato per filtrare il df in questo contesto
+    # Per l'inserimento manuale, non abbiamo bisogno di filtrare il df in anticipo,
+    # ma per evitare errori di variabile non definita, possiamo assegnare full_df o un df vuoto.
+    # Tuttavia, la logica di inserimento manuale non usa 'df' per iterare, quindi questa riga è più per coerenza.
+    df = full_df # O un df vuoto se non si vuole mostrare nulla della validazione
 
-# Filtriamo il dataframe
-if selected_lang == "Tutte":
-    df = full_df
-else:
-    df = full_df[full_df['target_lang'] == selected_lang].reset_index(drop=True)
+# --- 7. LOGICA INSERIMENTO MANUALE ---
+if app_mode == "Inserimento Manuale":
+    st.markdown("### ✍️ Contribuzione Manuale")
+    st.info("Usa questo form per aggiungere nuove traduzioni tecniche verificate che non sono presenti nel database dell'IA.")
+    
+    with st.form("manual_entry_form", clear_on_submit=True):
+        col1, col2 = st.columns(2)
+        with col1:
+            src_text = st.text_area("🇮🇹 Testo Originale (Italiano)", height=150, placeholder="Es: Guarnizione coestrusa in materiale termoplastico...")
+        
+        with col2:
+            tgt_lang_label = st.selectbox("🎯 Lingua di Destinazione", options=list(LANG_MAP.values()))
+            tgt_lang_code = [k for k, v in LANG_MAP.items() if v == tgt_lang_label][0]
+            tgt_text = st.text_area(f"✨ Traduzione in {tgt_lang_label}", height=150, placeholder="Inserisci la traduzione corretta...")
+        
+        term_focus = st.text_input("🔑 Termine Chiave (Opzionale)", placeholder="Es: guarnizione")
+        
+        submitted = st.form_submit_button("SALVA NEL DATASET GOLD", type="primary", use_container_width=True)
+        
+        if submitted:
+            if not src_text.strip() or not tgt_text.strip():
+                st.error("Per favore, compila sia il testo originale che la traduzione!")
+            else:
+                manual_entry = {
+                    "source_text": src_text.strip(),
+                    "target_text": tgt_text.strip(),
+                    "source_lang": "ita_Latn",
+                    "target_lang": tgt_lang_code,
+                    "original_source": "manual_contribution",
+                    "original_ai_prediction": "N/A",
+                    "quality_check": "manual_entry",
+                    "validator_id": user_email,
+                    "term_keyword": term_focus.strip() if term_focus else "manual"
+                }
+                save_gold_row(manual_entry)
+                st.success("✅ Frase salvata con successo nel Gold Dataset!")
+                st.balloons()
+    st.stop() # Fine logica inserimento
 
-# --- 6. GESTIONE STATO SESSIONE ---
+# --- 8. GESTIONE STATO SESSIONE (Solo per Validazione) ---
 if 'session_started' not in st.session_state:
     st.session_state.session_started = False
 

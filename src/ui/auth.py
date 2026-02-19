@@ -15,9 +15,9 @@ AUTHORIZE_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 REVOKE_TOKEN_URL = "https://oauth2.googleapis.com/revoke"
 
-# DOMINIO DELLA SCUOLA (Modifica questo!)
-# Se vuoi accettare tutti, mettilo a None o stringa vuota ""
-SCHOOL_DOMAIN = "@liceodavincitn.it" 
+# LISTA DEI DOMINI AUTORIZZATI
+# Se lasci la lista vuota [], tutti gli account Google saranno accettati
+ALLOWED_DOMAINS = ["@liceodavincitn.it", "@roverplastik.it"] 
 REDIRECT_URI = "https://concretely-dendroid-florinda.ngrok-free.dev"
 
 def check_google_login():
@@ -60,10 +60,11 @@ def check_google_login():
             email = decoded["email"]
             name = decoded.get("name", "Studente")
 
-            # --- CONTROLLO DOMINIO SCUOLA ---
-            if SCHOOL_DOMAIN and not email.endswith(SCHOOL_DOMAIN):
-                st.error(f"Accesso negato! Devi usare una mail {SCHOOL_DOMAIN}")
-                st.stop()
+            # --- CONTROLLO DOMINIO ---
+            if ALLOWED_DOMAINS:
+                if not any(email.endswith(domain) for domain in ALLOWED_DOMAINS):
+                    st.error(f"Accesso negato! Devi usare una mail di uno di questi domini: {', '.join(ALLOWED_DOMAINS)}")
+                    st.stop()
             
             # Login successo
             st.session_state["user_email"] = email
