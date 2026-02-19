@@ -5,10 +5,13 @@ import base64
 import json
 
 # --- CONFIGURAZIONE ---
-# Inserisci qui le chiavi che ti ha dato Google
-# (In produzione meglio usare st.secrets, ma per ora va bene qui)
-CLIENT_ID = "831535553560-6sp4kdes4ldev7lbkha4atd6akf8ebj3.apps.googleusercontent.com"
-CLIENT_SECRET = "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"
+# Carica le chiavi in modo sicuro dai secrets di Streamlit (.streamlit/secrets.toml)
+try:
+    CLIENT_ID = st.secrets["google_oauth"]["client_id"]
+    CLIENT_SECRET = st.secrets["google_oauth"]["client_secret"]
+except KeyError:
+    st.error("⚠️ Credenziali Google non trovate. Verifica .streamlit/secrets.toml")
+    st.stop()
 
 # Configurazione standard Google
 AUTHORIZE_URL = "https://accounts.google.com/o/oauth2/v2/auth"

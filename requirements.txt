@@ -16,3 +16,4 @@ nltk
 requests
 tqdm
 langdetect
+filelock

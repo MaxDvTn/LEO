@@ -11,6 +11,7 @@ st.set_page_config(page_title="LEO Validator", page_icon="images/LEO_logo05.svg"
 # Risaliamo alla root del progetto
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 sys.path.append(str(Path(__file__).resolve().parent)) # Aggiunge src/ui al path
+sys.path.append(str(ROOT_DIR)) # Needed for importing src.synthesis
 
 # Ora possiamo importare auth
 from auth import check_google_login
@@ -34,8 +35,12 @@ if st.sidebar.button("Esci / Logout", type="primary"):
     st.rerun()
 
 # --- 5. CONFIGURAZIONE DATI ---
-DATA_SYNTHETIC_DIR = ROOT_DIR / "data" / "synthetic"
-GOLD_FILE = ROOT_DIR / "data" / "gold" / "rover_gold_dataset.csv"
+from src.common.config import conf
+from filelock import FileLock
+
+DATA_SYNTHETIC_DIR = conf.paths.data_synthetic
+GOLD_FILE = conf.paths.data_gold / "rover_gold_dataset.csv"
+GOLD_LOCK_FILE = conf.paths.data_gold / "rover_gold_dataset.csv.lock"
 
 # --- MAPPATURA VISIVA ---
 LANG_MAP = {
@@ -88,19 +93,20 @@ def load_data():
     return pd.concat(dfs, ignore_index=True)
 
 def save_gold_row(row_data):
-    """Salva una riga validata nel file Gold Standard (Append mode)"""
+    """Salva una riga validata nel file Gold Standard (Append mode) in modo sicuro."""
     # AGGIUNTA FONDAMENTALE: Salviamo chi ha fatto la validazione!
     row_data["validator_id"] = user_email
     
     df_row = pd.DataFrame([row_data])
     
-    # Se il file non esiste, scrive l'header, altrimenti appende solo i dati
-    header = not GOLD_FILE.exists()
-    
     # Assicuriamo che la cartella esista
     GOLD_FILE.parent.mkdir(parents=True, exist_ok=True)
     
-    df_row.to_csv(GOLD_FILE, mode='a', header=header, index=False)
+    # Usa un lock per prevenire corruzione da scritture simultanee
+    with FileLock(str(GOLD_LOCK_FILE), timeout=10):
+        # Se il file non esiste, scrive l'header, altrimenti appende solo i dati
+        header = not GOLD_FILE.exists()
+        df_row.to_csv(GOLD_FILE, mode='a', header=header, index=False)
 
 # --- 6. INTERFACCIA PRINCIPALE ---
 _, col_mid, _ = st.columns([1, 6, 1])
@@ -121,8 +127,8 @@ if full_df is None:
 st.sidebar.divider()
 app_mode = st.sidebar.radio(
     "🚀 Scegli Attività:",
-    ["Validazione AI", "Inserimento Manuale"],
-    help="Validazione: correggi i dati dell'IA. Inserimento: aggiungi nuove frasi da zero."
+    ["Validazione AI", "Inserimento Manuale", "Classifica & Statistiche", "Gestione Glossario"],
+    help="Seleziona l'area di lavoro o le statistiche del progetto."
 )
 
 # Sezione Filtri (Solo per Validazione)
@@ -191,7 +197,77 @@ if app_mode == "Inserimento Manuale":
                 st.balloons()
     st.stop() # Fine logica inserimento
 
-# --- 8. GESTIONE STATO SESSIONE (Solo per Validazione) ---
+# --- 8. LOGICA CLASSIFICA E STATISTICHE ---
+if app_mode == "Classifica & Statistiche":
+    st.markdown("### 🏆 Classifica Validatori")
+    st.info("Scopri chi ha contribuito di più al dataset LEO!")
+    
+    if GOLD_FILE.exists():
+        gold_df = pd.read_csv(GOLD_FILE)
+        if 'validator_id' in gold_df.columns:
+            leaderboard = gold_df['validator_id'].value_counts().reset_index()
+            leaderboard.columns = ['Email Utente', 'Frasi Validate / Inserite']
+            leaderboard.index = leaderboard.index + 1 # Classifica da 1 a N
+            
+            # Format visual table
+            st.dataframe(
+                leaderboard.style.highlight_max(subset=['Frasi Validate / Inserite'], color='lightgreen'),
+                use_container_width=True
+            )
+            
+            # Statistiche extra
+            st.divider()
+            st.markdown("#### 📊 Statistiche Generali Dataset")
+            col1, col2, col3 = st.columns(3)
+            col1.metric("Totale Frasi nel Gold Standard", len(gold_df))
+            col2.metric("Utenti Attivi", len(leaderboard))
+            
+            # Lingue coperte
+            lang_counts = gold_df['target_lang'].value_counts()
+            col3.metric("Lingua più diffusa", lang_counts.index[0] if not lang_counts.empty else "N/A")
+            
+        else:
+            st.warning("Il dataset non contiene ancora informazioni sui validatori.")
+    else:
+        st.info("Nessuna validazione completata finora. Inizia subito!")
+    st.stop()
+    
+# --- 9. LOGICA GESTIONE GLOSSARIO ---
+if app_mode == "Gestione Glossario":
+    from src.synthesis.glossary_data import ROVER_GLOSSARY, add_new_term
+    
+    st.markdown("### 📖 Gestione Glossario Tecnico")
+    st.info("Aggiungi nuovi termini tecnici. La prossima generazione di frasi (run_gen.py) includerà questi termini automaticamente.")
+    
+    # Form aggiunta
+    with st.expander("➕ Aggiungi un nuovo termine", expanded=True):
+        with st.form("glossary_add_form", clear_on_submit=True):
+            new_term = st.text_input("Termine Tecnico", placeholder="es. avvolgibile motorizzato")
+            new_context = st.selectbox("Categoria", ["product", "structure", "sealing", "insulation", "physics", "action", "custom"])
+            submit_term = st.form_submit_button("Aggiungi al Glossario")
+            
+            if submit_term:
+                if new_term.strip():
+                    # Evita duplicati
+                    existing_terms = [item['term'].lower() for item in ROVER_GLOSSARY]
+                    if new_term.strip().lower() in existing_terms:
+                        st.error("⚠️ Il termine esiste già nel glossario!")
+                    else:
+                        success = add_new_term(new_term.strip(), new_context)
+                        if success:
+                            st.success(f"✅ Termine '{new_term.strip()}' aggiunto con successo!")
+                        else:
+                            st.error("Errore durante l'aggiunta. Assicurati che lo script abbia permessi di scrittura.")
+                else:
+                    st.error("Il termine non può essere vuoto.")
+
+    # Vista tabella
+    st.markdown("#### Glossario Attuale")
+    st.dataframe(pd.DataFrame(ROVER_GLOSSARY), use_container_width=True)
+    st.stop()
+
+
+# --- 10. GESTIONE STATO SESSIONE (Solo per Validazione) ---
 if 'session_started' not in st.session_state:
     st.session_state.session_started = False
 

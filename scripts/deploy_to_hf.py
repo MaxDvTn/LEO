@@ -1,5 +1,12 @@
 import os
 from huggingface_hub import HfApi, create_repo, add_space_variable
+import sys
+from pathlib import Path
+
+# Aggiungiamo root al path e importiamo l'esportatore
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.append(str(PROJECT_ROOT))
+from scripts.export_to_hf import main as export_latest_model
 
 api = HfApi()
 try:
@@ -24,7 +31,14 @@ except Exception as e:
     print(f"   ❌ Error creating repo: {e}")
     exit(1)
 
-print("📤 Uploading model files...")
+print("\n🔄 Extracting latest LoRA adapters from best checkpoint...")
+try:
+    export_latest_model()
+except Exception as e:
+    print(f"   ❌ Error exporting model: {e}")
+    exit(1)
+
+print("\n📤 Uploading model files...")
 try:
     api.upload_folder(
         folder_path="checkpoints/leo_hf_release",

@@ -50,3 +50,33 @@ ROVER_GLOSSARY = [
 def get_terms_list():
     """Restituisce solo la lista piatta dei termini per il generatore"""
     return [item["term"] for item in ROVER_GLOSSARY]
+
+def add_new_term(term: str, context: str = "custom_entry"):
+    """
+    Append un nuovo termine al file glossary_data.py preservando i commenti.
+    Ricarica anche la lista in memoria.
+    """
+    import os
+    file_path = os.path.abspath(__file__)
+    
+    with open(file_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+        
+    # Trova la riga che chiude la lista ROVER_GLOSSARY
+    insert_idx = -1
+    for i, line in enumerate(lines):
+        if line.strip() == "]":
+            insert_idx = i
+            break
+            
+    if insert_idx != -1:
+        new_entry = f'    {{"term": "{term}", "context": "{context}"}},\n'
+        lines.insert(insert_idx, new_entry)
+        
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.writelines(lines)
+            
+        # Aggiorna la variabile in memoria
+        ROVER_GLOSSARY.append({"term": term, "context": context})
+        return True
+    return False

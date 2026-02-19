@@ -30,6 +30,29 @@ class DataFactory:
         self.synthetic_dir = self.paths.data_synthetic
         self.gold_dir = self.paths.data_gold
 
+    def _get_gold_sources(self):
+        """Loads all source texts and terms currently in the gold dataset to avoid duplication."""
+        gold_path = self.gold_dir / "rover_gold_dataset.csv"
+        if not gold_path.exists():
+            return set(), set()
+        
+        try:
+            df = pd.read_csv(gold_path)
+            # Collect existing source sentences
+            known_sources = set()
+            if 'source_text' in df.columns:
+                known_sources = set(df['source_text'].dropna().astype(str).str.strip())
+            
+            # Collect existing specific terms
+            known_terms = set()
+            if 'term_keyword' in df.columns:
+                known_terms = set(df['term_keyword'].dropna().astype(str).str.strip())
+                
+            return known_sources, known_terms
+        except Exception as e:
+            print(f"⚠️ Could not load gold dataset for filtering: {e}")
+            return set(), set()
+
     def run_pdf_mining(self):
         """Extracts text from PDFs and translates it using AI."""
         print("\n🦁 [Phase: PDF Mining]")
@@ -51,7 +74,14 @@ class DataFactory:
             all_sentences.extend(miner.clean_and_segment(raw_text))
 
         unique_sentences = list(set(all_sentences))
-        print(f"   📚 Unique sentences: {len(unique_sentences)}")
+        
+        # --- ANTI-DUPLICATION FILTER ---
+        known_sources, _ = self._get_gold_sources()
+        original_count = len(unique_sentences)
+        unique_sentences = [s for s in unique_sentences if s.strip() not in known_sources]
+        skipped = original_count - len(unique_sentences)
+        print(f"   📚 Unique sentences: {len(unique_sentences)} (Skipped {skipped} already validated)")
+        # -------------------------------
         
         TRANSLATION_PROMPT = """[INST]
         Translate the following Italian technical sentence into English (EN), French (FR), and Spanish (ES).
@@ -103,7 +133,14 @@ class DataFactory:
             all_terms.extend(terms)
         
         unique_terms = list(set(all_terms))
-        print(f"   🔍 Found {len(unique_terms)} unique terms.")
+        
+        # --- ANTI-DUPLICATION FILTER ---
+        _, known_terms = self._get_gold_sources()
+        original_count = len(unique_terms)
+        unique_terms = [t for t in unique_terms if t.strip() not in known_terms]
+        skipped = original_count - len(unique_terms)
+        print(f"   🔍 Found {len(unique_terms)} unique terms. (Skipped {skipped} already validated)")
+        # -------------------------------
         
         sentences = []
         for term in tqdm(unique_terms, desc="Generating from terms"):
