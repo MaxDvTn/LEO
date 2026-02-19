@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 # --- 1. CONFIGURAZIONE PAGINA (DEVE ESSERE LA PRIMA ISTRUZIONE ST) ---
-st.set_page_config(page_title="LEO Validator", page_icon="🦁", layout="wide")
+st.set_page_config(page_title="LEO Validator", page_icon="images/LEO_logo05.svg", layout="wide") #🦁
 
 # --- 2. SETUP PERCORSI E IMPORT AUTH ---
 # Risaliamo alla root del progetto
@@ -103,8 +103,14 @@ def save_gold_row(row_data):
     df_row.to_csv(GOLD_FILE, mode='a', header=header, index=False)
 
 # --- 6. INTERFACCIA PRINCIPALE ---
-st.title("🦁 L.E.O. Data Factory")
-st.markdown("**Roverplastik Neural Translation Project** | *Validation Interface*")
+col_logo, col_title = st.columns([4, 4])
+with col_logo:
+    # Usiamo il logo SVG con un fallback per la larghezza
+    st.image("images/LEO_logo05.svg", width=480)
+
+with col_title:
+    st.title("L.E.O. Data Factory")
+    st.markdown("**Roverplastik Neural Translation Project** | *Validation Interface*")
 
 # Caricamento Dati
 full_df = load_data()

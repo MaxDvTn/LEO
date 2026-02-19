@@ -50,7 +50,7 @@ def translate(text, target_lang):
     return tokenizer.decode(generated_tokens[0], skip_special_tokens=True)
 
 # Build Interface
-with gr.Blocks() as demo:
+with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown("# 🦁 L.E.O. Translation Hub")
     gr.Markdown("### Roverplastik Neural Translation - Specialized NLLB-200")
     
@@ -85,4 +85,4 @@ with gr.Blocks() as demo:
     gr.Markdown("ℹ️ **Nota**: Questo modello è stato ottimizzato specificamente per la terminologia tecnica Roverplastik.")
 
 if __name__ == "__main__":
-    demo.launch(theme=gr.themes.Soft())
+    demo.launch()

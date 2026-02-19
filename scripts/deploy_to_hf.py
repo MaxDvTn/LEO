@@ -2,8 +2,15 @@ import os
 from huggingface_hub import HfApi, create_repo, add_space_variable
 
 api = HfApi()
-username = "maxbsdv" 
-model_repo_id = f"{username}/leo-nllb-1.3b"
+try:
+    user_info = api.whoami()
+    username = user_info["name"]
+except Exception:
+    print("❌ Error: You are not logged in to Hugging Face Hub.")
+    print("👉 Please run 'huggingface-cli login' in your terminal first.")
+    exit(1)
+
+model_repo_id = f"{username}/leo-nllb-1.3b-adapters"
 space_repo_id = f"{username}/leo-translation-hub"
 
 print(f"🚀 Starting Deployment for user: {username}")

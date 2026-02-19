@@ -85,6 +85,49 @@ python inference.py \
     --text "This is a test sentence."
 ```
 
+## Student Validation App
+
+To launch the data validation interface for students (Streamlit + Ngrok):
+
+1. **Start the Server**:
+   Run the helper script which sets up a tmux session with Streamlit and the Ngrok tunnel:
+   ```bash
+   ./scripts/start_server.sh
+   ```
+
+2. **Access**:
+   - **Admin/Monitor**: Attach to the session with `tmux attach -t server`.
+   - **Students**: Share the link provided in [GUIDE_STUDENTS.md](GUIDE_STUDENTS.md) (e.g., `https://concretely-dendroid-florinda.ngrok-free.dev`).
+   - **Authentication**: Usage is restricted to `@liceodavincitn.it` Google accounts.
+
+For detailed student instructions, see **[GUIDE_STUDENTS.md](GUIDE_STUDENTS.md)**.
+
+## Deploy to Hugging Face Spaces
+
+You can easily deploy the Translation Hub to a public Hugging Face Space.
+
+1. **Login to Hugging Face**:
+   Make sure you have an account and a write-access token (Settings -> Access Tokens).
+   ```bash
+   huggingface-cli login
+   ```
+
+2. **Deploy**:
+   Run the deployment script, which handles:
+   - Exporting the LoRA adapters.
+   - Creating the Model and Space repositories on your account.
+   - Uploading files and configuring the Space.
+   
+   ```bash
+   # Ensure you are in the LEO environment
+   conda activate LEO
+   
+   # Run the deployment script
+   python scripts/deploy_to_hf.py
+   ```
+
+   The script will output the URL of your new Space (e.g., `https://huggingface.co/spaces/YourUsername/leo-translation-hub`).
+
 ## Project Structure
 
 - `config.py`: Central configuration for model parameters and paths.
