@@ -16,7 +16,7 @@ from src.synthesis.prompts import GENERATION_PROMPT_TEMPLATE
 from src.synthesis.glossary_data import get_terms_list
 from src.data_mining.competitor_spider import CompetitorSpider
 from src.training.trainer_engine import TrainerEngine
-from src.training.model_module import NLLBFineTuner
+from src.training.model_module import SeamlessFineTuner
 from src.common.config import conf
 
 class DataFactory:
@@ -92,26 +92,52 @@ class DataFactory:
         ES: [Translation]
         [/INST]"""
 
+        # Batch generation setup
+        BATCH_SIZE = 8
+        all_prompts = []
+        for sent in unique_sentences:
+            all_prompts.append(TRANSLATION_PROMPT.format(text=sent))
+
+        total_batches = (len(all_prompts) + BATCH_SIZE - 1) // BATCH_SIZE
+        print(f"   🚀 Starting Batched Inference (Batches: {total_batches})...")
+
         augmented_data = []
-        for sent in tqdm(unique_sentences, desc="AI Translation"):
+
+        for i in tqdm(range(0, len(all_prompts), BATCH_SIZE), desc="AI Translation"):
+            batch_prompts = all_prompts[i : i + BATCH_SIZE]
+            batch_sentences = unique_sentences[i : i + BATCH_SIZE]
+
             try:
-                raw_output = generator.pipe(TRANSLATION_PROMPT.format(text=sent), max_new_tokens=200, do_sample=False)[0]['generated_text']
-                parts = raw_output.split("[/INST]")[-1].strip().split('\n')
-                row = {"source_text": sent, "source_lang": "ita_Latn"}
-                
-                mapping = {"EN:": ("eng_Latn", "target_text_en"), "FR:": ("fra_Latn", "target_text_fr"), "ES:": ("ES:", "target_text_es")}
-                for line in parts:
-                    for prefix, (lang_code, key) in mapping.items():
-                        if line.startswith(prefix): row[key] = line.replace(prefix, "").strip()
-                
-                # Append available translations
-                for lang_code, key in [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]:
-                    if key in row:
-                        augmented_data.append({
-                            "source_text": sent, "target_text": row[key],
-                            "source_lang": "ita_Latn", "target_lang": lang_code, "origin": "pdf_mining"
-                        })
-            except Exception: continue
+                # Use pipeline batching
+                outputs = generator.pipe(
+                    batch_prompts,
+                    max_new_tokens=200,
+                    do_sample=False,
+                    batch_size=BATCH_SIZE
+                )
+
+                for j, out in enumerate(outputs):
+                    raw_text = out[0]['generated_text'] if isinstance(out, list) else out['generated_text']
+                    sent = batch_sentences[j]
+                    
+                    parts = raw_text.split("[/INST]")[-1].strip().split('\n')
+                    row = {"source_text": sent, "source_lang": "ita_Latn"}
+
+                    mapping = {"EN:": ("eng_Latn", "target_text_en"), "FR:": ("fra_Latn", "target_text_fr"), "ES:": ("spa_Latn", "target_text_es")}
+                    for line in parts:
+                        for prefix, (lang_code, key) in mapping.items():
+                            if line.startswith(prefix): row[key] = line.replace(prefix, "").strip()
+
+                    # Append available translations
+                    for lang_code, key in [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]:
+                        if key in row:
+                            augmented_data.append({
+                                "source_text": sent, "target_text": row[key],
+                                "source_lang": "ita_Latn", "target_lang": lang_code, "origin": "pdf_mining"
+                            })
+            except Exception as e:
+                print(f"❌ Batch Error: {e}")
+                continue
 
         if augmented_data:
             out_path = self.synthetic_dir / "rover_pdf_augmented.csv"
@@ -308,31 +334,31 @@ class ModelFactory:
             print(f"🔎 Using latest checkpoint: {checkpoint_path}")
 
         # Load model module
-        model_module = NLLBFineTuner.load_from_checkpoint(checkpoint_path)
+        model_module = SeamlessFineTuner.load_from_checkpoint(checkpoint_path)
         model_module.setup()
         model_module.eval()
         if torch.cuda.is_available(): model_module.cuda()
         
-        tokenizer = model_module.tokenizer
+        processor = model_module.tokenizer
         model = model_module.model
         
-        tokenizer.src_lang = src_lang
-        inputs = tokenizer(text, return_tensors="pt").to(model_module.device)
-        
-        forced_bos_token_id = tokenizer.convert_tokens_to_ids(tgt_lang)
-        if forced_bos_token_id is None:
-            raise ValueError(f"Language code {tgt_lang} not found.")
+        # SeamlessM4T map
+        lang_map = {"ita_Latn": "ita", "eng_Latn": "eng", "fra_Latn": "fra", "spa_Latn": "spa"}
+        seamless_src = lang_map.get(src_lang, src_lang)
+        seamless_tgt = lang_map.get(tgt_lang, tgt_lang)
 
+        # Process input
+        inputs = processor(text, src_lang=seamless_src, return_tensors="pt").to(model_module.device)
+        
         with torch.no_grad():
             generated_tokens = model.generate(
                 **inputs,
-                forced_bos_token_id=forced_bos_token_id,
+                tgt_lang=seamless_tgt,
                 max_new_tokens=conf.model.max_target_length,
-                num_beams=5,
                 early_stopping=True
             )
 
-        result = tokenizer.decode(generated_tokens[0], skip_special_tokens=True)
+        result = processor.decode(generated_tokens[0].tolist(), skip_special_tokens=True)
         print(f"Input: {text}")
         print(f"Output: {result}")
         return result
@@ -341,7 +367,12 @@ class ModelFactory:
         """Runs a full comparison benchmark between Base and LEO models on WandB."""
         print("\n📊 [Phase: Benchmarking]")
         
-        wandb.init(project="LEO-Translation", job_type="benchmark", name="Final-Model-Evaluation")
+        wandb.init(
+            project="LEO-Translation", 
+            job_type="benchmark", 
+            name="Final-Model-Evaluation",
+            config=conf.model.__dict__
+        )
         
         data_path = conf.paths.data_gold / "test_set.csv"
         if not data_path.exists():
@@ -350,45 +381,81 @@ class ModelFactory:
             
         test_set = pd.read_csv(data_path)
         
-        # Load Base
-        model_name = "facebook/nllb-200-distilled-1.3B"
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        # Load Base Model
+        model_name = conf.model.model_name
+        from transformers import AutoProcessor
+        processor = AutoProcessor.from_pretrained(model_name)
         bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_quant_type="nf4", bnb_4bit_use_double_quant=True)
         base_model = AutoModelForSeq2SeqLM.from_pretrained(model_name, device_map="auto", quantization_config=bnb_config)
         
-        # Load LEO (Adapter)
-        adapter_path = conf.paths.output_dir / "final_adapter"
-        if not adapter_path.exists():
-            checkpoints = list(conf.paths.output_dir.glob("*.ckpt"))
-            if not checkpoints: raise FileNotFoundError("No adapter/checkpoint found.")
-            adapter_path = checkpoints[-1]
-        
-        # Evaluation Helper
+        # Base Model Evaluation Helper
         def eval_loop(model, prefix):
             preds, targets, sources = [], [], []
             bleu, chrf = SacreBLEUScore(), CHRFScore()
+            lang_map = {"ita_Latn": "ita", "eng_Latn": "eng", "fra_Latn": "fra", "spa_Latn": "spa"}
+            
             for _, row in tqdm(test_set.iterrows(), total=len(test_set), desc=f"Eval {prefix}"):
-                tokenizer.src_lang = row['source_lang']
-                inputs = tokenizer(row['source_text'], return_tensors="pt").to(self.device)
+                seamless_src = lang_map.get(row['source_lang'], row['source_lang'])
+                seamless_tgt = lang_map.get(row['target_lang'], row['target_lang'])
+                
+                inputs = processor(row['source_text'], src_lang=seamless_src, return_tensors="pt").to(self.device)
                 with torch.no_grad():
-                    gen = model.generate(**inputs, forced_bos_token_id=tokenizer.convert_tokens_to_ids(row['target_lang']), max_new_tokens=128)
-                decoded = tokenizer.decode(gen[0], skip_special_tokens=True)
+                    gen = model.generate(**inputs, tgt_lang=seamless_tgt, max_new_tokens=128)
+                    
+                decoded = processor.decode(gen[0].tolist(), skip_special_tokens=True)
                 preds.append(decoded); targets.append([row['target_text']]); sources.append(row['source_text'])
             return {"BLEU": bleu(preds, targets).item(), "CHRF": chrf(preds, targets).item(), "Samples": list(zip(sources, [t[0] for t in targets], preds))}
 
+        # Evaluate Base Model Before Adapter is Loaded
+        print("Evaluating Base Model...")
         res_base = eval_loop(base_model, "BASE")
         
+        # Load LEO (Adapter)
+        adapter_path = conf.paths.output_dir / "leo_hf_release"
+        if not adapter_path.exists():
+            raise FileNotFoundError(f"Adapter not found at {adapter_path}. Run scripts/export_to_hf.py first.")
+        
+        # Load the base model with PEFT adapters applied properly
+        print("Evaluating LEO Model...")
         leo_model = PeftModel.from_pretrained(base_model, str(adapter_path))
         leo_model.eval()
+        
+        # LEO Model is already evaluated directly from peft
         res_leo = eval_loop(leo_model, "LEO")
         
         # Log to WandB
-        wandb.log({"baseline_bleu": res_base['BLEU'], "leo_bleu": res_leo['BLEU'], "improvement_bleu": res_leo['BLEU'] - res_base['BLEU']})
+        wandb.log({
+            "baseline_bleu": res_base['BLEU'], 
+            "leo_bleu": res_leo['BLEU'], 
+            "improvement_bleu": res_leo['BLEU'] - res_base['BLEU'],
+            "baseline_chrf": res_base['CHRF'],
+            "leo_chrf": res_leo['CHRF'],
+            "improvement_chrf": res_leo['CHRF'] - res_base['CHRF']
+        })
         
         table = wandb.Table(columns=["Source (IT)", "Reference (Human)", "Base Model", "LEO Model"])
-        for i in range(len(test_set)):
-            table.add_data(res_leo['Samples'][i][0], res_leo['Samples'][i][1], res_base['Samples'][i][2], res_leo['Samples'][i][2])
+        regression_table = wandb.Table(columns=["Source (IT)", "Reference", "Base Model", "LEO Model", "Base CHRF", "LEO CHRF", "Diff"])
         
-        wandb.log({"benchmark_comparison": table})
+        chrf_scorer = CHRFScore()
+        for i in range(len(test_set)):
+            src_text = res_leo['Samples'][i][0]
+            ref_text = res_leo['Samples'][i][1]
+            base_pred = res_base['Samples'][i][2]
+            leo_pred = res_leo['Samples'][i][2]
+            
+            table.add_data(src_text, ref_text, base_pred, leo_pred)
+            
+            # Compute sentence-level scores to find regressions
+            base_score = chrf_scorer([base_pred], [[ref_text]]).item()
+            leo_score = chrf_scorer([leo_pred], [[ref_text]]).item()
+            
+            diff = leo_score - base_score
+            if diff < 0: # LEO is worse
+                regression_table.add_data(src_text, ref_text, base_pred, leo_pred, round(base_score, 4), round(leo_score, 4), round(diff, 4))
+        
+        wandb.log({
+            "benchmark_comparison": table,
+            "regressions_table": regression_table
+        })
         print("✅ Results logged to WandB!")
         wandb.finish()

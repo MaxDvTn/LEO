@@ -3,7 +3,7 @@ from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping, Learning
 from pytorch_lightning.loggers import TensorBoardLogger
 from src.common.config import conf
 from src.training.dataset_module import NMTDataModule
-from src.training.model_module import NLLBFineTuner
+from src.training.model_module import SeamlessFineTuner
 
 class TrainerEngine:
     def __init__(self):
@@ -17,7 +17,7 @@ class TrainerEngine:
         dm.setup()
 
         # Model
-        model = NLLBFineTuner() # Uses conf internally
+        model = SeamlessFineTuner() # Uses conf internally
         
         # Callbacks
         checkpoint_callback = ModelCheckpoint(
@@ -43,12 +43,25 @@ class TrainerEngine:
         # WandB Logger (Primary)
         if conf.wandb.enabled:
             from pytorch_lightning.loggers import WandbLogger
-            loggers.append(WandbLogger(
+            import wandb
+            # Convert configs to dicts for logging
+            from dataclasses import asdict
+            hparams = {
+                "model": asdict(conf.model),
+                "generation": asdict(conf.gen)
+            }
+            
+            wandb_logger = WandbLogger(
                 project=conf.wandb.project,
-                name=conf.wandb.name,
+                name=f"{conf.wandb.name}-{conf.model.model_name.split('/')[-1]}",
                 mode=conf.wandb.mode,
-                save_dir="wandb_logs"
-            ))
+                save_dir="wandb_logs",
+                log_model=True, # Logs checkpoints as artifacts
+                config=hparams
+            )
+            # Watch gradients and parameters
+            wandb_logger.watch(model, log="all", log_freq=50)
+            loggers.append(wandb_logger)
         
         # TensorBoard fallback
         loggers.append(TensorBoardLogger("lightning_logs", name="nllb_finetune"))

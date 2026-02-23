@@ -1,27 +1,29 @@
 import torch
 import pytorch_lightning as pl
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import AutoModelForSeq2SeqLM, AutoProcessor, BitsAndBytesConfig
 from peft import get_peft_model, LoraConfig, TaskType, prepare_model_for_kbit_training
 import logging
-from torchmetrics.text import SacreBLEUScore
+from torchmetrics.text import SacreBLEUScore, CHRFScore
 
 # Import della configurazione centrale
 from src.common.config import conf
 
 logger = logging.getLogger(__name__)
 
-class NLLBFineTuner(pl.LightningModule):
+class SeamlessFineTuner(pl.LightningModule):
     def __init__(self, 
-                 model_name: str = "facebook/nllb-200-distilled-1.3B", 
-                 learning_rate: float = 2e-4):
+                 model_name: str = None, 
+                 learning_rate: float = None):
         super().__init__()
         self.save_hyperparameters()
         self.strict_loading = False # Ignore extra bitsandbytes keys
-        self.model_name = model_name
-        self.learning_rate = learning_rate
+        
+        self.model_name = model_name if model_name is not None else conf.model.model_name
+        self.learning_rate = learning_rate if learning_rate is not None else conf.model.learning_rate
         self.tokenizer = None 
         # Metric
         self.bleu_metric = SacreBLEUScore()
+        self.chrf_metric = CHRFScore()
 
     def setup(self, stage=None):
         """
@@ -31,7 +33,7 @@ class NLLBFineTuner(pl.LightningModule):
         if hasattr(self, "model"):
             return # Già caricato
 
-        logger.info(f"🧠 Loading NLLB Model: {self.model_name} in 4-bit...")
+        logger.info(f"🧠 Loading Seamless Model: {self.model_name} in 4-bit...")
 
         # 1. Configurazione 4-bit (QLoRA)
         bnb_config = BitsAndBytesConfig(
@@ -67,8 +69,8 @@ class NLLBFineTuner(pl.LightningModule):
         self.model = get_peft_model(self.base_model, peft_config)
         self.model.print_trainable_parameters() 
         
-        # Carichiamo anche il tokenizer
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        # Carichiamo anche il tokenizer (processor)
+        self.tokenizer = AutoProcessor.from_pretrained(self.model_name)
 
     def forward(self, input_ids, attention_mask, labels=None):
         # NLLB requires labels to calculate loss if wanted, or just forward
@@ -108,8 +110,13 @@ class NLLBFineTuner(pl.LightningModule):
                 
                 # Generate translation
                 # Note: We limit max_new_tokens for speed
-                gen_ids = self.model.generate(input_ids=src_ids, max_new_tokens=64)
-                
+                # In val_step we mostly translate to English, but theoretically the dataset is mixed targets
+                # If we don't know the exact target per row during batch eval, we default to english (eng)
+                gen_ids = self.model.generate(
+                    input_ids=src_ids, 
+                    tgt_lang="eng", 
+                    max_new_tokens=64
+                )
                 preds = []
                 targets = []
                 
@@ -126,7 +133,9 @@ class NLLBFineTuner(pl.LightningModule):
                 
                 # Update Metric
                 self.bleu_metric.update(preds, targets)
+                self.chrf_metric.update(preds, targets)
                 self.log("val_bleu", self.bleu_metric, on_epoch=True, prog_bar=True)
+                self.log("val_chrf", self.chrf_metric, on_epoch=True, prog_bar=True)
 
                 # 3. Log Examples (Only for first batch)
                 if batch_idx == 0:

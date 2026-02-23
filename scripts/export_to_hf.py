@@ -31,7 +31,7 @@ def export_ckpt_to_peft(checkpoint_path, export_dir):
         model_name,
         quantization_config=bnb_config,
         device_map="auto",
-        torch_dtype=torch.bfloat16
+        dtype=torch.bfloat16
     )
     base_model = prepare_model_for_kbit_training(base_model)
     
@@ -69,23 +69,23 @@ def export_ckpt_to_peft(checkpoint_path, export_dir):
     matched_target_keys = set()
     
     for k, v in state_dict.items():
-        # Only strip the leading "model." if it exists (Lightning prefix)
-        clean_key = k[6:] if k.startswith("model.") else k
-        
-        if "lora_" in clean_key:
-            # Try to find the target key
-            # We use suffix matching because nesting levels (model.model.model) vary
+        if "lora_" in k:
+            # Checkpoint keys: "base_model.text_encoder.layers.0.self_attn.k_proj.lora_A.default.weight"
+            # Target HF PEFT keys: "base_model.model.text_encoder.layers.0.self_attn.k_proj.lora_A.default.weight"
+            
+            # Use suffix starting from "text_encoder" or "text_decoder"
+            clean_key = k
             parts = clean_key.split(".")
             start_node = -1
             for i, p in enumerate(parts):
-                if p in ["encoder", "decoder"]:
+                if p in ["text_encoder", "text_decoder", "encoder", "decoder"]:
                     start_node = i
                     break
             
             if start_node != -1:
                 suffix = ".".join(parts[start_node:])
                 for tk in target_keys:
-                    if tk.endswith(suffix) and "lora_" in tk:
+                    if tk.endswith(suffix):
                         if tk not in matched_target_keys:
                             new_state_dict[tk] = v
                             matched_target_keys.add(tk)
@@ -146,7 +146,7 @@ def main():
     best_ckpt = sorted(checkpoints, key=get_val_loss)[0]
     print(f"🏆 Best checkpoint selected: {best_ckpt.name} (Loss: {get_val_loss(best_ckpt)})")
 
-    export_dir = PROJECT_ROOT / "checkpoints" / "leo_hf_release"
+    export_dir = conf.paths.output_dir / "leo_hf_release"
     export_ckpt_to_peft(str(best_ckpt), export_dir)
 
 if __name__ == "__main__":

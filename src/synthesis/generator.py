@@ -8,12 +8,16 @@ from typing import List, Dict
 # Import interni
 from src.synthesis.glossary_data import get_terms_list
 from src.synthesis.prompts import GENERATION_PROMPT_TEMPLATE
+from src.common.config import conf
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class SyntheticGenerator:
-    def __init__(self, model_id: str = "mistralai/Mistral-7B-Instruct-v0.2"):
+    def __init__(self, model_id: str = None):
+        if model_id is None:
+            model_id = conf.gen.model_id
+        
         self.model_id = model_id
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         

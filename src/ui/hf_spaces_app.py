@@ -1,16 +1,16 @@
 import gradio as gr
 import torch
 import os
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+from transformers import AutoModelForSeq2SeqLM, AutoProcessor
 from peft import PeftModel
 
 # Configuration
-BASE_MODEL = "facebook/nllb-200-distilled-1.3B"
+BASE_MODEL = "facebook/seamless-m4t-v2-large"
 # Use '.' for relative paths when deployed on Spaces, or env var for local testing
 ADAPTER_PATH = os.getenv("ADAPTER_PATH", "./")
 
-# Load Tokenizer
-tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+# Load Processor
+processor = AutoProcessor.from_pretrained(BASE_MODEL)
 
 # Load Model with LoRA
 print("🚀 Loading LEO Model...")
@@ -28,26 +28,24 @@ def translate(text, target_lang):
     if not text.strip():
         return ""
     
-    # Mapping for UI labels to NLLB codes
+    # Mapping for UI labels to Seamless codes
     lang_map = {
-        "English": "eng_Latn",
-        "French": "fra_Latn",
-        "Spanish": "spa_Latn"
+        "English": "eng",
+        "French": "fra",
+        "Spanish": "spa"
     }
-    tgt_code = lang_map.get(target_lang, "eng_Latn")
+    tgt_code = lang_map.get(target_lang, "eng")
     
-    tokenizer.src_lang = "ita_Latn"
-    inputs = tokenizer(text, return_tensors="pt").to(model.device)
+    inputs = processor(text, src_lang="ita", return_tensors="pt").to(model.device)
     
     with torch.no_grad():
         generated_tokens = model.generate(
             **inputs,
-            forced_bos_token_id=tokenizer.convert_tokens_to_ids(tgt_code),
-            max_new_tokens=128,
-            num_beams=5
+            tgt_lang=tgt_code,
+            max_new_tokens=128
         )
     
-    return tokenizer.decode(generated_tokens[0], skip_special_tokens=True)
+    return processor.decode(generated_tokens[0].tolist()[0], skip_special_tokens=True)
 
 # Build Interface
 with gr.Blocks(theme=gr.themes.Soft()) as demo:

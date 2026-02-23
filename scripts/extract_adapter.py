@@ -6,19 +6,34 @@ import os
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(PROJECT_ROOT))
 
-from src.training.model_module import NLLBFineTuner
+from src.training.model_module import SeamlessFineTuner
+
+from src.common.config import conf
 
 def extract_adapter():
-    ckpt_path = "/home/mbosetti/LEO/checkpoints/nllb-finetuned-epoch=04-val_loss=0.47.ckpt"
-    output_dir = "/home/mbosetti/LEO/checkpoints/final_adapter"
-    os.makedirs(output_dir, exist_ok=True)
+    checkpoints = list(conf.paths.output_dir.glob("*.ckpt"))
+    if not checkpoints: 
+        raise FileNotFoundError("No adapter/checkpoint found.")
+    
+    def get_val_loss(p):
+        try:
+            val_part = p.name.split("val_loss=")[1]
+            return float(val_part.replace(".ckpt", "").split("-")[0])
+        except:
+            return 999.0
+
+    best_ckpt = sorted(checkpoints, key=get_val_loss)[0]
+    ckpt_path = str(best_ckpt)
+    
+    output_dir = conf.paths.output_dir / "leo_hf_release"
+    output_dir.mkdir(parents=True, exist_ok=True)
     
     print(f"📦 Loading FineTuner from checkpoint: {ckpt_path}")
     # Nota: carichiamo su CPU per sicurezza
     checkpoint = torch.load(ckpt_path, map_location="cpu")
     
     # Istanziamo il modello (senza pesi inizialmente)
-    tuner = NLLBFineTuner()
+    tuner = SeamlessFineTuner()
     tuner.setup() # Questo crea self.model (PeftModel)
     
     print("📥 Loading state_dict into tuner (strict=False because base is already loaded)...")

@@ -3,6 +3,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 import pytorch_lightning as pl
 from transformers import AutoTokenizer, DataCollatorForSeq2Seq
+from torch.nn.utils.rnn import pad_sequence
 from sklearn.model_selection import train_test_split
 from pathlib import Path
 import logging
@@ -32,39 +33,56 @@ class LeoDataset(Dataset):
         src_lang = row['source_lang']
         tgt_lang = row['target_lang']
 
-        # 1. Set source language
-        self.tokenizer.src_lang = src_lang
+        # SeamlessM4T uses linguistic tags like 'ita', 'eng', etc.
+        # We need to map from NLLB tags if they are still in the CSVs
+        lang_map = {
+            "ita_Latn": "ita",
+            "eng_Latn": "eng", 
+            "fra_Latn": "fra",
+            "spa_Latn": "spa"
+        }
+        
+        seamless_src = lang_map.get(src_lang, src_lang)
+        seamless_tgt = lang_map.get(tgt_lang, tgt_lang)
 
-        # 2. Tokenize input
+        # 1. Process Input
         inputs = self.tokenizer(
-            source_text,
-            max_length=self.max_length,
-            truncation=True,
-            padding=False,
-            return_tensors=None
+            text=source_text,
+            src_lang=seamless_src,
+            return_tensors="pt"
         )
 
-        # 3. Tokenize target
-        self.tokenizer.tgt_lang = tgt_lang
-        with self.tokenizer.as_target_tokenizer():
-            labels = self.tokenizer(
-                target_text,
-                max_length=self.max_length,
-                truncation=True,
-                padding=False,
-                return_tensors=None
-            )
-
-        # 4. Get forced_bos_token_id for target language
-        # NLLB uses special tokens for languages. 
-        # For example 'ita_Latn', 'eng_Latn', etc.
-        forced_bos_token_id = self.tokenizer.convert_tokens_to_ids(tgt_lang)
+        # 2. Process Target
+        labels = self.tokenizer(
+            text=target_text,
+            src_lang=seamless_tgt, # For Seamless target tokenization
+            return_tensors="pt"
+        )
 
         return {
-            "input_ids": inputs["input_ids"],
-            "attention_mask": inputs["attention_mask"],
-            "labels": labels["input_ids"],
-            "forced_bos_token_id": forced_bos_token_id
+            "input_ids": inputs["input_ids"].squeeze(0),
+            "attention_mask": inputs["attention_mask"].squeeze(0),
+            "labels": labels["input_ids"].squeeze(0)
+        }
+
+class SeamlessDataCollator:
+    def __init__(self, pad_token_id):
+        self.pad_token_id = pad_token_id
+
+    def __call__(self, batch):
+        input_ids = [item["input_ids"] for item in batch]
+        attention_mask = [item["attention_mask"] for item in batch]
+        labels = [item["labels"] for item in batch]
+        
+        # Pad sequences
+        input_ids_padded = pad_sequence(input_ids, batch_first=True, padding_value=self.pad_token_id)
+        attention_mask_padded = pad_sequence(attention_mask, batch_first=True, padding_value=0)
+        labels_padded = pad_sequence(labels, batch_first=True, padding_value=-100) # -100 is ignored by CrossEntropyLoss
+        
+        return {
+            "input_ids": input_ids_padded,
+            "attention_mask": attention_mask_padded,
+            "labels": labels_padded
         }
 
 class NMTDataModule(pl.LightningDataModule):
@@ -81,9 +99,10 @@ class NMTDataModule(pl.LightningDataModule):
         if self.train_dataset is not None:
             return
 
-        # 1. Load Tokenizer
-        logger.info(f"Loading tokenizer: {self.config.model_name}")
-        self.tokenizer = AutoTokenizer.from_pretrained(self.config.model_name)
+        # 1. Load Tokenizer/Processor for Seamless
+        logger.info(f"Loading processor: {self.config.model_name}")
+        from transformers import AutoProcessor
+        self.tokenizer = AutoProcessor.from_pretrained(self.config.model_name)
 
         # 2. Load and Combine Data
         dfs = []
@@ -117,19 +136,21 @@ class NMTDataModule(pl.LightningDataModule):
         self.val_dataset = LeoDataset(val_df, self.tokenizer, self.config.max_source_length)
 
     def train_dataloader(self):
+        pad_id = self.tokenizer.tokenizer.pad_token_id
         return DataLoader(
             self.train_dataset,
             batch_size=self.config.batch_size,
             shuffle=True,
             num_workers=self.config.num_workers,
-            collate_fn=DataCollatorForSeq2Seq(self.tokenizer, padding=True)
+            collate_fn=SeamlessDataCollator(pad_id)
         )
 
     def val_dataloader(self):
+        pad_id = self.tokenizer.tokenizer.pad_token_id
         return DataLoader(
             self.val_dataset,
             batch_size=self.config.batch_size,
             shuffle=False,
             num_workers=self.config.num_workers,
-            collate_fn=DataCollatorForSeq2Seq(self.tokenizer, padding=True)
+            collate_fn=SeamlessDataCollator(pad_id)
         )

@@ -1,8 +1,8 @@
 import torch
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+from transformers import AutoModelForSeq2SeqLM, AutoProcessor
 from peft import PeftModel
 
-BASE_MODEL = "facebook/nllb-200-distilled-1.3B"
+BASE_MODEL = "facebook/seamless-m4t-v2-large"
 ADAPTER_PATH = "checkpoints/leo_hf_release"
 
 print(f"🚀 Loading base model: {BASE_MODEL}")
@@ -16,7 +16,7 @@ print(f"📂 Loading adapters from: {ADAPTER_PATH}")
 model = PeftModel.from_pretrained(model, ADAPTER_PATH)
 model.eval()
 
-tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+processor = AutoProcessor.from_pretrained(BASE_MODEL)
 
 test_sentences = [
     "Cassonetto coibentato per serramenti.",
@@ -24,18 +24,18 @@ test_sentences = [
 ]
 
 print("\n✨ Testing Translations:")
-target_lang = "eng_Latn"
-tokenizer.src_lang = "ita_Latn"
+target_lang = "eng"
+src_lang = "ita"
 
 for text in test_sentences:
-    inputs = tokenizer(text, return_tensors="pt").to(model.device)
+    inputs = processor(text, src_lang=src_lang, return_tensors="pt").to(model.device)
     with torch.no_grad():
         generated_tokens = model.generate(
             **inputs,
-            forced_bos_token_id=tokenizer.convert_tokens_to_ids(target_lang),
+            tgt_lang=target_lang,
             max_new_tokens=128
         )
-    translation = tokenizer.decode(generated_tokens[0], skip_special_tokens=True)
+    translation = processor.decode(generated_tokens[0].tolist()[0], skip_special_tokens=True)
     print(f"🇮🇹 {text}")
     print(f"🇬🇧 {translation}\n")
 

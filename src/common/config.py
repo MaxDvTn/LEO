@@ -34,14 +34,14 @@ class PathConfig:
 
 @dataclass
 class ModelConfig:
-    """Configuration for the NMT Model (NLLB)."""
-    model_name: str = "facebook/nllb-200-distilled-1.3B"
+    """Configuration for the NMT Model (SeamlessM4T v2)."""
+    model_name: str = "facebook/seamless-m4t-v2-large" # 2.3B parameter SOTA model
     max_source_length: int = 128
     max_target_length: int = 128
     
     # Training
-    batch_size: int = 8
-    accumulate_grad_batches: int = 4
+    batch_size: int = 2
+    accumulate_grad_batches: int = 16
     learning_rate: float = 2e-4
     weight_decay: float = 0.01
     max_epochs: int = 20
@@ -61,7 +61,7 @@ class ModelConfig:
 @dataclass
 class GenConfig:
     """Configuration for Synthetic Data Generation (LLM)."""
-    model_id: str = "mistralai/Mistral-7B-Instruct-v0.1" 
+    model_id: str = "mistralai/Mistral-7B-Instruct-v0.2" 
     # Valid options: "4bit", "8bit", "none"
     load_in_4bit: bool = True
     load_in_8bit: bool = False
@@ -103,6 +103,12 @@ class Config:
     gen: GenConfig = field(default_factory=GenConfig)
     wandb: WandbConfig = field(default_factory=WandbConfig)
     spider: SpiderConfig = field(default_factory=SpiderConfig)
+
+    def __post_init__(self):
+        # Dynamically separate checkpoints by the active model
+        model_safe_name = self.model.model_name.replace("/", "_")
+        self.paths.output_dir = self.paths.project_root / f"checkpoints_{model_safe_name}"
+        self.paths.output_dir.mkdir(parents=True, exist_ok=True)
 
 # Global Instance
 conf = Config()
