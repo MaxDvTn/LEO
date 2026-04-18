@@ -59,7 +59,7 @@ class DataFactory:
         pdf_dir = self.paths.data_raw_pdfs
         pdf_dir.mkdir(parents=True, exist_ok=True)
         
-        pdf_files = list(pdf_dir.glob("*.pdf"))
+        pdf_files = list(pdf_dir.rglob("*.pdf"))
         if not pdf_files:
             print(f"⚠️  No PDFs found in {pdf_dir}")
             return
@@ -267,7 +267,7 @@ class DataFactory:
         test_rows = []
         for lang in source_df['target_lang'].unique():
             lang_df = source_df[source_df['target_lang'] == lang]
-            sample_n = min(20, len(lang_df))
+            sample_n = max(20, int(len(lang_df) * 0.01))
             if sample_n > 0:
                 test_rows.append(lang_df.sample(n=sample_n, random_state=42))
         
@@ -304,6 +304,7 @@ class ModelFactory:
         os.environ['TORCH_DISTRIBUTED_DEBUG'] = 'DETAIL'
         os.environ["WANDB_MODE"] = "online"
         os.environ["WANDB_SILENT"] = "false"
+        os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
         
         engine = TrainerEngine()
         
@@ -391,7 +392,13 @@ class ModelFactory:
         # Base Model Evaluation Helper
         def eval_loop(model, prefix):
             preds, targets, sources = [], [], []
+            lang_pairs = [] # To track language direction
             bleu, chrf = SacreBLEUScore(), CHRFScore()
+            
+            # Use NLTK for METEOR
+            from nltk.translate import meteor_score
+            import nltk
+            
             lang_map = {"ita_Latn": "ita", "eng_Latn": "eng", "fra_Latn": "fra", "spa_Latn": "spa"}
             
             for _, row in tqdm(test_set.iterrows(), total=len(test_set), desc=f"Eval {prefix}"):
@@ -400,11 +407,49 @@ class ModelFactory:
                 
                 inputs = processor(row['source_text'], src_lang=seamless_src, return_tensors="pt").to(self.device)
                 with torch.no_grad():
-                    gen = model.generate(**inputs, tgt_lang=seamless_tgt, max_new_tokens=128)
+                    try:
+                        gen = model.generate(**inputs, tgt_lang=seamless_tgt, max_new_tokens=128)
+                    except Exception as e:
+                        print(f"⚠️ Error in generation for row {row['source_text'][:50]}... : {e}")
+                        import gc
+                        torch.cuda.empty_cache()
+                        gc.collect()
+                        continue
                     
-                decoded = processor.decode(gen[0].tolist(), skip_special_tokens=True)
-                preds.append(decoded); targets.append([row['target_text']]); sources.append(row['source_text'])
-            return {"BLEU": bleu(preds, targets).item(), "CHRF": chrf(preds, targets).item(), "Samples": list(zip(sources, [t[0] for t in targets], preds))}
+                decoded = str(processor.decode(gen[0].tolist(), skip_special_tokens=True))
+                preds.append(decoded); targets.append([str(row['target_text'])]); sources.append(str(row['source_text']))
+                lang_pairs.append(f"{seamless_src}->{seamless_tgt}")
+                
+                # Periodic memory cleanup
+                if _ % 50 == 0:
+                    import gc
+                    torch.cuda.empty_cache()
+                    gc.collect()
+                
+            # Compute global METEOR
+            meteor_scores = [meteor_score.meteor_score([str(t[0]).split()], str(p).split()) for t, p in zip(targets, preds)]
+            global_meteor = sum(meteor_scores) / len(meteor_scores) if meteor_scores else 0.0
+            
+            # Compute per-language metrics
+            lang_metrics = {}
+            for lp in set(lang_pairs):
+                lp_indices = [i for i, x in enumerate(lang_pairs) if x == lp]
+                lp_preds = [preds[i] for i in lp_indices]
+                lp_targets = [targets[i] for i in lp_indices]
+                lp_meteor = sum([meteor_scores[i] for i in lp_indices]) / len(lp_indices)
+                lang_metrics[lp] = {
+                    "BLEU": bleu(lp_preds, lp_targets).item(),
+                    "CHRF": chrf(lp_preds, lp_targets).item(),
+                    "METEOR": lp_meteor
+                }
+                
+            return {
+                "BLEU": bleu(preds, targets).item(), 
+                "CHRF": chrf(preds, targets).item(), 
+                "METEOR": global_meteor,
+                "Samples": list(zip(sources, [t[0] for t in targets], preds, lang_pairs)),
+                "LangMetrics": lang_metrics
+            }
 
         # Evaluate Base Model Before Adapter is Loaded
         print("Evaluating Base Model...")
@@ -430,20 +475,62 @@ class ModelFactory:
             "improvement_bleu": res_leo['BLEU'] - res_base['BLEU'],
             "baseline_chrf": res_base['CHRF'],
             "leo_chrf": res_leo['CHRF'],
-            "improvement_chrf": res_leo['CHRF'] - res_base['CHRF']
+            "improvement_chrf": res_leo['CHRF'] - res_base['CHRF'],
+            "baseline_meteor": res_base['METEOR'],
+            "leo_meteor": res_leo['METEOR'],
+            "improvement_meteor": res_leo['METEOR'] - res_base['METEOR']
         })
         
-        table = wandb.Table(columns=["Source (IT)", "Reference (Human)", "Base Model", "LEO Model"])
-        regression_table = wandb.Table(columns=["Source (IT)", "Reference", "Base Model", "LEO Model", "Base CHRF", "LEO CHRF", "Diff"])
+        # Log Correlation Matrix / Heatmap Data
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        metrics = ["BLEU", "CHRF", "METEOR"]
+        directions = list(res_leo['LangMetrics'].keys())
+        
+        # Create a heatmap grid measuring language performance vs baseline differences
+        heatmap_data = np.zeros((len(directions), len(metrics)))
+        for i, direction in enumerate(directions):
+            for j, metric in enumerate(metrics):
+                heatmap_data[i, j] = res_leo["LangMetrics"][direction][metric] - res_base["LangMetrics"][direction][metric]
+                
+        fig, ax = plt.subplots(figsize=(10, 6))
+        sns.heatmap(heatmap_data, annot=True, xticklabels=metrics, yticklabels=directions, cmap="RdYlGn", ax=ax)
+        plt.title("LEO Improvement over Baseline per Language Pair")
+        plt.tight_layout()
+        wandb.log({"Language_Performance_Heatmap": wandb.Image(fig)})
+        plt.close(fig)
+        
+        table = wandb.Table(columns=["Direction", "Source (IT)", "Reference (Human)", "Base Model", "LEO Model"])
+        regression_table = wandb.Table(columns=["Direction", "Source (IT)", "Reference", "Base Model", "LEO Model", "Base CHRF", "LEO CHRF", "Diff"])
         
         chrf_scorer = CHRFScore()
+        
+        import string
+        from collections import Counter
+        
+        def tokenize_and_clean(text):
+            return [w.strip(string.punctuation).lower() for w in text.split() if w.strip(string.punctuation).lower()]
+
+        missing_words = Counter()
+        hallucinated_words = Counter()
+        
         for i in range(len(test_set)):
             src_text = res_leo['Samples'][i][0]
             ref_text = res_leo['Samples'][i][1]
             base_pred = res_base['Samples'][i][2]
             leo_pred = res_leo['Samples'][i][2]
+            direction = res_leo['Samples'][i][3]
             
-            table.add_data(src_text, ref_text, base_pred, leo_pred)
+            table.add_data(direction, src_text, ref_text, base_pred, leo_pred)
+            
+            # Record Token-Level Errors for LEO Predictions
+            ref_words = set(tokenize_and_clean(ref_text))
+            pred_words = set(tokenize_and_clean(leo_pred))
+            
+            missing_words.update(ref_words - pred_words) # Target words LEO forgot
+            hallucinated_words.update(pred_words - ref_words) # Guessed words LEO invented
             
             # Compute sentence-level scores to find regressions
             base_score = chrf_scorer([base_pred], [[ref_text]]).item()
@@ -451,11 +538,31 @@ class ModelFactory:
             
             diff = leo_score - base_score
             if diff < 0: # LEO is worse
-                regression_table.add_data(src_text, ref_text, base_pred, leo_pred, round(base_score, 4), round(leo_score, 4), round(diff, 4))
+                regression_table.add_data(direction, src_text, ref_text, base_pred, leo_pred, round(base_score, 4), round(leo_score, 4), round(diff, 4))
         
+        # Plotting Top 15 Most Hallucinated / Missing Words
+        fig2, axes = plt.subplots(1, 2, figsize=(14, 6))
+        
+        # Hallucinations
+        hw_labels = [w for w, c in hallucinated_words.most_common(15)]
+        hw_counts = [c for w, c in hallucinated_words.most_common(15)]
+        sns.barplot(x=hw_counts, y=hw_labels, ax=axes[0], palette="Reds_d")
+        axes[0].set_title("Top 15 Predicted Words Missing in Reference (False Positives)")
+        axes[0].set_xlabel("Frequency")
+        
+        # Missed Words
+        mw_labels = [w for w, c in missing_words.most_common(15)]
+        mw_counts = [c for w, c in missing_words.most_common(15)]
+        sns.barplot(x=mw_counts, y=mw_labels, ax=axes[1], palette="Blues_d")
+        axes[1].set_title("Top 15 Reference Words Missing in Prediction (False Negatives)")
+        axes[1].set_xlabel("Frequency")
+        
+        plt.tight_layout()
         wandb.log({
             "benchmark_comparison": table,
-            "regressions_table": regression_table
+            "regressions_table": regression_table,
+            "Word_Level_Errors_Analysis": wandb.Image(fig2)
         })
+        plt.close(fig2)
         print("✅ Results logged to WandB!")
         wandb.finish()

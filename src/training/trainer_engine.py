@@ -59,8 +59,8 @@ class TrainerEngine:
                 log_model=True, # Logs checkpoints as artifacts
                 config=hparams
             )
-            # Watch gradients and parameters
-            wandb_logger.watch(model, log="all", log_freq=50)
+            # Weights & Biases parameter watching disabled to save massive VRAM
+            # wandb_logger.watch(model, log="all", log_freq=50)
             loggers.append(wandb_logger)
         
         # TensorBoard fallback

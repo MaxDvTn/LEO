@@ -54,6 +54,7 @@ class SeamlessFineTuner(pl.LightningModule):
         
         # Prepara per il training k-bit (congela i pesi base)
         self.base_model = prepare_model_for_kbit_training(self.base_model)
+        self.base_model.gradient_checkpointing_enable()
 
         # 3. Configurazione LoRA (Low-Rank Adaptation)
         peft_config = LoraConfig(
@@ -89,6 +90,7 @@ class SeamlessFineTuner(pl.LightningModule):
         
         loss = outputs.loss
         self.log("train_loss", loss, prog_bar=True, on_step=True, on_epoch=True)
+        torch.cuda.empty_cache()
         return loss
 
     def validation_step(self, batch, batch_idx):

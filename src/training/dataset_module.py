@@ -49,14 +49,18 @@ class LeoDataset(Dataset):
         inputs = self.tokenizer(
             text=source_text,
             src_lang=seamless_src,
-            return_tensors="pt"
+            return_tensors="pt",
+            truncation=True,
+            max_length=self.max_length
         )
 
         # 2. Process Target
         labels = self.tokenizer(
             text=target_text,
             src_lang=seamless_tgt, # For Seamless target tokenization
-            return_tensors="pt"
+            return_tensors="pt",
+            truncation=True,
+            max_length=self.max_length
         )
 
         return {
