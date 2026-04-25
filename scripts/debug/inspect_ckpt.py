@@ -8,7 +8,11 @@ sys.path.append(str(PROJECT_ROOT))
 from src.training.model_module import NLLBFineTuner
 
 def inspect_checkpoint():
-    ckpt_path = "/home/mbosetti/LEO/checkpoints/nllb-finetuned-epoch=02-val_loss=1.02-v1.ckpt"
+    checkpoint_dir = PROJECT_ROOT / "checkpoints"
+    checkpoints = sorted(checkpoint_dir.glob("*.ckpt"), key=lambda p: p.stat().st_mtime, reverse=True)
+    if not checkpoints:
+        raise FileNotFoundError(f"No checkpoint found in {checkpoint_dir}")
+    ckpt_path = str(checkpoints[0])
     print(f"Loading checkpoint: {ckpt_path}")
     checkpoint = torch.load(ckpt_path, map_location="cpu")
     

@@ -30,7 +30,9 @@ def upload_model(repo_id, folder_path, is_private=True):
 
 def main():
     PROJECT_ROOT = Path(__file__).resolve().parent.parent
-    local_release_path = PROJECT_ROOT / "checkpoints_facebook_seamless-m4t-v2-large" / "leo_hf_release"
+    preferred_release_path = PROJECT_ROOT / "checkpoints" / "leo_hf_release"
+    legacy_release_path = PROJECT_ROOT / "checkpoints_facebook_seamless-m4t-v2-large" / "leo_hf_release"
+    local_release_path = preferred_release_path if preferred_release_path.exists() else legacy_release_path
     
     if not local_release_path.exists():
         print(f"❌ Could not find model release directory: {local_release_path}")
@@ -39,8 +41,8 @@ def main():
     repo_1 = "maxbsdv/LEO-SeamlessM4T-v2-Large-Roverplastik"
     repo_2 = "LiceoDaVinciTN/LEO-SeamlessM4T-v2-Large-Roverplastik"
     
-    success_1 = upload_model(repo_1, str(local_release_path), is_private=True)
-    success_2 = upload_model(repo_2, str(local_release_path), is_private=True)
+    success_1 = upload_model(repo_1, str(local_release_path), is_private=False)
+    success_2 = upload_model(repo_2, str(local_release_path), is_private=False)
     
     if success_1 and success_2:
         print("\n✨ All uploads finished successfully!")

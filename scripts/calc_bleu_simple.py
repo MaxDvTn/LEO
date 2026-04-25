@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import re
 import pandas as pd
 import torch
 from tqdm import tqdm
@@ -13,7 +14,18 @@ from src.training.model_module import NLLBFineTuner
 from src.common.config import conf
 
 def main():
-    checkpoint_path = PROJECT_ROOT / "checkpoints" / "nllb-finetuned-epoch=10-val_loss=0.52.ckpt"
+    ckpt_dir = conf.paths.output_dir
+    checkpoints = list(ckpt_dir.glob("*.ckpt"))
+    if not checkpoints:
+        raise FileNotFoundError(f"No checkpoints found in {ckpt_dir}")
+
+    def get_val_loss(path: Path):
+        match = re.search(r"val_loss=([0-9]+(?:\.[0-9]+)?)", path.name)
+        return float(match.group(1)) if match else None
+
+    scored = [(ckpt, get_val_loss(ckpt)) for ckpt in checkpoints]
+    scored = [(ckpt, loss) for ckpt, loss in scored if loss is not None]
+    checkpoint_path = sorted(scored, key=lambda item: item[1])[0][0] if scored else max(checkpoints, key=lambda p: p.stat().st_mtime)
     test_set_path = PROJECT_ROOT / "data" / "gold" / "test_set.csv"
     
     print(f"⚖️  Calculating BLEU for Checkpoint: {checkpoint_path.name}")

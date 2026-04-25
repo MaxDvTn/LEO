@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import re
 import torch
 
 # Setup Path
@@ -129,22 +130,24 @@ def export_ckpt_to_peft(checkpoint_path, export_dir):
 def main():
     # Find the best checkpoint automatically
     ckpt_dir = conf.paths.output_dir
-    checkpoints = list(ckpt_dir.glob("nllb-finetuned-*.ckpt"))
+    checkpoints = list(ckpt_dir.glob("*.ckpt"))
     
     if not checkpoints:
         print(f"❌ No checkpoints found in {ckpt_dir}")
         return
 
-    # Parse val_loss from filename: nllb-finetuned-epoch=XX-val_loss=Y.YY.ckpt
-    def get_val_loss(p):
-        try:
-            val_part = p.name.split("val_loss=")[1]
-            return float(val_part.replace(".ckpt", "").split("-")[0])
-        except:
-            return 999.0
+    def get_val_loss(path: Path):
+        match = re.search(r"val_loss=([0-9]+(?:\.[0-9]+)?)", path.name)
+        return float(match.group(1)) if match else None
 
-    best_ckpt = sorted(checkpoints, key=get_val_loss)[0]
-    print(f"🏆 Best checkpoint selected: {best_ckpt.name} (Loss: {get_val_loss(best_ckpt)})")
+    with_loss = [(ckpt, get_val_loss(ckpt)) for ckpt in checkpoints]
+    scored = [(ckpt, loss) for ckpt, loss in with_loss if loss is not None]
+    if scored:
+        best_ckpt, best_loss = sorted(scored, key=lambda item: item[1])[0]
+        print(f"🏆 Best checkpoint selected: {best_ckpt.name} (Loss: {best_loss})")
+    else:
+        best_ckpt = max(checkpoints, key=lambda p: p.stat().st_mtime)
+        print(f"🏆 No val_loss in filenames. Selected latest checkpoint: {best_ckpt.name}")
 
     export_dir = conf.paths.output_dir / "leo_hf_release"
     export_ckpt_to_peft(str(best_ckpt), export_dir)

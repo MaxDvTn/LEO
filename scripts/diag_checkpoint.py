@@ -1,7 +1,15 @@
 import torch
 import sys
+from pathlib import Path
 
-checkpoint_path = 'checkpoints/nllb-finetuned-epoch=05-val_loss=1.02.ckpt'
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+checkpoint_dir = PROJECT_ROOT / "checkpoints"
+checkpoints = sorted(checkpoint_dir.glob("*.ckpt"), key=lambda p: p.stat().st_mtime, reverse=True)
+if not checkpoints:
+    raise FileNotFoundError(f"No checkpoint found in {checkpoint_dir}")
+
+checkpoint_path = checkpoints[0]
 print(f"Loading {checkpoint_path}...")
 ckpt = torch.load(checkpoint_path, map_location='cpu')
 sd = ckpt['state_dict']

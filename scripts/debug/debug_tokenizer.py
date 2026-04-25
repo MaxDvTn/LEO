@@ -1,8 +1,13 @@
 from transformers import AutoTokenizer
-import torch
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.append(str(PROJECT_ROOT))
+from src.common.config import conf
 
 def debug_tokenizer():
-    model_name = "facebook/nllb-200-distilled-1.3B"
+    model_name = conf.model.model_name
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     print(f"Tokenizer class: {tokenizer.__class__.__name__}")
     

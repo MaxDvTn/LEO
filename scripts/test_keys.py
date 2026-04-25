@@ -6,7 +6,11 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(PROJECT_ROOT))
 from src.common.config import conf
 
-checkpoint_path = sorted(conf.paths.output_dir.glob("nllb-finetuned-*.ckpt"))[0]
+checkpoints = sorted(conf.paths.output_dir.glob("*.ckpt"), key=lambda p: p.stat().st_mtime, reverse=True)
+if not checkpoints:
+    raise FileNotFoundError(f"No checkpoint found in {conf.paths.output_dir}")
+
+checkpoint_path = checkpoints[0]
 checkpoint = torch.load(checkpoint_path, map_location="cpu")
 state_dict = checkpoint["state_dict"]
 
