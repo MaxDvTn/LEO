@@ -2,6 +2,14 @@
 
 Benvenuti nel team di validazione del Progetto L.E.O. (Lion's Engine for Operations)! Il vostro contributo è fondamentale per addestrare l'intelligenza artificiale di Roverplastik.
 
+## 🔁 Translation Hub (Nuova modalità / New mode)
+
+La nuova app di traduzione su Hugging Face usa due menu a tendina:
+- **Lingua di input / Input language**
+- **Lingua di output / Output language**
+
+Ora è possibile tradurre in entrambe le direzioni, incluse traduzioni **verso l'italiano**.
+
 ---
 
 ## 🇮🇹 Versione Italiana
@@ -13,6 +21,11 @@ Benvenuti nel team di validazione del Progetto L.E.O. (Lion's Engine for Operati
 
 ### 2. Come usare l'app
 L'obiettivo è trasformare le traduzioni generate dall'IA in traduzioni perfette ("Gold Standard").
+
+Per la **Translation Hub**:
+*   Inserisci il testo nel campo sorgente.
+*   Seleziona **Lingua di input** e **Lingua di output** dai menu a tendina.
+*   Clicca **Traduci**.
 
 *   **Sinistra (Testo Originale):** Controlla la frase in italiano. Se ci sono piccoli refusi nel testo originale, puoi correggerli qui.
 *   **Destra (Traduzione AI):** Questa è la parte più importante. L'IA ha fatto una bozza, tu devi renderla professionale e tecnica. correggi la terminologia se necessario.
@@ -36,6 +49,11 @@ L'obiettivo è trasformare le traduzioni generate dall'IA in traduzioni perfette
 
 ### 2. How to Use the App
 Your goal is to turn AI-generated drafts into perfect, "Gold Standard" translations.
+
+For the **Translation Hub**:
+*   Enter text in the source field.
+*   Select **Input language** and **Output language** from dropdown menus.
+*   Click **Translate**.
 
 *   **Left (Original Text):** Review the Italian sentence. If you spot minor typos in the source, feel free to fix them.
 *   **Right (AI Translation):** This is the core task. The AI provided a draft; you must make it professional and technically accurate. Edit the text until it's perfect.

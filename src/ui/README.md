@@ -12,11 +12,11 @@ license: mit
 
 # 🦁 L.E.O. Translation Hub
 
-This Space hosts the **Linguistic Engineering Optimization** (LEO) translation model, a fine-tuned version of NLLB-200 utilizing LoRA adapters specialized for **Roverplastik** technical terminology (Italian -> English, French, Spanish).
+This Space hosts the **Linguistic Engineering Optimization** (LEO) translation model, based on **Seamless-M4T v2 Large** with LoRA adapters specialized for **Roverplastik** technical terminology (Italian -> English, French, Spanish).
 
 ## 🚀 Deployment Config
 
-To run this Space, ensure you have set the `ADAPTER_PATH` environment variable to point to the hosted LoRA adapters on the Hugging Face Hub (e.g., `mbosetti/leo-nllb-1.3b`), or upload the adapter files directly to the root of this Space.
+To run this Space, ensure you have set the `ADAPTER_PATH` environment variable to point to the hosted LoRA adapters on the Hugging Face Hub (e.g., `maxbsdv/LEO-SeamlessM4T-v2-Large-Roverplastik`), or upload the adapter files directly to the root of this Space.
 
 **Recommended Setup:**
 1. Host the model in a separate Hugging Face Model repository.

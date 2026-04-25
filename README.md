@@ -2,9 +2,9 @@
 
 ![LEO Logo](images/LEO_logo05.svg)
 
-## Multilingual NMT Fine-Tuning with LoRA & NLLB
+## Multilingual NMT Fine-Tuning with LoRA & Seamless-M4T
 
-This repository contains a modular, production-ready pipeline for fine-tuning the **NLLB-200 (No Language Left Behind)** model using **PyTorch Lightning** and **LoRA (Low-Rank Adaptation)**.
+This repository contains a modular, production-ready pipeline for fine-tuning **Seamless-M4T v2 Large** using **PyTorch Lightning** and **LoRA (Low-Rank Adaptation)**.
 
 It is designed to run efficiently on consumer, single-gpu hardware (e.g., NVIDIA RTX 4090) by leveraging **4-bit quantization (QLoRA)** and Mixed Precision training.
 
@@ -13,7 +13,7 @@ It is designed to run efficiently on consumer, single-gpu hardware (e.g., NVIDIA
 - **Modular Architecture**: Code is organized into clear modules (`dataset`, `model`, `config`) using PyTorch Lightning.
 - **Efficient Fine-Tuning**: Uses PEFT/LoRA to fine-tune only a small fraction of parameters (`q_proj`, `v_proj`, `k_proj`, `o_proj`).
 - **4-Bit Quantization**: Loads the 1.3B parameter model in 4-bit precision using `bitsandbytes` to minimize VRAM usage.
-- **Multilingual Support**: dynamic handling of source and target languages using NLLB's special tokens.
+- **Multilingual Support**: dynamic handling of source and target languages for many-to-many translation.
 - **Custom Tokenization**: Correctly handles `src_lang` and `forced_bos_token_id` for many-to-many translation tasks.
 - **Experiment Tracking**: Integrated with TensorBoard.
 
@@ -54,7 +54,7 @@ Prepare a CSV file (e.g., `data.csv`) with the following columns:
 | Hello world | Ciao mondo  | eng_Latn    | ita_Latn    |
 | ...         | ...         | ...         | ...         |
 
-*Note: Ensure language codes match the [NLLB supported languages](https://github.com/facebookresearch/flores/blob/main/flores200/README.md#languages-in-flores-200) (e.g., `eng_Latn`, `ita_Latn`, `fra_Latn`, `spa_Latn`).*
+*Note: Ensure language codes match supported FLORES language codes (e.g., `eng_Latn`, `ita_Latn`, `fra_Latn`, `spa_Latn`).*
 
 ## Usage
 
@@ -127,6 +127,15 @@ You can easily deploy the Translation Hub to a public Hugging Face Space.
    ```
 
    The script will output the URL of your new Space (e.g., `https://huggingface.co/spaces/YourUsername/leo-translation-hub`).
+
+### Current Translation Space UX
+
+The Translation Hub UI now supports:
+- **Input language dropdown** (`Italian`, `English`, `French`, `Spanish`)
+- **Output language dropdown** (`Italian`, `English`, `French`, `Spanish`)
+- **Bidirectional translation**, including translations **towards Italian**
+
+The Space reads the adapter model from the `ADAPTER_PATH` environment variable (currently set to `maxbsdv/LEO-SeamlessM4T-v2-Large-Roverplastik`).
 
 ## Project Structure
 

@@ -37,21 +37,24 @@ def load_model():
     model.eval()
     return model, processor
 
-def translate(text, target_lang):
-    """Translates Italian text to the selected target language."""
+def translate(text, source_lang, target_lang):
+    """Translates text from the selected source language to target language."""
     if not text.strip():
         return ""
     
-    # Mapping for UI labels to Seamless codes
     lang_map = {
+        "Italian": "ita",
         "English": "eng",
         "French": "fra",
-        "Spanish": "spa"
+        "Spanish": "spa",
     }
+    src_code = lang_map.get(source_lang, "ita")
     tgt_code = lang_map.get(target_lang, "eng")
+    if src_code == tgt_code:
+        return text
     
     model, processor = load_model()
-    inputs = processor(text, src_lang="ita", return_tensors="pt").to(model.device)
+    inputs = processor(text, src_lang=src_code, return_tensors="pt").to(model.device)
     
     with torch.no_grad():
         generated_tokens = model.generate(
@@ -62,18 +65,24 @@ def translate(text, target_lang):
     
     return processor.decode(generated_tokens[0].tolist(), skip_special_tokens=True)
 
-def save_correction(source, model_output, correction, target_lang):
+def save_correction(source, model_output, correction, source_lang, target_lang):
     """Saves the human correction to a CSV file for future retraining."""
     if not correction.strip() or not source.strip():
         return "⚠️ Errore: Inserisci sia il testo originale che la correzione."
     
-    lang_map = {"English": "eng_Latn", "French": "fra_Latn", "Spanish": "spa_Latn"}
+    lang_map = {
+        "Italian": "ita_Latn",
+        "English": "eng_Latn",
+        "French": "fra_Latn",
+        "Spanish": "spa_Latn",
+    }
+    src_code = lang_map.get(source_lang, "ita_Latn")
     tgt_code = lang_map.get(target_lang, "eng_Latn")
     
     new_data = {
         "source_text": [source],
         "target_text": [correction],
-        "source_lang": ["ita_Latn"],
+        "source_lang": [src_code],
         "target_lang": [tgt_code],
         "model_output": [model_output],
         "timestamp": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
@@ -91,19 +100,24 @@ def save_correction(source, model_output, correction, target_lang):
 # Build Interface
 with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown("# 🦁 L.E.O. Translation Hub")
-    gr.Markdown("### Roverplastik Neural Translation - Specialized NLLB-200")
+    gr.Markdown("### Roverplastik Technical Translation - Seamless-M4T v2 (LoRA)")
     
     with gr.Row():
         with gr.Column():
             input_text = gr.Textbox(
-                label="🇮🇹 Testo in Italiano",
-                placeholder="Inserisci qui la frase tecnica...",
+                label="📝 Testo sorgente",
+                placeholder="Inserisci qui la frase da tradurre...",
                 lines=5
             )
-            lang_selector = gr.Radio(
-                choices=["English", "French", "Spanish"],
+            source_lang_selector = gr.Dropdown(
+                choices=["Italian", "English", "French", "Spanish"],
+                value="Italian",
+                label="📥 Lingua di input"
+            )
+            target_lang_selector = gr.Dropdown(
+                choices=["Italian", "English", "French", "Spanish"],
                 value="English",
-                label="🎯 Lingua di Destinazione"
+                label="📤 Lingua di output"
             )
             btn = gr.Button("Traduci", variant="primary")
             
@@ -115,7 +129,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
             )
             correction_text = gr.Textbox(
                 label="📝 Suggerisci Correzione (opzionale)",
-                placeholder="Se la traduzione è errata, inserisci qui quella corretta...",
+                placeholder="Se la traduzione non è corretta, inserisci qui la versione corretta...",
                 lines=5
             )
             save_btn = gr.Button("Salva Correzione", variant="secondary")
@@ -123,18 +137,18 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
             
     btn.click(
         fn=translate,
-        inputs=[input_text, lang_selector],
+        inputs=[input_text, source_lang_selector, target_lang_selector],
         outputs=output_text
     )
     
     save_btn.click(
         fn=save_correction,
-        inputs=[input_text, output_text, correction_text, lang_selector],
+        inputs=[input_text, output_text, correction_text, source_lang_selector, target_lang_selector],
         outputs=status_msg
     )
     
     gr.Markdown("---")
-    gr.Markdown("ℹ️ **Nota**: Questo modello è stato ottimizzato specificamente per la terminologia tecnica Roverplastik.")
+    gr.Markdown("ℹ️ **Nota**: Questa app usa Seamless-M4T v2 con adattatori LoRA ottimizzati per la terminologia tecnica Roverplastik.")
 
 if __name__ == "__main__":
     demo.launch(server_name="0.0.0.0", share=False)
