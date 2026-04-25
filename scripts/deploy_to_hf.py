@@ -1,108 +1,19 @@
-import os
-from huggingface_hub import HfApi, create_repo, add_space_variable
 import sys
 from pathlib import Path
 
-# Aggiungiamo root al path e importiamo l'esportatore
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(PROJECT_ROOT))
-from scripts.export_to_hf import main as export_latest_model
 
-api = HfApi()
-try:
-    user_info = api.whoami()
-    username = user_info["name"]
-except Exception:
-    print("❌ Error: You are not logged in to Hugging Face Hub.")
-    print("👉 Please run 'huggingface-cli login' in your terminal first.")
-    exit(1)
+from scripts.hf import main as hf_main
 
-model_repo_id = os.getenv(
-    "MODEL_REPO_ID",
-    f"{username}/LEO-SeamlessM4T-v2-Large-Roverplastik",
-)
-space_repo_id = f"{username}/leo-translation-hub"
-
-print(f"🚀 Starting Deployment for user: {username}")
-
-# --- 1. Model Deployment ---
-print(f"\n📦 Check/Create Model Repo: {model_repo_id}")
-try:
-    create_repo(model_repo_id, repo_type="model", exist_ok=True)
-    print("   ✅ Repo ready.")
-except Exception as e:
-    print(f"   ❌ Error creating repo: {e}")
-    exit(1)
-
-print("\n🔄 Extracting latest LoRA adapters from best checkpoint...")
-try:
-    export_latest_model()
-except Exception as e:
-    print(f"   ❌ Error exporting model: {e}")
-    exit(1)
-
-print("\n📤 Uploading model files...")
-try:
-    api.upload_folder(
-        folder_path="checkpoints/leo_hf_release",
-        repo_id=model_repo_id,
-        repo_type="model",
-        commit_message="Upload LEO fine-tuned adapters"
-    )
-    print("   ✅ Model upload complete!")
-except Exception as e:
-    print(f"   ❌ Error uploading model: {e}")
-    exit(1)
+def main():
+    sys.argv = ["hf.py", "export"]
+    hf_main()
+    sys.argv = ["hf.py", "upload-model"]
+    hf_main()
+    sys.argv = ["hf.py", "deploy-space", "--restart"]
+    hf_main()
 
 
-# --- 2. Space Deployment ---
-print(f"\n🌌 Check/Create Space Repo: {space_repo_id}")
-try:
-    create_repo(space_repo_id, repo_type="space", space_sdk="gradio", exist_ok=True)
-    print("   ✅ Space ready.")
-except Exception as e:
-    print(f"   ❌ Error creating space: {e}")
-    exit(1)
-
-print("📤 Uploading App files...")
-try:
-    # Upload README
-    api.upload_file(
-        path_or_fileobj="src/ui/README.md",
-        path_in_repo="README.md",
-        repo_id=space_repo_id,
-        repo_type="space",
-        commit_message="Update Space configuration"
-    )
-    # Upload App Script
-    api.upload_file(
-        path_or_fileobj="src/ui/hf_spaces_app.py",
-        path_in_repo="hf_spaces_app.py",
-        repo_id=space_repo_id,
-        repo_type="space",
-        commit_message="Update App logic"
-    )
-    # Upload requirements
-    api.upload_file(
-        path_or_fileobj="src/ui/requirements.txt",
-        path_in_repo="requirements.txt",
-        repo_id=space_repo_id,
-        repo_type="space",
-        commit_message="Add pinned requirements"
-    )
-    print("   ✅ App files uploaded!")
-except Exception as e:
-    print(f"   ❌ Error uploading app files: {e}")
-
-# --- 3. Configuration ---
-print(f"\n⚙️ Configuring Space Variable: ADAPTER_PATH = {model_repo_id}")
-try:
-    # We use a variable (visible) because the model ID is public info
-    add_space_variable(space_repo_id, "ADAPTER_PATH", model_repo_id)
-    print("   ✅ Configuration set.")
-except Exception as e:
-    print(f"   ⚠️ Could not set variable automatically (might need manual set): {e}")
-
-print("\n✨ Deployment Summary:")
-print(f"   - Model: https://huggingface.co/{model_repo_id}")
-print(f"   - Space: https://huggingface.co/spaces/{space_repo_id}")
+if __name__ == "__main__":
+    main()

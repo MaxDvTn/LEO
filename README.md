@@ -58,12 +58,39 @@ Prepare a CSV file (e.g., `data.csv`) with the following columns:
 
 ## Usage
 
-### Training
+### Unified CLI
 
-To start fine-tuning, run the `train.py` script. You can specify the path to your data and the output directory.
+Most project operations are available through a small set of command-line entrypoints:
 
 ```bash
-python train.py --data_path data/my_data.csv --output_dir checkpoints
+python scripts/leo.py data full
+python scripts/leo.py data pdf-mine
+python scripts/leo.py data generate
+python scripts/leo.py data test-set
+python scripts/leo.py train
+python scripts/leo.py benchmark
+python scripts/leo.py infer --src-lang eng_Latn --tgt-lang ita_Latn --text "This is a test sentence."
+```
+
+Local server and Hugging Face operations use dedicated CLIs:
+
+```bash
+python scripts/server.py start
+python scripts/server.py status
+python scripts/server.py stop
+
+python scripts/hf.py export
+python scripts/hf.py upload-model
+python scripts/hf.py deploy-space --restart
+python scripts/hf.py smoke-test
+```
+
+### Training
+
+To start or resume fine-tuning:
+
+```bash
+python scripts/leo.py train
 ```
 
 **Key Hyperparameters** (editable in `config.py`):
@@ -78,10 +105,10 @@ python train.py --data_path data/my_data.csv --output_dir checkpoints
 To translate text using a trained checkpoint:
 
 ```bash
-python inference.py \
-    --checkpoint checkpoints/nllb-finetuned-epoch=02-val_loss=0.15.ckpt \
-    --src_lang eng_Latn \
-    --tgt_lang ita_Latn \
+python scripts/leo.py infer \
+    --checkpoint checkpoints/last.ckpt \
+    --src-lang eng_Latn \
+    --tgt-lang ita_Latn \
     --text "This is a test sentence."
 ```
 
@@ -92,8 +119,9 @@ To launch the data validation interface for students (Streamlit + Ngrok):
 1. **Start the Server**:
    Run the helper script which sets up a tmux session with Streamlit and the Ngrok tunnel:
    ```bash
-   ./scripts/start_server.sh
+   python scripts/server.py start
    ```
+   The compatibility wrapper `./scripts/start_server.sh` runs the same command.
 
 2. **Access**:
    - **Admin/Monitor**: Attach to the session with `tmux attach -t server`.
@@ -122,8 +150,10 @@ You can easily deploy the Translation Hub to a public Hugging Face Space.
    # Ensure you are in the LEO environment
    conda activate LEO
    
-   # Run the deployment script
-   python scripts/deploy_to_hf.py
+   # Export adapters, upload model files, deploy the Space, and restart it
+   python scripts/hf.py export
+   python scripts/hf.py upload-model
+   python scripts/hf.py deploy-space --restart
    ```
 
    The script will output the URL of your new Space (e.g., `https://huggingface.co/spaces/YourUsername/leo-translation-hub`).

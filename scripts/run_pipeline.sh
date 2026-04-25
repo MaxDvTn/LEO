@@ -16,7 +16,7 @@ echo ""
 
 # Run Full Pipeline
 echo "🚀 Starting Integrated Data Pipeline..."
-python -c "import sys; from pathlib import Path; sys.path.append(str(Path('.').resolve())); from src.pipelines.factory import DataFactory; DataFactory().run_full_pipeline()"
+python scripts/leo.py data full
 
 echo ""
 echo "🎉 PIPELINE FINISHED SUCCESSFULLY!"
