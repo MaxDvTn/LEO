@@ -17,7 +17,10 @@ except Exception:
     print("👉 Please run 'huggingface-cli login' in your terminal first.")
     exit(1)
 
-model_repo_id = f"{username}/leo-nllb-1.3b-adapters"
+model_repo_id = os.getenv(
+    "MODEL_REPO_ID",
+    f"{username}/LEO-SeamlessM4T-v2-Large-Roverplastik",
+)
 space_repo_id = f"{username}/leo-translation-hub"
 
 print(f"🚀 Starting Deployment for user: {username}")
