@@ -23,7 +23,7 @@ def release_path():
 
 
 def export_model(_args):
-    from scripts.export_to_hf import main as export_latest_model
+    from scripts.hf.export_to_hf import main as export_latest_model
 
     export_latest_model()
 

@@ -7,7 +7,7 @@ def get_running_gen_pid():
     try:
         # Check for python process running run_gen.py
         # Exclude this script itself if it matched somehow (unlikely)
-        res = subprocess.check_output(["pgrep", "-f", "scripts/run_gen.py"])
+        res = subprocess.check_output(["pgrep", "-f", "scripts/leo.py data generate"])
         pids = [int(p) for p in res.decode().strip().split('\n') if p]
         return pids
     except subprocess.CalledProcessError:
@@ -29,10 +29,10 @@ def main():
     # 1. Update Test Set (just in case)
     print("   🧪 refreshing test set distribution...")
     # executing via python command to ensure environment consistency
-    subprocess.run([sys.executable, "scripts/create_test_set.py"], check=False)
+    subprocess.run([sys.executable, "scripts/leo.py", "data", "test-set"], check=False)
 
     # 2. Start Training
-    train_cmd = [sys.executable, "scripts/run_training.py"]
+    train_cmd = [sys.executable, "scripts/leo.py", "train"]
     print(f"   🏋️ Executing: {' '.join(train_cmd)}")
     
     log_file = open("training_final.log", "w")

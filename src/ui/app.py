@@ -120,7 +120,7 @@ full_df = load_data()
 
 if full_df is None:
     st.error(f"❌ Nessun file CSV trovato in: {DATA_SYNTHETIC_DIR}")
-    st.info("Esegui prima lo script 'scripts/run_gen.py' per generare i dati!")
+    st.info("Esegui prima 'python scripts/leo.py data generate' per generare i dati!")
     st.stop()
 
 # --- 6. SIDEBAR: NAVIGATION & STATS ---

@@ -45,15 +45,15 @@ def run_infer_command(args):
 
 def run_maintenance_command(args):
     if args.maintenance_command == "clean-data":
-        from scripts.clean_data import main
+        from scripts.maintenance.clean_data import main
 
         main()
     elif args.maintenance_command == "download-docs":
-        from scripts.download_extra_docs import download_files
+        from scripts.maintenance.download_extra_docs import download_files
 
         download_files()
     elif args.maintenance_command == "export-glossary":
-        from scripts.export_glossary import main
+        from scripts.maintenance.export_glossary import main
 
         main()
 

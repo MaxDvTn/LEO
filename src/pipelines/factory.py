@@ -458,7 +458,7 @@ class ModelFactory:
         # Load LEO (Adapter)
         adapter_path = conf.paths.output_dir / "leo_hf_release"
         if not adapter_path.exists():
-            raise FileNotFoundError(f"Adapter not found at {adapter_path}. Run scripts/export_to_hf.py first.")
+            raise FileNotFoundError(f"Adapter not found at {adapter_path}. Run python scripts/hf.py export first.")
         
         # Load the base model with PEFT adapters applied properly
         print("Evaluating LEO Model...")

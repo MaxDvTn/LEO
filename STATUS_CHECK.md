@@ -15,7 +15,7 @@ Il progetto **L.E.O.** si trova in una fase avanzata di sviluppo dell'infrastrut
 - [x] **PDF Extraction:** `run_pdf_mining.py` estrae testo dai cataloghi Roverplastik e usa l'AI per tradurli.
 - [x] **Web Spider:** `competitor_spider.py` analizza i siti dei competitor, estrae termini tecnici e li trasforma in frasi.
 - [x] **Alignment System:** Struttura per `BitextAligner` (LaBSE) pronta in `src/data_mining/aligner.py`.
-- [x] **Aligner Demo Script:** Creato `scripts/run_alignment.py` per mostrare come allineare cataloghi IT/EN.
+- [x] **Aligner Demo Script:** Creato `scripts/demo/run_alignment.py` per mostrare come allineare cataloghi IT/EN.
 
 ### 3. 🎨 User Interface (Validation Factory)
 - [x] **Google OAuth2 Integration:** Sistema di login sicuro `src/ui/auth.py` limitato al dominio `@liceodavincitn.it`.
@@ -24,8 +24,8 @@ Il progetto **L.E.O.** si trova in una fase avanzata di sviluppo dell'infrastrut
 - [x] **Student Guide:** Documentazione `GUIDE_STUDENTS.md` creata in IT/EN.
 
 ### 4. 📊 Evaluation & Benchmarking
-- [x] **Automated Suite:** `scripts/run_benchmark.py` calcola SacreBLEU e CHRF confrontando il modello Base con il modello LEO.
-- [x] **Stable Evaluation:** Creato `test_set.csv` e lo script `scripts/create_test_set.py` per benchmark consistenti.
+- [x] **Automated Suite:** `python scripts/leo.py benchmark` calcola SacreBLEU e CHRF confrontando il modello Base con il modello LEO.
+- [x] **Stable Evaluation:** Creato `test_set.csv` e il comando `python scripts/leo.py data test-set` per benchmark consistenti.
 - [x] **WandB Benchmarking:** Risultati dei benchmark caricati automaticamente su WandB con tabelle comparative.
 
 ---
@@ -34,7 +34,7 @@ Il progetto **L.E.O.** si trova in una fase avanzata di sviluppo dell'infrastrut
 
 Se hai un testo in Italiano e la sua traduzione in Inglese estratti separatamente (es. da due PDF diversi o pagine web), puoi usare l'Aligner per trovare le coppie corrette:
 
-1.  **Script di Demo:** Lancia `python scripts/run_alignment.py` per vedere un esempio in azione.
+1.  **Script di Demo:** Lancia `python scripts/demo/run_alignment.py` per vedere un esempio in azione.
 2.  **Esempio di Codice:**
     ```python
     from src.data_mining.aligner import BitextAligner
