@@ -103,6 +103,13 @@ celerybeat.pid
 
 # Environments
 .env
+.env.*
+.streamlit/secrets.toml
+.streamlit/secrets.*.toml
+!.streamlit/secrets.example.toml
+.gradio/*.pem
+.gradio/*.key
+.gradio/*.crt
 .venv
 env/
 venv/
