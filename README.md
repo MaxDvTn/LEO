@@ -85,6 +85,13 @@ python scripts/hf.py deploy-space --restart
 python scripts/hf.py smoke-test
 ```
 
+The `scripts/` root is intentionally kept small:
+- `leo.py`: data, training, benchmark, inference, and maintenance commands
+- `hf.py`: Hugging Face model/Space operations
+- `server.py`: local Streamlit/ngrok server management
+- `legacy/`: compatibility wrappers for old command names
+- `debug/`, `demo/`, `data/`, `hf/`, `maintenance/`, `model/`: focused utility modules
+
 ### Training
 
 To start or resume fine-tuning:
