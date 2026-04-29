@@ -104,7 +104,7 @@ python scripts/leo.py train
 - `batch_size`: 8
 - `accumulate_grad_batches`: 4
 - `learning_rate`: 2e-4
-- `max_epochs`: 3
+- `max_epochs`: 20
 - `precision`: "bf16-mixed" (Optimized for Ampere+ GPUs)
 
 ### Inference
