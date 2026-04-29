@@ -15,7 +15,7 @@ It is designed to run efficiently on consumer, single-gpu hardware (e.g., NVIDIA
 - **4-Bit Quantization**: Loads the 1.3B parameter model in 4-bit precision using `bitsandbytes` to minimize VRAM usage.
 - **Multilingual Support**: dynamic handling of source and target languages for many-to-many translation.
 - **Custom Tokenization**: Correctly handles `src_lang` and `forced_bos_token_id` for many-to-many translation tasks.
-- **Experiment Tracking**: Integrated with TensorBoard.
+- **Experiment Tracking**: Integrated with Wandb.
 
 ## Installation
 
