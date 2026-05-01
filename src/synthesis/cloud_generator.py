@@ -1,13 +1,15 @@
 # src/synthesis/cloud_generator.py
 import logging
+from pathlib import Path
 import pandas as pd
 from typing import List, Dict
 
 try:
+    from dotenv import load_dotenv
     import litellm
     litellm.drop_params = True
 except ImportError:
-    raise ImportError("Run: pip install litellm")
+    raise ImportError("Run: pip install litellm python-dotenv")
 
 from src.synthesis.base import BaseGenerator
 from src.synthesis.glossary_data import get_terms_list
@@ -23,6 +25,7 @@ logger = logging.getLogger(__name__)
 
 # litellm uses "gemini/" for Google models, not "google/"
 _PREFIX_REMAP = {"google/": "gemini/"}
+_PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class CloudGenerator(BaseGenerator):
@@ -37,6 +40,7 @@ class CloudGenerator(BaseGenerator):
     """
 
     def __init__(self, model_id: str = None):
+        load_dotenv(_PROJECT_ROOT / ".env")
         raw = model_id or conf.gen.model_id
         self.model = self._remap(raw)
         logger.info(f"CloudGenerator ready — model: {self.model}")
