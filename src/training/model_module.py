@@ -3,6 +3,7 @@ import pytorch_lightning as pl
 from transformers import AutoModelForSeq2SeqLM, AutoProcessor, AutoTokenizer, BitsAndBytesConfig
 from peft import get_peft_model, LoraConfig, TaskType, prepare_model_for_kbit_training
 import logging
+import warnings
 from torchmetrics.text import SacreBLEUScore, CHRFScore
 
 # Import della configurazione centrale
@@ -98,12 +99,16 @@ class SeamlessFineTuner(pl.LightningModule):
             labels=batch["labels"]
         )
         
+        batch_size = batch["input_ids"].shape[0]
         loss = outputs.loss
-        self.log("train_loss", loss, prog_bar=True, on_step=True, on_epoch=True)
-        torch.cuda.empty_cache()
+        #batch_size = batch["input_ids"].size(0)
+        self.log("train_loss", loss, prog_bar=True, on_step=True, on_epoch=True, batch_size=batch_size)
+        # torch.cuda.empty_cache()
         return loss
 
     def validation_step(self, batch, batch_idx):
+            batch_size = batch["input_ids"].shape[0]
+            #batch_size = batch["input_ids"].size(0)
             # 1. Loss Calculation (For EarlyStopping)
             outputs = self(
                 input_ids=batch["input_ids"],
@@ -111,7 +116,7 @@ class SeamlessFineTuner(pl.LightningModule):
                 labels=batch["labels"]
             )
             loss = outputs.loss
-            self.log("val_loss", loss, prog_bar=True, on_epoch=True)
+            self.log("val_loss", loss, prog_bar=True, on_epoch=True, batch_size=batch_size)
             
             # 2. BLEU Calculation (Generation)
             # We generate for the whole batch
@@ -147,8 +152,8 @@ class SeamlessFineTuner(pl.LightningModule):
                 # Update Metric
                 self.bleu_metric.update(preds, targets)
                 self.chrf_metric.update(preds, targets)
-                self.log("val_bleu", self.bleu_metric, on_epoch=True, prog_bar=True)
-                self.log("val_chrf", self.chrf_metric, on_epoch=True, prog_bar=True)
+                self.log("val_bleu", self.bleu_metric, on_epoch=True, prog_bar=True, batch_size=batch_size)
+                self.log("val_chrf", self.chrf_metric, on_epoch=True, prog_bar=True, batch_size=batch_size)
 
                 # 3. Log Examples (Only for first batch)
                 if batch_idx == 0:

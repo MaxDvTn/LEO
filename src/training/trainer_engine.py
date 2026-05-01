@@ -1,6 +1,6 @@
 import pytorch_lightning as pl
+import warnings
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping, LearningRateMonitor
-from pytorch_lightning.loggers import TensorBoardLogger
 from src.common.config import conf
 from src.training.dataset_module import NMTDataModule
 from src.training.model_module import SeamlessFineTuner
@@ -63,8 +63,7 @@ class TrainerEngine:
             # wandb_logger.watch(model, log="all", log_freq=50)
             loggers.append(wandb_logger)
         
-        # TensorBoard fallback
-        loggers.append(TensorBoardLogger("lightning_logs", name="nllb_finetune"))
+        warnings.filterwarnings("ignore", message=".*Found.*module.*eval mode.*")
 
         # Trainer
         trainer = pl.Trainer(
