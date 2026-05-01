@@ -19,10 +19,10 @@ class PdfMiner:
 
     def extract_text_from_pdf(self, pdf_path):
         """Estrae tutto il testo da un PDF."""
-        doc = fitz.open(pdf_path)
         full_text = ""
-        for page in doc:
-            full_text += page.get_text() + " "
+        with fitz.open(pdf_path) as doc:
+            for page in doc:
+                full_text += page.get_text() + " "
         return full_text
 
     def clean_and_segment(self, raw_text):
@@ -32,27 +32,27 @@ class PdfMiner:
         """
         # 1. Pulizia preliminare (Rimuove spazi multipli e newlines spezzate)
         text = re.sub(r'\s+', ' ', raw_text).strip()
-        
+
         # 2. Segmentazione in frasi (uso NLTK che è smart)
         sentences = sent_tokenize(text, language='italian')
-        
+
         valid_sentences = []
         for sent in sentences:
             sent = sent.strip()
-            
+
             # --- FILTRI DI QUALITÀ ---
             # Deve essere lunga abbastanza
             if len(sent) < self.min_length:
                 continue
-            
+
             # Non deve iniziare con numeri strani (es. indici di sommario "1.2.3")
             if re.match(r'^[\d\.\s]+$', sent):
                 continue
-                
+
             # Deve contenere almeno una lettera (evita "-----------")
             if not re.search(r'[a-zA-Z]', sent):
                 continue
-                
+
             valid_sentences.append(sent)
-            
-        return list(set(valid_sentences)) # Rimuove duplicati esatti.
+
+        return list(dict.fromkeys(valid_sentences))  # Removes exact duplicates, preserving order.

@@ -67,14 +67,15 @@ def _extract_prefixed_line(text: str, prefix: str) -> str:
 
 
 def _translate_with_generator(generator, source_text: str, target_lang: str) -> str:
-    row = generator.translate_text(source_text)
     key_by_lang = {
         "eng_Latn": "target_text_en",
         "fra_Latn": "target_text_fr",
         "spa_Latn": "target_text_es",
-        "ita_Latn": "source_text",
     }
-    return row.get(key_by_lang.get(target_lang, "target_text_en")) or ""
+    if target_lang not in key_by_lang:
+        return ""
+    row = generator.translate_text(source_text)
+    return row.get(key_by_lang[target_lang]) or ""
 
 
 def _translate_custom_prompt(generator, source_text: str, source_lang: str, target_lang: str) -> str:
@@ -141,7 +142,7 @@ def benchmark_model(model_id: str, test_df: pd.DataFrame, output_dir: Path, use_
     predictions_path = output_dir / f"{_safe_name(model_id)}__predictions.csv"
     pred_df.to_csv(predictions_path, index=False)
 
-    valid_df = pred_df[pred_df["error"].astype(str) == ""]
+    valid_df = pred_df[(pred_df["error"].astype(str) == "") & (pred_df["prediction"].astype(str).str.strip() != "")]
     summary = {
         "model": model_id,
         "rows": int(len(pred_df)),

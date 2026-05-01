@@ -15,6 +15,9 @@ from scripts.data.compare_synthetic import compare
 from scripts.model.benchmark_llm_generators import benchmark_model
 from src.common.config import conf
 from src.pipelines.factory import DataFactory
+from src.evaluation.stats import calculate_stats
+from src.evaluation.llm_judge import evaluate_with_llm
+from src.evaluation.perplexity import calculate_perplexity
 
 
 def _set_model(model_id: str):
@@ -59,6 +62,42 @@ def _write_comparisons(generated: list, output_dir: Path, sample_size: int):
 
 def _safe_model(model_id: str) -> str:
     return "".join(ch if ch.isalnum() or ch in "._-" else "_" for ch in model_id).strip("_")
+
+
+def _run_evaluations(generated: list, output_dir: Path, sample_size: int, skip_judge: bool, skip_ppl: bool, judge_model: str | None, nmt_baseline: str):
+    evaluation_dir = output_dir / "evaluations"
+    evaluation_dir.mkdir(parents=True, exist_ok=True)
+    
+    results = {}
+    for item in generated:
+        model_id = item["model"]
+        run_path = Path(item["run_path"])
+        print(f"\n📊 Evaluating dataset for {model_id}...")
+        try:
+            df = pd.read_csv(run_path)
+            stats_res = calculate_stats(df)
+            
+            judge_res = {}
+            if not skip_judge:
+                judge_res = evaluate_with_llm(df, sample_size=sample_size, model_id=judge_model)
+                
+            ppl_res = {}
+            if not skip_ppl:
+                ppl_res = calculate_perplexity(df, sample_size=sample_size, model_name=nmt_baseline)
+                
+            results[model_id] = {**stats_res, **judge_res, **ppl_res}
+        except Exception as e:
+            print(f"❌ Error evaluating {model_id}: {e}")
+
+    report_path = evaluation_dir / "evaluation_report.json"
+    report_path.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
+    
+    report_csv = evaluation_dir / "evaluation_report.csv"
+    pd.DataFrame.from_dict(results, orient='index').to_csv(report_csv)
+    
+    print(f"✅ Evaluation summary json: {report_path}")
+    print(f"✅ Evaluation summary csv: {report_csv}")
+    return {"report_json": str(report_path), "report_csv": str(report_csv)}
 
 
 def _run_benchmarks(models: list, test_set: Path, output_dir: Path, sample_size: int | None, use_generator_translate: bool):
@@ -114,6 +153,12 @@ def main():
     parser.add_argument("--benchmark-sample-size", type=int, default=None, help="Row limit for benchmark (default: full test set).")
     parser.add_argument("--skip-benchmark", action="store_true")
     parser.add_argument("--skip-compare", action="store_true")
+    parser.add_argument("--skip-eval", action="store_true", help="Skip dataset evaluation metrics.")
+    parser.add_argument("--eval-sample-size", type=int, default=100, help="Row limit for evaluation metrics.")
+    parser.add_argument("--skip-judge", action="store_true", help="Skip LLM Judge in evaluation.")
+    parser.add_argument("--skip-ppl", action="store_true", help="Skip Perplexity in evaluation.")
+    parser.add_argument("--judge-model", type=str, default=None, help="Model ID for LLM Judge.")
+    parser.add_argument("--nmt-baseline", type=str, default="facebook/nllb-200-distilled-600M", help="NMT model for perplexity.")
     parser.add_argument(
         "--use-generator-translate",
         action="store_true",
@@ -155,6 +200,18 @@ def main():
             use_generator_translate=args.use_generator_translate,
         )
 
+    evaluation = None
+    if not args.skip_eval and generated:
+        evaluation = _run_evaluations(
+            generated=generated,
+            output_dir=output_dir,
+            sample_size=args.eval_sample_size,
+            skip_judge=args.skip_judge,
+            skip_ppl=args.skip_ppl,
+            judge_model=args.judge_model,
+            nmt_baseline=args.nmt_baseline,
+        )
+
     manifest = {
         "run_id": run_id,
         "dataset_kind": args.dataset_kind,
@@ -162,6 +219,7 @@ def main():
         "generated": generated,
         "comparisons": comparison_paths,
         "benchmark": benchmark,
+        "evaluation": evaluation,
     }
     manifest_path = output_dir / "manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")

@@ -83,7 +83,7 @@ class CloudGenerator(BaseGenerator):
                 result["target_text_fr"] = clean[3:].strip()
             elif clean.startswith("ES:"):
                 result["target_text_es"] = clean[3:].strip()
-        if result["source_text"]:
+        if result["source_text"] and any([result["target_text_en"], result["target_text_fr"], result["target_text_es"]]):
             return result
         logger.warning(f"Failed to parse output for term: {term}")
         return None

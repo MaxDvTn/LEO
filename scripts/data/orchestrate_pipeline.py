@@ -2,6 +2,9 @@ import time
 import subprocess
 import os
 import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 def get_running_gen_pid():
     try:
@@ -15,7 +18,7 @@ def get_running_gen_pid():
 
 def main():
     print("⏳ Orchestrator: Waiting for data generation to complete...")
-    
+
     while True:
         pids = get_running_gen_pid()
         if not pids:
@@ -25,17 +28,17 @@ def main():
         time.sleep(60)
 
     print("\n🚀 Starting Training Pipeline (20 Epochs)...")
-    
+
     # 1. Update Test Set (just in case)
     print("   🧪 refreshing test set distribution...")
     # executing via python command to ensure environment consistency
-    subprocess.run([sys.executable, "scripts/leo.py", "data", "test-set"], check=False)
+    subprocess.run([sys.executable, str(PROJECT_ROOT / "scripts" / "leo.py"), "data", "test-set"], check=False)
 
     # 2. Start Training
-    train_cmd = [sys.executable, "scripts/leo.py", "train"]
+    train_cmd = [sys.executable, str(PROJECT_ROOT / "scripts" / "leo.py"), "train"]
     print(f"   🏋️ Executing: {' '.join(train_cmd)}")
-    
-    log_file = open("training_final.log", "w")
+
+    log_file = open(PROJECT_ROOT / "training_final.log", "w")
     try:
         subprocess.run(train_cmd, stdout=log_file, stderr=subprocess.STDOUT, check=True)
         print("✅ Training completed successfully.")

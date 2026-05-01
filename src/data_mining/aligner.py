@@ -21,6 +21,8 @@ class BitextAligner:
         Confronta tutte le frasi IT con tutte le frasi EN e trova le coppie.
         threshold=0.75 significa "accetta solo se sei sicuro al 75%".
         """
+        if not src_sentences or not tgt_sentences:
+            return []
         logger.info(f"📐 Encoding {len(src_sentences)} source sentences...")
         src_embeddings = self.model.encode(src_sentences, convert_to_tensor=True, show_progress_bar=False)
         

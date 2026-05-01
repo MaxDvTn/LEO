@@ -1,0 +1,38 @@
+{
+    "competitor_synthetic.csv": {
+        "avg_source_len": 17.48,
+        "avg_target_len": 16.7,
+        "var_source_len": 33.4,
+        "var_target_len": 25.89,
+        "ttr": 0.4527,
+        "glossary_coverage_pct": 0.0,
+        "total_sentences": 200,
+        "avg_cross_entropy_loss": 2.25,
+        "perplexity": 9.49,
+        "ppl_samples_evaluated": 2
+    },
+    "rover_pdf_augmented.csv": {
+        "avg_source_len": 34.94,
+        "avg_target_len": 23.97,
+        "var_source_len": 2701.64,
+        "var_target_len": 277.33,
+        "ttr": 0.0689,
+        "glossary_coverage_pct": 0.0,
+        "total_sentences": 51919,
+        "avg_cross_entropy_loss": 2.7812,
+        "perplexity": 16.14,
+        "ppl_samples_evaluated": 2
+    },
+    "rover_synthetic_multilingual.csv": {
+        "avg_source_len": 24.75,
+        "avg_target_len": 24.06,
+        "var_source_len": 38.58,
+        "var_target_len": 35.12,
+        "ttr": 0.0505,
+        "glossary_coverage_pct": 52.78,
+        "total_sentences": 8607,
+        "avg_cross_entropy_loss": 2.9141,
+        "perplexity": 18.43,
+        "ppl_samples_evaluated": 2
+    }
+}
