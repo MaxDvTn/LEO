@@ -54,18 +54,18 @@ class OllamaGenerator(BaseGenerator):
         except Exception as e:
             logger.warning(f"Could not reach Ollama server at {self.base_url}: {e}")
 
-    def _chat(self, term: str) -> str:
+    def _chat(self, system: str, user: str, max_tokens: int = 400) -> str:
         client = ollama.Client(host=self.base_url)
         response = client.chat(
             model=self.model,
             messages=[
-                {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
-                {"role": "user", "content": GENERATION_USER_TEMPLATE.format(term=term)},
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
             ],
             options={
                 "temperature": conf.gen.temperature,
                 "top_p": conf.gen.top_p,
-                "num_predict": conf.gen.max_new_tokens,
+                "num_predict": max_tokens,
             },
         )
         return response.message.content
@@ -129,7 +129,11 @@ class OllamaGenerator(BaseGenerator):
         for i, term in enumerate(terms):
             logger.info(f"[{i+1}/{len(terms)}] {term}")
             try:
-                generated_text = self._chat(term)
+                generated_text = self._chat(
+                    GENERATION_SYSTEM_PROMPT,
+                    GENERATION_USER_TEMPLATE.format(term=term),
+                    conf.gen.max_new_tokens,
+                )
                 entry = self.parse_output(generated_text, term)
                 if entry:
                     data.append(entry)

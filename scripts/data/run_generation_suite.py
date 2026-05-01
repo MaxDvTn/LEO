@@ -111,7 +111,7 @@ def main():
     parser.add_argument("--output-dir", type=Path, default=PROJECT_ROOT / "runs" / "generation_suite")
     parser.add_argument("--test-set", type=Path, default=PROJECT_ROOT / "data" / "gold" / "test_set.csv")
     parser.add_argument("--compare-sample-size", type=int, default=5)
-    parser.add_argument("--benchmark-sample-size", type=int, default=10)
+    parser.add_argument("--benchmark-sample-size", type=int, default=None, help="Row limit for benchmark (default: full test set).")
     parser.add_argument("--skip-benchmark", action="store_true")
     parser.add_argument("--skip-compare", action="store_true")
     parser.add_argument(
