@@ -40,8 +40,8 @@ class ModelConfig:
     max_target_length: int = 128
     
     # Training
-    batch_size: int = 1
-    accumulate_grad_batches: int = 32
+    batch_size: int = 2
+    accumulate_grad_batches: int = 16
     learning_rate: float = 2e-4
     weight_decay: float = 0.01
     max_epochs: int = 20

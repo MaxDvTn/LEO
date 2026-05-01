@@ -143,3 +143,5 @@ checkpoints_backup_*/
 checkpoints_*/
 *.log
 # data/
+.streamlit/secrets.toml
+.gradio/certificate.pem
