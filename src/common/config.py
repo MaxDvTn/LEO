@@ -34,8 +34,8 @@ class PathConfig:
 
 @dataclass
 class ModelConfig:
-    """Configuration for the NMT Model (SeamlessM4T v2)."""
-    model_name: str = "facebook/seamless-m4t-v2-large" # 2.3B parameter SOTA model
+    """Configuration for the NMT Model."""
+    model_name: str = "facebook/nllb-200-3.3B"
     max_source_length: int = 128
     max_target_length: int = 128
     

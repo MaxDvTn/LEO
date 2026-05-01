@@ -4,7 +4,7 @@ from tqdm import tqdm
 import sys
 import torch
 from torchmetrics.text import SacreBLEUScore, CHRFScore
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import AutoModelForSeq2SeqLM, AutoProcessor, AutoTokenizer, BitsAndBytesConfig
 from peft import PeftModel
 import wandb
 import os
@@ -17,6 +17,7 @@ from src.synthesis.glossary_data import get_terms_list
 from src.data_mining.competitor_spider import CompetitorSpider
 from src.training.trainer_engine import TrainerEngine
 from src.training.model_module import SeamlessFineTuner
+from src.training.dataset_module import is_seamless_model, normalize_lang_code
 from src.common.config import conf
 
 class DataFactory:
@@ -343,20 +344,29 @@ class ModelFactory:
         processor = model_module.tokenizer
         model = model_module.model
         
-        # SeamlessM4T map
-        lang_map = {"ita_Latn": "ita", "eng_Latn": "eng", "fra_Latn": "fra", "spa_Latn": "spa"}
-        seamless_src = lang_map.get(src_lang, src_lang)
-        seamless_tgt = lang_map.get(tgt_lang, tgt_lang)
+        model_name = conf.model.model_name
+        src_lang = normalize_lang_code(src_lang, model_name)
+        tgt_lang = normalize_lang_code(tgt_lang, model_name)
+        if hasattr(processor, "src_lang"):
+            processor.src_lang = src_lang
+        if hasattr(processor, "tgt_lang"):
+            processor.tgt_lang = tgt_lang
 
         # Process input
-        inputs = processor(text, src_lang=seamless_src, return_tensors="pt").to(model_module.device)
+        input_kwargs = {"return_tensors": "pt"}
+        if is_seamless_model(model_name):
+            input_kwargs["src_lang"] = src_lang
+        inputs = processor(text, **input_kwargs).to(model_module.device)
+        generation_kwargs = {"tgt_lang": tgt_lang}
+        if not is_seamless_model(model_name):
+            generation_kwargs = {"forced_bos_token_id": processor.convert_tokens_to_ids(tgt_lang)}
         
         with torch.no_grad():
             generated_tokens = model.generate(
                 **inputs,
-                tgt_lang=seamless_tgt,
                 max_new_tokens=conf.model.max_target_length,
-                early_stopping=True
+                early_stopping=True,
+                **generation_kwargs,
             )
 
         result = processor.decode(generated_tokens[0].tolist(), skip_special_tokens=True)
@@ -384,8 +394,10 @@ class ModelFactory:
         
         # Load Base Model
         model_name = conf.model.model_name
-        from transformers import AutoProcessor
-        processor = AutoProcessor.from_pretrained(model_name)
+        if is_seamless_model(model_name):
+            processor = AutoProcessor.from_pretrained(model_name)
+        else:
+            processor = AutoTokenizer.from_pretrained(model_name)
         bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_quant_type="nf4", bnb_4bit_use_double_quant=True)
         base_model = AutoModelForSeq2SeqLM.from_pretrained(model_name, device_map="auto", quantization_config=bnb_config)
         
@@ -399,16 +411,24 @@ class ModelFactory:
             from nltk.translate import meteor_score
             import nltk
             
-            lang_map = {"ita_Latn": "ita", "eng_Latn": "eng", "fra_Latn": "fra", "spa_Latn": "spa"}
-            
             for _, row in tqdm(test_set.iterrows(), total=len(test_set), desc=f"Eval {prefix}"):
-                seamless_src = lang_map.get(row['source_lang'], row['source_lang'])
-                seamless_tgt = lang_map.get(row['target_lang'], row['target_lang'])
+                source_lang = normalize_lang_code(row['source_lang'], model_name)
+                target_lang = normalize_lang_code(row['target_lang'], model_name)
+                if hasattr(processor, "src_lang"):
+                    processor.src_lang = source_lang
+                if hasattr(processor, "tgt_lang"):
+                    processor.tgt_lang = target_lang
                 
-                inputs = processor(row['source_text'], src_lang=seamless_src, return_tensors="pt").to(self.device)
+                input_kwargs = {"return_tensors": "pt"}
+                if is_seamless_model(model_name):
+                    input_kwargs["src_lang"] = source_lang
+                inputs = processor(row['source_text'], **input_kwargs).to(self.device)
+                generation_kwargs = {"tgt_lang": target_lang}
+                if not is_seamless_model(model_name):
+                    generation_kwargs = {"forced_bos_token_id": processor.convert_tokens_to_ids(target_lang)}
                 with torch.no_grad():
                     try:
-                        gen = model.generate(**inputs, tgt_lang=seamless_tgt, max_new_tokens=128)
+                        gen = model.generate(**inputs, max_new_tokens=128, **generation_kwargs)
                     except Exception as e:
                         print(f"⚠️ Error in generation for row {row['source_text'][:50]}... : {e}")
                         import gc
@@ -418,7 +438,7 @@ class ModelFactory:
                     
                 decoded = str(processor.decode(gen[0].tolist(), skip_special_tokens=True))
                 preds.append(decoded); targets.append([str(row['target_text'])]); sources.append(str(row['source_text']))
-                lang_pairs.append(f"{seamless_src}->{seamless_tgt}")
+                lang_pairs.append(f"{source_lang}->{target_lang}")
                 
                 # Periodic memory cleanup
                 if _ % 50 == 0:

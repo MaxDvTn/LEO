@@ -40,10 +40,10 @@ def export_ckpt_to_peft(checkpoint_path, export_dir):
     peft_config = LoraConfig(
         task_type=TaskType.SEQ_2_SEQ_LM,
         inference_mode=False,
-        r=32,            
-        lora_alpha=32,   
-        lora_dropout=0.1,
-        target_modules=["q_proj", "v_proj", "k_proj", "o_proj", "up_proj", "down_proj"]
+        r=conf.model.lora_r,
+        lora_alpha=conf.model.lora_alpha,
+        lora_dropout=conf.model.lora_dropout,
+        target_modules=conf.model.target_modules
     )
     model = get_peft_model(base_model, peft_config)
     

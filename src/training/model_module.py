@@ -1,12 +1,13 @@
 import torch
 import pytorch_lightning as pl
-from transformers import AutoModelForSeq2SeqLM, AutoProcessor, BitsAndBytesConfig
+from transformers import AutoModelForSeq2SeqLM, AutoProcessor, AutoTokenizer, BitsAndBytesConfig
 from peft import get_peft_model, LoraConfig, TaskType, prepare_model_for_kbit_training
 import logging
 from torchmetrics.text import SacreBLEUScore, CHRFScore
 
 # Import della configurazione centrale
 from src.common.config import conf
+from src.training.dataset_module import is_seamless_model, normalize_lang_code
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +34,7 @@ class SeamlessFineTuner(pl.LightningModule):
         if hasattr(self, "model"):
             return # Già caricato
 
-        logger.info(f"🧠 Loading Seamless Model: {self.model_name} in 4-bit...")
+        logger.info(f"Loading model: {self.model_name} in 4-bit...")
 
         # 1. Configurazione 4-bit (QLoRA)
         bnb_config = BitsAndBytesConfig(
@@ -60,18 +61,27 @@ class SeamlessFineTuner(pl.LightningModule):
         peft_config = LoraConfig(
             task_type=TaskType.SEQ_2_SEQ_LM,
             inference_mode=False,
-            r=32,            
-            lora_alpha=32,   
-            lora_dropout=0.1,
-            target_modules=["q_proj", "v_proj", "k_proj", "o_proj", "up_proj", "down_proj"]
+            r=conf.model.lora_r,
+            lora_alpha=conf.model.lora_alpha,
+            lora_dropout=conf.model.lora_dropout,
+            target_modules=conf.model.target_modules
         )
 
         # 4. Applica LoRA al modello
         self.model = get_peft_model(self.base_model, peft_config)
         self.model.print_trainable_parameters() 
         
-        # Carichiamo anche il tokenizer (processor)
-        self.tokenizer = AutoProcessor.from_pretrained(self.model_name)
+        # Carichiamo anche tokenizer/processor
+        if is_seamless_model(self.model_name):
+            self.tokenizer = AutoProcessor.from_pretrained(self.model_name)
+        else:
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+
+    def _generation_kwargs(self, tgt_lang: str):
+        tgt_lang = normalize_lang_code(tgt_lang, self.model_name)
+        if is_seamless_model(self.model_name):
+            return {"tgt_lang": tgt_lang}
+        return {"forced_bos_token_id": self.tokenizer.convert_tokens_to_ids(tgt_lang)}
 
     def forward(self, input_ids, attention_mask, labels=None):
         # NLLB requires labels to calculate loss if wanted, or just forward
@@ -113,11 +123,12 @@ class SeamlessFineTuner(pl.LightningModule):
                 # Generate translation
                 # Note: We limit max_new_tokens for speed
                 # In val_step we mostly translate to English, but theoretically the dataset is mixed targets
-                # If we don't know the exact target per row during batch eval, we default to english (eng)
+                target_langs = batch.get("target_lang") or ["eng_Latn"]
+                tgt_lang = target_langs[0]
                 gen_ids = self.model.generate(
                     input_ids=src_ids, 
-                    tgt_lang="eng", 
-                    max_new_tokens=64
+                    max_new_tokens=64,
+                    **self._generation_kwargs(tgt_lang),
                 )
                 preds = []
                 targets = []

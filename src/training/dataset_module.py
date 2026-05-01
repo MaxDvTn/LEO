@@ -1,17 +1,32 @@
 import pandas as pd
-import torch
 from torch.utils.data import Dataset, DataLoader
 import pytorch_lightning as pl
-from transformers import AutoTokenizer, DataCollatorForSeq2Seq
+from transformers import AutoProcessor, AutoTokenizer
 from torch.nn.utils.rnn import pad_sequence
 from sklearn.model_selection import train_test_split
-from pathlib import Path
 import logging
 
 # Import interno per la config
 from src.common.config import conf
 
 logger = logging.getLogger(__name__)
+
+SEAMLESS_LANG_MAP = {
+    "ita_Latn": "ita",
+    "eng_Latn": "eng",
+    "fra_Latn": "fra",
+    "spa_Latn": "spa",
+}
+
+
+def is_seamless_model(model_name: str) -> bool:
+    return "seamless" in model_name.lower()
+
+
+def normalize_lang_code(lang: str, model_name: str) -> str:
+    if is_seamless_model(model_name):
+        return SEAMLESS_LANG_MAP.get(lang, lang)
+    return lang
 
 class LeoDataset(Dataset):
     """
@@ -21,6 +36,7 @@ class LeoDataset(Dataset):
         self.data = data
         self.tokenizer = tokenizer
         self.max_length = max_length
+        self.model_name = conf.model.model_name
 
     def __len__(self):
         return len(self.data)
@@ -33,43 +49,50 @@ class LeoDataset(Dataset):
         src_lang = row['source_lang']
         tgt_lang = row['target_lang']
 
-        # SeamlessM4T uses linguistic tags like 'ita', 'eng', etc.
-        # We need to map from NLLB tags if they are still in the CSVs
-        lang_map = {
-            "ita_Latn": "ita",
-            "eng_Latn": "eng", 
-            "fra_Latn": "fra",
-            "spa_Latn": "spa"
-        }
-        
-        seamless_src = lang_map.get(src_lang, src_lang)
-        seamless_tgt = lang_map.get(tgt_lang, tgt_lang)
+        src_lang = normalize_lang_code(src_lang, self.model_name)
+        tgt_lang = normalize_lang_code(tgt_lang, self.model_name)
+
+        if hasattr(self.tokenizer, "src_lang"):
+            self.tokenizer.src_lang = src_lang
+        if hasattr(self.tokenizer, "tgt_lang"):
+            self.tokenizer.tgt_lang = tgt_lang
 
         # 1. Process Input
-        inputs = self.tokenizer(
-            text=source_text,
-            src_lang=seamless_src,
-            return_tensors="pt",
-            truncation=True,
-            max_length=self.max_length
-        )
+        input_kwargs = {
+            "text": source_text,
+            "return_tensors": "pt",
+            "truncation": True,
+            "max_length": self.max_length,
+        }
+        if is_seamless_model(self.model_name):
+            input_kwargs["src_lang"] = src_lang
+        inputs = self.tokenizer(**input_kwargs)
 
         # 2. Process Target
-        labels = self.tokenizer(
-            text=target_text,
-            src_lang=seamless_tgt, # For Seamless target tokenization
-            return_tensors="pt",
-            truncation=True,
-            max_length=self.max_length
-        )
+        if is_seamless_model(self.model_name):
+            labels = self.tokenizer(
+                text=target_text,
+                src_lang=tgt_lang,
+                return_tensors="pt",
+                truncation=True,
+                max_length=self.max_length
+            )
+        else:
+            labels = self.tokenizer(
+                text_target=target_text,
+                return_tensors="pt",
+                truncation=True,
+                max_length=self.max_length
+            )
 
         return {
             "input_ids": inputs["input_ids"].squeeze(0),
             "attention_mask": inputs["attention_mask"].squeeze(0),
-            "labels": labels["input_ids"].squeeze(0)
+            "labels": labels["input_ids"].squeeze(0),
+            "target_lang": tgt_lang,
         }
 
-class SeamlessDataCollator:
+class NMTDataCollator:
     def __init__(self, pad_token_id):
         self.pad_token_id = pad_token_id
 
@@ -77,6 +100,7 @@ class SeamlessDataCollator:
         input_ids = [item["input_ids"] for item in batch]
         attention_mask = [item["attention_mask"] for item in batch]
         labels = [item["labels"] for item in batch]
+        target_langs = [item["target_lang"] for item in batch]
         
         # Pad sequences
         input_ids_padded = pad_sequence(input_ids, batch_first=True, padding_value=self.pad_token_id)
@@ -86,7 +110,8 @@ class SeamlessDataCollator:
         return {
             "input_ids": input_ids_padded,
             "attention_mask": attention_mask_padded,
-            "labels": labels_padded
+            "labels": labels_padded,
+            "target_lang": target_langs,
         }
 
 class NMTDataModule(pl.LightningDataModule):
@@ -103,10 +128,12 @@ class NMTDataModule(pl.LightningDataModule):
         if self.train_dataset is not None:
             return
 
-        # 1. Load Tokenizer/Processor for Seamless
-        logger.info(f"Loading processor: {self.config.model_name}")
-        from transformers import AutoProcessor
-        self.tokenizer = AutoProcessor.from_pretrained(self.config.model_name)
+        # 1. Load Tokenizer/Processor
+        logger.info(f"Loading tokenizer/processor: {self.config.model_name}")
+        if is_seamless_model(self.config.model_name):
+            self.tokenizer = AutoProcessor.from_pretrained(self.config.model_name)
+        else:
+            self.tokenizer = AutoTokenizer.from_pretrained(self.config.model_name)
 
         # 2. Load and Combine Data
         dfs = []
@@ -140,21 +167,25 @@ class NMTDataModule(pl.LightningDataModule):
         self.val_dataset = LeoDataset(val_df, self.tokenizer, self.config.max_source_length)
 
     def train_dataloader(self):
-        pad_id = self.tokenizer.tokenizer.pad_token_id
+        pad_id = getattr(self.tokenizer, "pad_token_id", None)
+        if pad_id is None:
+            pad_id = self.tokenizer.tokenizer.pad_token_id
         return DataLoader(
             self.train_dataset,
             batch_size=self.config.batch_size,
             shuffle=True,
             num_workers=self.config.num_workers,
-            collate_fn=SeamlessDataCollator(pad_id)
+            collate_fn=NMTDataCollator(pad_id)
         )
 
     def val_dataloader(self):
-        pad_id = self.tokenizer.tokenizer.pad_token_id
+        pad_id = getattr(self.tokenizer, "pad_token_id", None)
+        if pad_id is None:
+            pad_id = self.tokenizer.tokenizer.pad_token_id
         return DataLoader(
             self.val_dataset,
             batch_size=self.config.batch_size,
             shuffle=False,
             num_workers=self.config.num_workers,
-            collate_fn=SeamlessDataCollator(pad_id)
+            collate_fn=NMTDataCollator(pad_id)
         )
