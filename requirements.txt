@@ -17,3 +17,4 @@ requests
 tqdm
 langdetect
 filelock
+ollama

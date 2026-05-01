@@ -59,13 +59,34 @@ class ModelConfig:
     log_every_n_steps: int = 10
 
 @dataclass
+# class GenConfig:
+#     """Configuration for Synthetic Data Generation (LLM)."""
+#     model_id: str = "mistralai/Mistral-7B-Instruct-v0.2" 
+#     # Valid options: "4bit", "8bit", "none"
+#     load_in_4bit: bool = True
+#     load_in_8bit: bool = False
+    
+#     # Generation params
+#     max_new_tokens: int = 512
+#     temperature: float = 0.7
+#     top_p: float = 0.95
+#     do_sample: bool = True
+
+@dataclass
 class GenConfig:
-    """Configuration for Synthetic Data Generation (LLM)."""
-    model_id: str = "mistralai/Mistral-7B-Instruct-v0.2" 
-    # Valid options: "4bit", "8bit", "none"
+    """Configuration for Synthetic Data Generation (LLM).
+
+    Backend is selected automatically by get_generator() based on model_id prefix:
+      "ollama/<name>"  → OllamaGenerator  (e.g. "ollama/qwen2.5:32b")
+      anything else    → HFChatGenerator  (e.g. "Qwen/Qwen2.5-32B-Instruct")
+    """
+    model_id: str = "ollama/qwen2.5:32b"
+    ollama_base_url: str = "http://localhost:11434"
+
+    # HuggingFace-only options (ignored by OllamaGenerator)
     load_in_4bit: bool = True
     load_in_8bit: bool = False
-    
+
     # Generation params
     max_new_tokens: int = 512
     temperature: float = 0.7

@@ -11,8 +11,9 @@ import os
 
 # Project Imports
 from src.data_mining.pdf_processor import PdfMiner
-from src.synthesis.generator import SyntheticGenerator
-from src.synthesis.prompts import GENERATION_PROMPT_TEMPLATE
+# from src.synthesis.generator import SyntheticGenerator
+# from src.synthesis.prompts import GENERATION_PROMPT_TEMPLATE
+from src.synthesis.generator import get_generator
 from src.synthesis.glossary_data import get_terms_list
 from src.data_mining.competitor_spider import CompetitorSpider
 from src.training.trainer_engine import TrainerEngine
@@ -66,7 +67,7 @@ class DataFactory:
             return
 
         miner = PdfMiner(min_length=20)
-        generator = SyntheticGenerator()
+        generator = get_generator()
         all_sentences = []
         
         for pdf_file in pdf_files:
@@ -178,76 +179,6 @@ class DataFactory:
             out_path = self.synthetic_dir / "competitor_synthetic.csv"
             df.to_csv(out_path, index=False)
             print(f"✅ Saved Web data: {out_path}")
-
-    def run_glossary_gen(self):
-        """Generates synthetic data from the internal glossary."""
-        print("\n🤖 [Phase: Glossary Generation]")
-        generator = SyntheticGenerator()
-        terms = get_terms_list()
-        generated_data = []
-
-        # Configuration for massive generation
-        SAMPLES_PER_TERM = 80
-        BATCH_SIZE = 8
-        
-        all_prompts = []
-        all_terms_ref = []
-        
-        print(f"   🔨 Preparing prompts: {len(terms)} terms x {SAMPLES_PER_TERM} variations = {len(terms)*SAMPLES_PER_TERM} samples.")
-        
-        for term in terms:
-            for _ in range(SAMPLES_PER_TERM):
-                all_prompts.append(GENERATION_PROMPT_TEMPLATE.format(term=term))
-                all_terms_ref.append(term)
-        
-        # Batch generation
-        # We process in chunks to verify progress and memory safety
-        total_batches = (len(all_prompts) + BATCH_SIZE - 1) // BATCH_SIZE
-        
-        print(f"   🚀 Starting Inference (Batches: {total_batches})...")
-        
-        # Using generator.pipe directly with batch_size
-        # Note: transformers pipeline handles batching if we pass a KeyDataset or list
-        # For simplicity and progress tracking, we chunk manually
-        
-        for i in tqdm(range(0, len(all_prompts), BATCH_SIZE), desc="Generating Batches"):
-            batch_prompts = all_prompts[i : i + BATCH_SIZE]
-            batch_terms = all_terms_ref[i : i + BATCH_SIZE]
-            
-            try:
-                # Higher temperature for variety since we repeat prompts
-                outputs = generator.pipe(
-                    batch_prompts, 
-                    max_new_tokens=250, 
-                    do_sample=True, 
-                    temperature=0.85, 
-                    top_p=0.95,
-                    batch_size=BATCH_SIZE
-                )
-                
-                for j, out in enumerate(outputs):
-                    # pipeline returns list of dicts, or list of list of dicts
-                    # for text-generation it's usually [{'generated_text': '...'}]
-                    text = out[0]['generated_text'] if isinstance(out, list) else out['generated_text']
-                    term = batch_terms[j]
-                    
-                    parsed = generator.parse_output(text, term)
-                    if parsed and parsed['source_text']:
-                        for lang, key in [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]:
-                            if parsed.get(key):
-                                generated_data.append({
-                                    "source_text": parsed['source_text'], "target_text": parsed[key],
-                                    "source_lang": "ita_Latn", "target_lang": lang, "term_keyword": term
-                                })
-            except Exception as e:
-                print(f"❌ Batch Error: {e}")
-                continue
-
-        if generated_data:
-            out_path = self.synthetic_dir / "rover_synthetic_multilingual.csv"
-            df = pd.DataFrame(generated_data)
-            df.to_csv(out_path, index=False)
-            print(f"✅ Saved Glossary data: {out_path} ({len(df)} rows)")
 
     def create_test_set(self):
         """Creates a balanced test set from Gold and Synthetic data."""
