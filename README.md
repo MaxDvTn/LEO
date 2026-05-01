@@ -16,6 +16,8 @@ It is designed to run efficiently on consumer, single-gpu hardware (e.g., NVIDIA
 - **Multilingual Support**: dynamic handling of source and target languages for many-to-many translation.
 - **Custom Tokenization**: Correctly handles `src_lang` and `forced_bos_token_id` for many-to-many translation tasks.
 - **Experiment Tracking**: Integrated with Wandb.
+- **Synthetic Dataset Generation**: Supports local Ollama models and cloud LLM providers through LiteLLM.
+- **Dataset Comparison & Benchmarks**: Versioned synthetic dataset runs, pairwise dataset comparison, and base/LLM benchmark scripts.
 
 ## Installation
 
@@ -42,6 +44,7 @@ It is designed to run efficiently on consumer, single-gpu hardware (e.g., NVIDIA
 
    ```
 
+   `litellm` is included for cloud-backed synthetic generation (`openai/...`, `anthropic/...`, `google/...`, `deepseek/...`). If you use the Streamlit OAuth UI in the same environment, note that `streamlit-oauth` pins `python-dotenv==1.0.1` while current `litellm` pins `python-dotenv==1.2.2`; use a separate environment if you need both dependency sets to be conflict-free.
 
 
 
@@ -92,6 +95,113 @@ The `scripts/` root is intentionally kept small:
 - `legacy/`: compatibility wrappers for old command names
 - `debug/`, `demo/`, `data/`, `hf/`, `maintenance/`, `model/`: focused utility modules
 
+### Synthetic Dataset Generation
+
+Synthetic generation is selected with `conf.gen.model_id` in [src/common/config.py](src/common/config.py):
+
+```python
+model_id = "ollama/qwen2.5:32b"
+```
+
+Supported prefixes:
+
+| Prefix | Backend | Example |
+|--------|---------|---------|
+| `ollama/` | Local Ollama | `ollama/mistral:latest` |
+| `openai/` | OpenAI via LiteLLM | `openai/gpt-5-mini` |
+| `anthropic/` | Anthropic via LiteLLM | `anthropic/claude-sonnet-4` |
+| `google/` | Gemini via LiteLLM | `google/gemini-2.5-flash` |
+| `deepseek/` | DeepSeek via LiteLLM | `deepseek/deepseek-chat` |
+
+For cloud providers, export the matching API key before running generation:
+
+```bash
+export OPENAI_API_KEY=...
+export GEMINI_API_KEY=...
+export ANTHROPIC_API_KEY=...
+export DEEPSEEK_API_KEY=...
+```
+
+Generate glossary-based synthetic data:
+
+```bash
+python scripts/leo.py data generate
+```
+
+Every generated synthetic CSV is saved in three places:
+
+- active training file, e.g. `data/synthetic/glossary_synthetic.csv`
+- previous active file archived under `data/synthetic/archive/`
+- versioned copy under `data/synthetic/runs/`, including model name and timestamp
+
+### Dataset Suite
+
+Use the suite runner to generate datasets with multiple models, compare the outputs, and benchmark the same generators on the test set in one command:
+
+```bash
+python scripts/data/run_generation_suite.py \
+  --models ollama/mistral:latest openai/gpt-5-mini \
+  --dataset-kind glossary \
+  --benchmark-sample-size 10
+```
+
+Useful options:
+
+```bash
+# Generate and compare only, without benchmark cost
+python scripts/data/run_generation_suite.py \
+  --models ollama/mistral:latest ollama/qwen2.5:32b \
+  --dataset-kind glossary \
+  --skip-benchmark
+
+# Run the suite on web-spidered terms instead of the glossary
+python scripts/data/run_generation_suite.py \
+  --models openai/gpt-5-mini google/gemini-2.5-flash \
+  --dataset-kind web
+```
+
+The suite writes a manifest and artifacts under:
+
+```text
+runs/generation_suite/<timestamp>/
+```
+
+### Dataset Comparison
+
+Compare any two synthetic CSVs with:
+
+```bash
+python scripts/data/compare_synthetic.py \
+  data/synthetic/runs/glossary_synthetic__ollama_mistral_latest__OLD.csv \
+  data/synthetic/runs/glossary_synthetic__openai_gpt-5-mini__NEW.csv
+```
+
+The report includes row deltas, overlap, language/origin distribution, and added/removed samples.
+
+### Benchmarks
+
+Benchmark non-finetuned Hugging Face seq2seq base models:
+
+```bash
+python scripts/model/benchmark_base_models.py \
+  --models facebook/nllb-200-3.3B facebook/seamless-m4t-v2-large
+```
+
+Benchmark prompt-based LLM generators:
+
+```bash
+python scripts/model/benchmark_llm_generators.py \
+  --models ollama/mistral:latest openai/gpt-5-mini \
+  --sample-size 10
+```
+
+Benchmark outputs are written under:
+
+```text
+benchmarks/base_models/<timestamp>/
+benchmarks/llm_generators/<timestamp>/
+```
+
 ### Training
 
 To start or resume fine-tuning:
@@ -101,9 +211,9 @@ python scripts/leo.py train
 ```
 
 **Key Hyperparameters** (editable in `config.py`):
-- `batch_size`: 8
-- `accumulate_grad_batches`: 4
-- `learning_rate`: 2e-4
+- `batch_size`: 12
+- `accumulate_grad_batches`: 3
+- `learning_rate`: 5e-5
 - `max_epochs`: 20
 - `precision`: "bf16-mixed" (Optimized for Ampere+ GPUs)
 

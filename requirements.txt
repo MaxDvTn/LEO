@@ -18,3 +18,5 @@ tqdm
 langdetect
 filelock
 ollama
+python-dotenv>=1.2.2
+litellm

@@ -6,11 +6,9 @@ from tqdm import tqdm
 import sys
 from pathlib import Path
 
-# Setup path per importare il Generatore
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.append(str(PROJECT_ROOT))
 
-from src.synthesis.generator import SyntheticGenerator
 from src.common.config import conf
 
 logging.basicConfig(level=logging.INFO)
@@ -21,9 +19,6 @@ class CompetitorSpider:
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
-        # Carichiamo Mistral per capire cosa è tecnico e cosa no
-        logger.info("🕷️ Loading AI Brain for extraction...")
-        self.ai = SyntheticGenerator()
 
     def fetch_text(self, url):
         """Scarica il testo pulito da una pagina web."""
@@ -48,6 +43,21 @@ class CompetitorSpider:
         except Exception as e:
             logger.error(f"Error scraping {url}: {e}")
             return ""
+
+    def scrape_site(self, url: str) -> list:
+        """Fetches a URL and returns heuristic term candidates."""
+        try:
+            resp = requests.get(url, headers=self.headers, timeout=10)
+            if resp.status_code != 200:
+                logger.error(f"Failed to fetch {url}: {resp.status_code}")
+                return []
+            soup = BeautifulSoup(resp.content, 'html.parser')
+            terms = self.extract_terms_heuristic(soup)
+            logger.info(f"Found {len(terms)} terms at {url}")
+            return terms
+        except Exception as e:
+            logger.error(f"Error scraping {url}: {e}")
+            return []
 
     def extract_terms_heuristic(self, soup):
         """Estrae candidati termini tecnici basandosi su tag HTML rilevanti (H1-H3, strong, li)."""

@@ -1,12 +1,13 @@
-# src/synthesis/ollama_generator.py
+# src/synthesis/cloud_generator.py
 import logging
 import pandas as pd
 from typing import List, Dict
 
 try:
-    import ollama
+    import litellm
+    litellm.drop_params = True
 except ImportError:
-    raise ImportError("Run: pip install ollama")
+    raise ImportError("Run: pip install litellm")
 
 from src.synthesis.base import BaseGenerator
 from src.synthesis.glossary_data import get_terms_list
@@ -20,55 +21,44 @@ from src.common.config import conf
 
 logger = logging.getLogger(__name__)
 
+# litellm uses "gemini/" for Google models, not "google/"
+_PREFIX_REMAP = {"google/": "gemini/"}
 
-class OllamaGenerator(BaseGenerator):
+
+class CloudGenerator(BaseGenerator):
     """
-    Synthetic data generator backed by a local Ollama server.
+    Synthetic data generator backed by cloud LLM APIs via litellm.
 
-    Model ID format in config: "ollama/<model_name>"
-    Examples: "ollama/qwen2.5:32b", "ollama/qwen2.5:7b", "ollama/llama3.1:8b"
-
-    Requires Ollama running locally:  ollama serve
-    Pull the model first:             ollama pull qwen2.5:32b
+    Supported model_id formats (set conf.gen.model_id or pass explicitly):
+      openai/gpt-4o-mini          OPENAI_API_KEY
+      anthropic/claude-3-haiku    ANTHROPIC_API_KEY
+      google/gemini-2.5-flash     GEMINI_API_KEY
+      deepseek/deepseek-chat      DEEPSEEK_API_KEY
     """
 
     def __init__(self, model_id: str = None):
         raw = model_id or conf.gen.model_id
-        # Strip the "ollama/" prefix to get the Ollama model name
-        self.model = raw.removeprefix("ollama/")
-        self.base_url = conf.gen.ollama_base_url
+        self.model = self._remap(raw)
+        logger.info(f"CloudGenerator ready — model: {self.model}")
 
-        logger.info(f"OllamaGenerator ready — model: {self.model}, server: {self.base_url}")
-        self._check_model()
+    @staticmethod
+    def _remap(model_id: str) -> str:
+        for src, dst in _PREFIX_REMAP.items():
+            if model_id.startswith(src):
+                return dst + model_id[len(src):]
+        return model_id
 
-    def _check_model(self):
-        """Warn if the model is not pulled yet."""
-        try:
-            client = ollama.Client(host=self.base_url)
-            available = [m.model for m in client.list().models]
-            if self.model not in available:
-                logger.warning(
-                    f"Model '{self.model}' not found locally. "
-                    f"Run: ollama pull {self.model}"
-                )
-        except Exception as e:
-            logger.warning(f"Could not reach Ollama server at {self.base_url}: {e}")
-
-    def _chat(self, term: str) -> str:
-        client = ollama.Client(host=self.base_url)
-        response = client.chat(
+    def _chat(self, system: str, user: str, max_tokens: int = 400) -> str:
+        response = litellm.completion(
             model=self.model,
             messages=[
-                {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
-                {"role": "user", "content": GENERATION_USER_TEMPLATE.format(term=term)},
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
             ],
-            options={
-                "temperature": conf.gen.temperature,
-                "top_p": conf.gen.top_p,
-                "num_predict": conf.gen.max_new_tokens,
-            },
+            temperature=conf.gen.temperature,
+            max_tokens=max_tokens,
         )
-        return response.message.content
+        return response.choices[0].message.content
 
     def parse_output(self, generated_text: str, term: str) -> Dict | None:
         result = {
@@ -89,21 +79,16 @@ class OllamaGenerator(BaseGenerator):
                 result["target_text_fr"] = clean[3:].strip()
             elif clean.startswith("ES:"):
                 result["target_text_es"] = clean[3:].strip()
-
         if result["source_text"]:
             return result
         logger.warning(f"Failed to parse output for term: {term}")
         return None
 
     def translate_text(self, text: str) -> dict:
-        client = ollama.Client(host=self.base_url)
-        response = client.chat(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": TRANSLATION_SYSTEM_PROMPT},
-                {"role": "user", "content": TRANSLATION_USER_TEMPLATE.format(text=text)},
-            ],
-            options={"temperature": 0.1, "num_predict": 200},
+        out = self._chat(
+            TRANSLATION_SYSTEM_PROMPT,
+            TRANSLATION_USER_TEMPLATE.format(text=text),
+            max_tokens=200,
         )
         result = {
             "source_text": text,
@@ -111,7 +96,7 @@ class OllamaGenerator(BaseGenerator):
             "target_text_fr": None,
             "target_text_es": None,
         }
-        for line in response.message.content.split("\n"):
+        for line in out.split("\n"):
             clean = line.strip()
             if clean.startswith("EN:"):
                 result["target_text_en"] = clean[3:].strip()
@@ -123,13 +108,15 @@ class OllamaGenerator(BaseGenerator):
 
     def generate_dataset(self, terms: List[str] = None) -> pd.DataFrame:
         terms = terms or get_terms_list()
-        logger.info(f"Generating {len(terms)} samples with Ollama/{self.model} ...")
+        logger.info(f"Generating {len(terms)} samples with {self.model} ...")
         data = []
-
         for i, term in enumerate(terms):
             logger.info(f"[{i+1}/{len(terms)}] {term}")
             try:
-                generated_text = self._chat(term)
+                generated_text = self._chat(
+                    GENERATION_SYSTEM_PROMPT,
+                    GENERATION_USER_TEMPLATE.format(term=term),
+                )
                 entry = self.parse_output(generated_text, term)
                 if entry:
                     data.append(entry)
@@ -138,7 +125,6 @@ class OllamaGenerator(BaseGenerator):
             except Exception as e:
                 logger.error(f"Error on term '{term}': {e}")
                 continue
-
         df = pd.DataFrame(data)
         logger.info(f"Done. {len(df)} samples generated.")
         return df

@@ -42,7 +42,7 @@ class ModelConfig:
     # Training
     batch_size: int = 12 #8 #2
     accumulate_grad_batches: int = 3 #4 #16
-    learning_rate: float = 2e-4
+    learning_rate: float = 5e-5 #2e-4
     weight_decay: float = 0.01
     max_epochs: int = 20
     val_check_interval: float = 0.5
@@ -57,20 +57,6 @@ class ModelConfig:
     target_modules: List[str] = field(default_factory=lambda: ["q_proj", "v_proj", "k_proj", "o_proj"])
     
     log_every_n_steps: int = 10
-
-@dataclass
-# class GenConfig:
-#     """Configuration for Synthetic Data Generation (LLM)."""
-#     model_id: str = "mistralai/Mistral-7B-Instruct-v0.2" 
-#     # Valid options: "4bit", "8bit", "none"
-#     load_in_4bit: bool = True
-#     load_in_8bit: bool = False
-    
-#     # Generation params
-#     max_new_tokens: int = 512
-#     temperature: float = 0.7
-#     top_p: float = 0.95
-#     do_sample: bool = True
 
 @dataclass
 class GenConfig:

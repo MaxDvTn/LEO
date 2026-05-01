@@ -3,6 +3,9 @@ from pathlib import Path
 from tqdm import tqdm
 import sys
 import torch
+import re
+import shutil
+from datetime import datetime, timezone
 from torchmetrics.text import SacreBLEUScore, CHRFScore
 from transformers import AutoModelForSeq2SeqLM, AutoProcessor, AutoTokenizer, BitsAndBytesConfig
 from peft import PeftModel
@@ -11,8 +14,6 @@ import os
 
 # Project Imports
 from src.data_mining.pdf_processor import PdfMiner
-# from src.synthesis.generator import SyntheticGenerator
-# from src.synthesis.prompts import GENERATION_PROMPT_TEMPLATE
 from src.synthesis.generator import get_generator
 from src.synthesis.glossary_data import get_terms_list
 from src.data_mining.competitor_spider import CompetitorSpider
@@ -55,6 +56,33 @@ class DataFactory:
             print(f"⚠️ Could not load gold dataset for filtering: {e}")
             return set(), set()
 
+    def _safe_model_name(self):
+        return re.sub(r"[^A-Za-z0-9_.-]+", "_", conf.gen.model_id).strip("_")
+
+    def _save_synthetic_dataset(self, df: pd.DataFrame, filename: str, label: str):
+        """Save the active synthetic CSV and keep timestamped copies for comparison."""
+        self.synthetic_dir.mkdir(parents=True, exist_ok=True)
+        out_path = self.synthetic_dir / filename
+        stem = out_path.stem
+        timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+
+        archive_dir = self.synthetic_dir / "archive"
+        runs_dir = self.synthetic_dir / "runs"
+        archive_dir.mkdir(parents=True, exist_ok=True)
+        runs_dir.mkdir(parents=True, exist_ok=True)
+
+        if out_path.exists():
+            archived_path = archive_dir / f"{stem}__previous__{timestamp}.csv"
+            shutil.copy2(out_path, archived_path)
+            print(f"📦 Archived previous {label}: {archived_path}")
+
+        run_path = runs_dir / f"{stem}__{self._safe_model_name()}__{timestamp}.csv"
+        df.to_csv(run_path, index=False)
+        df.to_csv(out_path, index=False)
+        print(f"✅ Saved {label}: {out_path} ({len(df)} rows)")
+        print(f"🧾 Versioned copy: {run_path}")
+        return out_path, run_path
+
     def run_pdf_mining(self):
         """Extracts text from PDFs and translates it using AI."""
         print("\n🦁 [Phase: PDF Mining]")
@@ -64,7 +92,7 @@ class DataFactory:
         pdf_files = list(pdf_dir.rglob("*.pdf"))
         if not pdf_files:
             print(f"⚠️  No PDFs found in {pdf_dir}")
-            return
+            return None, None
 
         miner = PdfMiner(min_length=20)
         generator = get_generator()
@@ -85,83 +113,42 @@ class DataFactory:
         print(f"   📚 Unique sentences: {len(unique_sentences)} (Skipped {skipped} already validated)")
         # -------------------------------
         
-        TRANSLATION_PROMPT = """[INST]
-        Translate the following Italian technical sentence into English (EN), French (FR), and Spanish (ES).
-        Sentence: "{text}"
-        Format:
-        EN: [Translation]
-        FR: [Translation]
-        ES: [Translation]
-        [/INST]"""
-
-        # Batch generation setup
-        BATCH_SIZE = 8
-        all_prompts = []
-        for sent in unique_sentences:
-            all_prompts.append(TRANSLATION_PROMPT.format(text=sent))
-
-        total_batches = (len(all_prompts) + BATCH_SIZE - 1) // BATCH_SIZE
-        print(f"   🚀 Starting Batched Inference (Batches: {total_batches})...")
-
+        print(f"   🚀 Starting Translation ({len(unique_sentences)} sentences)...")
         augmented_data = []
+        lang_map = [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]
 
-        for i in tqdm(range(0, len(all_prompts), BATCH_SIZE), desc="AI Translation"):
-            batch_prompts = all_prompts[i : i + BATCH_SIZE]
-            batch_sentences = unique_sentences[i : i + BATCH_SIZE]
-
+        for sent in tqdm(unique_sentences, desc="AI Translation"):
             try:
-                # Use pipeline batching
-                outputs = generator.pipe(
-                    batch_prompts,
-                    max_new_tokens=200,
-                    do_sample=False,
-                    batch_size=BATCH_SIZE
-                )
-
-                for j, out in enumerate(outputs):
-                    raw_text = out[0]['generated_text'] if isinstance(out, list) else out['generated_text']
-                    sent = batch_sentences[j]
-                    
-                    parts = raw_text.split("[/INST]")[-1].strip().split('\n')
-                    row = {"source_text": sent, "source_lang": "ita_Latn"}
-
-                    mapping = {"EN:": ("eng_Latn", "target_text_en"), "FR:": ("fra_Latn", "target_text_fr"), "ES:": ("spa_Latn", "target_text_es")}
-                    for line in parts:
-                        for prefix, (lang_code, key) in mapping.items():
-                            if line.startswith(prefix): row[key] = line.replace(prefix, "").strip()
-
-                    # Append available translations
-                    for lang_code, key in [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]:
-                        if key in row:
-                            augmented_data.append({
-                                "source_text": sent, "target_text": row[key],
-                                "source_lang": "ita_Latn", "target_lang": lang_code, "origin": "pdf_mining"
-                            })
+                row = generator.translate_text(sent)
+                for lang_code, key in lang_map:
+                    if row.get(key):
+                        augmented_data.append({
+                            "source_text": sent, "target_text": row[key],
+                            "source_lang": "ita_Latn", "target_lang": lang_code, "origin": "pdf_mining"
+                        })
             except Exception as e:
-                print(f"❌ Batch Error: {e}")
+                print(f"❌ Translation Error: {e}")
                 continue
 
         if augmented_data:
-            out_path = self.synthetic_dir / "rover_pdf_augmented.csv"
-            pd.DataFrame(augmented_data).to_csv(out_path, index=False)
-            print(f"✅ Saved PDF data: {out_path}")
+            return self._save_synthetic_dataset(
+                pd.DataFrame(augmented_data),
+                "rover_pdf_augmented.csv",
+                "PDF data",
+            )
+        return None, None
 
     def run_web_spider(self):
-        """Scrapes competitor websites for terms and sentences."""
+        """Scrapes competitor websites for terms and generates synthetic sentences."""
         print("\n🕷️ [Phase: Web Spidering]")
         spider = CompetitorSpider()
-        # The spider internally uses conf.spider.target_urls and saves to synthetic dir
-        # We can trigger it by calling its main logic if we refactor its main to a method, 
-        # but for now we can just use its existing structure or call it as a subprocess if preferred.
-        # Let's assume we want to call it directly.
         target_urls = conf.spider.target_urls
         all_terms = []
         for url in target_urls:
-            terms = spider.scrape_site(url)
-            all_terms.extend(terms)
-        
+            all_terms.extend(spider.scrape_site(url))
+
         unique_terms = list(set(all_terms))
-        
+
         # --- ANTI-DUPLICATION FILTER ---
         _, known_terms = self._get_gold_sources()
         original_count = len(unique_terms)
@@ -169,16 +156,38 @@ class DataFactory:
         skipped = original_count - len(unique_terms)
         print(f"   🔍 Found {len(unique_terms)} unique terms. (Skipped {skipped} already validated)")
         # -------------------------------
-        
-        sentences = []
-        for term in tqdm(unique_terms, desc="Generating from terms"):
-            sentences.extend(spider.generate_sentences_from_term(term))
-            
-        if sentences:
-            df = pd.DataFrame(sentences)
-            out_path = self.synthetic_dir / "competitor_synthetic.csv"
-            df.to_csv(out_path, index=False)
-            print(f"✅ Saved Web data: {out_path}")
+
+        if not unique_terms:
+            return None, None
+
+        generator = get_generator()
+        df = generator.generate_dataset(terms=unique_terms)
+        if df.empty:
+            return None, None
+
+        lang_map = [
+            ("target_text_en", "eng_Latn"),
+            ("target_text_fr", "fra_Latn"),
+            ("target_text_es", "spa_Latn"),
+        ]
+        rows = []
+        for _, row in df.iterrows():
+            for col, tgt_lang in lang_map:
+                if pd.notna(row.get(col)) and row[col]:
+                    rows.append({
+                        "source_text": row["source_text"],
+                        "target_text": row[col],
+                        "source_lang": "ita_Latn",
+                        "target_lang": tgt_lang,
+                        "origin": "web_spider",
+                    })
+        if rows:
+            return self._save_synthetic_dataset(
+                pd.DataFrame(rows),
+                "competitor_synthetic.csv",
+                "Web data",
+            )
+        return None, None
 
     def create_test_set(self):
         """Creates a balanced test set from Gold and Synthetic data."""
@@ -210,6 +219,45 @@ class DataFactory:
             test_df.to_csv(out_path, index=False)
             print(f"✅ Created Test Set: {out_path} ({len(test_df)} rows)")
 
+    def run_glossary_gen(self):
+        """Generates synthetic sentences from the domain glossary using the configured backend."""
+        print("\n📖 [Phase: Glossary Generation]")
+        generator = get_generator()
+        terms = get_terms_list()
+
+        _, known_terms = self._get_gold_sources()
+        terms = [t for t in terms if t.strip() not in known_terms]
+        print(f"   📝 Generating for {len(terms)} terms...")
+
+        df = generator.generate_dataset(terms=terms)
+        if not df.empty:
+            lang_map = [
+                ("target_text_en", "eng_Latn"),
+                ("target_text_fr", "fra_Latn"),
+                ("target_text_es", "spa_Latn"),
+            ]
+            rows = []
+            for _, row in df.iterrows():
+                for col, tgt_lang in lang_map:
+                    if pd.notna(row.get(col)) and row[col]:
+                        rows.append({
+                            "source_text": row["source_text"],
+                            "target_text": row[col],
+                            "source_lang": "ita_Latn",
+                            "target_lang": tgt_lang,
+                            "origin": "glossary",
+                        })
+            if not rows:
+                print("⚠️  No valid translations in generated data, skipping save.")
+                return None, None
+            long_df = pd.DataFrame(rows)
+            return self._save_synthetic_dataset(
+                long_df,
+                "glossary_synthetic.csv",
+                "glossary data",
+            )
+        return None, None
+
     def run_full_pipeline(self):
         """Runs all stages in sequence."""
         print("🚀 [STARTING FULL DATA PIPELINE]")
@@ -240,17 +288,16 @@ class ModelFactory:
         
         engine = TrainerEngine()
         
-        # Check for existing checkpoints to resume
-        checkpoints = sorted(list(conf.paths.output_dir.glob("*.ckpt")))
+        # Prefer end-of-epoch checkpoints over last.ckpt (which may be mid-epoch)
         ckpt_path = None
-        if checkpoints:
-            # Prefer 'last.ckpt' if exists, else newest
-            last_ckpt = conf.paths.output_dir / "last.ckpt"
-            if last_ckpt.exists():
-                ckpt_path = str(last_ckpt)
-            else:
-                ckpt_path = str(checkpoints[-1])
-            print(f"🔄 Resuming training from: {ckpt_path}")
+        epoch_ckpts = sorted(conf.paths.output_dir.glob("leo-*.ckpt"))
+        last_ckpt = conf.paths.output_dir / "last.ckpt"
+        if epoch_ckpts:
+            ckpt_path = str(epoch_ckpts[-1])
+            print(f"🔄 Resuming from epoch checkpoint: {ckpt_path}")
+        elif last_ckpt.exists():
+            ckpt_path = str(last_ckpt)
+            print(f"⚠️  Resuming from last.ckpt (mid-epoch — results may vary): {ckpt_path}")
             
         engine.run(ckpt_path=ckpt_path)
 
