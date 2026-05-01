@@ -15,7 +15,7 @@ import os
 # Project Imports
 from src.data_mining.pdf_processor import PdfMiner
 from src.synthesis.generator import get_generator
-from src.synthesis.glossary_data import get_terms_list
+from src.synthesis.glossary_data import get_terms_list, ROVER_GLOSSARY
 from src.data_mining.competitor_spider import CompetitorSpider
 from src.training.trainer_engine import TrainerEngine
 from src.training.model_module import SeamlessFineTuner
@@ -59,9 +59,36 @@ class DataFactory:
     def _safe_model_name(self):
         return re.sub(r"[^A-Za-z0-9_.-]+", "_", conf.gen.model_id).strip("_")
 
+    def _normalize_synthetic_df(self, df: pd.DataFrame, label: str) -> pd.DataFrame:
+        required = ["source_text", "target_text", "source_lang", "target_lang"]
+        missing = [col for col in required if col not in df.columns]
+        if missing:
+            raise ValueError(f"{label} is missing required columns: {missing}")
+
+        before = len(df)
+        df = df.copy()
+        for col in required + ["origin"]:
+            if col in df.columns:
+                df[col] = df[col].astype("string").str.strip()
+
+        df = df.dropna(subset=required)
+        for col in required:
+            df = df[df[col].astype(str).str.len() > 0]
+
+        df = df.drop_duplicates(subset=required).reset_index(drop=True)
+        removed = before - len(df)
+        if removed:
+            print(f"🧹 Removed {removed} invalid/duplicate rows from {label}")
+        return df
+
     def _save_synthetic_dataset(self, df: pd.DataFrame, filename: str, label: str):
         """Save the active synthetic CSV and keep timestamped copies for comparison."""
         self.synthetic_dir.mkdir(parents=True, exist_ok=True)
+        df = self._normalize_synthetic_df(df, label)
+        if df.empty:
+            print(f"⚠️  No valid rows for {label}, skipping save.")
+            return None, None
+
         out_path = self.synthetic_dir / filename
         stem = out_path.stem
         timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
@@ -103,7 +130,7 @@ class DataFactory:
             raw_text = miner.extract_text_from_pdf(pdf_file)
             all_sentences.extend(miner.clean_and_segment(raw_text))
 
-        unique_sentences = list(set(all_sentences))
+        unique_sentences = sorted(set(all_sentences))
 
         # --- ANTI-DUPLICATION FILTER ---
         known_sources, _ = self._get_gold_sources()
@@ -147,7 +174,7 @@ class DataFactory:
         for url in target_urls:
             all_terms.extend(spider.scrape_site(url))
 
-        unique_terms = list(set(all_terms))
+        unique_terms = sorted(set(all_terms))
 
         # --- ANTI-DUPLICATION FILTER ---
         _, known_terms = self._get_gold_sources()
@@ -224,13 +251,13 @@ class DataFactory:
         """Generates synthetic sentences from the domain glossary using the configured backend."""
         print("\n📖 [Phase: Glossary Generation]")
         generator = get_generator()
-        terms = get_terms_list()
 
         _, known_terms = self._get_gold_sources()
-        terms = [t for t in terms if t.strip() not in known_terms]
-        print(f"   📝 Generating for {len(terms)} terms...")
+        # Pass full dicts so generators can use the context field for richer prompts.
+        terms = [t for t in get_terms_list(with_context=True) if t["term"].strip() not in known_terms]
+        print(f"   📝 Generating for {len(terms)} terms (×{conf.gen.num_variants} variants)...")
 
-        df = generator.generate_dataset(terms=terms)
+        df = generator.generate_dataset(terms=terms, num_variants=conf.gen.num_variants)
         if not df.empty:
             lang_map = [
                 ("target_text_en", "eng_Latn"),

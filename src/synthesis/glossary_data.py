@@ -47,36 +47,59 @@ ROVER_GLOSSARY = [
     {"term": "monoblocco coibentato presystem", "context": "product"},
 ]
 
-def get_terms_list():
-    """Restituisce solo la lista piatta dei termini per il generatore"""
+
+def get_terms_list(with_context: bool = False):
+    """Return glossary terms. with_context=True returns list of dicts, False returns flat list of strings."""
+    if with_context:
+        return list(ROVER_GLOSSARY)
     return [item["term"] for item in ROVER_GLOSSARY]
 
-def add_new_term(term: str, context: str = "custom_entry"):
+
+def add_new_term(term: str, context: str = "custom_entry") -> bool:
     """
-    Append un nuovo termine al file glossary_data.py preservando i commenti.
-    Ricarica anche la lista in memoria.
+    Append a new term to ROVER_GLOSSARY in this source file, then update the in-memory list.
+    Uses an atomic write (temp file + rename) to avoid corruption on crash.
     """
     import os
+    import tempfile
+    import shutil
+
     file_path = os.path.abspath(__file__)
-    
+    if file_path.endswith(".pyc"):
+        raise RuntimeError("Cannot modify compiled .pyc file; run from source.")
+
     with open(file_path, "r", encoding="utf-8") as f:
         lines = f.readlines()
-        
-    # Trova la riga che chiude la lista ROVER_GLOSSARY
+
+    # Find the closing ']' of ROVER_GLOSSARY specifically — track when the list starts.
+    in_glossary = False
     insert_idx = -1
     for i, line in enumerate(lines):
-        if line.strip() == "]":
+        if "ROVER_GLOSSARY" in line and "[" in line:
+            in_glossary = True
+        if in_glossary and line.strip() == "]":
             insert_idx = i
             break
-            
-    if insert_idx != -1:
-        new_entry = f'    {{"term": "{term}", "context": "{context}"}},\n'
-        lines.insert(insert_idx, new_entry)
-        
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.writelines(lines)
-            
-        # Aggiorna la variabile in memoria
-        ROVER_GLOSSARY.append({"term": term, "context": context})
-        return True
-    return False
+
+    if insert_idx == -1:
+        return False
+
+    new_entry = f'    {{"term": "{term}", "context": "{context}"}},\n'
+    lines.insert(insert_idx, new_entry)
+
+    # Atomic write: write to a temp file in the same directory, then rename.
+    dir_path = os.path.dirname(file_path)
+    fd, tmp_path = tempfile.mkstemp(dir=dir_path, suffix=".py.tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as tmp:
+            tmp.writelines(lines)
+        shutil.move(tmp_path, file_path)
+    except Exception:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        raise
+
+    ROVER_GLOSSARY.append({"term": term, "context": context})
+    return True

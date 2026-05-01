@@ -192,8 +192,9 @@ def main():
 
     benchmark = None
     if not args.skip_benchmark:
+        benchmark_models = [item["model"] for item in generated] or args.models
         benchmark = _run_benchmarks(
-            models=args.models,
+            models=benchmark_models,
             test_set=args.test_set,
             output_dir=output_dir,
             sample_size=args.benchmark_sample_size,

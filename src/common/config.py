@@ -78,6 +78,7 @@ class GenConfig:
     temperature: float = 0.7
     top_p: float = 0.95
     do_sample: bool = True
+    num_variants: int = 1  # sentences generated per term (each uses a different doc-type prompt)
 
 @dataclass
 class WandbConfig:

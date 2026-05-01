@@ -1,12 +1,20 @@
 import logging
 import pandas as pd
 import litellm
-import random
 import re
+from pathlib import Path
 from tqdm import tqdm
+from dotenv import load_dotenv
 from src.common.config import conf
 
 logger = logging.getLogger(__name__)
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
+def _litellm_model_id(model_id: str) -> str:
+    if model_id.startswith("google/"):
+        return "gemini/" + model_id[len("google/"):]
+    return model_id
 
 JUDGE_PROMPT = """You are an expert linguist and translator evaluating synthetic datasets for Neural Machine Translation fine-tuning.
 You must evaluate the translation from Italian to the target language based on three criteria. Give a score from 1 to 5 for each.
@@ -37,7 +45,8 @@ def evaluate_with_llm(df: pd.DataFrame, sample_size: int = 100, model_id: str = 
     n_samples = min(len(df), sample_size)
     sampled_df = df.sample(n=n_samples, random_state=42)
 
-    mid = model_id or conf.gen.model_id
+    load_dotenv(PROJECT_ROOT / ".env")
+    mid = _litellm_model_id(model_id or conf.gen.model_id)
     
     # Configure litellm for ollama if needed
     kwargs = {}
@@ -59,6 +68,7 @@ def evaluate_with_llm(df: pd.DataFrame, sample_size: int = 100, model_id: str = 
                 model=mid,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.0,
+                max_tokens=80,
                 **kwargs
             )
             content = response.choices[0].message.content

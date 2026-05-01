@@ -1,5 +1,6 @@
 # src/synthesis/ollama_generator.py
 import logging
+import time
 import pandas as pd
 from typing import List, Dict
 
@@ -12,10 +13,12 @@ from src.synthesis.base import BaseGenerator
 from src.synthesis.glossary_data import get_terms_list
 from src.synthesis.prompts import (
     GENERATION_SYSTEM_PROMPT,
-    GENERATION_USER_TEMPLATE,
+    DOC_TYPES,
+    format_generation_prompt,
     TRANSLATION_SYSTEM_PROMPT,
     TRANSLATION_USER_TEMPLATE,
 )
+from src.synthesis.parsing import parse_prefixed_translations
 from src.common.config import conf
 
 logger = logging.getLogger(__name__)
@@ -70,6 +73,23 @@ class OllamaGenerator(BaseGenerator):
         )
         return response.message.content
 
+    def _chat_with_retry(self, system: str, user: str, max_tokens: int = 400, max_retries: int = 3) -> str:
+        """Call _chat with exponential-backoff retry on transient failures."""
+        last_exc: Exception = RuntimeError("No attempts made")
+        for attempt in range(max_retries):
+            try:
+                return self._chat(system, user, max_tokens)
+            except Exception as e:
+                last_exc = e
+                if attempt < max_retries - 1:
+                    wait = 2 ** attempt
+                    logger.warning(
+                        f"LLM call failed (attempt {attempt + 1}/{max_retries}): {e}. "
+                        f"Retrying in {wait}s..."
+                    )
+                    time.sleep(wait)
+        raise last_exc
+
     def parse_output(self, generated_text: str, term: str) -> Dict | None:
         result = {
             "term": term,
@@ -79,16 +99,7 @@ class OllamaGenerator(BaseGenerator):
             "target_text_es": None,
             "raw_output": generated_text,
         }
-        for line in generated_text.split("\n"):
-            clean = line.strip()
-            if clean.startswith("IT:"):
-                result["source_text"] = clean[3:].strip()
-            elif clean.startswith("EN:"):
-                result["target_text_en"] = clean[3:].strip()
-            elif clean.startswith("FR:"):
-                result["target_text_fr"] = clean[3:].strip()
-            elif clean.startswith("ES:"):
-                result["target_text_es"] = clean[3:].strip()
+        result.update(parse_prefixed_translations(generated_text, include_source=True))
 
         if result["source_text"] and any([result["target_text_en"], result["target_text_fr"], result["target_text_es"]]):
             return result
@@ -111,37 +122,53 @@ class OllamaGenerator(BaseGenerator):
             "target_text_fr": None,
             "target_text_es": None,
         }
-        for line in response.message.content.split("\n"):
-            clean = line.strip()
-            if clean.startswith("EN:"):
-                result["target_text_en"] = clean[3:].strip()
-            elif clean.startswith("FR:"):
-                result["target_text_fr"] = clean[3:].strip()
-            elif clean.startswith("ES:"):
-                result["target_text_es"] = clean[3:].strip()
+        result.update(parse_prefixed_translations(response.message.content, include_source=False))
         return result
 
-    def generate_dataset(self, terms: List[str] = None) -> pd.DataFrame:
-        terms = terms or get_terms_list()
-        logger.info(f"Generating {len(terms)} samples with Ollama/{self.model} ...")
+    def generate_dataset(self, terms=None, num_variants: int = 1) -> pd.DataFrame:
+        """Generate synthetic translation pairs.
+
+        Args:
+            terms: List of term strings or list of dicts with 'term'/'context' keys.
+            num_variants: How many sentences to generate per term, each using a different
+                          document-type prompt to increase dataset diversity.
+        """
+        if terms is None:
+            terms = get_terms_list(with_context=True)
+
+        # Normalise to list of dicts
+        normalized = [
+            t if isinstance(t, dict) else {"term": t, "context": "general"}
+            for t in terms
+        ]
+
+        effective_variants = max(1, num_variants)
+        logger.info(
+            f"Generating {len(normalized)} terms × {effective_variants} variant(s) "
+            f"with Ollama/{self.model} ..."
+        )
         data = []
 
-        for i, term in enumerate(terms):
-            logger.info(f"[{i+1}/{len(terms)}] {term}")
-            try:
-                generated_text = self._chat(
-                    GENERATION_SYSTEM_PROMPT,
-                    GENERATION_USER_TEMPLATE.format(term=term),
-                    conf.gen.max_new_tokens,
-                )
-                entry = self.parse_output(generated_text, term)
-                if entry:
-                    data.append(entry)
-                    print(f"  IT: {entry['source_text'][:60]}")
-                    print(f"  EN: {(entry.get('target_text_en') or '')[:60]}")
-            except Exception as e:
-                logger.error(f"Error on term '{term}': {e}")
-                continue
+        for i, term_dict in enumerate(normalized):
+            term = term_dict["term"]
+            context = term_dict.get("context", "general")
+            logger.info(f"[{i + 1}/{len(normalized)}] {term}")
+
+            for v in range(effective_variants):
+                doc_type = DOC_TYPES[v % len(DOC_TYPES)]
+                try:
+                    prompt = format_generation_prompt(term, context=context, doc_type=doc_type)
+                    generated_text = self._chat_with_retry(
+                        GENERATION_SYSTEM_PROMPT, prompt, conf.gen.max_new_tokens
+                    )
+                    entry = self.parse_output(generated_text, term)
+                    if entry:
+                        entry["doc_type"] = doc_type
+                        data.append(entry)
+                        print(f"  IT: {entry['source_text'][:60]}")
+                        print(f"  EN: {(entry.get('target_text_en') or '')[:60]}")
+                except Exception as e:
+                    logger.error(f"Error on term '{term}' (variant {v + 1}): {e}")
 
         df = pd.DataFrame(data)
         logger.info(f"Done. {len(df)} samples generated.")
