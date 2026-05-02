@@ -83,3 +83,19 @@ TRANSLATION_USER_TEMPLATE = (
     '  "target_text_es": "Spanish translation"\n'
     "}}"
 )
+
+_LANG_NAMES = {
+    "eng_Latn": "English",
+    "fra_Latn": "French",
+    "spa_Latn": "Spanish",
+    "deu_Latn": "German",
+}
+
+TRANSLATE_TO_ITALIAN_USER_TEMPLATE = (
+    'Translate the following {source_lang_name} technical sentence into Italian.\n\n'
+    'Sentence: "{text}"\n\n'
+    "Return only valid JSON:\n"
+    "{{\n"
+    '  "target_text_it": "Italian translation"\n'
+    "}}"
+)

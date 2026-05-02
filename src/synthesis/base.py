@@ -12,6 +12,9 @@ from src.synthesis.glossary_data import get_terms_list
 from src.synthesis.prompts import (
     DOC_TYPES,
     GENERATION_SYSTEM_PROMPT,
+    TRANSLATION_SYSTEM_PROMPT,
+    TRANSLATE_TO_ITALIAN_USER_TEMPLATE,
+    _LANG_NAMES,
     format_generation_prompt,
 )
 from src.synthesis.parsing import parse_translations
@@ -46,6 +49,32 @@ class BaseGenerator(ABC):
     # ------------------------------------------------------------------ #
     # Shared concrete methods                                              #
     # ------------------------------------------------------------------ #
+
+    def translate_to_italian(self, text: str, source_lang: str) -> dict:
+        """Translate a non-Italian sentence into Italian.
+
+        Returns dict with source_text and target_text_it (None on parse failure).
+        """
+        import json
+        import re
+
+        lang_name = _LANG_NAMES.get(source_lang, source_lang)
+        out = self._chat_with_retry(
+            TRANSLATION_SYSTEM_PROMPT,
+            TRANSLATE_TO_ITALIAN_USER_TEMPLATE.format(text=text, source_lang_name=lang_name),
+            max_tokens=200,
+        )
+        cleaned = re.sub(r"^\s*```(?:json)?\s*|\s*```\s*$", "", out.strip(), flags=re.M)
+        start, end = cleaned.find("{"), cleaned.rfind("}")
+        if start != -1 and end > start:
+            try:
+                parsed = json.loads(cleaned[start : end + 1])
+                it_text = parsed.get("target_text_it")
+                if it_text and str(it_text).strip():
+                    return {"source_text": text, "target_text_it": str(it_text).strip()}
+            except (json.JSONDecodeError, ValueError):
+                pass
+        return {"source_text": text, "target_text_it": None}
 
     @property
     def num_workers(self) -> int:

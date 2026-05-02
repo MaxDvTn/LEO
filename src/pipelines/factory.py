@@ -183,7 +183,7 @@ class DataFactory:
             print(f"🧹 Removed {removed} invalid/duplicate rows from {label}")
         return df
 
-    def _wide_to_long(self, df: pd.DataFrame, origin: str, source_lang: str = "ita_Latn") -> pd.DataFrame:
+    def _wide_to_long(self, df: pd.DataFrame, origin: str, source_lang: str = "ita_Latn", add_reverse: bool = False) -> pd.DataFrame:
         lang_map = [
             ("target_text_en", "eng_Latn"),
             ("target_text_fr", "fra_Latn"),
@@ -200,7 +200,12 @@ class DataFactory:
                     row_source_lang = row.get("source_lang", source_lang)
                     if pd.isna(row_source_lang) or not str(row_source_lang).strip():
                         row_source_lang = source_lang
-                    item = {
+                    meta = {
+                        mc: row.get(mc)
+                        for mc in metadata_cols
+                        if mc in row and pd.notna(row.get(mc))
+                    }
+                    rows.append({
                         "source_text": row["source_text"],
                         "target_text": value,
                         "source_lang": row_source_lang,
@@ -209,11 +214,20 @@ class DataFactory:
                         "model_id": conf.gen.model_id,
                         "prompt_version": "json_v1",
                         "created_at": created_at,
-                    }
-                    for meta_col in metadata_cols:
-                        if meta_col in row and pd.notna(row.get(meta_col)):
-                            item[meta_col] = row.get(meta_col)
-                    rows.append(item)
+                        **meta,
+                    })
+                    if add_reverse:
+                        rows.append({
+                            "source_text": value,
+                            "target_text": row["source_text"],
+                            "source_lang": tgt_lang,
+                            "target_lang": row_source_lang,
+                            "origin": origin,
+                            "model_id": conf.gen.model_id,
+                            "prompt_version": "json_v1",
+                            "created_at": created_at,
+                            **meta,
+                        })
         return pd.DataFrame(rows)
 
     def _load_gold_dataset(self) -> pd.DataFrame | None:
@@ -282,52 +296,90 @@ class DataFactory:
         print(f"   📚 Unique sentences: {len(unique_sentences)} (Skipped {skipped} already validated)")
         # -------------------------------
 
-        italian_sentences = [
-            s for s in unique_sentences
-            if self._detect_source_lang(s) in {"ita_Latn", "unknown"}
-        ]
-        skipped_non_italian = len(unique_sentences) - len(italian_sentences)
-        if skipped_non_italian:
-            print(f"   🌐 Skipped {skipped_non_italian} non-Italian PDF sentences")
-        print(f"   🚀 Starting Translation ({len(italian_sentences)} Italian sentences, {generator.num_workers} workers)...")
+        by_lang: dict[str, list[str]] = {}
+        for s in unique_sentences:
+            lang = self._detect_source_lang(s)
+            by_lang.setdefault(lang, []).append(s)
+
+        italian_sentences = by_lang.get("ita_Latn", []) + by_lang.get("unknown", [])
+        native_langs = {
+            lang: sents for lang, sents in by_lang.items()
+            if lang in {"eng_Latn", "fra_Latn", "spa_Latn"}
+        }
+        print(f"   📊 Language split: {len(italian_sentences)} IT/unknown"
+              + "".join(f", {len(v)} {k}" for k, v in native_langs.items()))
+
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        import threading
 
         lang_map = [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]
         created_at = datetime.now(timezone.utc).isoformat()
         augmented_data = []
-        lock = __import__("threading").Lock()
+        lock = threading.Lock()
 
-        from concurrent.futures import ThreadPoolExecutor, as_completed
+        # --- IT/unknown → EN/FR/ES  (+ free reverse pairs EN→IT, FR→IT, ES→IT) ---
+        print(f"   🚀 IT→EN/FR/ES: {len(italian_sentences)} sentences, {generator.num_workers} workers...")
 
         def _translate_one(sent: str):
             row = generator.translate_text(sent)
             rows = []
             for lang_code, key in lang_map:
-                if row.get(key):
+                val = row.get(key)
+                if val:
                     rows.append({
-                        "source_text": sent,
-                        "target_text": row[key],
-                        "source_lang": "ita_Latn",
-                        "detected_source_lang": self._detect_source_lang(sent),
-                        "target_lang": lang_code,
-                        "origin": "pdf_mining",
-                        "model_id": conf.gen.model_id,
-                        "prompt_version": "translate_json_v1",
-                        "created_at": created_at,
+                        "source_text": sent, "target_text": val,
+                        "source_lang": "ita_Latn", "target_lang": lang_code,
+                        "origin": "pdf_mining", "model_id": conf.gen.model_id,
+                        "prompt_version": "translate_json_v1", "created_at": created_at,
+                    })
+                    # free reverse pair
+                    rows.append({
+                        "source_text": val, "target_text": sent,
+                        "source_lang": lang_code, "target_lang": "ita_Latn",
+                        "origin": "pdf_mining", "model_id": conf.gen.model_id,
+                        "prompt_version": "translate_json_v1_rev", "created_at": created_at,
                     })
             return rows
 
         with ThreadPoolExecutor(max_workers=generator.num_workers) as executor:
             futures = {executor.submit(_translate_one, s): s for s in italian_sentences}
-            with tqdm(total=len(italian_sentences), desc="AI Translation") as pbar:
+            with tqdm(total=len(italian_sentences), desc="IT→X") as pbar:
                 for future in as_completed(futures):
                     try:
-                        rows = future.result()
                         with lock:
-                            augmented_data.extend(rows)
+                            augmented_data.extend(future.result())
                     except Exception as e:
                         print(f"❌ Translation Error: {e}")
                     finally:
                         pbar.update(1)
+
+        # --- Native EN/FR/ES → IT ---
+        for src_lang, sents in native_langs.items():
+            print(f"   🚀 {src_lang}→IT: {len(sents)} sentences, {generator.num_workers} workers...")
+
+            def _to_italian(sent: str, sl: str = src_lang):
+                row = generator.translate_to_italian(sent, sl)
+                it_text = row.get("target_text_it")
+                if not it_text:
+                    return []
+                return [{
+                    "source_text": sent, "target_text": it_text,
+                    "source_lang": sl, "target_lang": "ita_Latn",
+                    "origin": "pdf_mining", "model_id": conf.gen.model_id,
+                    "prompt_version": "translate_to_it_v1", "created_at": created_at,
+                }]
+
+            with ThreadPoolExecutor(max_workers=generator.num_workers) as executor:
+                futures = {executor.submit(_to_italian, s): s for s in sents}
+                with tqdm(total=len(sents), desc=f"{src_lang}→IT") as pbar:
+                    for future in as_completed(futures):
+                        try:
+                            with lock:
+                                augmented_data.extend(future.result())
+                        except Exception as e:
+                            print(f"❌ Translation Error: {e}")
+                        finally:
+                            pbar.update(1)
 
         if augmented_data:
             return self._save_synthetic_dataset(
@@ -370,7 +422,7 @@ class DataFactory:
         if df.empty:
             return None, None
 
-        long_df = self._wide_to_long(df, origin="web_spider")
+        long_df = self._wide_to_long(df, origin="web_spider", add_reverse=True)
         if not long_df.empty:
             return self._save_synthetic_dataset(
                 long_df,
@@ -559,7 +611,7 @@ class DataFactory:
 
         df = generator.generate_dataset(terms=terms, num_variants=conf.gen.num_variants)
         if not df.empty:
-            long_df = self._wide_to_long(df, origin="glossary")
+            long_df = self._wide_to_long(df, origin="glossary", add_reverse=True)
             if long_df.empty:
                 print("⚠️  No valid translations in generated data, skipping save.")
                 return None, None
