@@ -282,37 +282,52 @@ class DataFactory:
         print(f"   📚 Unique sentences: {len(unique_sentences)} (Skipped {skipped} already validated)")
         # -------------------------------
 
-        print(f"   🚀 Starting Translation ({len(unique_sentences)} sentences)...")
-        augmented_data = []
-        lang_map = [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]
-        skipped_non_italian = 0
-        created_at = datetime.now(timezone.utc).isoformat()
-
-        for sent in tqdm(unique_sentences, desc="AI Translation"):
-            try:
-                detected_lang = self._detect_source_lang(sent)
-                if detected_lang not in {"ita_Latn", "unknown"}:
-                    skipped_non_italian += 1
-                    continue
-                row = generator.translate_text(sent)
-                for lang_code, key in lang_map:
-                    if row.get(key):
-                        augmented_data.append({
-                            "source_text": sent,
-                            "target_text": row[key],
-                            "source_lang": "ita_Latn",
-                            "detected_source_lang": detected_lang,
-                            "target_lang": lang_code,
-                            "origin": "pdf_mining",
-                            "model_id": conf.gen.model_id,
-                            "prompt_version": "translate_json_v1",
-                            "created_at": created_at,
-                        })
-            except Exception as e:
-                print(f"❌ Translation Error: {e}")
-                continue
+        italian_sentences = [
+            s for s in unique_sentences
+            if self._detect_source_lang(s) in {"ita_Latn", "unknown"}
+        ]
+        skipped_non_italian = len(unique_sentences) - len(italian_sentences)
         if skipped_non_italian:
             print(f"   🌐 Skipped {skipped_non_italian} non-Italian PDF sentences")
+        print(f"   🚀 Starting Translation ({len(italian_sentences)} Italian sentences, {generator.num_workers} workers)...")
+
+        lang_map = [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]
+        created_at = datetime.now(timezone.utc).isoformat()
+        augmented_data = []
+        lock = __import__("threading").Lock()
+
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
+        def _translate_one(sent: str):
+            row = generator.translate_text(sent)
+            rows = []
+            for lang_code, key in lang_map:
+                if row.get(key):
+                    rows.append({
+                        "source_text": sent,
+                        "target_text": row[key],
+                        "source_lang": "ita_Latn",
+                        "detected_source_lang": self._detect_source_lang(sent),
+                        "target_lang": lang_code,
+                        "origin": "pdf_mining",
+                        "model_id": conf.gen.model_id,
+                        "prompt_version": "translate_json_v1",
+                        "created_at": created_at,
+                    })
+            return rows
+
+        with ThreadPoolExecutor(max_workers=generator.num_workers) as executor:
+            futures = {executor.submit(_translate_one, s): s for s in italian_sentences}
+            with tqdm(total=len(italian_sentences), desc="AI Translation") as pbar:
+                for future in as_completed(futures):
+                    try:
+                        rows = future.result()
+                        with lock:
+                            augmented_data.extend(rows)
+                    except Exception as e:
+                        print(f"❌ Translation Error: {e}")
+                    finally:
+                        pbar.update(1)
 
         if augmented_data:
             return self._save_synthetic_dataset(
@@ -453,8 +468,9 @@ class DataFactory:
         """Build a training-ready ensemble CSV from multiple model run datasets.
 
         Args:
-            run_paths: explicit list of CSV paths from runs/. If None, uses all
-                       glossary_synthetic__*.csv files in synthetic/runs/.
+            run_paths: explicit list of CSV paths from runs/. If None, picks up all
+                       glossary_synthetic__*, rover_pdf_augmented__*, and
+                       competitor_synthetic__* files in synthetic/runs/.
             weights:   {model_id: fraction} for proportional sampling, e.g.
                        {"ollama/mistral-small3.2": 0.4, "ollama/gemma3:27b": 0.3, ...}.
                        If None, all rows from all files are included equally.
@@ -464,7 +480,11 @@ class DataFactory:
         print("\n🧩 [Phase: Build Ensemble Dataset]")
         runs_dir = self.synthetic_dir / "runs"
         if run_paths is None:
-            run_paths = sorted(runs_dir.glob("glossary_synthetic__*.csv"))
+            _PREFIXES = ("glossary_synthetic__", "rover_pdf_augmented__", "competitor_synthetic__")
+            run_paths = sorted(
+                p for p in runs_dir.glob("*.csv")
+                if any(p.name.startswith(prefix) for prefix in _PREFIXES)
+            )
 
         if not run_paths:
             print(f"⚠️  No run CSVs found in {runs_dir}")

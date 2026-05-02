@@ -75,7 +75,7 @@ class TrainerEngine:
             check_val_every_n_epoch=1,
             val_check_interval=self.config.val_check_interval,
             logger=loggers,
-            callbacks=[checkpoint_callback, lr_monitor],
+            callbacks=[checkpoint_callback, early_stop_callback, lr_monitor],
             log_every_n_steps=self.config.log_every_n_steps,
         )
 
