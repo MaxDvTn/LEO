@@ -35,7 +35,7 @@ class PathConfig:
 @dataclass
 class ModelConfig:
     """Configuration for the NMT Model."""
-    model_name: str = "facebook/nllb-200-3.3B"
+    model_name: str = "facebook/seamless-m4t-v2-large"
     max_source_length: int = 128
     max_target_length: int = 128
     
@@ -54,7 +54,7 @@ class ModelConfig:
     lora_r: int = 32
     lora_alpha: int = 64
     lora_dropout: float = 0.05
-    target_modules: List[str] = field(default_factory=lambda: ["q_proj", "v_proj", "k_proj", "o_proj"])
+    target_modules: List[str] = field(default_factory=lambda: ["q_proj", "v_proj", "k_proj", "out_proj"])
     
     log_every_n_steps: int = 10
 
