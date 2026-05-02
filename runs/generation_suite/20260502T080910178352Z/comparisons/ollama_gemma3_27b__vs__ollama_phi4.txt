@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_gemma3_27b__20260502T084603622162Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_phi4__20260502T084906058361Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+"Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra.","Lors de l'installation, assurez-vous que le coffret isolant est correctement positionné et solidement fixé pour garantir une isolation thermique optimale du système de fenêtre.",ita_Latn,fra_Latn
+"Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica.","Lors des tests de performances, la fenêtre a démontré une excellente étanchéité à l'air, dépassant les normes internationales pour l'efficacité énergétique.",ita_Latn,fra_Latn
+"Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti.","Las persianas y las cortinas para lucernarios están diseñadas para garantizar un control óptimo de la luz natural y del calor, ofreciendo una protección solar efectiva e mejorando el aislamiento térmico de los ambientes.",ita_Latn,spa_Latn
+È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra.,It is essential to use high-quality insulating material to ensure both the thermal and acoustic efficiency of the window.,ita_Latn,eng_Latn
+"Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria.","Utilice el cinta autoexpansible para garantizar un sellado hermético entre los marcos de las ventanas y las estructuras circundantes, mejorando el aislamiento térmico e eliminando filtraciones de aire.",ita_Latn,spa_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+"Per garantire prestazioni ottimali di isolamento termico e prevenire la condensa interstiziale, è fondamentale applicare una barriera al vapore sul lato caldo dell'isolante prima dell'installazione del rivestimento finale.","To ensure optimal thermal insulation performance and prevent interstitial condensation, it is crucial to apply a vapor barrier to the warm side of the insulation before installing the final cladding.",ita_Latn,eng_Latn
+"Per garantire la conformità alle normative vigenti, verifichi che la trasmittanza termica del nuovo infisso, calcolata secondo la norma UNI EN ISO 6746, sia inferiore al valore limite stabilito per la zona climatica di installazione.","Afin de garantir la conformité aux réglementations en vigueur, vérifiez que la transmittance thermique du nouveau châssis, calculée selon la norme UNI EN ISO 6746, est inférieure à la valeur limite établie pour la zone climatique d'installation.",ita_Latn,fra_Latn
+"Per prevenire la formazione di condensa superficiale sulle vetrate interne, è fondamentale garantire una corretta ventilazione dell'ambiente e l'utilizzo di guarnizioni perimetrali a tenuta stagna.","To prevent surface condensation on internal glazing, it is essential to ensure adequate ventilation of the environment and the use of airtight perimeter seals.",ita_Latn,eng_Latn
+"Per prevenire la formazione di muffa nelle aree critiche, come gli angoli delle finestre e i davanzali, è fondamentale garantire una corretta ventilazione e sigillatura durante l'installazione del telaio.","Afin de prévenir la formation de moisissures dans les zones critiques, telles que les angles des fenêtres et les rebords, il est essentiel de garantir une ventilation et une étanchéité adéquates lors de l'installation du cadre.",ita_Latn,fra_Latn
+"Prima di procedere con l'inserimento del serramento, è fondamentale verificare la planarità e la corretta fissaggio del controtelaio alla muratura, assicurandosi che sia a livello e perfettamente a piombo.","Avant de procéder à l'installation du châssis, il est essentiel de vérifier la planéité et la fixation correcte du contre-châssis à la maçonnerie, en s'assurant qu'il est de niveau et parfaitement d'aplomb.",ita_Latn,fra_Latn

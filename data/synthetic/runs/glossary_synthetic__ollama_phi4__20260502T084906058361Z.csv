@@ -1,0 +1,1105 @@
+source_text,target_text,source_lang,target_lang,origin,model_id,prompt_version,created_at,term,context,doc_type,raw_output
+Il film protettivo deve essere applicato sul vetro prima dell'installazione per garantire la massima durata e resistenza alla luce ultravioletta.,The protective film must be applied to the glass before installation to ensure maximum durability and resistance to ultraviolet light.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,film protettivo,product,an installation manual,"```json
+{
+  ""source_text"": ""Il film protettivo deve essere applicato sul vetro prima dell'installazione per garantire la massima durata e resistenza alla luce ultravioletta."",
+  ""target_text_en"": ""The protective film must be applied to the glass before installation to ensure maximum durability and resistance to ultraviolet light."",
+  ""target_text_fr"": ""Le film protecteur doit être appliqué sur le verre avant l'installation pour garantir une durabilité maximale et une résistance à la lumière ultraviolette."",
+  ""target_text_es"": ""El film protector debe aplicarse al vidrio antes de la instalación para asegurar máxima durabilidad y resistencia a la luz ultravioleta.""
+}
+```"
+Il film protettivo deve essere applicato sul vetro prima dell'installazione per garantire la massima durata e resistenza alla luce ultravioletta.,Le film protecteur doit être appliqué sur le verre avant l'installation pour garantir une durabilité maximale et une résistance à la lumière ultraviolette.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,film protettivo,product,an installation manual,"```json
+{
+  ""source_text"": ""Il film protettivo deve essere applicato sul vetro prima dell'installazione per garantire la massima durata e resistenza alla luce ultravioletta."",
+  ""target_text_en"": ""The protective film must be applied to the glass before installation to ensure maximum durability and resistance to ultraviolet light."",
+  ""target_text_fr"": ""Le film protecteur doit être appliqué sur le verre avant l'installation pour garantir une durabilité maximale et une résistance à la lumière ultraviolette."",
+  ""target_text_es"": ""El film protector debe aplicarse al vidrio antes de la instalación para asegurar máxima durabilidad y resistencia a la luz ultravioleta.""
+}
+```"
+Il film protettivo deve essere applicato sul vetro prima dell'installazione per garantire la massima durata e resistenza alla luce ultravioletta.,El film protector debe aplicarse al vidrio antes de la instalación para asegurar máxima durabilidad y resistencia a la luz ultravioleta.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,film protettivo,product,an installation manual,"```json
+{
+  ""source_text"": ""Il film protettivo deve essere applicato sul vetro prima dell'installazione per garantire la massima durata e resistenza alla luce ultravioletta."",
+  ""target_text_en"": ""The protective film must be applied to the glass before installation to ensure maximum durability and resistance to ultraviolet light."",
+  ""target_text_fr"": ""Le film protecteur doit être appliqué sur le verre avant l'installation pour garantir une durabilité maximale et une résistance à la lumière ultraviolette."",
+  ""target_text_es"": ""El film protector debe aplicarse al vidrio antes de la instalación para asegurar máxima durabilidad y resistencia a la luz ultravioleta.""
+}
+```"
+Assicurarsi che il profilo di tenuta sia correttamente inserito e sigillato per garantire l'impermeabilità e la resistenza agli agenti atmosferici.,Ensure that the sealing profile is properly fitted and sealed to guarantee waterproofing and resistance to weather elements.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,profilo di tenuta,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo di tenuta sia correttamente inserito e sigillato per garantire l'impermeabilità e la resistenza agli agenti atmosferici."",
+  ""target_text_en"": ""Ensure that the sealing profile is properly fitted and sealed to guarantee waterproofing and resistance to weather elements."",
+  ""target_text_fr"": ""Assurez-vous que le profil d'étanchéité est correctement inséré et scellé pour garantir l'imperméabilité et la résistance aux éléments extérieurs."",
+  ""target_text_es"": ""Asegúrese de que el perfil de sellado se ajuste y cierre correctamente para garantizar la impermeabilización y resistencia a los elementos climáticos.""
+}
+```"
+Assicurarsi che il profilo di tenuta sia correttamente inserito e sigillato per garantire l'impermeabilità e la resistenza agli agenti atmosferici.,Assurez-vous que le profil d'étanchéité est correctement inséré et scellé pour garantir l'imperméabilité et la résistance aux éléments extérieurs.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,profilo di tenuta,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo di tenuta sia correttamente inserito e sigillato per garantire l'impermeabilità e la resistenza agli agenti atmosferici."",
+  ""target_text_en"": ""Ensure that the sealing profile is properly fitted and sealed to guarantee waterproofing and resistance to weather elements."",
+  ""target_text_fr"": ""Assurez-vous que le profil d'étanchéité est correctement inséré et scellé pour garantir l'imperméabilité et la résistance aux éléments extérieurs."",
+  ""target_text_es"": ""Asegúrese de que el perfil de sellado se ajuste y cierre correctamente para garantizar la impermeabilización y resistencia a los elementos climáticos.""
+}
+```"
+Assicurarsi che il profilo di tenuta sia correttamente inserito e sigillato per garantire l'impermeabilità e la resistenza agli agenti atmosferici.,Asegúrese de que el perfil de sellado se ajuste y cierre correctamente para garantizar la impermeabilización y resistencia a los elementos climáticos.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,profilo di tenuta,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo di tenuta sia correttamente inserito e sigillato per garantire l'impermeabilità e la resistenza agli agenti atmosferici."",
+  ""target_text_en"": ""Ensure that the sealing profile is properly fitted and sealed to guarantee waterproofing and resistance to weather elements."",
+  ""target_text_fr"": ""Assurez-vous que le profil d'étanchéité est correctement inséré et scellé pour garantir l'imperméabilité et la résistance aux éléments extérieurs."",
+  ""target_text_es"": ""Asegúrese de que el perfil de sellado se ajuste y cierre correctamente para garantizar la impermeabilización y resistencia a los elementos climáticos.""
+}
+```"
+"Per garantire la conformità alle normative vigenti, tutti i prodotti Roverplastik sono sottoposti a rigorosi test di resistenza al fuoco prima della certificazione.","To ensure compliance with current regulations, all Roverplastik products undergo rigorous fire resistance testing prior to certification.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,resistenza al fuoco,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità alle normative vigenti, tutti i prodotti Roverplastik sono sottoposti a rigorosi test di resistenza al fuoco prima della certificazione."",
+  ""target_text_en"": ""To ensure compliance with current regulations, all Roverplastik products undergo rigorous fire resistance testing prior to certification."",
+  ""target_text_fr"": ""Pour garantir la conformité aux réglementations en vigueur, tous les produits Roverplastik subissent des tests rigoureux de résistance au feu avant leur certification."",
+  ""target_text_es"": ""Para asegurar el cumplimiento con las normativas vigentes, todos los productos Roverplastik se someten a estrictos ensayos de resistencia al fuego antes de su certificación.""
+}
+```"
+"Per garantire la conformità alle normative vigenti, tutti i prodotti Roverplastik sono sottoposti a rigorosi test di resistenza al fuoco prima della certificazione.","Pour garantir la conformité aux réglementations en vigueur, tous les produits Roverplastik subissent des tests rigoureux de résistance au feu avant leur certification.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,resistenza al fuoco,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità alle normative vigenti, tutti i prodotti Roverplastik sono sottoposti a rigorosi test di resistenza al fuoco prima della certificazione."",
+  ""target_text_en"": ""To ensure compliance with current regulations, all Roverplastik products undergo rigorous fire resistance testing prior to certification."",
+  ""target_text_fr"": ""Pour garantir la conformité aux réglementations en vigueur, tous les produits Roverplastik subissent des tests rigoureux de résistance au feu avant leur certification."",
+  ""target_text_es"": ""Para asegurar el cumplimiento con las normativas vigentes, todos los productos Roverplastik se someten a estrictos ensayos de resistencia al fuego antes de su certificación.""
+}
+```"
+"Per garantire la conformità alle normative vigenti, tutti i prodotti Roverplastik sono sottoposti a rigorosi test di resistenza al fuoco prima della certificazione.","Para asegurar el cumplimiento con las normativas vigentes, todos los productos Roverplastik se someten a estrictos ensayos de resistencia al fuego antes de su certificación.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,resistenza al fuoco,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità alle normative vigenti, tutti i prodotti Roverplastik sono sottoposti a rigorosi test di resistenza al fuoco prima della certificazione."",
+  ""target_text_en"": ""To ensure compliance with current regulations, all Roverplastik products undergo rigorous fire resistance testing prior to certification."",
+  ""target_text_fr"": ""Pour garantir la conformité aux réglementations en vigueur, tous les produits Roverplastik subissent des tests rigoureux de résistance au feu avant leur certification."",
+  ""target_text_es"": ""Para asegurar el cumplimiento con las normativas vigentes, todos los productos Roverplastik se someten a estrictos ensayos de resistencia al fuego antes de su certificación.""
+}
+```"
+Applicare il nastro adesivo di sigillatura lungo i bordi dell'infisso per garantire un tenuta ermetica e migliorare l'impermeabilità.,Apply the sealing adhesive tape along the edges of the window frame to ensure an airtight seal and enhance water resistance.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nastro adesivo di sigillatura,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro adesivo di sigillatura lungo i bordi dell'infisso per garantire un tenuta ermetica e migliorare l'impermeabilità."",
+  ""target_text_en"": ""Apply the sealing adhesive tape along the edges of the window frame to ensure an airtight seal and enhance water resistance."",
+  ""target_text_fr"": ""Appliquez le ruban adhésif de scellement le long des bords du dormant pour garantir une étanchéité hermétique et améliorer l'imperméabilité."",
+  ""target_text_es"": ""Aplicar el cinta adhesiva de sellado a lo largo de los bordes del marco para asegurar un sello hermético y mejorar la impermeabilidad.""
+}
+```"
+Applicare il nastro adesivo di sigillatura lungo i bordi dell'infisso per garantire un tenuta ermetica e migliorare l'impermeabilità.,Appliquez le ruban adhésif de scellement le long des bords du dormant pour garantir une étanchéité hermétique et améliorer l'imperméabilité.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nastro adesivo di sigillatura,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro adesivo di sigillatura lungo i bordi dell'infisso per garantire un tenuta ermetica e migliorare l'impermeabilità."",
+  ""target_text_en"": ""Apply the sealing adhesive tape along the edges of the window frame to ensure an airtight seal and enhance water resistance."",
+  ""target_text_fr"": ""Appliquez le ruban adhésif de scellement le long des bords du dormant pour garantir une étanchéité hermétique et améliorer l'imperméabilité."",
+  ""target_text_es"": ""Aplicar el cinta adhesiva de sellado a lo largo de los bordes del marco para asegurar un sello hermético y mejorar la impermeabilidad.""
+}
+```"
+Applicare il nastro adesivo di sigillatura lungo i bordi dell'infisso per garantire un tenuta ermetica e migliorare l'impermeabilità.,Aplicar el cinta adhesiva de sellado a lo largo de los bordes del marco para asegurar un sello hermético y mejorar la impermeabilidad.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nastro adesivo di sigillatura,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro adesivo di sigillatura lungo i bordi dell'infisso per garantire un tenuta ermetica e migliorare l'impermeabilità."",
+  ""target_text_en"": ""Apply the sealing adhesive tape along the edges of the window frame to ensure an airtight seal and enhance water resistance."",
+  ""target_text_fr"": ""Appliquez le ruban adhésif de scellement le long des bords du dormant pour garantir une étanchéité hermétique et améliorer l'imperméabilité."",
+  ""target_text_es"": ""Aplicar el cinta adhesiva de sellado a lo largo de los bordes del marco para asegurar un sello hermético y mejorar la impermeabilidad.""
+}
+```"
+È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra.,It is essential to use high-quality insulating material to ensure both the thermal and acoustic efficiency of the window.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,materiale isolante,insulation,an installation manual,"```json
+{
+  ""source_text"": ""È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra."",
+  ""target_text_en"": ""It is essential to use high-quality insulating material to ensure both the thermal and acoustic efficiency of the window."",
+  ""target_text_fr"": ""Il est essentiel d'utiliser un matériau isolant de haute qualité pour garantir à la fois l'efficacité thermique et acoustique de la fenêtre."",
+  ""target_text_es"": ""Es fundamental utilizar un material aislante de alta calidad para garantizar tanto el rendimiento térmico como acústico de la ventana.""
+}
+```"
+È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra.,Il est essentiel d'utiliser un matériau isolant de haute qualité pour garantir à la fois l'efficacité thermique et acoustique de la fenêtre.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,materiale isolante,insulation,an installation manual,"```json
+{
+  ""source_text"": ""È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra."",
+  ""target_text_en"": ""It is essential to use high-quality insulating material to ensure both the thermal and acoustic efficiency of the window."",
+  ""target_text_fr"": ""Il est essentiel d'utiliser un matériau isolant de haute qualité pour garantir à la fois l'efficacité thermique et acoustique de la fenêtre."",
+  ""target_text_es"": ""Es fundamental utilizar un material aislante de alta calidad para garantizar tanto el rendimiento térmico como acústico de la ventana.""
+}
+```"
+È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra.,Es fundamental utilizar un material aislante de alta calidad para garantizar tanto el rendimiento térmico como acústico de la ventana.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,materiale isolante,insulation,an installation manual,"```json
+{
+  ""source_text"": ""È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra."",
+  ""target_text_en"": ""It is essential to use high-quality insulating material to ensure both the thermal and acoustic efficiency of the window."",
+  ""target_text_fr"": ""Il est essentiel d'utiliser un matériau isolant de haute qualité pour garantir à la fois l'efficacité thermique et acoustique de la fenêtre."",
+  ""target_text_es"": ""Es fundamental utilizar un material aislante de alta calidad para garantizar tanto el rendimiento térmico como acústico de la ventana.""
+}
+```"
+Assicurarsi che le dimensioni del profilo siano conformi ai requisiti specificati nella sezione 'Specifiche Tecniche' per garantire una corretta installazione.,Ensure that the profile dimensions comply with the specifications outlined in the 'Technical Specifications' section to ensure proper installation.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,dimensioni del profilo,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le dimensioni del profilo siano conformi ai requisiti specificati nella sezione 'Specifiche Tecniche' per garantire una corretta installazione."",
+  ""target_text_en"": ""Ensure that the profile dimensions comply with the specifications outlined in the 'Technical Specifications' section to ensure proper installation."",
+  ""target_text_fr"": ""Assurez-vous que les dimensions du profil correspondent aux spécifications indiquées dans la section 'Spécifications Techniques' pour garantir une installation correcte."",
+  ""target_text_es"": ""Asegúrese de que las dimensiones del perfil cumplan con los requisitos especificados en la sección 'Especificaciones Técnicas' para garantizar una instalación adecuada.""
+}
+```"
+Assicurarsi che le dimensioni del profilo siano conformi ai requisiti specificati nella sezione 'Specifiche Tecniche' per garantire una corretta installazione.,Assurez-vous que les dimensions du profil correspondent aux spécifications indiquées dans la section 'Spécifications Techniques' pour garantir une installation correcte.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,dimensioni del profilo,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le dimensioni del profilo siano conformi ai requisiti specificati nella sezione 'Specifiche Tecniche' per garantire una corretta installazione."",
+  ""target_text_en"": ""Ensure that the profile dimensions comply with the specifications outlined in the 'Technical Specifications' section to ensure proper installation."",
+  ""target_text_fr"": ""Assurez-vous que les dimensions du profil correspondent aux spécifications indiquées dans la section 'Spécifications Techniques' pour garantir une installation correcte."",
+  ""target_text_es"": ""Asegúrese de que las dimensiones del perfil cumplan con los requisitos especificados en la sección 'Especificaciones Técnicas' para garantizar una instalación adecuada.""
+}
+```"
+Assicurarsi che le dimensioni del profilo siano conformi ai requisiti specificati nella sezione 'Specifiche Tecniche' per garantire una corretta installazione.,Asegúrese de que las dimensiones del perfil cumplan con los requisitos especificados en la sección 'Especificaciones Técnicas' para garantizar una instalación adecuada.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,dimensioni del profilo,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le dimensioni del profilo siano conformi ai requisiti specificati nella sezione 'Specifiche Tecniche' per garantire una corretta installazione."",
+  ""target_text_en"": ""Ensure that the profile dimensions comply with the specifications outlined in the 'Technical Specifications' section to ensure proper installation."",
+  ""target_text_fr"": ""Assurez-vous que les dimensions du profil correspondent aux spécifications indiquées dans la section 'Spécifications Techniques' pour garantir une installation correcte."",
+  ""target_text_es"": ""Asegúrese de que las dimensiones del perfil cumplan con los requisitos especificados en la sección 'Especificaciones Técnicas' para garantizar una instalación adecuada.""
+}
+```"
+"La prestazione acustica del nostro vetro isolante è stata certificata secondo gli standard internazionali, assicurando un'efficace riduzione dei rumori esterni.","The acoustic performance of our insulating glass has been certified according to international standards, ensuring effective reduction of external noise.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,prestazione acustica,performance,an installation manual,"```json
+{
+  ""source_text"": ""La prestazione acustica del nostro vetro isolante è stata certificata secondo gli standard internazionali, assicurando un'efficace riduzione dei rumori esterni."",
+  ""target_text_en"": ""The acoustic performance of our insulating glass has been certified according to international standards, ensuring effective reduction of external noise."",
+  ""target_text_fr"": ""La performance acoustique de notre verre isolant a été certifiée selon les normes internationales, assurant une réduction efficace des bruits extérieurs."",
+  ""target_text_es"": ""El rendimiento acústico de nuestro vidrio aislante ha sido certificado según los estándares internacionales, asegurando una reducción efectiva del ruido exterior.""
+}
+```"
+"La prestazione acustica del nostro vetro isolante è stata certificata secondo gli standard internazionali, assicurando un'efficace riduzione dei rumori esterni.","La performance acoustique de notre verre isolant a été certifiée selon les normes internationales, assurant une réduction efficace des bruits extérieurs.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,prestazione acustica,performance,an installation manual,"```json
+{
+  ""source_text"": ""La prestazione acustica del nostro vetro isolante è stata certificata secondo gli standard internazionali, assicurando un'efficace riduzione dei rumori esterni."",
+  ""target_text_en"": ""The acoustic performance of our insulating glass has been certified according to international standards, ensuring effective reduction of external noise."",
+  ""target_text_fr"": ""La performance acoustique de notre verre isolant a été certifiée selon les normes internationales, assurant une réduction efficace des bruits extérieurs."",
+  ""target_text_es"": ""El rendimiento acústico de nuestro vidrio aislante ha sido certificado según los estándares internacionales, asegurando una reducción efectiva del ruido exterior.""
+}
+```"
+"La prestazione acustica del nostro vetro isolante è stata certificata secondo gli standard internazionali, assicurando un'efficace riduzione dei rumori esterni.","El rendimiento acústico de nuestro vidrio aislante ha sido certificado según los estándares internacionales, asegurando una reducción efectiva del ruido exterior.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,prestazione acustica,performance,an installation manual,"```json
+{
+  ""source_text"": ""La prestazione acustica del nostro vetro isolante è stata certificata secondo gli standard internazionali, assicurando un'efficace riduzione dei rumori esterni."",
+  ""target_text_en"": ""The acoustic performance of our insulating glass has been certified according to international standards, ensuring effective reduction of external noise."",
+  ""target_text_fr"": ""La performance acoustique de notre verre isolant a été certifiée selon les normes internationales, assurant une réduction efficace des bruits extérieurs."",
+  ""target_text_es"": ""El rendimiento acústico de nuestro vidrio aislante ha sido certificado según los estándares internacionales, asegurando una reducción efectiva del ruido exterior.""
+}
+```"
+"Durante l'installazione delle finestre, è essenziale applicare il sigillante per giunti lungo le linee di contatto con la struttura dell'edificio per garantire un'efficace tenuta e protezione contro infiltrazioni d'acqua.","During window installation, it is essential to apply the joint sealant along the contact lines with the building structure to ensure effective sealing and protection against water infiltration.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sigillante per giunti,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è essenziale applicare il sigillante per giunti lungo le linee di contatto con la struttura dell'edificio per garantire un'efficace tenuta e protezione contro infiltrazioni d'acqua."",
+  ""target_text_en"": ""During window installation, it is essential to apply the joint sealant along the contact lines with the building structure to ensure effective sealing and protection against water infiltration."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel d'appliquer le scellant pour joints le long des lignes de contact avec la structure du bâtiment afin de garantir une étanchéité efficace et une protection contre les infiltrations d'eau."",
+  ""target_text_es"": ""Durante la instalación de ventanas, es esencial aplicar el sellador para juntas a lo largo de las líneas de contacto con la estructura del edificio para garantizar un sellado efectivo y protección contra filtraciones de agua.""
+}
+```"
+"Durante l'installazione delle finestre, è essenziale applicare il sigillante per giunti lungo le linee di contatto con la struttura dell'edificio per garantire un'efficace tenuta e protezione contro infiltrazioni d'acqua.","Lors de l'installation des fenêtres, il est essentiel d'appliquer le scellant pour joints le long des lignes de contact avec la structure du bâtiment afin de garantir une étanchéité efficace et une protection contre les infiltrations d'eau.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sigillante per giunti,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è essenziale applicare il sigillante per giunti lungo le linee di contatto con la struttura dell'edificio per garantire un'efficace tenuta e protezione contro infiltrazioni d'acqua."",
+  ""target_text_en"": ""During window installation, it is essential to apply the joint sealant along the contact lines with the building structure to ensure effective sealing and protection against water infiltration."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel d'appliquer le scellant pour joints le long des lignes de contact avec la structure du bâtiment afin de garantir une étanchéité efficace et une protection contre les infiltrations d'eau."",
+  ""target_text_es"": ""Durante la instalación de ventanas, es esencial aplicar el sellador para juntas a lo largo de las líneas de contacto con la estructura del edificio para garantizar un sellado efectivo y protección contra filtraciones de agua.""
+}
+```"
+"Durante l'installazione delle finestre, è essenziale applicare il sigillante per giunti lungo le linee di contatto con la struttura dell'edificio per garantire un'efficace tenuta e protezione contro infiltrazioni d'acqua.","Durante la instalación de ventanas, es esencial aplicar el sellador para juntas a lo largo de las líneas de contacto con la estructura del edificio para garantizar un sellado efectivo y protección contra filtraciones de agua.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sigillante per giunti,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è essenziale applicare il sigillante per giunti lungo le linee di contatto con la struttura dell'edificio per garantire un'efficace tenuta e protezione contro infiltrazioni d'acqua."",
+  ""target_text_en"": ""During window installation, it is essential to apply the joint sealant along the contact lines with the building structure to ensure effective sealing and protection against water infiltration."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel d'appliquer le scellant pour joints le long des lignes de contact avec la structure du bâtiment afin de garantir une étanchéité efficace et une protection contre les infiltrations d'eau."",
+  ""target_text_es"": ""Durante la instalación de ventanas, es esencial aplicar el sellador para juntas a lo largo de las líneas de contacto con la estructura del edificio para garantizar un sellado efectivo y protección contra filtraciones de agua.""
+}
+```"
+"Durante l'installazione, assicurarsi che la membrana al vapore sia posizionata correttamente per garantire un'efficace barriera termica e acustica.","During installation, ensure that the vapor barrier membrane is correctly positioned to provide an effective thermal and acoustic barrier.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,membrana al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la membrana al vapore sia posizionata correttamente per garantire un'efficace barriera termica e acustica."",
+  ""target_text_en"": ""During installation, ensure that the vapor barrier membrane is correctly positioned to provide an effective thermal and acoustic barrier."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que la membrane à vapeur soit correctement positionnée pour assurer une barrière thermique et acoustique efficace."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que la membrana al vapor esté colocada correctamente para proporcionar una barrera térmica y acústica efectiva.""
+}
+```"
+"Durante l'installazione, assicurarsi che la membrana al vapore sia posizionata correttamente per garantire un'efficace barriera termica e acustica.","Lors de l'installation, assurez-vous que la membrane à vapeur soit correctement positionnée pour assurer une barrière thermique et acoustique efficace.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,membrana al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la membrana al vapore sia posizionata correttamente per garantire un'efficace barriera termica e acustica."",
+  ""target_text_en"": ""During installation, ensure that the vapor barrier membrane is correctly positioned to provide an effective thermal and acoustic barrier."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que la membrane à vapeur soit correctement positionnée pour assurer une barrière thermique et acoustique efficace."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que la membrana al vapor esté colocada correctamente para proporcionar una barrera térmica y acústica efectiva.""
+}
+```"
+"Durante l'installazione, assicurarsi che la membrana al vapore sia posizionata correttamente per garantire un'efficace barriera termica e acustica.","Durante la instalación, asegúrese de que la membrana al vapor esté colocada correctamente para proporcionar una barrera térmica y acústica efectiva.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,membrana al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la membrana al vapore sia posizionata correttamente per garantire un'efficace barriera termica e acustica."",
+  ""target_text_en"": ""During installation, ensure that the vapor barrier membrane is correctly positioned to provide an effective thermal and acoustic barrier."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que la membrane à vapeur soit correctement positionnée pour assurer une barrière thermique et acoustique efficace."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que la membrana al vapor esté colocada correctamente para proporcionar una barrera térmica y acústica efectiva.""
+}
+```"
+"La progettazione innovativa del nostro vetro garantisce una facilità di posa, riducendo i tempi e il carico di lavoro per gli installatori.","The innovative design of our glass ensures ease of installation, reducing both time and workload for installers.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,facilità di posa,installation,an installation manual,"```json
+{
+  ""source_text"": ""La progettazione innovativa del nostro vetro garantisce una facilità di posa, riducendo i tempi e il carico di lavoro per gli installatori."",
+  ""target_text_en"": ""The innovative design of our glass ensures ease of installation, reducing both time and workload for installers."",
+  ""target_text_fr"": ""La conception innovante de notre verre garantit une facilité d'installation, réduisant ainsi le temps et la charge de travail pour les poseurs."",
+  ""target_text_es"": ""El diseño innovador de nuestro vidrio asegura una facilidad de colocación, reduciendo el tiempo y la carga de trabajo para los instaladores.""
+}
+```"
+"La progettazione innovativa del nostro vetro garantisce una facilità di posa, riducendo i tempi e il carico di lavoro per gli installatori.","La conception innovante de notre verre garantit une facilité d'installation, réduisant ainsi le temps et la charge de travail pour les poseurs.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,facilità di posa,installation,an installation manual,"```json
+{
+  ""source_text"": ""La progettazione innovativa del nostro vetro garantisce una facilità di posa, riducendo i tempi e il carico di lavoro per gli installatori."",
+  ""target_text_en"": ""The innovative design of our glass ensures ease of installation, reducing both time and workload for installers."",
+  ""target_text_fr"": ""La conception innovante de notre verre garantit une facilité d'installation, réduisant ainsi le temps et la charge de travail pour les poseurs."",
+  ""target_text_es"": ""El diseño innovador de nuestro vidrio asegura una facilidad de colocación, reduciendo el tiempo y la carga de trabajo para los instaladores.""
+}
+```"
+"La progettazione innovativa del nostro vetro garantisce una facilità di posa, riducendo i tempi e il carico di lavoro per gli installatori.","El diseño innovador de nuestro vidrio asegura una facilidad de colocación, reduciendo el tiempo y la carga de trabajo para los instaladores.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,facilità di posa,installation,an installation manual,"```json
+{
+  ""source_text"": ""La progettazione innovativa del nostro vetro garantisce una facilità di posa, riducendo i tempi e il carico di lavoro per gli installatori."",
+  ""target_text_en"": ""The innovative design of our glass ensures ease of installation, reducing both time and workload for installers."",
+  ""target_text_fr"": ""La conception innovante de notre verre garantit une facilité d'installation, réduisant ainsi le temps et la charge de travail pour les poseurs."",
+  ""target_text_es"": ""El diseño innovador de nuestro vidrio asegura una facilidad de colocación, reduciendo el tiempo y la carga de trabajo para los instaladores.""
+}
+```"
+"Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra.","During installation, ensure that the insulated cowl is correctly positioned and securely fastened to provide optimal thermal insulation for the window system.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,cassonetto coibentato,structure,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra."",
+  ""target_text_en"": ""During installation, ensure that the insulated cowl is correctly positioned and securely fastened to provide optimal thermal insulation for the window system."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que le coffret isolant est correctement positionné et solidement fixé pour garantir une isolation thermique optimale du système de fenêtre."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que el cajón aislado esté correctamente posicionado y fijado firmemente para garantizar un aislamiento térmico óptimo del sistema de ventanas.""
+}
+```"
+"Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra.","Lors de l'installation, assurez-vous que le coffret isolant est correctement positionné et solidement fixé pour garantir une isolation thermique optimale du système de fenêtre.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,cassonetto coibentato,structure,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra."",
+  ""target_text_en"": ""During installation, ensure that the insulated cowl is correctly positioned and securely fastened to provide optimal thermal insulation for the window system."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que le coffret isolant est correctement positionné et solidement fixé pour garantir une isolation thermique optimale du système de fenêtre."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que el cajón aislado esté correctamente posicionado y fijado firmemente para garantizar un aislamiento térmico óptimo del sistema de ventanas.""
+}
+```"
+"Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra.","Durante la instalación, asegúrese de que el cajón aislado esté correctamente posicionado y fijado firmemente para garantizar un aislamiento térmico óptimo del sistema de ventanas.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,cassonetto coibentato,structure,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra."",
+  ""target_text_en"": ""During installation, ensure that the insulated cowl is correctly positioned and securely fastened to provide optimal thermal insulation for the window system."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que le coffret isolant est correctement positionné et solidement fixé pour garantir une isolation thermique optimale du système de fenêtre."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que el cajón aislado esté correctamente posicionado y fijado firmemente para garantizar un aislamiento térmico óptimo del sistema de ventanas.""
+}
+```"
+Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio e la vetratura per garantire un'efficace tenuta contro l'infiltrazione di aria e suono.,Ensure that the thermoacoustic gasket is correctly positioned between the frame and the glazing to provide an effective seal against air and sound infiltration.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,guarnizione termoacustica,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio e la vetratura per garantire un'efficace tenuta contro l'infiltrazione di aria e suono."",
+  ""target_text_en"": ""Ensure that the thermoacoustic gasket is correctly positioned between the frame and the glazing to provide an effective seal against air and sound infiltration."",
+  ""target_text_fr"": ""Assurez-vous que le joint thermique et acoustique est correctement positionné entre le cadre et l'ouvrant pour garantir une étanchéité efficace contre les infiltrations d'air et de son."",
+  ""target_text_es"": ""Asegúrese de que la junta termoacústica esté correctamente colocada entre el marco y el vidrio para proporcionar un sellado eficaz contra la infiltración de aire y sonido.""
+}
+```"
+Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio e la vetratura per garantire un'efficace tenuta contro l'infiltrazione di aria e suono.,Assurez-vous que le joint thermique et acoustique est correctement positionné entre le cadre et l'ouvrant pour garantir une étanchéité efficace contre les infiltrations d'air et de son.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,guarnizione termoacustica,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio e la vetratura per garantire un'efficace tenuta contro l'infiltrazione di aria e suono."",
+  ""target_text_en"": ""Ensure that the thermoacoustic gasket is correctly positioned between the frame and the glazing to provide an effective seal against air and sound infiltration."",
+  ""target_text_fr"": ""Assurez-vous que le joint thermique et acoustique est correctement positionné entre le cadre et l'ouvrant pour garantir une étanchéité efficace contre les infiltrations d'air et de son."",
+  ""target_text_es"": ""Asegúrese de que la junta termoacústica esté correctamente colocada entre el marco y el vidrio para proporcionar un sellado eficaz contra la infiltración de aire y sonido.""
+}
+```"
+Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio e la vetratura per garantire un'efficace tenuta contro l'infiltrazione di aria e suono.,Asegúrese de que la junta termoacústica esté correctamente colocada entre el marco y el vidrio para proporcionar un sellado eficaz contra la infiltración de aire y sonido.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,guarnizione termoacustica,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio e la vetratura per garantire un'efficace tenuta contro l'infiltrazione di aria e suono."",
+  ""target_text_en"": ""Ensure that the thermoacoustic gasket is correctly positioned between the frame and the glazing to provide an effective seal against air and sound infiltration."",
+  ""target_text_fr"": ""Assurez-vous que le joint thermique et acoustique est correctement positionné entre le cadre et l'ouvrant pour garantir une étanchéité efficace contre les infiltrations d'air et de son."",
+  ""target_text_es"": ""Asegúrese de que la junta termoacústica esté correctamente colocada entre el marco y el vidrio para proporcionar un sellado eficaz contra la infiltración de aire y sonido.""
+}
+```"
+Assicurarsi che il profilo del telaio in monoblocco sia correttamente allineato e fissato prima di procedere con l'installazione delle ante.,Ensure that the window frame profile made of monoblock is properly aligned and secured before proceeding with the installation of the doors.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,monoblocco,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo del telaio in monoblocco sia correttamente allineato e fissato prima di procedere con l'installazione delle ante."",
+  ""target_text_en"": ""Ensure that the window frame profile made of monoblock is properly aligned and secured before proceeding with the installation of the doors."",
+  ""target_text_fr"": ""Assurez-vous que le profil du cadre en monobloc est correctement aligné et fixé avant de procéder à l'installation des battants."",
+  ""target_text_es"": ""Asegúrese de que el perfil del marco de monobloque se alinee y fije correctamente antes de proceder con la instalación de las hojas.""
+}
+```"
+Assicurarsi che il profilo del telaio in monoblocco sia correttamente allineato e fissato prima di procedere con l'installazione delle ante.,Assurez-vous que le profil du cadre en monobloc est correctement aligné et fixé avant de procéder à l'installation des battants.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,monoblocco,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo del telaio in monoblocco sia correttamente allineato e fissato prima di procedere con l'installazione delle ante."",
+  ""target_text_en"": ""Ensure that the window frame profile made of monoblock is properly aligned and secured before proceeding with the installation of the doors."",
+  ""target_text_fr"": ""Assurez-vous que le profil du cadre en monobloc est correctement aligné et fixé avant de procéder à l'installation des battants."",
+  ""target_text_es"": ""Asegúrese de que el perfil del marco de monobloque se alinee y fije correctamente antes de proceder con la instalación de las hojas.""
+}
+```"
+Assicurarsi che il profilo del telaio in monoblocco sia correttamente allineato e fissato prima di procedere con l'installazione delle ante.,Asegúrese de que el perfil del marco de monobloque se alinee y fije correctamente antes de proceder con la instalación de las hojas.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,monoblocco,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo del telaio in monoblocco sia correttamente allineato e fissato prima di procedere con l'installazione delle ante."",
+  ""target_text_en"": ""Ensure that the window frame profile made of monoblock is properly aligned and secured before proceeding with the installation of the doors."",
+  ""target_text_fr"": ""Assurez-vous que le profil du cadre en monobloc est correctement aligné et fixé avant de procéder à l'installation des battants."",
+  ""target_text_es"": ""Asegúrese de que el perfil del marco de monobloque se alinee y fije correctamente antes de proceder con la instalación de las hojas.""
+}
+```"
+"Durante l'installazione, assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'efficace isolamento termico e acustico della finestra.",Ensure that the insulated shoulder is correctly positioned during installation to provide effective thermal and acoustic insulation of the window.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,spalla coibentata,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'efficace isolamento termico e acustico della finestra."",
+  ""target_text_en"": ""Ensure that the insulated shoulder is correctly positioned during installation to provide effective thermal and acoustic insulation of the window."",
+  ""target_text_fr"": ""Assurez-vous que l'épaule isolée soit correctement positionnée lors de l'installation pour garantir une isolation thermique et acoustique efficace de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que el hombro aislado esté correctamente posicionado durante la instalación para proporcionar un efectivo aislamiento térmico y acústico de la ventana.""
+}
+```"
+"Durante l'installazione, assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'efficace isolamento termico e acustico della finestra.",Assurez-vous que l'épaule isolée soit correctement positionnée lors de l'installation pour garantir une isolation thermique et acoustique efficace de la fenêtre.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,spalla coibentata,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'efficace isolamento termico e acustico della finestra."",
+  ""target_text_en"": ""Ensure that the insulated shoulder is correctly positioned during installation to provide effective thermal and acoustic insulation of the window."",
+  ""target_text_fr"": ""Assurez-vous que l'épaule isolée soit correctement positionnée lors de l'installation pour garantir une isolation thermique et acoustique efficace de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que el hombro aislado esté correctamente posicionado durante la instalación para proporcionar un efectivo aislamiento térmico y acústico de la ventana.""
+}
+```"
+"Durante l'installazione, assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'efficace isolamento termico e acustico della finestra.",Asegúrese de que el hombro aislado esté correctamente posicionado durante la instalación para proporcionar un efectivo aislamiento térmico y acústico de la ventana.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,spalla coibentata,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'efficace isolamento termico e acustico della finestra."",
+  ""target_text_en"": ""Ensure that the insulated shoulder is correctly positioned during installation to provide effective thermal and acoustic insulation of the window."",
+  ""target_text_fr"": ""Assurez-vous que l'épaule isolée soit correctement positionnée lors de l'installation pour garantir une isolation thermique et acoustique efficace de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que el hombro aislado esté correctamente posicionado durante la instalación para proporcionar un efectivo aislamiento térmico y acústico de la ventana.""
+}
+```"
+"Durante l'installazione delle finestre, è fondamentale garantire che il profilo sottobancale sia fissato solidamente al muro per prevenire movimenti indesiderati e perdite d'aria.","During window installation, it is crucial to ensure that the under-sill profile is securely attached to the wall to prevent unwanted movement and air leakage.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sottobancale,structure,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è fondamentale garantire che il profilo sottobancale sia fissato solidamente al muro per prevenire movimenti indesiderati e perdite d'aria."",
+  ""target_text_en"": ""During window installation, it is crucial to ensure that the under-sill profile is securely attached to the wall to prevent unwanted movement and air leakage."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel de garantir que le profilé sous-banc soit solidement fixé au mur pour éviter les mouvements indésirables et les fuites d'air."",
+  ""target_text_es"": ""Durante la instalación de ventanas, es fundamental asegurarse de que el perfil sotobancale esté firmemente sujeto a la pared para prevenir movimientos no deseados y pérdidas de aire.""
+}
+```"
+"Durante l'installazione delle finestre, è fondamentale garantire che il profilo sottobancale sia fissato solidamente al muro per prevenire movimenti indesiderati e perdite d'aria.","Lors de l'installation des fenêtres, il est essentiel de garantir que le profilé sous-banc soit solidement fixé au mur pour éviter les mouvements indésirables et les fuites d'air.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sottobancale,structure,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è fondamentale garantire che il profilo sottobancale sia fissato solidamente al muro per prevenire movimenti indesiderati e perdite d'aria."",
+  ""target_text_en"": ""During window installation, it is crucial to ensure that the under-sill profile is securely attached to the wall to prevent unwanted movement and air leakage."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel de garantir que le profilé sous-banc soit solidement fixé au mur pour éviter les mouvements indésirables et les fuites d'air."",
+  ""target_text_es"": ""Durante la instalación de ventanas, es fundamental asegurarse de que el perfil sotobancale esté firmemente sujeto a la pared para prevenir movimientos no deseados y pérdidas de aire.""
+}
+```"
+"Durante l'installazione delle finestre, è fondamentale garantire che il profilo sottobancale sia fissato solidamente al muro per prevenire movimenti indesiderati e perdite d'aria.","Durante la instalación de ventanas, es fundamental asegurarse de que el perfil sotobancale esté firmemente sujeto a la pared para prevenir movimientos no deseados y pérdidas de aire.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sottobancale,structure,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è fondamentale garantire che il profilo sottobancale sia fissato solidamente al muro per prevenire movimenti indesiderati e perdite d'aria."",
+  ""target_text_en"": ""During window installation, it is crucial to ensure that the under-sill profile is securely attached to the wall to prevent unwanted movement and air leakage."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel de garantir que le profilé sous-banc soit solidement fixé au mur pour éviter les mouvements indésirables et les fuites d'air."",
+  ""target_text_es"": ""Durante la instalación de ventanas, es fundamental asegurarse de que el perfil sotobancale esté firmemente sujeto a la pared para prevenir movimientos no deseados y pérdidas de aire.""
+}
+```"
+Assicurarsi che la chiusura oscurante sia correttamente allineata e fissata al telaio per garantire un'efficace ombreggiatura solare.,Ensure that the blackout closure is properly aligned and secured to the frame for effective solar shading.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,chiusura oscurante,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la chiusura oscurante sia correttamente allineata e fissata al telaio per garantire un'efficace ombreggiatura solare."",
+  ""target_text_en"": ""Ensure that the blackout closure is properly aligned and secured to the frame for effective solar shading."",
+  ""target_text_fr"": ""Assurez-vous que la fermeture occultante soit correctement alignée et fixée au cadre pour garantir un ombrage solaire efficace."",
+  ""target_text_es"": ""Asegúrese de que el cierre oscurecedor esté correctamente alineado y fijado al marco para garantizar una eficaz sombreado solar.""
+}
+```"
+Assicurarsi che la chiusura oscurante sia correttamente allineata e fissata al telaio per garantire un'efficace ombreggiatura solare.,Assurez-vous que la fermeture occultante soit correctement alignée et fixée au cadre pour garantir un ombrage solaire efficace.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,chiusura oscurante,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la chiusura oscurante sia correttamente allineata e fissata al telaio per garantire un'efficace ombreggiatura solare."",
+  ""target_text_en"": ""Ensure that the blackout closure is properly aligned and secured to the frame for effective solar shading."",
+  ""target_text_fr"": ""Assurez-vous que la fermeture occultante soit correctement alignée et fixée au cadre pour garantir un ombrage solaire efficace."",
+  ""target_text_es"": ""Asegúrese de que el cierre oscurecedor esté correctamente alineado y fijado al marco para garantizar una eficaz sombreado solar.""
+}
+```"
+Assicurarsi che la chiusura oscurante sia correttamente allineata e fissata al telaio per garantire un'efficace ombreggiatura solare.,Asegúrese de que el cierre oscurecedor esté correctamente alineado y fijado al marco para garantizar una eficaz sombreado solar.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,chiusura oscurante,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la chiusura oscurante sia correttamente allineata e fissata al telaio per garantire un'efficace ombreggiatura solare."",
+  ""target_text_en"": ""Ensure that the blackout closure is properly aligned and secured to the frame for effective solar shading."",
+  ""target_text_fr"": ""Assurez-vous que la fermeture occultante soit correctement alignée et fixée au cadre pour garantir un ombrage solaire efficace."",
+  ""target_text_es"": ""Asegúrese de que el cierre oscurecedor esté correctamente alineado y fijado al marco para garantizar una eficaz sombreado solar.""
+}
+```"
+"Durante l'installazione, assicurarsi che l'avvolgibile in alluminio sia correttamente fissato al telaio della finestra per garantire una funzionalità ottimale e resistenza alle condizioni climatiche estreme.","During installation, ensure that the aluminum roller blind is properly secured to the window frame to guarantee optimal functionality and resistance to extreme weather conditions.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,avvolgibile in alluminio,shading,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che l'avvolgibile in alluminio sia correttamente fissato al telaio della finestra per garantire una funzionalità ottimale e resistenza alle condizioni climatiche estreme."",
+  ""target_text_en"": ""During installation, ensure that the aluminum roller blind is properly secured to the window frame to guarantee optimal functionality and resistance to extreme weather conditions."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que le store roulant en aluminium soit correctement fixé au cadre de la fenêtre pour garantir une fonctionnalité optimale et une résistance aux conditions climatiques extrêmes."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que el estor enrollable de aluminio esté correctamente fijado al marco de la ventana para garantizar un funcionamiento óptimo y resistencia a las condiciones meteorológicas extremas.""
+}
+```"
+"Durante l'installazione, assicurarsi che l'avvolgibile in alluminio sia correttamente fissato al telaio della finestra per garantire una funzionalità ottimale e resistenza alle condizioni climatiche estreme.","Lors de l'installation, assurez-vous que le store roulant en aluminium soit correctement fixé au cadre de la fenêtre pour garantir une fonctionnalité optimale et une résistance aux conditions climatiques extrêmes.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,avvolgibile in alluminio,shading,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che l'avvolgibile in alluminio sia correttamente fissato al telaio della finestra per garantire una funzionalità ottimale e resistenza alle condizioni climatiche estreme."",
+  ""target_text_en"": ""During installation, ensure that the aluminum roller blind is properly secured to the window frame to guarantee optimal functionality and resistance to extreme weather conditions."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que le store roulant en aluminium soit correctement fixé au cadre de la fenêtre pour garantir une fonctionnalité optimale et une résistance aux conditions climatiques extrêmes."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que el estor enrollable de aluminio esté correctamente fijado al marco de la ventana para garantizar un funcionamiento óptimo y resistencia a las condiciones meteorológicas extremas.""
+}
+```"
+"Durante l'installazione, assicurarsi che l'avvolgibile in alluminio sia correttamente fissato al telaio della finestra per garantire una funzionalità ottimale e resistenza alle condizioni climatiche estreme.","Durante la instalación, asegúrese de que el estor enrollable de aluminio esté correctamente fijado al marco de la ventana para garantizar un funcionamiento óptimo y resistencia a las condiciones meteorológicas extremas.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,avvolgibile in alluminio,shading,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che l'avvolgibile in alluminio sia correttamente fissato al telaio della finestra per garantire una funzionalità ottimale e resistenza alle condizioni climatiche estreme."",
+  ""target_text_en"": ""During installation, ensure that the aluminum roller blind is properly secured to the window frame to guarantee optimal functionality and resistance to extreme weather conditions."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que le store roulant en aluminium soit correctement fixé au cadre de la fenêtre pour garantir une fonctionnalité optimale et une résistance aux conditions climatiques extrêmes."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que el estor enrollable de aluminio esté correctamente fijado al marco de la ventana para garantizar un funcionamiento óptimo y resistencia a las condiciones meteorológicas extremas.""
+}
+```"
+"Per garantire la massima stabilità strutturale, è essenziale fissare correttamente il nodo primario utilizzando i materiali indicati nel capitolo precedente.","To ensure maximum structural stability, it is essential to properly secure the primary node using the materials specified in the previous chapter.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nodo primario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la massima stabilità strutturale, è essenziale fissare correttamente il nodo primario utilizzando i materiali indicati nel capitolo precedente."",
+  ""target_text_en"": ""To ensure maximum structural stability, it is essential to properly secure the primary node using the materials specified in the previous chapter."",
+  ""target_text_fr"": ""Pour garantir une stabilité structurelle maximale, il est essentiel de fixer correctement le nœud primaire en utilisant les matériaux indiqués dans le chapitre précédent."",
+  ""target_text_es"": ""Para asegurar la máxima estabilidad estructural, es esencial fijar correctamente el nodo primario utilizando los materiales indicados en el capítulo anterior.""
+}
+```"
+"Per garantire la massima stabilità strutturale, è essenziale fissare correttamente il nodo primario utilizzando i materiali indicati nel capitolo precedente.","Pour garantir une stabilité structurelle maximale, il est essentiel de fixer correctement le nœud primaire en utilisant les matériaux indiqués dans le chapitre précédent.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nodo primario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la massima stabilità strutturale, è essenziale fissare correttamente il nodo primario utilizzando i materiali indicati nel capitolo precedente."",
+  ""target_text_en"": ""To ensure maximum structural stability, it is essential to properly secure the primary node using the materials specified in the previous chapter."",
+  ""target_text_fr"": ""Pour garantir une stabilité structurelle maximale, il est essentiel de fixer correctement le nœud primaire en utilisant les matériaux indiqués dans le chapitre précédent."",
+  ""target_text_es"": ""Para asegurar la máxima estabilidad estructural, es esencial fijar correctamente el nodo primario utilizando los materiales indicados en el capítulo anterior.""
+}
+```"
+"Per garantire la massima stabilità strutturale, è essenziale fissare correttamente il nodo primario utilizzando i materiali indicati nel capitolo precedente.","Para asegurar la máxima estabilidad estructural, es esencial fijar correctamente el nodo primario utilizando los materiales indicados en el capítulo anterior.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nodo primario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la massima stabilità strutturale, è essenziale fissare correttamente il nodo primario utilizzando i materiali indicati nel capitolo precedente."",
+  ""target_text_en"": ""To ensure maximum structural stability, it is essential to properly secure the primary node using the materials specified in the previous chapter."",
+  ""target_text_fr"": ""Pour garantir une stabilité structurelle maximale, il est essentiel de fixer correctement le nœud primaire en utilisant les matériaux indiqués dans le chapitre précédent."",
+  ""target_text_es"": ""Para asegurar la máxima estabilidad estructural, es esencial fijar correctamente el nodo primario utilizando los materiales indicados en el capítulo anterior.""
+}
+```"
+Assicurarsi che il nodo secondario sia posizionato correttamente per garantire la stabilità strutturale del sistema di montaggio.,Ensure that the secondary node is correctly positioned to maintain the structural stability of the mounting system.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nodo secondario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo secondario sia posizionato correttamente per garantire la stabilità strutturale del sistema di montaggio."",
+  ""target_text_en"": ""Ensure that the secondary node is correctly positioned to maintain the structural stability of the mounting system."",
+  ""target_text_fr"": ""Assurez-vous que le nœud secondaire soit correctement positionné pour garantir la stabilité structurelle du système de montage."",
+  ""target_text_es"": ""Asegúrese de que el nodo secundario esté correctamente posicionado para mantener la estabilidad estructural del sistema de montaje.""
+}
+```"
+Assicurarsi che il nodo secondario sia posizionato correttamente per garantire la stabilità strutturale del sistema di montaggio.,Assurez-vous que le nœud secondaire soit correctement positionné pour garantir la stabilité structurelle du système de montage.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nodo secondario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo secondario sia posizionato correttamente per garantire la stabilità strutturale del sistema di montaggio."",
+  ""target_text_en"": ""Ensure that the secondary node is correctly positioned to maintain the structural stability of the mounting system."",
+  ""target_text_fr"": ""Assurez-vous que le nœud secondaire soit correctement positionné pour garantir la stabilité structurelle du système de montage."",
+  ""target_text_es"": ""Asegúrese de que el nodo secundario esté correctamente posicionado para mantener la estabilidad estructural del sistema de montaje.""
+}
+```"
+Assicurarsi che il nodo secondario sia posizionato correttamente per garantire la stabilità strutturale del sistema di montaggio.,Asegúrese de que el nodo secundario esté correctamente posicionado para mantener la estabilidad estructural del sistema de montaje.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nodo secondario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo secondario sia posizionato correttamente per garantire la stabilità strutturale del sistema di montaggio."",
+  ""target_text_en"": ""Ensure that the secondary node is correctly positioned to maintain the structural stability of the mounting system."",
+  ""target_text_fr"": ""Assurez-vous que le nœud secondaire soit correctement positionné pour garantir la stabilité structurelle du système de montage."",
+  ""target_text_es"": ""Asegúrese de que el nodo secundario esté correctamente posicionado para mantener la estabilidad estructural del sistema de montaje.""
+}
+```"
+Assicurarsi che il controtelaio sia perfettamente allineato e fissato alla struttura prima di inserire le finestre.,Ensure that the frame backing is perfectly aligned and secured to the structure before installing the windows.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,controtelaio,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il controtelaio sia perfettamente allineato e fissato alla struttura prima di inserire le finestre."",
+  ""target_text_en"": ""Ensure that the frame backing is perfectly aligned and secured to the structure before installing the windows."",
+  ""target_text_fr"": ""Assurez-vous que l'encadrement arrière soit parfaitement aligné et fixé à la structure avant d'installer les fenêtres."",
+  ""target_text_es"": ""Asegúrese de que el marco trasero esté perfectamente alineado y fijado a la estructura antes de instalar las ventanas.""
+}
+```"
+Assicurarsi che il controtelaio sia perfettamente allineato e fissato alla struttura prima di inserire le finestre.,Assurez-vous que l'encadrement arrière soit parfaitement aligné et fixé à la structure avant d'installer les fenêtres.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,controtelaio,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il controtelaio sia perfettamente allineato e fissato alla struttura prima di inserire le finestre."",
+  ""target_text_en"": ""Ensure that the frame backing is perfectly aligned and secured to the structure before installing the windows."",
+  ""target_text_fr"": ""Assurez-vous que l'encadrement arrière soit parfaitement aligné et fixé à la structure avant d'installer les fenêtres."",
+  ""target_text_es"": ""Asegúrese de que el marco trasero esté perfectamente alineado y fijado a la estructura antes de instalar las ventanas.""
+}
+```"
+Assicurarsi che il controtelaio sia perfettamente allineato e fissato alla struttura prima di inserire le finestre.,Asegúrese de que el marco trasero esté perfectamente alineado y fijado a la estructura antes de instalar las ventanas.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,controtelaio,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il controtelaio sia perfettamente allineato e fissato alla struttura prima di inserire le finestre."",
+  ""target_text_en"": ""Ensure that the frame backing is perfectly aligned and secured to the structure before installing the windows."",
+  ""target_text_fr"": ""Assurez-vous que l'encadrement arrière soit parfaitement aligné et fixé à la structure avant d'installer les fenêtres."",
+  ""target_text_es"": ""Asegúrese de que el marco trasero esté perfectamente alineado y fijado a la estructura antes de instalar las ventanas.""
+}
+```"
+"Durante l'installazione, assicurarsi che la barriera al vapore sia posizionata correttamente per migliorare le prestazioni di isolamento termico e acustico.","During installation, ensure that the vapor barrier is properly positioned to enhance thermal and acoustic insulation performance.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,barriera al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la barriera al vapore sia posizionata correttamente per migliorare le prestazioni di isolamento termico e acustico."",
+  ""target_text_en"": ""During installation, ensure that the vapor barrier is properly positioned to enhance thermal and acoustic insulation performance."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que la barrière à la vapeur soit correctement positionnée pour améliorer les performances d'isolation thermique et acoustique."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que la barrera al vapor esté correctamente posicionada para mejorar el rendimiento del aislamiento térmico y acústico.""
+}
+```"
+"Durante l'installazione, assicurarsi che la barriera al vapore sia posizionata correttamente per migliorare le prestazioni di isolamento termico e acustico.","Lors de l'installation, assurez-vous que la barrière à la vapeur soit correctement positionnée pour améliorer les performances d'isolation thermique et acoustique.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,barriera al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la barriera al vapore sia posizionata correttamente per migliorare le prestazioni di isolamento termico e acustico."",
+  ""target_text_en"": ""During installation, ensure that the vapor barrier is properly positioned to enhance thermal and acoustic insulation performance."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que la barrière à la vapeur soit correctement positionnée pour améliorer les performances d'isolation thermique et acoustique."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que la barrera al vapor esté correctamente posicionada para mejorar el rendimiento del aislamiento térmico y acústico.""
+}
+```"
+"Durante l'installazione, assicurarsi che la barriera al vapore sia posizionata correttamente per migliorare le prestazioni di isolamento termico e acustico.","Durante la instalación, asegúrese de que la barrera al vapor esté correctamente posicionada para mejorar el rendimiento del aislamiento térmico y acústico.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,barriera al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione, assicurarsi che la barriera al vapore sia posizionata correttamente per migliorare le prestazioni di isolamento termico e acustico."",
+  ""target_text_en"": ""During installation, ensure that the vapor barrier is properly positioned to enhance thermal and acoustic insulation performance."",
+  ""target_text_fr"": ""Lors de l'installation, assurez-vous que la barrière à la vapeur soit correctement positionnée pour améliorer les performances d'isolation thermique et acoustique."",
+  ""target_text_es"": ""Durante la instalación, asegúrese de que la barrera al vapor esté correctamente posicionada para mejorar el rendimiento del aislamiento térmico y acústico.""
+}
+```"
+Utilizzare le viti di fissaggio fornite per assicurare la finestra al telaio in modo stabile e sicuro.,Use the provided screws to securely and safely attach the window to the frame.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,vite di fissaggio,hardware,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare le viti di fissaggio fornite per assicurare la finestra al telaio in modo stabile e sicuro."",
+  ""target_text_en"": ""Use the provided screws to securely and safely attach the window to the frame."",
+  ""target_text_fr"": ""Utilisez les vis de fixation fournies pour fixer solidement et en toute sécurité la fenêtre au cadre."",
+  ""target_text_es"": ""Usar las tuercas de fijación proporcionadas para asegurar la ventana al marco de manera estable y segura.""
+}
+```"
+Utilizzare le viti di fissaggio fornite per assicurare la finestra al telaio in modo stabile e sicuro.,Utilisez les vis de fixation fournies pour fixer solidement et en toute sécurité la fenêtre au cadre.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,vite di fissaggio,hardware,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare le viti di fissaggio fornite per assicurare la finestra al telaio in modo stabile e sicuro."",
+  ""target_text_en"": ""Use the provided screws to securely and safely attach the window to the frame."",
+  ""target_text_fr"": ""Utilisez les vis de fixation fournies pour fixer solidement et en toute sécurité la fenêtre au cadre."",
+  ""target_text_es"": ""Usar las tuercas de fijación proporcionadas para asegurar la ventana al marco de manera estable y segura.""
+}
+```"
+Utilizzare le viti di fissaggio fornite per assicurare la finestra al telaio in modo stabile e sicuro.,Usar las tuercas de fijación proporcionadas para asegurar la ventana al marco de manera estable y segura.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,vite di fissaggio,hardware,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare le viti di fissaggio fornite per assicurare la finestra al telaio in modo stabile e sicuro."",
+  ""target_text_en"": ""Use the provided screws to securely and safely attach the window to the frame."",
+  ""target_text_fr"": ""Utilisez les vis de fixation fournies pour fixer solidement et en toute sécurité la fenêtre au cadre."",
+  ""target_text_es"": ""Usar las tuercas de fijación proporcionadas para asegurar la ventana al marco de manera estable y segura.""
+}
+```"
+"Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria.","Use the self-expanding tape to ensure an airtight seal between window frames and surrounding structures, enhancing thermal insulation and eliminating air infiltration.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nastro autoespandente,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria."",
+  ""target_text_en"": ""Use the self-expanding tape to ensure an airtight seal between window frames and surrounding structures, enhancing thermal insulation and eliminating air infiltration."",
+  ""target_text_fr"": ""Utilisez le ruban auto-évasif pour assurer une étanchéité parfaite entre les profilés des fenêtres et les structures environnantes, améliorant l'isolation thermique et éliminant les infiltrations d'air."",
+  ""target_text_es"": ""Utilice el cinta autoexpansible para garantizar un sellado hermético entre los marcos de las ventanas y las estructuras circundantes, mejorando el aislamiento térmico e eliminando filtraciones de aire.""
+}
+```"
+"Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria.","Utilisez le ruban auto-évasif pour assurer une étanchéité parfaite entre les profilés des fenêtres et les structures environnantes, améliorant l'isolation thermique et éliminant les infiltrations d'air.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nastro autoespandente,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria."",
+  ""target_text_en"": ""Use the self-expanding tape to ensure an airtight seal between window frames and surrounding structures, enhancing thermal insulation and eliminating air infiltration."",
+  ""target_text_fr"": ""Utilisez le ruban auto-évasif pour assurer une étanchéité parfaite entre les profilés des fenêtres et les structures environnantes, améliorant l'isolation thermique et éliminant les infiltrations d'air."",
+  ""target_text_es"": ""Utilice el cinta autoexpansible para garantizar un sellado hermético entre los marcos de las ventanas y las estructuras circundantes, mejorando el aislamiento térmico e eliminando filtraciones de aire.""
+}
+```"
+"Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria.","Utilice el cinta autoexpansible para garantizar un sellado hermético entre los marcos de las ventanas y las estructuras circundantes, mejorando el aislamiento térmico e eliminando filtraciones de aire.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,nastro autoespandente,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria."",
+  ""target_text_en"": ""Use the self-expanding tape to ensure an airtight seal between window frames and surrounding structures, enhancing thermal insulation and eliminating air infiltration."",
+  ""target_text_fr"": ""Utilisez le ruban auto-évasif pour assurer une étanchéité parfaite entre les profilés des fenêtres et les structures environnantes, améliorant l'isolation thermique et éliminant les infiltrations d'air."",
+  ""target_text_es"": ""Utilice el cinta autoexpansible para garantizar un sellado hermético entre los marcos de las ventanas y las estructuras circundantes, mejorando el aislamiento térmico e eliminando filtraciones de aire.""
+}
+```"
+"Per garantire un'ottimale prestazione energetica, è essenziale minimizzare la formazione di ponti termici durante l'installazione delle finestre.","To ensure optimal energy performance, it is essential to minimize the formation of thermal bridges during window installation.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,ponte termico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'ottimale prestazione energetica, è essenziale minimizzare la formazione di ponti termici durante l'installazione delle finestre."",
+  ""target_text_en"": ""To ensure optimal energy performance, it is essential to minimize the formation of thermal bridges during window installation."",
+  ""target_text_fr"": ""Pour garantir une performance énergétique optimale, il est essentiel de minimiser la formation de ponts thermiques lors de l'installation des fenêtres."",
+  ""target_text_es"": ""Para garantizar un rendimiento energético óptimo, es esencial minimizar la formación de puentes térmicos durante la instalación de ventanas.""
+}
+```"
+"Per garantire un'ottimale prestazione energetica, è essenziale minimizzare la formazione di ponti termici durante l'installazione delle finestre.","Pour garantir une performance énergétique optimale, il est essentiel de minimiser la formation de ponts thermiques lors de l'installation des fenêtres.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,ponte termico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'ottimale prestazione energetica, è essenziale minimizzare la formazione di ponti termici durante l'installazione delle finestre."",
+  ""target_text_en"": ""To ensure optimal energy performance, it is essential to minimize the formation of thermal bridges during window installation."",
+  ""target_text_fr"": ""Pour garantir une performance énergétique optimale, il est essentiel de minimiser la formation de ponts thermiques lors de l'installation des fenêtres."",
+  ""target_text_es"": ""Para garantizar un rendimiento energético óptimo, es esencial minimizar la formación de puentes térmicos durante la instalación de ventanas.""
+}
+```"
+"Per garantire un'ottimale prestazione energetica, è essenziale minimizzare la formazione di ponti termici durante l'installazione delle finestre.","Para garantizar un rendimiento energético óptimo, es esencial minimizar la formación de puentes térmicos durante la instalación de ventanas.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,ponte termico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'ottimale prestazione energetica, è essenziale minimizzare la formazione di ponti termici durante l'installazione delle finestre."",
+  ""target_text_en"": ""To ensure optimal energy performance, it is essential to minimize the formation of thermal bridges during window installation."",
+  ""target_text_fr"": ""Pour garantir une performance énergétique optimale, il est essentiel de minimiser la formation de ponts thermiques lors de l'installation des fenêtres."",
+  ""target_text_es"": ""Para garantizar un rendimiento energético óptimo, es esencial minimizar la formación de puentes térmicos durante la instalación de ventanas.""
+}
+```"
+È essenziale verificare la trasmittanza termica delle finestre per garantire un'efficienza energetica ottimale e conformità alle normative vigenti in materia di isolamento termico.,It is essential to verify the thermal transmittance of windows to ensure optimal energy efficiency and compliance with current thermal insulation regulations.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,trasmittanza termica,physics,an installation manual,"```json
+{
+  ""source_text"": ""È essenziale verificare la trasmittanza termica delle finestre per garantire un'efficienza energetica ottimale e conformità alle normative vigenti in materia di isolamento termico."",
+  ""target_text_en"": ""It is essential to verify the thermal transmittance of windows to ensure optimal energy efficiency and compliance with current thermal insulation regulations."",
+  ""target_text_fr"": ""Il est essentiel de vérifier la transmission thermique des fenêtres pour garantir une efficacité énergétique optimale et se conformer aux réglementations en vigueur concernant l'isolation thermique."",
+  ""target_text_es"": ""Es esencial verificar la transmitancia térmica de las ventanas para asegurar una eficiencia energética óptima y cumplir con las normativas vigentes en materia de aislamiento térmico.""
+}
+```"
+È essenziale verificare la trasmittanza termica delle finestre per garantire un'efficienza energetica ottimale e conformità alle normative vigenti in materia di isolamento termico.,Il est essentiel de vérifier la transmission thermique des fenêtres pour garantir une efficacité énergétique optimale et se conformer aux réglementations en vigueur concernant l'isolation thermique.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,trasmittanza termica,physics,an installation manual,"```json
+{
+  ""source_text"": ""È essenziale verificare la trasmittanza termica delle finestre per garantire un'efficienza energetica ottimale e conformità alle normative vigenti in materia di isolamento termico."",
+  ""target_text_en"": ""It is essential to verify the thermal transmittance of windows to ensure optimal energy efficiency and compliance with current thermal insulation regulations."",
+  ""target_text_fr"": ""Il est essentiel de vérifier la transmission thermique des fenêtres pour garantir une efficacité énergétique optimale et se conformer aux réglementations en vigueur concernant l'isolation thermique."",
+  ""target_text_es"": ""Es esencial verificar la transmitancia térmica de las ventanas para asegurar una eficiencia energética óptima y cumplir con las normativas vigentes en materia de aislamiento térmico.""
+}
+```"
+È essenziale verificare la trasmittanza termica delle finestre per garantire un'efficienza energetica ottimale e conformità alle normative vigenti in materia di isolamento termico.,Es esencial verificar la transmitancia térmica de las ventanas para asegurar una eficiencia energética óptima y cumplir con las normativas vigentes en materia de aislamiento térmico.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,trasmittanza termica,physics,an installation manual,"```json
+{
+  ""source_text"": ""È essenziale verificare la trasmittanza termica delle finestre per garantire un'efficienza energetica ottimale e conformità alle normative vigenti in materia di isolamento termico."",
+  ""target_text_en"": ""It is essential to verify the thermal transmittance of windows to ensure optimal energy efficiency and compliance with current thermal insulation regulations."",
+  ""target_text_fr"": ""Il est essentiel de vérifier la transmission thermique des fenêtres pour garantir une efficacité énergétique optimale et se conformer aux réglementations en vigueur concernant l'isolation thermique."",
+  ""target_text_es"": ""Es esencial verificar la transmitancia térmica de las ventanas para asegurar una eficiencia energética óptima y cumplir con las normativas vigentes en materia de aislamiento térmico.""
+}
+```"
+"Per garantire un elevato abbattimento acustico, le lastre di vetro isolante devono essere installate con precisione per minimizzare la trasmissione del suono attraverso il doppio vetro.","To ensure high sound attenuation, the insulating glass panes must be installed precisely to minimize sound transmission through the double glazing.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,abbattimento acustico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un elevato abbattimento acustico, le lastre di vetro isolante devono essere installate con precisione per minimizzare la trasmissione del suono attraverso il doppio vetro."",
+  ""target_text_en"": ""To ensure high sound attenuation, the insulating glass panes must be installed precisely to minimize sound transmission through the double glazing."",
+  ""target_text_fr"": ""Pour garantir une forte atténuation acoustique, les plaques de verre isolant doivent être installées avec précision pour minimiser la transmission du son à travers le double vitrage."",
+  ""target_text_es"": ""Para garantizar un alto aislamiento acústico, los paneles de vidrio aislante deben instalarse con precisión para minimizar la transmisión del sonido a través del doble acristalamiento.""
+}
+```"
+"Per garantire un elevato abbattimento acustico, le lastre di vetro isolante devono essere installate con precisione per minimizzare la trasmissione del suono attraverso il doppio vetro.","Pour garantir une forte atténuation acoustique, les plaques de verre isolant doivent être installées avec précision pour minimiser la transmission du son à travers le double vitrage.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,abbattimento acustico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un elevato abbattimento acustico, le lastre di vetro isolante devono essere installate con precisione per minimizzare la trasmissione del suono attraverso il doppio vetro."",
+  ""target_text_en"": ""To ensure high sound attenuation, the insulating glass panes must be installed precisely to minimize sound transmission through the double glazing."",
+  ""target_text_fr"": ""Pour garantir une forte atténuation acoustique, les plaques de verre isolant doivent être installées avec précision pour minimiser la transmission du son à travers le double vitrage."",
+  ""target_text_es"": ""Para garantizar un alto aislamiento acústico, los paneles de vidrio aislante deben instalarse con precisión para minimizar la transmisión del sonido a través del doble acristalamiento.""
+}
+```"
+"Per garantire un elevato abbattimento acustico, le lastre di vetro isolante devono essere installate con precisione per minimizzare la trasmissione del suono attraverso il doppio vetro.","Para garantizar un alto aislamiento acústico, los paneles de vidrio aislante deben instalarse con precisión para minimizar la transmisión del sonido a través del doble acristalamiento.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,abbattimento acustico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un elevato abbattimento acustico, le lastre di vetro isolante devono essere installate con precisione per minimizzare la trasmissione del suono attraverso il doppio vetro."",
+  ""target_text_en"": ""To ensure high sound attenuation, the insulating glass panes must be installed precisely to minimize sound transmission through the double glazing."",
+  ""target_text_fr"": ""Pour garantir une forte atténuation acoustique, les plaques de verre isolant doivent être installées avec précision pour minimiser la transmission du son à travers le double vitrage."",
+  ""target_text_es"": ""Para garantizar un alto aislamiento acústico, los paneles de vidrio aislante deben instalarse con precisión para minimizar la transmisión del sonido a través del doble acristalamiento.""
+}
+```"
+"Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica.","During performance testing, the window demonstrated excellent air tightness, exceeding international energy efficiency standards.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tenuta all'aria,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica."",
+  ""target_text_en"": ""During performance testing, the window demonstrated excellent air tightness, exceeding international energy efficiency standards."",
+  ""target_text_fr"": ""Lors des tests de performances, la fenêtre a démontré une excellente étanchéité à l'air, dépassant les normes internationales pour l'efficacité énergétique."",
+  ""target_text_es"": ""Durante las pruebas de rendimiento, la ventana demostró una excelente estanqueidad al aire, superando las normativas internacionales para eficiencia energética.""
+}
+```"
+"Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica.","Lors des tests de performances, la fenêtre a démontré une excellente étanchéité à l'air, dépassant les normes internationales pour l'efficacité énergétique.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tenuta all'aria,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica."",
+  ""target_text_en"": ""During performance testing, the window demonstrated excellent air tightness, exceeding international energy efficiency standards."",
+  ""target_text_fr"": ""Lors des tests de performances, la fenêtre a démontré une excellente étanchéité à l'air, dépassant les normes internationales pour l'efficacité énergétique."",
+  ""target_text_es"": ""Durante las pruebas de rendimiento, la ventana demostró una excelente estanqueidad al aire, superando las normativas internacionales para eficiencia energética.""
+}
+```"
+"Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica.","Durante las pruebas de rendimiento, la ventana demostró una excelente estanqueidad al aire, superando las normativas internacionales para eficiencia energética.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tenuta all'aria,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica."",
+  ""target_text_en"": ""During performance testing, the window demonstrated excellent air tightness, exceeding international energy efficiency standards."",
+  ""target_text_fr"": ""Lors des tests de performances, la fenêtre a démontré une excellente étanchéité à l'air, dépassant les normes internationales pour l'efficacité énergétique."",
+  ""target_text_es"": ""Durante las pruebas de rendimiento, la ventana demostró una excelente estanqueidad al aire, superando las normativas internacionales para eficiencia energética.""
+}
+```"
+"L'installazione di finestre Roverplastik con doppi vetri e schiuma isolante migliora notevolmente l'efficienza energetica dell'edificio, riducendo il fabbisogno di riscaldamento e raffreddamento.",Installing Roverplastik windows with double glazing and insulating foam significantly enhances the building's energy efficiency by reducing heating and cooling demand.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,efficienza energetica,ecology,an installation manual,"```json
+{
+  ""source_text"": ""L'installazione di finestre Roverplastik con doppi vetri e schiuma isolante migliora notevolmente l'efficienza energetica dell'edificio, riducendo il fabbisogno di riscaldamento e raffreddamento."",
+  ""target_text_en"": ""Installing Roverplastik windows with double glazing and insulating foam significantly enhances the building's energy efficiency by reducing heating and cooling demand."",
+  ""target_text_fr"": ""L'installation de fenêtres Roverplastik avec doubles vitrages et mousse isolante améliore considérablement l'efficacité énergétique du bâtiment, réduisant ainsi la demande en chauffage et climatisation."",
+  ""target_text_es"": ""La instalación de ventanas Roverplastik con doble acristalamiento y espuma aislante mejora notablemente la eficiencia energética del edificio, reduciendo la demanda de calefacción y aire acondicionado.""
+}
+```"
+"L'installazione di finestre Roverplastik con doppi vetri e schiuma isolante migliora notevolmente l'efficienza energetica dell'edificio, riducendo il fabbisogno di riscaldamento e raffreddamento.","L'installation de fenêtres Roverplastik avec doubles vitrages et mousse isolante améliore considérablement l'efficacité énergétique du bâtiment, réduisant ainsi la demande en chauffage et climatisation.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,efficienza energetica,ecology,an installation manual,"```json
+{
+  ""source_text"": ""L'installazione di finestre Roverplastik con doppi vetri e schiuma isolante migliora notevolmente l'efficienza energetica dell'edificio, riducendo il fabbisogno di riscaldamento e raffreddamento."",
+  ""target_text_en"": ""Installing Roverplastik windows with double glazing and insulating foam significantly enhances the building's energy efficiency by reducing heating and cooling demand."",
+  ""target_text_fr"": ""L'installation de fenêtres Roverplastik avec doubles vitrages et mousse isolante améliore considérablement l'efficacité énergétique du bâtiment, réduisant ainsi la demande en chauffage et climatisation."",
+  ""target_text_es"": ""La instalación de ventanas Roverplastik con doble acristalamiento y espuma aislante mejora notablemente la eficiencia energética del edificio, reduciendo la demanda de calefacción y aire acondicionado.""
+}
+```"
+"L'installazione di finestre Roverplastik con doppi vetri e schiuma isolante migliora notevolmente l'efficienza energetica dell'edificio, riducendo il fabbisogno di riscaldamento e raffreddamento.","La instalación de ventanas Roverplastik con doble acristalamiento y espuma aislante mejora notablemente la eficiencia energética del edificio, reduciendo la demanda de calefacción y aire acondicionado.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,efficienza energetica,ecology,an installation manual,"```json
+{
+  ""source_text"": ""L'installazione di finestre Roverplastik con doppi vetri e schiuma isolante migliora notevolmente l'efficienza energetica dell'edificio, riducendo il fabbisogno di riscaldamento e raffreddamento."",
+  ""target_text_en"": ""Installing Roverplastik windows with double glazing and insulating foam significantly enhances the building's energy efficiency by reducing heating and cooling demand."",
+  ""target_text_fr"": ""L'installation de fenêtres Roverplastik avec doubles vitrages et mousse isolante améliore considérablement l'efficacité énergétique du bâtiment, réduisant ainsi la demande en chauffage et climatisation."",
+  ""target_text_es"": ""La instalación de ventanas Roverplastik con doble acristalamiento y espuma aislante mejora notablemente la eficiencia energética del edificio, reduciendo la demanda de calefacción y aire acondicionado.""
+}
+```"
+"Durante i test di certificazione, le finestre devono resistere al carico del vento specificato per garantire un'installazione sicura e conforme.","During certification testing, the windows must withstand the specified wind load to ensure a safe and compliant installation.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,carico del vento,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante i test di certificazione, le finestre devono resistere al carico del vento specificato per garantire un'installazione sicura e conforme."",
+  ""target_text_en"": ""During certification testing, the windows must withstand the specified wind load to ensure a safe and compliant installation."",
+  ""target_text_fr"": ""Lors des tests de certification, les fenêtres doivent résister à la charge du vent spécifiée pour garantir une installation sûre et conforme."",
+  ""target_text_es"": ""Durante las pruebas de certificación, las ventanas deben resistir a la carga del viento especificada para asegurar una instalación segura y conforme.""
+}
+```"
+"Durante i test di certificazione, le finestre devono resistere al carico del vento specificato per garantire un'installazione sicura e conforme.","Lors des tests de certification, les fenêtres doivent résister à la charge du vent spécifiée pour garantir une installation sûre et conforme.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,carico del vento,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante i test di certificazione, le finestre devono resistere al carico del vento specificato per garantire un'installazione sicura e conforme."",
+  ""target_text_en"": ""During certification testing, the windows must withstand the specified wind load to ensure a safe and compliant installation."",
+  ""target_text_fr"": ""Lors des tests de certification, les fenêtres doivent résister à la charge du vent spécifiée pour garantir une installation sûre et conforme."",
+  ""target_text_es"": ""Durante las pruebas de certificación, las ventanas deben resistir a la carga del viento especificada para asegurar una instalación segura y conforme.""
+}
+```"
+"Durante i test di certificazione, le finestre devono resistere al carico del vento specificato per garantire un'installazione sicura e conforme.","Durante las pruebas de certificación, las ventanas deben resistir a la carga del viento especificada para asegurar una instalación segura y conforme.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,carico del vento,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante i test di certificazione, le finestre devono resistere al carico del vento specificato per garantire un'installazione sicura e conforme."",
+  ""target_text_en"": ""During certification testing, the windows must withstand the specified wind load to ensure a safe and compliant installation."",
+  ""target_text_fr"": ""Lors des tests de certification, les fenêtres doivent résister à la charge du vent spécifiée pour garantir une installation sûre et conforme."",
+  ""target_text_es"": ""Durante las pruebas de certificación, las ventanas deben resistir a la carga del viento especificada para asegurar una instalación segura y conforme.""
+}
+```"
+La tenuta all'acqua del serramento è stata rigorosamente testata per garantire la massima performance e conformità ai più alti standard di certificazione.,The water-tightness of the window assembly has been rigorously tested to ensure maximum performance and compliance with the highest certification standards.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tenuta all'acqua,performance,an installation manual,"```json
+{
+  ""source_text"": ""La tenuta all'acqua del serramento è stata rigorosamente testata per garantire la massima performance e conformità ai più alti standard di certificazione."",
+  ""target_text_en"": ""The water-tightness of the window assembly has been rigorously tested to ensure maximum performance and compliance with the highest certification standards."",
+  ""target_text_fr"": ""L'étanchéité à l'eau du châssis a été rigoureusement testée pour garantir une performance maximale et la conformité aux normes de certification les plus élevées."",
+  ""target_text_es"": ""La estanqueidad al agua del cerramiento se ha probado rigurosamente para asegurar el máximo rendimiento y cumplir con los más altos estándares de certificación.""
+}
+```"
+La tenuta all'acqua del serramento è stata rigorosamente testata per garantire la massima performance e conformità ai più alti standard di certificazione.,L'étanchéité à l'eau du châssis a été rigoureusement testée pour garantir une performance maximale et la conformité aux normes de certification les plus élevées.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tenuta all'acqua,performance,an installation manual,"```json
+{
+  ""source_text"": ""La tenuta all'acqua del serramento è stata rigorosamente testata per garantire la massima performance e conformità ai più alti standard di certificazione."",
+  ""target_text_en"": ""The water-tightness of the window assembly has been rigorously tested to ensure maximum performance and compliance with the highest certification standards."",
+  ""target_text_fr"": ""L'étanchéité à l'eau du châssis a été rigoureusement testée pour garantir une performance maximale et la conformité aux normes de certification les plus élevées."",
+  ""target_text_es"": ""La estanqueidad al agua del cerramiento se ha probado rigurosamente para asegurar el máximo rendimiento y cumplir con los más altos estándares de certificación.""
+}
+```"
+La tenuta all'acqua del serramento è stata rigorosamente testata per garantire la massima performance e conformità ai più alti standard di certificazione.,La estanqueidad al agua del cerramiento se ha probado rigurosamente para asegurar el máximo rendimiento y cumplir con los más altos estándares de certificación.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tenuta all'acqua,performance,an installation manual,"```json
+{
+  ""source_text"": ""La tenuta all'acqua del serramento è stata rigorosamente testata per garantire la massima performance e conformità ai più alti standard di certificazione."",
+  ""target_text_en"": ""The water-tightness of the window assembly has been rigorously tested to ensure maximum performance and compliance with the highest certification standards."",
+  ""target_text_fr"": ""L'étanchéité à l'eau du châssis a été rigoureusement testée pour garantir une performance maximale et la conformité aux normes de certification les plus élevées."",
+  ""target_text_es"": ""La estanqueidad al agua del cerramiento se ha probado rigurosamente para asegurar el máximo rendimiento y cumplir con los más altos estándares de certificación.""
+}
+```"
+"Per prevenire la formazione di muffa, è essenziale garantire un corretto isolamento termico e barriera al vapore durante l'installazione delle finestre.","To prevent the formation of mold, it is essential to ensure proper thermal insulation and vapor barrier during window installation.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,formazione di muffa,problem,an installation manual,"```json
+{
+  ""source_text"": ""Per prevenire la formazione di muffa, è essenziale garantire un corretto isolamento termico e barriera al vapore durante l'installazione delle finestre."",
+  ""target_text_en"": ""To prevent the formation of mold, it is essential to ensure proper thermal insulation and vapor barrier during window installation."",
+  ""target_text_fr"": ""Pour prévenir la formation de moisissures, il est essentiel d'assurer une isolation thermique correcte et un pare-vapeur adéquat lors de l'installation des fenêtres."",
+  ""target_text_es"": ""Para prevenir la formación de moho, es esencial garantizar una adecuada aislamiento térmico y barrera al vapor durante la instalación de las ventanas.""
+}
+```"
+"Per prevenire la formazione di muffa, è essenziale garantire un corretto isolamento termico e barriera al vapore durante l'installazione delle finestre.","Pour prévenir la formation de moisissures, il est essentiel d'assurer une isolation thermique correcte et un pare-vapeur adéquat lors de l'installation des fenêtres.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,formazione di muffa,problem,an installation manual,"```json
+{
+  ""source_text"": ""Per prevenire la formazione di muffa, è essenziale garantire un corretto isolamento termico e barriera al vapore durante l'installazione delle finestre."",
+  ""target_text_en"": ""To prevent the formation of mold, it is essential to ensure proper thermal insulation and vapor barrier during window installation."",
+  ""target_text_fr"": ""Pour prévenir la formation de moisissures, il est essentiel d'assurer une isolation thermique correcte et un pare-vapeur adéquat lors de l'installation des fenêtres."",
+  ""target_text_es"": ""Para prevenir la formación de moho, es esencial garantizar una adecuada aislamiento térmico y barrera al vapor durante la instalación de las ventanas.""
+}
+```"
+"Per prevenire la formazione di muffa, è essenziale garantire un corretto isolamento termico e barriera al vapore durante l'installazione delle finestre.","Para prevenir la formación de moho, es esencial garantizar una adecuada aislamiento térmico y barrera al vapor durante la instalación de las ventanas.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,formazione di muffa,problem,an installation manual,"```json
+{
+  ""source_text"": ""Per prevenire la formazione di muffa, è essenziale garantire un corretto isolamento termico e barriera al vapore durante l'installazione delle finestre."",
+  ""target_text_en"": ""To prevent the formation of mold, it is essential to ensure proper thermal insulation and vapor barrier during window installation."",
+  ""target_text_fr"": ""Pour prévenir la formation de moisissures, il est essentiel d'assurer une isolation thermique correcte et un pare-vapeur adéquat lors de l'installation des fenêtres."",
+  ""target_text_es"": ""Para prevenir la formación de moho, es esencial garantizar una adecuada aislamiento térmico y barrera al vapor durante la instalación de las ventanas.""
+}
+```"
+"Per prevenire la formazione di condensa superficiale, è essenziale assicurarsi che l'isolamento tra il vetro interno e quello esterno sia intatto e privo di umidità.","To prevent the formation of surface condensation, it is essential to ensure that the insulation between the internal and external glass panes is intact and free from moisture.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,condensa superficiale,problem,an installation manual,"```json
+{
+  ""source_text"": ""Per prevenire la formazione di condensa superficiale, è essenziale assicurarsi che l'isolamento tra il vetro interno e quello esterno sia intatto e privo di umidità."",
+  ""target_text_en"": ""To prevent the formation of surface condensation, it is essential to ensure that the insulation between the internal and external glass panes is intact and free from moisture."",
+  ""target_text_fr"": ""Pour prévenir la formation de condensation superficielle, il est essentiel de s'assurer que l'isolation entre le verre intérieur et extérieur soit intacte et exempte d'humidité."",
+  ""target_text_es"": ""Para prevenir la formación de condensación superficial, es esencial asegurarse de que el aislamiento entre el vidrio interior y exterior esté intacto y libre de humedad.""
+}
+```"
+"Per prevenire la formazione di condensa superficiale, è essenziale assicurarsi che l'isolamento tra il vetro interno e quello esterno sia intatto e privo di umidità.","Pour prévenir la formation de condensation superficielle, il est essentiel de s'assurer que l'isolation entre le verre intérieur et extérieur soit intacte et exempte d'humidité.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,condensa superficiale,problem,an installation manual,"```json
+{
+  ""source_text"": ""Per prevenire la formazione di condensa superficiale, è essenziale assicurarsi che l'isolamento tra il vetro interno e quello esterno sia intatto e privo di umidità."",
+  ""target_text_en"": ""To prevent the formation of surface condensation, it is essential to ensure that the insulation between the internal and external glass panes is intact and free from moisture."",
+  ""target_text_fr"": ""Pour prévenir la formation de condensation superficielle, il est essentiel de s'assurer que l'isolation entre le verre intérieur et extérieur soit intacte et exempte d'humidité."",
+  ""target_text_es"": ""Para prevenir la formación de condensación superficial, es esencial asegurarse de que el aislamiento entre el vidrio interior y exterior esté intacto y libre de humedad.""
+}
+```"
+"Per prevenire la formazione di condensa superficiale, è essenziale assicurarsi che l'isolamento tra il vetro interno e quello esterno sia intatto e privo di umidità.","Para prevenir la formación de condensación superficial, es esencial asegurarse de que el aislamiento entre el vidrio interior y exterior esté intacto y libre de humedad.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,condensa superficiale,problem,an installation manual,"```json
+{
+  ""source_text"": ""Per prevenire la formazione di condensa superficiale, è essenziale assicurarsi che l'isolamento tra il vetro interno e quello esterno sia intatto e privo di umidità."",
+  ""target_text_en"": ""To prevent the formation of surface condensation, it is essential to ensure that the insulation between the internal and external glass panes is intact and free from moisture."",
+  ""target_text_fr"": ""Pour prévenir la formation de condensation superficielle, il est essentiel de s'assurer que l'isolation entre le verre intérieur et extérieur soit intacte et exempte d'humidité."",
+  ""target_text_es"": ""Para prevenir la formación de condensación superficial, es esencial asegurarse de que el aislamiento entre el vidrio interior y exterior esté intacto y libre de humedad.""
+}
+```"
+"La riqualificazione del foro finestra è essenziale per garantire un'efficace isolamento termico e acustico, migliorando l'efficienza energetica complessiva dell'edificio.","The rehabilitation of the window opening is essential to ensure effective thermal and acoustic insulation, thereby improving the overall energy efficiency of the building.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,riqualificazione del foro finestra,renovation,an installation manual,"```json
+{
+  ""source_text"": ""La riqualificazione del foro finestra è essenziale per garantire un'efficace isolamento termico e acustico, migliorando l'efficienza energetica complessiva dell'edificio."",
+  ""target_text_en"": ""The rehabilitation of the window opening is essential to ensure effective thermal and acoustic insulation, thereby improving the overall energy efficiency of the building."",
+  ""target_text_fr"": ""La réhabilitation de la baie vitrée est essentielle pour garantir une isolation thermique et acoustique efficace, améliorant ainsi l'efficacité énergétique globale du bâtiment."",
+  ""target_text_es"": ""La rehabilitación del hueco de la ventana es esencial para asegurar un aislamiento térmico y acústico eficaz, mejorando así la eficiencia energética general del edificio.""
+}
+```"
+"La riqualificazione del foro finestra è essenziale per garantire un'efficace isolamento termico e acustico, migliorando l'efficienza energetica complessiva dell'edificio.","La réhabilitation de la baie vitrée est essentielle pour garantir une isolation thermique et acoustique efficace, améliorant ainsi l'efficacité énergétique globale du bâtiment.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,riqualificazione del foro finestra,renovation,an installation manual,"```json
+{
+  ""source_text"": ""La riqualificazione del foro finestra è essenziale per garantire un'efficace isolamento termico e acustico, migliorando l'efficienza energetica complessiva dell'edificio."",
+  ""target_text_en"": ""The rehabilitation of the window opening is essential to ensure effective thermal and acoustic insulation, thereby improving the overall energy efficiency of the building."",
+  ""target_text_fr"": ""La réhabilitation de la baie vitrée est essentielle pour garantir une isolation thermique et acoustique efficace, améliorant ainsi l'efficacité énergétique globale du bâtiment."",
+  ""target_text_es"": ""La rehabilitación del hueco de la ventana es esencial para asegurar un aislamiento térmico y acústico eficaz, mejorando así la eficiencia energética general del edificio.""
+}
+```"
+"La riqualificazione del foro finestra è essenziale per garantire un'efficace isolamento termico e acustico, migliorando l'efficienza energetica complessiva dell'edificio.","La rehabilitación del hueco de la ventana es esencial para asegurar un aislamiento térmico y acústico eficaz, mejorando así la eficiencia energética general del edificio.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,riqualificazione del foro finestra,renovation,an installation manual,"```json
+{
+  ""source_text"": ""La riqualificazione del foro finestra è essenziale per garantire un'efficace isolamento termico e acustico, migliorando l'efficienza energetica complessiva dell'edificio."",
+  ""target_text_en"": ""The rehabilitation of the window opening is essential to ensure effective thermal and acoustic insulation, thereby improving the overall energy efficiency of the building."",
+  ""target_text_fr"": ""La réhabilitation de la baie vitrée est essentielle pour garantir une isolation thermique et acoustique efficace, améliorant ainsi l'efficacité énergétique globale du bâtiment."",
+  ""target_text_es"": ""La rehabilitación del hueco de la ventana es esencial para asegurar un aislamiento térmico y acústico eficaz, mejorando así la eficiencia energética general del edificio.""
+}
+```"
+"Durante la ristrutturazione dell'involucro edilizio, è essenziale applicare un adeguato isolamento a cappotto per migliorare l'efficienza energetica e ridurre le dispersioni termiche.","During the renovation of the building envelope, it is essential to apply adequate external wall insulation (cappotto) to improve energy efficiency and reduce thermal losses.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,isolamento a cappotto,construction,an installation manual,"```json
+{
+  ""source_text"": ""Durante la ristrutturazione dell'involucro edilizio, è essenziale applicare un adeguato isolamento a cappotto per migliorare l'efficienza energetica e ridurre le dispersioni termiche."",
+  ""target_text_en"": ""During the renovation of the building envelope, it is essential to apply adequate external wall insulation (cappotto) to improve energy efficiency and reduce thermal losses."",
+  ""target_text_fr"": ""Lors de la rénovation du bardage d'un bâtiment, il est essentiel d'appliquer un isolant en cappotto adéquat pour améliorer l'efficacité énergétique et réduire les pertes thermiques."",
+  ""target_text_es"": ""Durante la rehabilitación del envolvente edilicio, es esencial aplicar un aislamiento adecuado de cappotto para mejorar la eficiencia energética y reducir las pérdidas térmicas.""
+}
+```"
+"Durante la ristrutturazione dell'involucro edilizio, è essenziale applicare un adeguato isolamento a cappotto per migliorare l'efficienza energetica e ridurre le dispersioni termiche.","Lors de la rénovation du bardage d'un bâtiment, il est essentiel d'appliquer un isolant en cappotto adéquat pour améliorer l'efficacité énergétique et réduire les pertes thermiques.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,isolamento a cappotto,construction,an installation manual,"```json
+{
+  ""source_text"": ""Durante la ristrutturazione dell'involucro edilizio, è essenziale applicare un adeguato isolamento a cappotto per migliorare l'efficienza energetica e ridurre le dispersioni termiche."",
+  ""target_text_en"": ""During the renovation of the building envelope, it is essential to apply adequate external wall insulation (cappotto) to improve energy efficiency and reduce thermal losses."",
+  ""target_text_fr"": ""Lors de la rénovation du bardage d'un bâtiment, il est essentiel d'appliquer un isolant en cappotto adéquat pour améliorer l'efficacité énergétique et réduire les pertes thermiques."",
+  ""target_text_es"": ""Durante la rehabilitación del envolvente edilicio, es esencial aplicar un aislamiento adecuado de cappotto para mejorar la eficiencia energética y reducir las pérdidas térmicas.""
+}
+```"
+"Durante la ristrutturazione dell'involucro edilizio, è essenziale applicare un adeguato isolamento a cappotto per migliorare l'efficienza energetica e ridurre le dispersioni termiche.","Durante la rehabilitación del envolvente edilicio, es esencial aplicar un aislamiento adecuado de cappotto para mejorar la eficiencia energética y reducir las pérdidas térmicas.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,isolamento a cappotto,construction,an installation manual,"```json
+{
+  ""source_text"": ""Durante la ristrutturazione dell'involucro edilizio, è essenziale applicare un adeguato isolamento a cappotto per migliorare l'efficienza energetica e ridurre le dispersioni termiche."",
+  ""target_text_en"": ""During the renovation of the building envelope, it is essential to apply adequate external wall insulation (cappotto) to improve energy efficiency and reduce thermal losses."",
+  ""target_text_fr"": ""Lors de la rénovation du bardage d'un bâtiment, il est essentiel d'appliquer un isolant en cappotto adéquat pour améliorer l'efficacité énergétique et réduire les pertes thermiques."",
+  ""target_text_es"": ""Durante la rehabilitación del envolvente edilicio, es esencial aplicar un aislamiento adecuado de cappotto para mejorar la eficiencia energética y reducir las pérdidas térmicas.""
+}
+```"
+"Per garantire una corretta e duratura installazione delle finestre Roverplastik, è essenziale che la posa in opera sia eseguita da personale qualificato.","To ensure a proper and long-lasting installation of Roverplastik windows, it is essential that the work be carried out by qualified personnel.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,posa in opera qualificata,installation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire una corretta e duratura installazione delle finestre Roverplastik, è essenziale che la posa in opera sia eseguita da personale qualificato."",
+  ""target_text_en"": ""To ensure a proper and long-lasting installation of Roverplastik windows, it is essential that the work be carried out by qualified personnel."",
+  ""target_text_fr"": ""Pour garantir une pose correcte et durable des fenêtres Roverplastik, il est essentiel que l'installation soit effectuée par un personnel qualifié."",
+  ""target_text_es"": ""Para garantizar una instalación adecuada y duradera de las ventanas Roverplastik, es esencial que la obra sea realizada por personal cualificado.""
+}
+```"
+"Per garantire una corretta e duratura installazione delle finestre Roverplastik, è essenziale che la posa in opera sia eseguita da personale qualificato.","Pour garantir une pose correcte et durable des fenêtres Roverplastik, il est essentiel que l'installation soit effectuée par un personnel qualifié.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,posa in opera qualificata,installation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire una corretta e duratura installazione delle finestre Roverplastik, è essenziale che la posa in opera sia eseguita da personale qualificato."",
+  ""target_text_en"": ""To ensure a proper and long-lasting installation of Roverplastik windows, it is essential that the work be carried out by qualified personnel."",
+  ""target_text_fr"": ""Pour garantir une pose correcte et durable des fenêtres Roverplastik, il est essentiel que l'installation soit effectuée par un personnel qualifié."",
+  ""target_text_es"": ""Para garantizar una instalación adecuada y duradera de las ventanas Roverplastik, es esencial que la obra sea realizada por personal cualificado.""
+}
+```"
+"Per garantire una corretta e duratura installazione delle finestre Roverplastik, è essenziale che la posa in opera sia eseguita da personale qualificato.","Para garantizar una instalación adecuada y duradera de las ventanas Roverplastik, es esencial que la obra sea realizada por personal cualificado.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,posa in opera qualificata,installation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire una corretta e duratura installazione delle finestre Roverplastik, è essenziale che la posa in opera sia eseguita da personale qualificato."",
+  ""target_text_en"": ""To ensure a proper and long-lasting installation of Roverplastik windows, it is essential that the work be carried out by qualified personnel."",
+  ""target_text_fr"": ""Pour garantir une pose correcte et durable des fenêtres Roverplastik, il est essentiel que l'installation soit effectuée par un personnel qualifié."",
+  ""target_text_es"": ""Para garantizar una instalación adecuada y duradera de las ventanas Roverplastik, es esencial que la obra sea realizada por personal cualificado.""
+}
+```"
+"Per garantire un'installazione duratura e senza perdite, eseguire la sigillatura del giunto utilizzando il prodotto sigillante specificato dal manuale.","To ensure a durable and leak-free installation, seal the joint using the specified sealant product as outlined in the manual.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sigillatura del giunto,action,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'installazione duratura e senza perdite, eseguire la sigillatura del giunto utilizzando il prodotto sigillante specificato dal manuale."",
+  ""target_text_en"": ""To ensure a durable and leak-free installation, seal the joint using the specified sealant product as outlined in the manual."",
+  ""target_text_fr"": ""Pour garantir une installation durable et sans fuites, sceller le joint à l'aide du produit de calfeutrage spécifié dans le manuel."",
+  ""target_text_es"": ""Para asegurar una instalación duradera y sin fugas, sellar el junta utilizando el producto sellador especificado en el manual.""
+}
+```"
+"Per garantire un'installazione duratura e senza perdite, eseguire la sigillatura del giunto utilizzando il prodotto sigillante specificato dal manuale.","Pour garantir une installation durable et sans fuites, sceller le joint à l'aide du produit de calfeutrage spécifié dans le manuel.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sigillatura del giunto,action,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'installazione duratura e senza perdite, eseguire la sigillatura del giunto utilizzando il prodotto sigillante specificato dal manuale."",
+  ""target_text_en"": ""To ensure a durable and leak-free installation, seal the joint using the specified sealant product as outlined in the manual."",
+  ""target_text_fr"": ""Pour garantir une installation durable et sans fuites, sceller le joint à l'aide du produit de calfeutrage spécifié dans le manuel."",
+  ""target_text_es"": ""Para asegurar una instalación duradera y sin fugas, sellar el junta utilizando el producto sellador especificado en el manual.""
+}
+```"
+"Per garantire un'installazione duratura e senza perdite, eseguire la sigillatura del giunto utilizzando il prodotto sigillante specificato dal manuale.","Para asegurar una instalación duradera y sin fugas, sellar el junta utilizando el producto sellador especificado en el manual.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,sigillatura del giunto,action,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'installazione duratura e senza perdite, eseguire la sigillatura del giunto utilizzando il prodotto sigillante specificato dal manuale."",
+  ""target_text_en"": ""To ensure a durable and leak-free installation, seal the joint using the specified sealant product as outlined in the manual."",
+  ""target_text_fr"": ""Pour garantir une installation durable et sans fuites, sceller le joint à l'aide du produit de calfeutrage spécifié dans le manuel."",
+  ""target_text_es"": ""Para asegurar una instalación duradera y sin fugas, sellar el junta utilizando el producto sellador especificado en el manual.""
+}
+```"
+"Durante l'installazione delle finestre, è essenziale eseguire una corretta coibentazione degli infissi per garantire il massimo isolamento termico e acustico.","During window installation, it is essential to perform proper insulation of the frames to ensure maximum thermal and acoustic isolation.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,coibentazione,action,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è essenziale eseguire una corretta coibentazione degli infissi per garantire il massimo isolamento termico e acustico."",
+  ""target_text_en"": ""During window installation, it is essential to perform proper insulation of the frames to ensure maximum thermal and acoustic isolation."",
+  ""target_text_fr"": ""Pendant l'installation des fenêtres, il est essentiel d'effectuer une bonne isolation des cadres pour garantir une isolation thermique et acoustique maximale."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, es esencial realizar una correcta aislación de los marcos para asegurar el máximo aislamiento térmico y acústico.""
+}
+```"
+"Durante l'installazione delle finestre, è essenziale eseguire una corretta coibentazione degli infissi per garantire il massimo isolamento termico e acustico.","Pendant l'installation des fenêtres, il est essentiel d'effectuer une bonne isolation des cadres pour garantir une isolation thermique et acoustique maximale.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,coibentazione,action,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è essenziale eseguire una corretta coibentazione degli infissi per garantire il massimo isolamento termico e acustico."",
+  ""target_text_en"": ""During window installation, it is essential to perform proper insulation of the frames to ensure maximum thermal and acoustic isolation."",
+  ""target_text_fr"": ""Pendant l'installation des fenêtres, il est essentiel d'effectuer une bonne isolation des cadres pour garantir une isolation thermique et acoustique maximale."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, es esencial realizar una correcta aislación de los marcos para asegurar el máximo aislamiento térmico y acústico.""
+}
+```"
+"Durante l'installazione delle finestre, è essenziale eseguire una corretta coibentazione degli infissi per garantire il massimo isolamento termico e acustico.","Durante la instalación de las ventanas, es esencial realizar una correcta aislación de los marcos para asegurar el máximo aislamiento térmico y acústico.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,coibentazione,action,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è essenziale eseguire una corretta coibentazione degli infissi per garantire il massimo isolamento termico e acustico."",
+  ""target_text_en"": ""During window installation, it is essential to perform proper insulation of the frames to ensure maximum thermal and acoustic isolation."",
+  ""target_text_fr"": ""Pendant l'installation des fenêtres, il est essentiel d'effectuer une bonne isolation des cadres pour garantir une isolation thermique et acoustique maximale."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, es esencial realizar una correcta aislación de los marcos para asegurar el máximo aislamiento térmico y acústico.""
+}
+```"
+"Per garantire un'efficace ristrutturazione non invasiva, è essenziale utilizzare i nostri sistemi di finestre avanzati che permettono miglioramenti termici senza danneggiare le strutture esistenti.","To ensure an effective non-invasive renovation, it is essential to use our advanced window systems that allow thermal improvements without damaging existing structures.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,ristrutturazione non invasiva,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace ristrutturazione non invasiva, è essenziale utilizzare i nostri sistemi di finestre avanzati che permettono miglioramenti termici senza danneggiare le strutture esistenti."",
+  ""target_text_en"": ""To ensure an effective non-invasive renovation, it is essential to use our advanced window systems that allow thermal improvements without damaging existing structures."",
+  ""target_text_fr"": ""Pour garantir une rénovation non invasive efficace, il est essentiel d'utiliser nos systèmes de fenêtres avancés qui permettent des améliorations thermiques sans endommager les structures existantes."",
+  ""target_text_es"": ""Para asegurar una renovación no invasiva efectiva, es esencial utilizar nuestros avanzados sistemas de ventanas que permiten mejoras térmicas sin dañar las estructuras existentes.""
+}
+```"
+"Per garantire un'efficace ristrutturazione non invasiva, è essenziale utilizzare i nostri sistemi di finestre avanzati che permettono miglioramenti termici senza danneggiare le strutture esistenti.","Pour garantir une rénovation non invasive efficace, il est essentiel d'utiliser nos systèmes de fenêtres avancés qui permettent des améliorations thermiques sans endommager les structures existantes.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,ristrutturazione non invasiva,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace ristrutturazione non invasiva, è essenziale utilizzare i nostri sistemi di finestre avanzati che permettono miglioramenti termici senza danneggiare le strutture esistenti."",
+  ""target_text_en"": ""To ensure an effective non-invasive renovation, it is essential to use our advanced window systems that allow thermal improvements without damaging existing structures."",
+  ""target_text_fr"": ""Pour garantir une rénovation non invasive efficace, il est essentiel d'utiliser nos systèmes de fenêtres avancés qui permettent des améliorations thermiques sans endommager les structures existantes."",
+  ""target_text_es"": ""Para asegurar una renovación no invasiva efectiva, es esencial utilizar nuestros avanzados sistemas de ventanas que permiten mejoras térmicas sin dañar las estructuras existentes.""
+}
+```"
+"Per garantire un'efficace ristrutturazione non invasiva, è essenziale utilizzare i nostri sistemi di finestre avanzati che permettono miglioramenti termici senza danneggiare le strutture esistenti.","Para asegurar una renovación no invasiva efectiva, es esencial utilizar nuestros avanzados sistemas de ventanas que permiten mejoras térmicas sin dañar las estructuras existentes.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,ristrutturazione non invasiva,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace ristrutturazione non invasiva, è essenziale utilizzare i nostri sistemi di finestre avanzati che permettono miglioramenti termici senza danneggiare le strutture esistenti."",
+  ""target_text_en"": ""To ensure an effective non-invasive renovation, it is essential to use our advanced window systems that allow thermal improvements without damaging existing structures."",
+  ""target_text_fr"": ""Pour garantir une rénovation non invasive efficace, il est essentiel d'utiliser nos systèmes de fenêtres avancés qui permettent des améliorations thermiques sans endommager les structures existantes."",
+  ""target_text_es"": ""Para asegurar una renovación no invasiva efectiva, es esencial utilizar nuestros avanzados sistemas de ventanas que permiten mejoras térmicas sin dañar las estructuras existentes.""
+}
+```"
+"Le tunnel solari sono progettati per ottimizzare il passaggio della luce naturale, migliorando così l'efficienza energetica degli edifici.","The solar tunnels are designed to optimize the passage of natural light, thereby enhancing the energy efficiency of buildings.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tunnel solari,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tunnel solari sono progettati per ottimizzare il passaggio della luce naturale, migliorando così l'efficienza energetica degli edifici."",
+  ""target_text_en"": ""The solar tunnels are designed to optimize the passage of natural light, thereby enhancing the energy efficiency of buildings."",
+  ""target_text_fr"": ""Les tunnels solaires sont conçus pour optimiser le passage de la lumière naturelle, améliorant ainsi l'efficacité énergétique des bâtiments."",
+  ""target_text_es"": ""Los túneles solares están diseñados para optimizar el paso de la luz natural, mejorando así la eficiencia energética de los edificios.""
+}
+```"
+"Le tunnel solari sono progettati per ottimizzare il passaggio della luce naturale, migliorando così l'efficienza energetica degli edifici.","Les tunnels solaires sont conçus pour optimiser le passage de la lumière naturelle, améliorant ainsi l'efficacité énergétique des bâtiments.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tunnel solari,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tunnel solari sono progettati per ottimizzare il passaggio della luce naturale, migliorando così l'efficienza energetica degli edifici."",
+  ""target_text_en"": ""The solar tunnels are designed to optimize the passage of natural light, thereby enhancing the energy efficiency of buildings."",
+  ""target_text_fr"": ""Les tunnels solaires sont conçus pour optimiser le passage de la lumière naturelle, améliorant ainsi l'efficacité énergétique des bâtiments."",
+  ""target_text_es"": ""Los túneles solares están diseñados para optimizar el paso de la luz natural, mejorando así la eficiencia energética de los edificios.""
+}
+```"
+"Le tunnel solari sono progettati per ottimizzare il passaggio della luce naturale, migliorando così l'efficienza energetica degli edifici.","Los túneles solares están diseñados para optimizar el paso de la luz natural, mejorando así la eficiencia energética de los edificios.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tunnel solari,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tunnel solari sono progettati per ottimizzare il passaggio della luce naturale, migliorando così l'efficienza energetica degli edifici."",
+  ""target_text_en"": ""The solar tunnels are designed to optimize the passage of natural light, thereby enhancing the energy efficiency of buildings."",
+  ""target_text_fr"": ""Les tunnels solaires sont conçus pour optimiser le passage de la lumière naturelle, améliorant ainsi l'efficacité énergétique des bâtiments."",
+  ""target_text_es"": ""Los túneles solares están diseñados para optimizar el paso de la luz natural, mejorando así la eficiencia energética de los edificios.""
+}
+```"
+"Le finestre da tetto di Roverplastik sono dotate di un sistema d'apertura a bilico, ideale per ottimizzare l'aerazione e la luce naturale in ambienti residenziali e commerciali.","Roverplastik's skylights are equipped with a tilt-and-turn opening system, ideal for optimizing ventilation and natural light in residential and commercial spaces.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,finestre da tetto,product,an installation manual,"```json
+{
+  ""source_text"": ""Le finestre da tetto di Roverplastik sono dotate di un sistema d'apertura a bilico, ideale per ottimizzare l'aerazione e la luce naturale in ambienti residenziali e commerciali."",
+  ""target_text_en"": ""Roverplastik's skylights are equipped with a tilt-and-turn opening system, ideal for optimizing ventilation and natural light in residential and commercial spaces."",
+  ""target_text_fr"": ""Les fenêtres de toit de Roverplastik sont équipées d'un système d'ouverture à bascule, idéal pour optimiser la ventilation et la lumière naturelle dans les espaces résidentiels et commerciaux."",
+  ""target_text_es"": ""Las ventanas para tejado de Roverplastik están equipadas con un sistema de apertura a balanceo, ideal para optimizar la ventilación y la luz natural en espacios residenciales y comerciales.""
+}
+```"
+"Le finestre da tetto di Roverplastik sono dotate di un sistema d'apertura a bilico, ideale per ottimizzare l'aerazione e la luce naturale in ambienti residenziali e commerciali.","Les fenêtres de toit de Roverplastik sont équipées d'un système d'ouverture à bascule, idéal pour optimiser la ventilation et la lumière naturelle dans les espaces résidentiels et commerciaux.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,finestre da tetto,product,an installation manual,"```json
+{
+  ""source_text"": ""Le finestre da tetto di Roverplastik sono dotate di un sistema d'apertura a bilico, ideale per ottimizzare l'aerazione e la luce naturale in ambienti residenziali e commerciali."",
+  ""target_text_en"": ""Roverplastik's skylights are equipped with a tilt-and-turn opening system, ideal for optimizing ventilation and natural light in residential and commercial spaces."",
+  ""target_text_fr"": ""Les fenêtres de toit de Roverplastik sont équipées d'un système d'ouverture à bascule, idéal pour optimiser la ventilation et la lumière naturelle dans les espaces résidentiels et commerciaux."",
+  ""target_text_es"": ""Las ventanas para tejado de Roverplastik están equipadas con un sistema de apertura a balanceo, ideal para optimizar la ventilación y la luz natural en espacios residenciales y comerciales.""
+}
+```"
+"Le finestre da tetto di Roverplastik sono dotate di un sistema d'apertura a bilico, ideale per ottimizzare l'aerazione e la luce naturale in ambienti residenziali e commerciali.","Las ventanas para tejado de Roverplastik están equipadas con un sistema de apertura a balanceo, ideal para optimizar la ventilación y la luz natural en espacios residenciales y comerciales.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,finestre da tetto,product,an installation manual,"```json
+{
+  ""source_text"": ""Le finestre da tetto di Roverplastik sono dotate di un sistema d'apertura a bilico, ideale per ottimizzare l'aerazione e la luce naturale in ambienti residenziali e commerciali."",
+  ""target_text_en"": ""Roverplastik's skylights are equipped with a tilt-and-turn opening system, ideal for optimizing ventilation and natural light in residential and commercial spaces."",
+  ""target_text_fr"": ""Les fenêtres de toit de Roverplastik sont équipées d'un système d'ouverture à bascule, idéal pour optimiser la ventilation et la lumière naturelle dans les espaces résidentiels et commerciaux."",
+  ""target_text_es"": ""Las ventanas para tejado de Roverplastik están equipadas con un sistema de apertura a balanceo, ideal para optimizar la ventilación y la luz natural en espacios residenciales y comerciales.""
+}
+```"
+Le tende da sole Roverplastik sono compatibili con le zanzariere e possono essere installate facilmente per massimizzare l'efficienza energetica e il comfort abitativo.,Roverplastik blinds are compatible with mosquito nets and can be easily installed to maximize energy efficiency and living comfort.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,zanzariere,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tende da sole Roverplastik sono compatibili con le zanzariere e possono essere installate facilmente per massimizzare l'efficienza energetica e il comfort abitativo."",
+  ""target_text_en"": ""Roverplastik blinds are compatible with mosquito nets and can be easily installed to maximize energy efficiency and living comfort."",
+  ""target_text_fr"": ""Les stores Roverplastik sont compatibles avec les moustiquaires et peuvent être facilement installés pour maximiser l'efficacité énergétique et le confort de vie."",
+  ""target_text_es"": ""Las cortinas de sol Roverplastik son compatibles con las mosquiteras y se pueden instalar fácilmente para maximizar la eficiencia energética y el confort habitacional.""
+}
+```"
+Le tende da sole Roverplastik sono compatibili con le zanzariere e possono essere installate facilmente per massimizzare l'efficienza energetica e il comfort abitativo.,Les stores Roverplastik sont compatibles avec les moustiquaires et peuvent être facilement installés pour maximiser l'efficacité énergétique et le confort de vie.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,zanzariere,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tende da sole Roverplastik sono compatibili con le zanzariere e possono essere installate facilmente per massimizzare l'efficienza energetica e il comfort abitativo."",
+  ""target_text_en"": ""Roverplastik blinds are compatible with mosquito nets and can be easily installed to maximize energy efficiency and living comfort."",
+  ""target_text_fr"": ""Les stores Roverplastik sont compatibles avec les moustiquaires et peuvent être facilement installés pour maximiser l'efficacité énergétique et le confort de vie."",
+  ""target_text_es"": ""Las cortinas de sol Roverplastik son compatibles con las mosquiteras y se pueden instalar fácilmente para maximizar la eficiencia energética y el confort habitacional.""
+}
+```"
+Le tende da sole Roverplastik sono compatibili con le zanzariere e possono essere installate facilmente per massimizzare l'efficienza energetica e il comfort abitativo.,Las cortinas de sol Roverplastik son compatibles con las mosquiteras y se pueden instalar fácilmente para maximizar la eficiencia energética y el confort habitacional.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,zanzariere,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tende da sole Roverplastik sono compatibili con le zanzariere e possono essere installate facilmente per massimizzare l'efficienza energetica e il comfort abitativo."",
+  ""target_text_en"": ""Roverplastik blinds are compatible with mosquito nets and can be easily installed to maximize energy efficiency and living comfort."",
+  ""target_text_fr"": ""Les stores Roverplastik sont compatibles avec les moustiquaires et peuvent être facilement installés pour maximiser l'efficacité énergétique et le confort de vie."",
+  ""target_text_es"": ""Las cortinas de sol Roverplastik son compatibles con las mosquiteras y se pueden instalar fácilmente para maximizar la eficiencia energética y el confort habitacional.""
+}
+```"
+Assicurarsi che le veneziane siano posizionate correttamente per massimizzare l'efficienza del controllo solare e garantire un buon isolamento termico.,Ensure that the venetian blinds are positioned correctly to maximize solar control efficiency and ensure good thermal insulation.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,veneziane,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le veneziane siano posizionate correttamente per massimizzare l'efficienza del controllo solare e garantire un buon isolamento termico."",
+  ""target_text_en"": ""Ensure that the venetian blinds are positioned correctly to maximize solar control efficiency and ensure good thermal insulation."",
+  ""target_text_fr"": ""Assurez-vous que les volets roulants sont correctement positionnés pour maximiser l'efficacité du contrôle solaire et garantir une bonne isolation thermique."",
+  ""target_text_es"": ""Asegúrese de que las venecianas estén posicionadas correctamente para maximizar la eficiencia del control solar y garantizar un buen aislamiento térmico.""
+}
+```"
+Assicurarsi che le veneziane siano posizionate correttamente per massimizzare l'efficienza del controllo solare e garantire un buon isolamento termico.,Assurez-vous que les volets roulants sont correctement positionnés pour maximiser l'efficacité du contrôle solaire et garantir une bonne isolation thermique.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,veneziane,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le veneziane siano posizionate correttamente per massimizzare l'efficienza del controllo solare e garantire un buon isolamento termico."",
+  ""target_text_en"": ""Ensure that the venetian blinds are positioned correctly to maximize solar control efficiency and ensure good thermal insulation."",
+  ""target_text_fr"": ""Assurez-vous que les volets roulants sont correctement positionnés pour maximiser l'efficacité du contrôle solaire et garantir une bonne isolation thermique."",
+  ""target_text_es"": ""Asegúrese de que las venecianas estén posicionadas correctamente para maximizar la eficiencia del control solar y garantizar un buen aislamiento térmico.""
+}
+```"
+Assicurarsi che le veneziane siano posizionate correttamente per massimizzare l'efficienza del controllo solare e garantire un buon isolamento termico.,Asegúrese de que las venecianas estén posicionadas correctamente para maximizar la eficiencia del control solar y garantizar un buen aislamiento térmico.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,veneziane,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le veneziane siano posizionate correttamente per massimizzare l'efficienza del controllo solare e garantire un buon isolamento termico."",
+  ""target_text_en"": ""Ensure that the venetian blinds are positioned correctly to maximize solar control efficiency and ensure good thermal insulation."",
+  ""target_text_fr"": ""Assurez-vous que les volets roulants sont correctement positionnés pour maximiser l'efficacité du contrôle solaire et garantir une bonne isolation thermique."",
+  ""target_text_es"": ""Asegúrese de que las venecianas estén posicionadas correctamente para maximizar la eficiencia del control solar y garantizar un buen aislamiento térmico.""
+}
+```"
+"Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti.","The roller blinds and awnings for skylights are designed to provide optimal control of natural light and heat, offering effective solar protection and enhancing the thermal insulation of spaces.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tapparelle e tende per lucernari,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti."",
+  ""target_text_en"": ""The roller blinds and awnings for skylights are designed to provide optimal control of natural light and heat, offering effective solar protection and enhancing the thermal insulation of spaces."",
+  ""target_text_fr"": ""Les stores et les rideaux pour lucarnes sont conçus pour assurer un contrôle optimal de la lumière naturelle et de la chaleur, offrant une protection solaire efficace et améliorant l'isolation thermique des espaces."",
+  ""target_text_es"": ""Las persianas y las cortinas para lucernarios están diseñadas para garantizar un control óptimo de la luz natural y del calor, ofreciendo una protección solar efectiva e mejorando el aislamiento térmico de los ambientes.""
+}
+```"
+"Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti.","Les stores et les rideaux pour lucarnes sont conçus pour assurer un contrôle optimal de la lumière naturelle et de la chaleur, offrant une protection solaire efficace et améliorant l'isolation thermique des espaces.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tapparelle e tende per lucernari,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti."",
+  ""target_text_en"": ""The roller blinds and awnings for skylights are designed to provide optimal control of natural light and heat, offering effective solar protection and enhancing the thermal insulation of spaces."",
+  ""target_text_fr"": ""Les stores et les rideaux pour lucarnes sont conçus pour assurer un contrôle optimal de la lumière naturelle et de la chaleur, offrant une protection solaire efficace et améliorant l'isolation thermique des espaces."",
+  ""target_text_es"": ""Las persianas y las cortinas para lucernarios están diseñadas para garantizar un control óptimo de la luz natural y del calor, ofreciendo una protección solar efectiva e mejorando el aislamiento térmico de los ambientes.""
+}
+```"
+"Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti.","Las persianas y las cortinas para lucernarios están diseñadas para garantizar un control óptimo de la luz natural y del calor, ofreciendo una protección solar efectiva e mejorando el aislamiento térmico de los ambientes.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,tapparelle e tende per lucernari,product,an installation manual,"```json
+{
+  ""source_text"": ""Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti."",
+  ""target_text_en"": ""The roller blinds and awnings for skylights are designed to provide optimal control of natural light and heat, offering effective solar protection and enhancing the thermal insulation of spaces."",
+  ""target_text_fr"": ""Les stores et les rideaux pour lucarnes sont conçus pour assurer un contrôle optimal de la lumière naturelle et de la chaleur, offrant une protection solaire efficace et améliorant l'isolation thermique des espaces."",
+  ""target_text_es"": ""Las persianas y las cortinas para lucernarios están diseñadas para garantizar un control óptimo de la luz natural y del calor, ofreciendo una protección solar efectiva e mejorando el aislamiento térmico de los ambientes.""
+}
+```"
+"Per assicurare un'installazione perfetta, è fondamentale utilizzare le soluzioni per foro finestra che garantiscono un'integrazione ottimale con il sistema di rinnovamento esistente.","To ensure a flawless installation, it is essential to use window hole solutions that guarantee optimal integration with the existing renovation system.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,soluzioni per foro finestra,solution,an installation manual,"```json
+{
+  ""source_text"": ""Per assicurare un'installazione perfetta, è fondamentale utilizzare le soluzioni per foro finestra che garantiscono un'integrazione ottimale con il sistema di rinnovamento esistente."",
+  ""target_text_en"": ""To ensure a flawless installation, it is essential to use window hole solutions that guarantee optimal integration with the existing renovation system."",
+  ""target_text_fr"": ""Pour assurer une installation parfaite, il est essentiel d'utiliser des solutions pour trou de fenêtre qui garantissent une intégration optimale avec le système de rénovation existant."",
+  ""target_text_es"": ""Para asegurar una instalación perfecta, es fundamental utilizar soluciones para orificio de ventana que garanticen una integración óptima con el sistema de renovación existente.""
+}
+```"
+"Per assicurare un'installazione perfetta, è fondamentale utilizzare le soluzioni per foro finestra che garantiscono un'integrazione ottimale con il sistema di rinnovamento esistente.","Pour assurer une installation parfaite, il est essentiel d'utiliser des solutions pour trou de fenêtre qui garantissent une intégration optimale avec le système de rénovation existant.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,soluzioni per foro finestra,solution,an installation manual,"```json
+{
+  ""source_text"": ""Per assicurare un'installazione perfetta, è fondamentale utilizzare le soluzioni per foro finestra che garantiscono un'integrazione ottimale con il sistema di rinnovamento esistente."",
+  ""target_text_en"": ""To ensure a flawless installation, it is essential to use window hole solutions that guarantee optimal integration with the existing renovation system."",
+  ""target_text_fr"": ""Pour assurer une installation parfaite, il est essentiel d'utiliser des solutions pour trou de fenêtre qui garantissent une intégration optimale avec le système de rénovation existant."",
+  ""target_text_es"": ""Para asegurar una instalación perfecta, es fundamental utilizar soluciones para orificio de ventana que garanticen una integración óptima con el sistema de renovación existente.""
+}
+```"
+"Per assicurare un'installazione perfetta, è fondamentale utilizzare le soluzioni per foro finestra che garantiscono un'integrazione ottimale con il sistema di rinnovamento esistente.","Para asegurar una instalación perfecta, es fundamental utilizar soluciones para orificio de ventana que garanticen una integración óptima con el sistema de renovación existente.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,soluzioni per foro finestra,solution,an installation manual,"```json
+{
+  ""source_text"": ""Per assicurare un'installazione perfetta, è fondamentale utilizzare le soluzioni per foro finestra che garantiscono un'integrazione ottimale con il sistema di rinnovamento esistente."",
+  ""target_text_en"": ""To ensure a flawless installation, it is essential to use window hole solutions that guarantee optimal integration with the existing renovation system."",
+  ""target_text_fr"": ""Pour assurer une installation parfaite, il est essentiel d'utiliser des solutions pour trou de fenêtre qui garantissent une intégration optimale avec le système de rénovation existant."",
+  ""target_text_es"": ""Para asegurar una instalación perfecta, es fundamental utilizar soluciones para orificio de ventana que garanticen una integración óptima con el sistema de renovación existente.""
+}
+```"
+"Le guarnizioni Deventer garantiscono un'ottima tenuta ermetica e resistenza all'invecchiamento, ideali per le finestre moderne.","Deventer seals ensure excellent airtightness and resistance to aging, making them ideal for modern windows.",ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,deventer seals,product,an installation manual,"```json
+{
+  ""source_text"": ""Le guarnizioni Deventer garantiscono un'ottima tenuta ermetica e resistenza all'invecchiamento, ideali per le finestre moderne."",
+  ""target_text_en"": ""Deventer seals ensure excellent airtightness and resistance to aging, making them ideal for modern windows."",
+  ""target_text_fr"": ""Les joints Deventer assurent une excellente étanchéité et résistance au vieillissement, idéaux pour les fenêtres contemporaines."",
+  ""target_text_es"": ""Las juntas Deventer garantizan una excelente estanqueidad y resistencia al envejecimiento, ideales para ventanas modernas.""
+}
+```"
+"Le guarnizioni Deventer garantiscono un'ottima tenuta ermetica e resistenza all'invecchiamento, ideali per le finestre moderne.","Les joints Deventer assurent une excellente étanchéité et résistance au vieillissement, idéaux pour les fenêtres contemporaines.",ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,deventer seals,product,an installation manual,"```json
+{
+  ""source_text"": ""Le guarnizioni Deventer garantiscono un'ottima tenuta ermetica e resistenza all'invecchiamento, ideali per le finestre moderne."",
+  ""target_text_en"": ""Deventer seals ensure excellent airtightness and resistance to aging, making them ideal for modern windows."",
+  ""target_text_fr"": ""Les joints Deventer assurent une excellente étanchéité et résistance au vieillissement, idéaux pour les fenêtres contemporaines."",
+  ""target_text_es"": ""Las juntas Deventer garantizan una excelente estanqueidad y resistencia al envejecimiento, ideales para ventanas modernas.""
+}
+```"
+"Le guarnizioni Deventer garantiscono un'ottima tenuta ermetica e resistenza all'invecchiamento, ideali per le finestre moderne.","Las juntas Deventer garantizan una excelente estanqueidad y resistencia al envejecimiento, ideales para ventanas modernas.",ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,deventer seals,product,an installation manual,"```json
+{
+  ""source_text"": ""Le guarnizioni Deventer garantiscono un'ottima tenuta ermetica e resistenza all'invecchiamento, ideali per le finestre moderne."",
+  ""target_text_en"": ""Deventer seals ensure excellent airtightness and resistance to aging, making them ideal for modern windows."",
+  ""target_text_fr"": ""Les joints Deventer assurent une excellente étanchéité et résistance au vieillissement, idéaux pour les fenêtres contemporaines."",
+  ""target_text_es"": ""Las juntas Deventer garantizan una excelente estanqueidad y resistencia al envejecimiento, ideales para ventanas modernas.""
+}
+```"
+Il sistema 'monoblocco coibentato presystem' è progettato per garantire un'elevata efficienza termica grazie alla sua struttura integrale e isolante.,Monobloc insulated pre-fabricated system' is designed to ensure high thermal efficiency due to its integral and insulating structure.,ita_Latn,eng_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,monoblocco coibentato presystem,product,an installation manual,"```json
+{
+  ""source_text"": ""Il sistema 'monoblocco coibentato presystem' è progettato per garantire un'elevata efficienza termica grazie alla sua struttura integrale e isolante."",
+  ""target_text_en"": ""'Monobloc insulated pre-fabricated system' is designed to ensure high thermal efficiency due to its integral and insulating structure."",
+  ""target_text_fr"": ""Le système 'monobloc isolé préfabriqué' est conçu pour assurer une haute efficacité thermique grâce à sa structure intégrale et isolante."",
+  ""target_text_es"": ""El sistema 'bloque aislado prefabricado' está diseñado para garantizar una alta eficiencia térmica gracias a su estructura integral e aislante.""
+}
+```"
+Il sistema 'monoblocco coibentato presystem' è progettato per garantire un'elevata efficienza termica grazie alla sua struttura integrale e isolante.,Le système 'monobloc isolé préfabriqué' est conçu pour assurer une haute efficacité thermique grâce à sa structure intégrale et isolante.,ita_Latn,fra_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,monoblocco coibentato presystem,product,an installation manual,"```json
+{
+  ""source_text"": ""Il sistema 'monoblocco coibentato presystem' è progettato per garantire un'elevata efficienza termica grazie alla sua struttura integrale e isolante."",
+  ""target_text_en"": ""'Monobloc insulated pre-fabricated system' is designed to ensure high thermal efficiency due to its integral and insulating structure."",
+  ""target_text_fr"": ""Le système 'monobloc isolé préfabriqué' est conçu pour assurer une haute efficacité thermique grâce à sa structure intégrale et isolante."",
+  ""target_text_es"": ""El sistema 'bloque aislado prefabricado' está diseñado para garantizar una alta eficiencia térmica gracias a su estructura integral e aislante.""
+}
+```"
+Il sistema 'monoblocco coibentato presystem' è progettato per garantire un'elevata efficienza termica grazie alla sua struttura integrale e isolante.,El sistema 'bloque aislado prefabricado' está diseñado para garantizar una alta eficiencia térmica gracias a su estructura integral e aislante.,ita_Latn,spa_Latn,glossary,ollama/phi4,json_v1,2026-05-02T08:49:06.041423+00:00,monoblocco coibentato presystem,product,an installation manual,"```json
+{
+  ""source_text"": ""Il sistema 'monoblocco coibentato presystem' è progettato per garantire un'elevata efficienza termica grazie alla sua struttura integrale e isolante."",
+  ""target_text_en"": ""'Monobloc insulated pre-fabricated system' is designed to ensure high thermal efficiency due to its integral and insulating structure."",
+  ""target_text_fr"": ""Le système 'monobloc isolé préfabriqué' est conçu pour assurer une haute efficacité thermique grâce à sa structure intégrale et isolante."",
+  ""target_text_es"": ""El sistema 'bloque aislado prefabricado' está diseñado para garantizar una alta eficiencia térmica gracias a su estructura integral e aislante.""
+}
+```"

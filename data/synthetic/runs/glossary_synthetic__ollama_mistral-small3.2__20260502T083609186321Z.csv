@@ -1,0 +1,1105 @@
+source_text,target_text,source_lang,target_lang,origin,model_id,prompt_version,created_at,term,context,doc_type,raw_output
+Applicare il film protettivo su entrambe le superfici del vetro per evitare danni durante la fase di trasporto e installazione.,Apply the protective film on both surfaces of the glass to prevent damage during the transport and installation phase.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,film protettivo,product,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il film protettivo su entrambe le superfici del vetro per evitare danni durante la fase di trasporto e installazione."",
+  ""target_text_en"": ""Apply the protective film on both surfaces of the glass to prevent damage during the transport and installation phase."",
+  ""target_text_fr"": ""Appliquer le film protecteur sur les deux surfaces du verre pour éviter les dommages pendant la phase de transport et d'installation."",
+  ""target_text_es"": ""Aplicar la película protectora en ambas superficies del cristal para evitar daños durante la fase de transporte e instalación.""
+}
+```"
+Applicare il film protettivo su entrambe le superfici del vetro per evitare danni durante la fase di trasporto e installazione.,Appliquer le film protecteur sur les deux surfaces du verre pour éviter les dommages pendant la phase de transport et d'installation.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,film protettivo,product,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il film protettivo su entrambe le superfici del vetro per evitare danni durante la fase di trasporto e installazione."",
+  ""target_text_en"": ""Apply the protective film on both surfaces of the glass to prevent damage during the transport and installation phase."",
+  ""target_text_fr"": ""Appliquer le film protecteur sur les deux surfaces du verre pour éviter les dommages pendant la phase de transport et d'installation."",
+  ""target_text_es"": ""Aplicar la película protectora en ambas superficies del cristal para evitar daños durante la fase de transporte e instalación.""
+}
+```"
+Applicare il film protettivo su entrambe le superfici del vetro per evitare danni durante la fase di trasporto e installazione.,Aplicar la película protectora en ambas superficies del cristal para evitar daños durante la fase de transporte e instalación.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,film protettivo,product,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il film protettivo su entrambe le superfici del vetro per evitare danni durante la fase di trasporto e installazione."",
+  ""target_text_en"": ""Apply the protective film on both surfaces of the glass to prevent damage during the transport and installation phase."",
+  ""target_text_fr"": ""Appliquer le film protecteur sur les deux surfaces du verre pour éviter les dommages pendant la phase de transport et d'installation."",
+  ""target_text_es"": ""Aplicar la película protectora en ambas superficies del cristal para evitar daños durante la fase de transporte e instalación.""
+}
+```"
+Applicare il nastro adesivo di sigillatura lungo i bordi della finestra per garantire un'adeguata tenuta stagionale.,Apply the sealing tape along the window edges to ensure adequate seasonal weatherproofing.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nastro adesivo di sigillatura,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro adesivo di sigillatura lungo i bordi della finestra per garantire un'adeguata tenuta stagionale."",
+  ""target_text_en"": ""Apply the sealing tape along the window edges to ensure adequate seasonal weatherproofing."",
+  ""target_text_fr"": ""Appliquer le ruban adhésif de scellage le long des bords de la fenêtre pour assurer une isolation saisonnière adéquate."",
+  ""target_text_es"": ""Aplicar la cinta adhesiva de sellado a lo largo de los bordes de la ventana para garantizar un aislamiento estacional adecuado.""
+}
+```"
+Applicare il nastro adesivo di sigillatura lungo i bordi della finestra per garantire un'adeguata tenuta stagionale.,Appliquer le ruban adhésif de scellage le long des bords de la fenêtre pour assurer une isolation saisonnière adéquate.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nastro adesivo di sigillatura,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro adesivo di sigillatura lungo i bordi della finestra per garantire un'adeguata tenuta stagionale."",
+  ""target_text_en"": ""Apply the sealing tape along the window edges to ensure adequate seasonal weatherproofing."",
+  ""target_text_fr"": ""Appliquer le ruban adhésif de scellage le long des bords de la fenêtre pour assurer une isolation saisonnière adéquate."",
+  ""target_text_es"": ""Aplicar la cinta adhesiva de sellado a lo largo de los bordes de la ventana para garantizar un aislamiento estacional adecuado.""
+}
+```"
+Applicare il nastro adesivo di sigillatura lungo i bordi della finestra per garantire un'adeguata tenuta stagionale.,Aplicar la cinta adhesiva de sellado a lo largo de los bordes de la ventana para garantizar un aislamiento estacional adecuado.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nastro adesivo di sigillatura,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro adesivo di sigillatura lungo i bordi della finestra per garantire un'adeguata tenuta stagionale."",
+  ""target_text_en"": ""Apply the sealing tape along the window edges to ensure adequate seasonal weatherproofing."",
+  ""target_text_fr"": ""Appliquer le ruban adhésif de scellage le long des bords de la fenêtre pour assurer une isolation saisonnière adéquate."",
+  ""target_text_es"": ""Aplicar la cinta adhesiva de sellado a lo largo de los bordes de la ventana para garantizar un aislamiento estacional adecuado.""
+}
+```"
+"Prima dell'installazione, verificare che il profilo in PVC soddisfi i requisiti di resistenza al fuoco previsti dalla norma EN 1364-3.","Before installation, ensure that the PVC profile meets the fire resistance requirements specified in standard EN 1364-3.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,resistenza al fuoco,performance,an installation manual,"```json
+{
+  ""source_text"": ""Prima dell'installazione, verificare che il profilo in PVC soddisfi i requisiti di resistenza al fuoco previsti dalla norma EN 1364-3."",
+  ""target_text_en"": ""Before installation, ensure that the PVC profile meets the fire resistance requirements specified in standard EN 1364-3."",
+  ""target_text_fr"": ""Avant l'installation, veuillez vérifier que le profil en PVC répond aux exigences de résistance au feu prévues par la norme EN 1364-3."",
+  ""target_text_es"": ""Antes de la instalación, asegúrese de que el perfil de PVC cumpla con los requisitos de resistencia al fuego especificados en la norma EN 1364-3.""
+}
+```"
+"Prima dell'installazione, verificare che il profilo in PVC soddisfi i requisiti di resistenza al fuoco previsti dalla norma EN 1364-3.","Avant l'installation, veuillez vérifier que le profil en PVC répond aux exigences de résistance au feu prévues par la norme EN 1364-3.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,resistenza al fuoco,performance,an installation manual,"```json
+{
+  ""source_text"": ""Prima dell'installazione, verificare che il profilo in PVC soddisfi i requisiti di resistenza al fuoco previsti dalla norma EN 1364-3."",
+  ""target_text_en"": ""Before installation, ensure that the PVC profile meets the fire resistance requirements specified in standard EN 1364-3."",
+  ""target_text_fr"": ""Avant l'installation, veuillez vérifier que le profil en PVC répond aux exigences de résistance au feu prévues par la norme EN 1364-3."",
+  ""target_text_es"": ""Antes de la instalación, asegúrese de que el perfil de PVC cumpla con los requisitos de resistencia al fuego especificados en la norma EN 1364-3.""
+}
+```"
+"Prima dell'installazione, verificare che il profilo in PVC soddisfi i requisiti di resistenza al fuoco previsti dalla norma EN 1364-3.","Antes de la instalación, asegúrese de que el perfil de PVC cumpla con los requisitos de resistencia al fuego especificados en la norma EN 1364-3.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,resistenza al fuoco,performance,an installation manual,"```json
+{
+  ""source_text"": ""Prima dell'installazione, verificare che il profilo in PVC soddisfi i requisiti di resistenza al fuoco previsti dalla norma EN 1364-3."",
+  ""target_text_en"": ""Before installation, ensure that the PVC profile meets the fire resistance requirements specified in standard EN 1364-3."",
+  ""target_text_fr"": ""Avant l'installation, veuillez vérifier que le profil en PVC répond aux exigences de résistance au feu prévues par la norme EN 1364-3."",
+  ""target_text_es"": ""Antes de la instalación, asegúrese de que el perfil de PVC cumpla con los requisitos de resistencia al fuego especificados en la norma EN 1364-3.""
+}
+```"
+Assicurarsi che il profilo di tenuta sia correttamente posizionato tra il telaio della finestra e la parete per garantire la massima tenuta stagionale.,Ensure that the weatherstripping profile is correctly positioned between the window frame and the wall to guarantee maximum seasonal weatherproofing.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,profilo di tenuta,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo di tenuta sia correttamente posizionato tra il telaio della finestra e la parete per garantire la massima tenuta stagionale."",
+  ""target_text_en"": ""Ensure that the weatherstripping profile is correctly positioned between the window frame and the wall to guarantee maximum seasonal weatherproofing."",
+  ""target_text_fr"": ""Assurez-vous que le profil d'étanchéité est correctement positionné entre le cadre de la fenêtre et le mur pour garantir une étanchéité maximale saisonnière."",
+  ""target_text_es"": ""Asegúrese de que el perfil de estanqueidad esté correctamente posicionado entre el marco de la ventana y la pared para garantizar el máximo aislamiento estacional.""
+}
+```"
+Assicurarsi che il profilo di tenuta sia correttamente posizionato tra il telaio della finestra e la parete per garantire la massima tenuta stagionale.,Assurez-vous que le profil d'étanchéité est correctement positionné entre le cadre de la fenêtre et le mur pour garantir une étanchéité maximale saisonnière.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,profilo di tenuta,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo di tenuta sia correttamente posizionato tra il telaio della finestra e la parete per garantire la massima tenuta stagionale."",
+  ""target_text_en"": ""Ensure that the weatherstripping profile is correctly positioned between the window frame and the wall to guarantee maximum seasonal weatherproofing."",
+  ""target_text_fr"": ""Assurez-vous que le profil d'étanchéité est correctement positionné entre le cadre de la fenêtre et le mur pour garantir une étanchéité maximale saisonnière."",
+  ""target_text_es"": ""Asegúrese de que el perfil de estanqueidad esté correctamente posicionado entre el marco de la ventana y la pared para garantizar el máximo aislamiento estacional.""
+}
+```"
+Assicurarsi che il profilo di tenuta sia correttamente posizionato tra il telaio della finestra e la parete per garantire la massima tenuta stagionale.,Asegúrese de que el perfil de estanqueidad esté correctamente posicionado entre el marco de la ventana y la pared para garantizar el máximo aislamiento estacional.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,profilo di tenuta,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il profilo di tenuta sia correttamente posizionato tra il telaio della finestra e la parete per garantire la massima tenuta stagionale."",
+  ""target_text_en"": ""Ensure that the weatherstripping profile is correctly positioned between the window frame and the wall to guarantee maximum seasonal weatherproofing."",
+  ""target_text_fr"": ""Assurez-vous que le profil d'étanchéité est correctement positionné entre le cadre de la fenêtre et le mur pour garantir une étanchéité maximale saisonnière."",
+  ""target_text_es"": ""Asegúrese de que el perfil de estanqueidad esté correctamente posicionado entre el marco de la ventana y la pared para garantizar el máximo aislamiento estacional.""
+}
+```"
+"Per garantire un'efficace isolamento termico e acustico, è essenziale utilizzare un materiale isolante di alta qualità durante l'installazione.","To ensure effective thermal and acoustic insulation, it is essential to use a high-quality insulating material during installation.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,materiale isolante,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace isolamento termico e acustico, è essenziale utilizzare un materiale isolante di alta qualità durante l'installazione."",
+  ""target_text_en"": ""To ensure effective thermal and acoustic insulation, it is essential to use a high-quality insulating material during installation."",
+  ""target_text_fr"": ""Pour garantir une isolation thermique et acoustique efficace, il est essentiel d'utiliser un matériau isolant de haute qualité pendant l'installation."",
+  ""target_text_es"": ""Para garantizar un aislamiento térmico y acústico efectivo, es esencial utilizar un material aislante de alta calidad durante la instalación.""
+}
+```"
+"Per garantire un'efficace isolamento termico e acustico, è essenziale utilizzare un materiale isolante di alta qualità durante l'installazione.","Pour garantir une isolation thermique et acoustique efficace, il est essentiel d'utiliser un matériau isolant de haute qualité pendant l'installation.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,materiale isolante,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace isolamento termico e acustico, è essenziale utilizzare un materiale isolante di alta qualità durante l'installazione."",
+  ""target_text_en"": ""To ensure effective thermal and acoustic insulation, it is essential to use a high-quality insulating material during installation."",
+  ""target_text_fr"": ""Pour garantir une isolation thermique et acoustique efficace, il est essentiel d'utiliser un matériau isolant de haute qualité pendant l'installation."",
+  ""target_text_es"": ""Para garantizar un aislamiento térmico y acústico efectivo, es esencial utilizar un material aislante de alta calidad durante la instalación.""
+}
+```"
+"Per garantire un'efficace isolamento termico e acustico, è essenziale utilizzare un materiale isolante di alta qualità durante l'installazione.","Para garantizar un aislamiento térmico y acústico efectivo, es esencial utilizar un material aislante de alta calidad durante la instalación.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,materiale isolante,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace isolamento termico e acustico, è essenziale utilizzare un materiale isolante di alta qualità durante l'installazione."",
+  ""target_text_en"": ""To ensure effective thermal and acoustic insulation, it is essential to use a high-quality insulating material during installation."",
+  ""target_text_fr"": ""Pour garantir une isolation thermique et acoustique efficace, il est essentiel d'utiliser un matériau isolant de haute qualité pendant l'installation."",
+  ""target_text_es"": ""Para garantizar un aislamiento térmico y acústico efectivo, es esencial utilizar un material aislante de alta calidad durante la instalación.""
+}
+```"
+Assicurarsi che le dimensioni del profilo corrispondano alle specifiche indicate nell'allegato tecnico prima di procedere con l'installazione del telaio della finestra.,Ensure that the profile dimensions match the specifications indicated in the technical appendix before proceeding with the window frame installation.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,dimensioni del profilo,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le dimensioni del profilo corrispondano alle specifiche indicate nell'allegato tecnico prima di procedere con l'installazione del telaio della finestra."",
+  ""target_text_en"": ""Ensure that the profile dimensions match the specifications indicated in the technical appendix before proceeding with the window frame installation."",
+  ""target_text_fr"": ""Assurez-vous que les dimensions du profil correspondent aux spécifications indiquées dans l'annexe technique avant de procéder à l'installation du châssis de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que las dimensiones del perfil coincidan con las especificaciones indicadas en el apéndice técnico antes de proceder con la instalación del marco de la ventana.""
+}
+```"
+Assicurarsi che le dimensioni del profilo corrispondano alle specifiche indicate nell'allegato tecnico prima di procedere con l'installazione del telaio della finestra.,Assurez-vous que les dimensions du profil correspondent aux spécifications indiquées dans l'annexe technique avant de procéder à l'installation du châssis de la fenêtre.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,dimensioni del profilo,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le dimensioni del profilo corrispondano alle specifiche indicate nell'allegato tecnico prima di procedere con l'installazione del telaio della finestra."",
+  ""target_text_en"": ""Ensure that the profile dimensions match the specifications indicated in the technical appendix before proceeding with the window frame installation."",
+  ""target_text_fr"": ""Assurez-vous que les dimensions du profil correspondent aux spécifications indiquées dans l'annexe technique avant de procéder à l'installation du châssis de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que las dimensiones del perfil coincidan con las especificaciones indicadas en el apéndice técnico antes de proceder con la instalación del marco de la ventana.""
+}
+```"
+Assicurarsi che le dimensioni del profilo corrispondano alle specifiche indicate nell'allegato tecnico prima di procedere con l'installazione del telaio della finestra.,Asegúrese de que las dimensiones del perfil coincidan con las especificaciones indicadas en el apéndice técnico antes de proceder con la instalación del marco de la ventana.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,dimensioni del profilo,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che le dimensioni del profilo corrispondano alle specifiche indicate nell'allegato tecnico prima di procedere con l'installazione del telaio della finestra."",
+  ""target_text_en"": ""Ensure that the profile dimensions match the specifications indicated in the technical appendix before proceeding with the window frame installation."",
+  ""target_text_fr"": ""Assurez-vous que les dimensions du profil correspondent aux spécifications indiquées dans l'annexe technique avant de procéder à l'installation du châssis de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que las dimensiones del perfil coincidan con las especificaciones indicadas en el apéndice técnico antes de proceder con la instalación del marco de la ventana.""
+}
+```"
+"Per garantire la conformità agli standard di settore, è essenziale verificare la prestazione acustica del sistema finestra prima dell'installazione.","To ensure compliance with industry standards, it is essential to verify the acoustic performance of the window system before installation.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,prestazione acustica,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità agli standard di settore, è essenziale verificare la prestazione acustica del sistema finestra prima dell'installazione."",
+  ""target_text_en"": ""To ensure compliance with industry standards, it is essential to verify the acoustic performance of the window system before installation."",
+  ""target_text_fr"": ""Pour garantir la conformité aux normes du secteur, il est essentiel de vérifier la performance acoustique du système de fenêtre avant l'installation."",
+  ""target_text_es"": ""Para garantizar el cumplimiento de los estándares del sector, es esencial verificar el rendimiento acústico del sistema de ventana antes de la instalación.""
+}
+```"
+"Per garantire la conformità agli standard di settore, è essenziale verificare la prestazione acustica del sistema finestra prima dell'installazione.","Pour garantir la conformité aux normes du secteur, il est essentiel de vérifier la performance acoustique du système de fenêtre avant l'installation.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,prestazione acustica,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità agli standard di settore, è essenziale verificare la prestazione acustica del sistema finestra prima dell'installazione."",
+  ""target_text_en"": ""To ensure compliance with industry standards, it is essential to verify the acoustic performance of the window system before installation."",
+  ""target_text_fr"": ""Pour garantir la conformité aux normes du secteur, il est essentiel de vérifier la performance acoustique du système de fenêtre avant l'installation."",
+  ""target_text_es"": ""Para garantizar el cumplimiento de los estándares del sector, es esencial verificar el rendimiento acústico del sistema de ventana antes de la instalación.""
+}
+```"
+"Per garantire la conformità agli standard di settore, è essenziale verificare la prestazione acustica del sistema finestra prima dell'installazione.","Para garantizar el cumplimiento de los estándares del sector, es esencial verificar el rendimiento acústico del sistema de ventana antes de la instalación.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,prestazione acustica,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità agli standard di settore, è essenziale verificare la prestazione acustica del sistema finestra prima dell'installazione."",
+  ""target_text_en"": ""To ensure compliance with industry standards, it is essential to verify the acoustic performance of the window system before installation."",
+  ""target_text_fr"": ""Pour garantir la conformité aux normes du secteur, il est essentiel de vérifier la performance acoustique du système de fenêtre avant l'installation."",
+  ""target_text_es"": ""Para garantizar el cumplimiento de los estándares del sector, es esencial verificar el rendimiento acústico del sistema de ventana antes de la instalación.""
+}
+```"
+"Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra.","Apply the sealant for joints with a heat gun, ensuring it uniformly covers all joints between the panels and the window frame.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sigillante per giunti,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra."",
+  ""target_text_en"": ""Apply the sealant for joints with a heat gun, ensuring it uniformly covers all joints between the panels and the window frame."",
+  ""target_text_fr"": ""Appliquer le produit d'étanchéité pour joints avec un pistolet à chaleur, en veillant à ce qu'il couvre uniformément toutes les jonctions entre les panneaux et la structure de la fenêtre."",
+  ""target_text_es"": ""Aplicar el sellador para juntas con un pistolet de calor, asegurándose de que cubra uniformemente todas las juntas entre los paneles y la estructura de la ventana.""
+}
+```"
+"Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra.","Appliquer le produit d'étanchéité pour joints avec un pistolet à chaleur, en veillant à ce qu'il couvre uniformément toutes les jonctions entre les panneaux et la structure de la fenêtre.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sigillante per giunti,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra."",
+  ""target_text_en"": ""Apply the sealant for joints with a heat gun, ensuring it uniformly covers all joints between the panels and the window frame."",
+  ""target_text_fr"": ""Appliquer le produit d'étanchéité pour joints avec un pistolet à chaleur, en veillant à ce qu'il couvre uniformément toutes les jonctions entre les panneaux et la structure de la fenêtre."",
+  ""target_text_es"": ""Aplicar el sellador para juntas con un pistolet de calor, asegurándose de que cubra uniformemente todas las juntas entre los paneles y la estructura de la ventana.""
+}
+```"
+"Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra.","Aplicar el sellador para juntas con un pistolet de calor, asegurándose de que cubra uniformemente todas las juntas entre los paneles y la estructura de la ventana.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sigillante per giunti,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra."",
+  ""target_text_en"": ""Apply the sealant for joints with a heat gun, ensuring it uniformly covers all joints between the panels and the window frame."",
+  ""target_text_fr"": ""Appliquer le produit d'étanchéité pour joints avec un pistolet à chaleur, en veillant à ce qu'il couvre uniformément toutes les jonctions entre les panneaux et la structure de la fenêtre."",
+  ""target_text_es"": ""Aplicar el sellador para juntas con un pistolet de calor, asegurándose de que cubra uniformemente todas las juntas entre los paneles y la estructura de la ventana.""
+}
+```"
+Installare la membrana al vapore sul lato caldo dell'isolamento per prevenire la condensa e migliorare le prestazioni termiche e acustiche.,Install the vapor barrier on the warm side of the insulation to prevent condensation and improve thermal and acoustic performance.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,membrana al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Installare la membrana al vapore sul lato caldo dell'isolamento per prevenire la condensa e migliorare le prestazioni termiche e acustiche."",
+  ""target_text_en"": ""Install the vapor barrier on the warm side of the insulation to prevent condensation and improve thermal and acoustic performance."",
+  ""target_text_fr"": ""Installez la membrane pare-vapeur du côté chaud de l'isolation pour empêcher la condensation et améliorer les performances thermiques et acoustiques."",
+  ""target_text_es"": ""Instale la membrana de vapor en el lado caliente del aislamiento para prevenir la condensación y mejorar el rendimiento térmico y acústico.""
+}
+```"
+Installare la membrana al vapore sul lato caldo dell'isolamento per prevenire la condensa e migliorare le prestazioni termiche e acustiche.,Installez la membrane pare-vapeur du côté chaud de l'isolation pour empêcher la condensation et améliorer les performances thermiques et acoustiques.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,membrana al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Installare la membrana al vapore sul lato caldo dell'isolamento per prevenire la condensa e migliorare le prestazioni termiche e acustiche."",
+  ""target_text_en"": ""Install the vapor barrier on the warm side of the insulation to prevent condensation and improve thermal and acoustic performance."",
+  ""target_text_fr"": ""Installez la membrane pare-vapeur du côté chaud de l'isolation pour empêcher la condensation et améliorer les performances thermiques et acoustiques."",
+  ""target_text_es"": ""Instale la membrana de vapor en el lado caliente del aislamiento para prevenir la condensación y mejorar el rendimiento térmico y acústico.""
+}
+```"
+Installare la membrana al vapore sul lato caldo dell'isolamento per prevenire la condensa e migliorare le prestazioni termiche e acustiche.,Instale la membrana de vapor en el lado caliente del aislamiento para prevenir la condensación y mejorar el rendimiento térmico y acústico.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,membrana al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Installare la membrana al vapore sul lato caldo dell'isolamento per prevenire la condensa e migliorare le prestazioni termiche e acustiche."",
+  ""target_text_en"": ""Install the vapor barrier on the warm side of the insulation to prevent condensation and improve thermal and acoustic performance."",
+  ""target_text_fr"": ""Installez la membrane pare-vapeur du côté chaud de l'isolation pour empêcher la condensation et améliorer les performances thermiques et acoustiques."",
+  ""target_text_es"": ""Instale la membrana de vapor en el lado caliente del aislamiento para prevenir la condensación y mejorar el rendimiento térmico y acústico.""
+}
+```"
+Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso.,Ensure that you follow the instructions provided to guarantee the ease of installation of the new window frame.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,facilità di posa,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso."",
+  ""target_text_en"": ""Ensure that you follow the instructions provided to guarantee the ease of installation of the new window frame."",
+  ""target_text_fr"": ""Assurez-vous de suivre les instructions fournies pour garantir la facilité de pose du nouveau cadre de fenêtre."",
+  ""target_text_es"": ""Asegúrese de seguir las instrucciones proporcionadas para garantizar la facilidad de instalación del nuevo marco de la ventana.""
+}
+```"
+Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso.,Assurez-vous de suivre les instructions fournies pour garantir la facilité de pose du nouveau cadre de fenêtre.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,facilità di posa,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso."",
+  ""target_text_en"": ""Ensure that you follow the instructions provided to guarantee the ease of installation of the new window frame."",
+  ""target_text_fr"": ""Assurez-vous de suivre les instructions fournies pour garantir la facilité de pose du nouveau cadre de fenêtre."",
+  ""target_text_es"": ""Asegúrese de seguir las instrucciones proporcionadas para garantizar la facilidad de instalación del nuevo marco de la ventana.""
+}
+```"
+Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso.,Asegúrese de seguir las instrucciones proporcionadas para garantizar la facilidad de instalación del nuevo marco de la ventana.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,facilità di posa,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso."",
+  ""target_text_en"": ""Ensure that you follow the instructions provided to guarantee the ease of installation of the new window frame."",
+  ""target_text_fr"": ""Assurez-vous de suivre les instructions fournies pour garantir la facilité de pose du nouveau cadre de fenêtre."",
+  ""target_text_es"": ""Asegúrese de seguir las instrucciones proporcionadas para garantizar la facilidad de instalación del nuevo marco de la ventana.""
+}
+```"
+Assicurarsi che il cassonetto coibentato sia correttamente posizionato e sigillato prima di procedere con l'installazione del serramento.,Ensure that the insulated box is correctly positioned and sealed before proceeding with the installation of the frame.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,cassonetto coibentato,structure,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il cassonetto coibentato sia correttamente posizionato e sigillato prima di procedere con l'installazione del serramento."",
+  ""target_text_en"": ""Ensure that the insulated box is correctly positioned and sealed before proceeding with the installation of the frame."",
+  ""target_text_fr"": ""Assurez-vous que la boîte isolée est correctement positionnée et scellée avant de procéder à l'installation du cadre."",
+  ""target_text_es"": ""Asegúrese de que la caja aislada esté correctamente posicionada y sellada antes de proceder con la instalación del marco.""
+}
+```"
+Assicurarsi che il cassonetto coibentato sia correttamente posizionato e sigillato prima di procedere con l'installazione del serramento.,Assurez-vous que la boîte isolée est correctement positionnée et scellée avant de procéder à l'installation du cadre.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,cassonetto coibentato,structure,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il cassonetto coibentato sia correttamente posizionato e sigillato prima di procedere con l'installazione del serramento."",
+  ""target_text_en"": ""Ensure that the insulated box is correctly positioned and sealed before proceeding with the installation of the frame."",
+  ""target_text_fr"": ""Assurez-vous que la boîte isolée est correctement positionnée et scellée avant de procéder à l'installation du cadre."",
+  ""target_text_es"": ""Asegúrese de que la caja aislada esté correctamente posicionada y sellada antes de proceder con la instalación del marco.""
+}
+```"
+Assicurarsi che il cassonetto coibentato sia correttamente posizionato e sigillato prima di procedere con l'installazione del serramento.,Asegúrese de que la caja aislada esté correctamente posicionada y sellada antes de proceder con la instalación del marco.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,cassonetto coibentato,structure,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il cassonetto coibentato sia correttamente posizionato e sigillato prima di procedere con l'installazione del serramento."",
+  ""target_text_en"": ""Ensure that the insulated box is correctly positioned and sealed before proceeding with the installation of the frame."",
+  ""target_text_fr"": ""Assurez-vous que la boîte isolée est correctement positionnée et scellée avant de procéder à l'installation du cadre."",
+  ""target_text_es"": ""Asegúrese de que la caja aislada esté correctamente posicionada y sellada antes de proceder con la instalación del marco.""
+}
+```"
+Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio della finestra e la muratura per garantire un'adeguata tenuta stagionale e acustica.,Ensure that the thermal acoustic seal is correctly positioned between the window frame and the masonry to guarantee adequate seasonal and acoustic sealing.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,guarnizione termoacustica,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio della finestra e la muratura per garantire un'adeguata tenuta stagionale e acustica."",
+  ""target_text_en"": ""Ensure that the thermal acoustic seal is correctly positioned between the window frame and the masonry to guarantee adequate seasonal and acoustic sealing."",
+  ""target_text_fr"": ""Assurez-vous que le joint thermoacoustique est correctement positionné entre le cadre de la fenêtre et la maçonnerie pour garantir une étanchéité saisonnière et acoustique adéquate."",
+  ""target_text_es"": ""Asegúrese de que la junta termoacústica esté correctamente posicionada entre el marco de la ventana y la mampostería para garantizar un sellado estacional y acústico adecuado.""
+}
+```"
+Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio della finestra e la muratura per garantire un'adeguata tenuta stagionale e acustica.,Assurez-vous que le joint thermoacoustique est correctement positionné entre le cadre de la fenêtre et la maçonnerie pour garantir une étanchéité saisonnière et acoustique adéquate.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,guarnizione termoacustica,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio della finestra e la muratura per garantire un'adeguata tenuta stagionale e acustica."",
+  ""target_text_en"": ""Ensure that the thermal acoustic seal is correctly positioned between the window frame and the masonry to guarantee adequate seasonal and acoustic sealing."",
+  ""target_text_fr"": ""Assurez-vous que le joint thermoacoustique est correctement positionné entre le cadre de la fenêtre et la maçonnerie pour garantir une étanchéité saisonnière et acoustique adéquate."",
+  ""target_text_es"": ""Asegúrese de que la junta termoacústica esté correctamente posicionada entre el marco de la ventana y la mampostería para garantizar un sellado estacional y acústico adecuado.""
+}
+```"
+Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio della finestra e la muratura per garantire un'adeguata tenuta stagionale e acustica.,Asegúrese de que la junta termoacústica esté correctamente posicionada entre el marco de la ventana y la mampostería para garantizar un sellado estacional y acústico adecuado.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,guarnizione termoacustica,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la guarnizione termoacustica sia correttamente posizionata tra il telaio della finestra e la muratura per garantire un'adeguata tenuta stagionale e acustica."",
+  ""target_text_en"": ""Ensure that the thermal acoustic seal is correctly positioned between the window frame and the masonry to guarantee adequate seasonal and acoustic sealing."",
+  ""target_text_fr"": ""Assurez-vous que le joint thermoacoustique est correctement positionné entre le cadre de la fenêtre et la maçonnerie pour garantir une étanchéité saisonnière et acoustique adéquate."",
+  ""target_text_es"": ""Asegúrese de que la junta termoacústica esté correctamente posicionada entre el marco de la ventana y la mampostería para garantizar un sellado estacional y acústico adecuado.""
+}
+```"
+Assemblare il monoblocco del telaio della finestra seguendo le istruzioni di montaggio fornite nel manuale.,Assemble the window frame monoblock according to the assembly instructions provided in the manual.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,monoblocco,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assemblare il monoblocco del telaio della finestra seguendo le istruzioni di montaggio fornite nel manuale."",
+  ""target_text_en"": ""Assemble the window frame monoblock according to the assembly instructions provided in the manual."",
+  ""target_text_fr"": ""Assemblez le monobloc du châssis de fenêtre selon les instructions de montage fournies dans le manuel."",
+  ""target_text_es"": ""Montar el monolítico del marco de la ventana siguiendo las instrucciones de montaje proporcionadas en el manual.""
+}
+```"
+Assemblare il monoblocco del telaio della finestra seguendo le istruzioni di montaggio fornite nel manuale.,Assemblez le monobloc du châssis de fenêtre selon les instructions de montage fournies dans le manuel.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,monoblocco,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assemblare il monoblocco del telaio della finestra seguendo le istruzioni di montaggio fornite nel manuale."",
+  ""target_text_en"": ""Assemble the window frame monoblock according to the assembly instructions provided in the manual."",
+  ""target_text_fr"": ""Assemblez le monobloc du châssis de fenêtre selon les instructions de montage fournies dans le manuel."",
+  ""target_text_es"": ""Montar el monolítico del marco de la ventana siguiendo las instrucciones de montaje proporcionadas en el manual.""
+}
+```"
+Assemblare il monoblocco del telaio della finestra seguendo le istruzioni di montaggio fornite nel manuale.,Montar el monolítico del marco de la ventana siguiendo las instrucciones de montaje proporcionadas en el manual.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,monoblocco,window_frame,an installation manual,"```json
+{
+  ""source_text"": ""Assemblare il monoblocco del telaio della finestra seguendo le istruzioni di montaggio fornite nel manuale."",
+  ""target_text_en"": ""Assemble the window frame monoblock according to the assembly instructions provided in the manual."",
+  ""target_text_fr"": ""Assemblez le monobloc du châssis de fenêtre selon les instructions de montage fournies dans le manuel."",
+  ""target_text_es"": ""Montar el monolítico del marco de la ventana siguiendo las instrucciones de montaje proporcionadas en el manual.""
+}
+```"
+Assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'adeguata sigillatura termica ed acustica.,Ensure that the insulated shoulder is correctly positioned to provide adequate thermal and acoustic sealing.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,spalla coibentata,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'adeguata sigillatura termica ed acustica."",
+  ""target_text_en"": ""Ensure that the insulated shoulder is correctly positioned to provide adequate thermal and acoustic sealing."",
+  ""target_text_fr"": ""Assurez-vous que l'épaulement isolé est correctement positionné pour garantir une étanchéité thermique et acoustique adéquate."",
+  ""target_text_es"": ""Asegúrese de que el hombro aislante esté correctamente posicionado para garantizar un sellado térmico y acústico adecuado.""
+}
+```"
+Assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'adeguata sigillatura termica ed acustica.,Assurez-vous que l'épaulement isolé est correctement positionné pour garantir une étanchéité thermique et acoustique adéquate.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,spalla coibentata,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'adeguata sigillatura termica ed acustica."",
+  ""target_text_en"": ""Ensure that the insulated shoulder is correctly positioned to provide adequate thermal and acoustic sealing."",
+  ""target_text_fr"": ""Assurez-vous que l'épaulement isolé est correctement positionné pour garantir une étanchéité thermique et acoustique adéquate."",
+  ""target_text_es"": ""Asegúrese de que el hombro aislante esté correctamente posicionado para garantizar un sellado térmico y acústico adecuado.""
+}
+```"
+Assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'adeguata sigillatura termica ed acustica.,Asegúrese de que el hombro aislante esté correctamente posicionado para garantizar un sellado térmico y acústico adecuado.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,spalla coibentata,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la spalla coibentata sia correttamente posizionata per garantire un'adeguata sigillatura termica ed acustica."",
+  ""target_text_en"": ""Ensure that the insulated shoulder is correctly positioned to provide adequate thermal and acoustic sealing."",
+  ""target_text_fr"": ""Assurez-vous que l'épaulement isolé est correctement positionné pour garantir une étanchéité thermique et acoustique adéquate."",
+  ""target_text_es"": ""Asegúrese de que el hombro aislante esté correctamente posicionado para garantizar un sellado térmico y acústico adecuado.""
+}
+```"
+Assicurarsi che il materiale sottobancale sia compatibile con il sistema di finitura esterna prima di procedere con l'installazione.,Ensure that the undercounter material is compatible with the external finishing system before proceeding with the installation.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sottobancale,structure,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il materiale sottobancale sia compatibile con il sistema di finitura esterna prima di procedere con l'installazione."",
+  ""target_text_en"": ""Ensure that the undercounter material is compatible with the external finishing system before proceeding with the installation."",
+  ""target_text_fr"": ""Assurez-vous que le matériau sous le comptoir est compatible avec le système de finition extérieur avant de procéder à l'installation."",
+  ""target_text_es"": ""Asegúrese de que el material bajo el mostrador sea compatible con el sistema de acabado exterior antes de proceder con la instalación.""
+}
+```"
+Assicurarsi che il materiale sottobancale sia compatibile con il sistema di finitura esterna prima di procedere con l'installazione.,Assurez-vous que le matériau sous le comptoir est compatible avec le système de finition extérieur avant de procéder à l'installation.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sottobancale,structure,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il materiale sottobancale sia compatibile con il sistema di finitura esterna prima di procedere con l'installazione."",
+  ""target_text_en"": ""Ensure that the undercounter material is compatible with the external finishing system before proceeding with the installation."",
+  ""target_text_fr"": ""Assurez-vous que le matériau sous le comptoir est compatible avec le système de finition extérieur avant de procéder à l'installation."",
+  ""target_text_es"": ""Asegúrese de que el material bajo el mostrador sea compatible con el sistema de acabado exterior antes de proceder con la instalación.""
+}
+```"
+Assicurarsi che il materiale sottobancale sia compatibile con il sistema di finitura esterna prima di procedere con l'installazione.,Asegúrese de que el material bajo el mostrador sea compatible con el sistema de acabado exterior antes de proceder con la instalación.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sottobancale,structure,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il materiale sottobancale sia compatibile con il sistema di finitura esterna prima di procedere con l'installazione."",
+  ""target_text_en"": ""Ensure that the undercounter material is compatible with the external finishing system before proceeding with the installation."",
+  ""target_text_fr"": ""Assurez-vous que le matériau sous le comptoir est compatible avec le système de finition extérieur avant de procéder à l'installation."",
+  ""target_text_es"": ""Asegúrese de que el material bajo el mostrador sea compatible con el sistema de acabado exterior antes de proceder con la instalación.""
+}
+```"
+Assicurarsi che la chiusura oscurante sia completamente estesa prima di azionare il motore.,Ensure that the solar shading closure is fully extended before operating the motor.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,chiusura oscurante,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la chiusura oscurante sia completamente estesa prima di azionare il motore."",
+  ""target_text_en"": ""Ensure that the solar shading closure is fully extended before operating the motor."",
+  ""target_text_fr"": ""Assurez-vous que la fermeture occultante est complètement étendue avant de mettre en marche le moteur."",
+  ""target_text_es"": ""Asegúrese de que el cierre oscurante esté completamente extendido antes de accionar el motor.""
+}
+```"
+Assicurarsi che la chiusura oscurante sia completamente estesa prima di azionare il motore.,Assurez-vous que la fermeture occultante est complètement étendue avant de mettre en marche le moteur.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,chiusura oscurante,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la chiusura oscurante sia completamente estesa prima di azionare il motore."",
+  ""target_text_en"": ""Ensure that the solar shading closure is fully extended before operating the motor."",
+  ""target_text_fr"": ""Assurez-vous que la fermeture occultante est complètement étendue avant de mettre en marche le moteur."",
+  ""target_text_es"": ""Asegúrese de que el cierre oscurante esté completamente extendido antes de accionar el motor.""
+}
+```"
+Assicurarsi che la chiusura oscurante sia completamente estesa prima di azionare il motore.,Asegúrese de que el cierre oscurante esté completamente extendido antes de accionar el motor.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,chiusura oscurante,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la chiusura oscurante sia completamente estesa prima di azionare il motore."",
+  ""target_text_en"": ""Ensure that the solar shading closure is fully extended before operating the motor."",
+  ""target_text_fr"": ""Assurez-vous que la fermeture occultante est complètement étendue avant de mettre en marche le moteur."",
+  ""target_text_es"": ""Asegúrese de que el cierre oscurante esté completamente extendido antes de accionar el motor.""
+}
+```"
+Assicurarsi che l'avvolgibile in alluminio sia correttamente posizionato nel binario di guida prima di avviare l'installazione.,Ensure that the aluminium roller shutter is correctly positioned in the guide track before starting the installation.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,avvolgibile in alluminio,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che l'avvolgibile in alluminio sia correttamente posizionato nel binario di guida prima di avviare l'installazione."",
+  ""target_text_en"": ""Ensure that the aluminium roller shutter is correctly positioned in the guide track before starting the installation."",
+  ""target_text_fr"": ""Assurez-vous que le store enrouleur en aluminium est correctement positionné dans le rail de guidage avant de commencer l'installation."",
+  ""target_text_es"": ""Asegúrese de que la persiana enrollable de aluminio esté correctamente posicionada en la pista de guía antes de iniciar la instalación.""
+}
+```"
+Assicurarsi che l'avvolgibile in alluminio sia correttamente posizionato nel binario di guida prima di avviare l'installazione.,Assurez-vous que le store enrouleur en aluminium est correctement positionné dans le rail de guidage avant de commencer l'installation.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,avvolgibile in alluminio,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che l'avvolgibile in alluminio sia correttamente posizionato nel binario di guida prima di avviare l'installazione."",
+  ""target_text_en"": ""Ensure that the aluminium roller shutter is correctly positioned in the guide track before starting the installation."",
+  ""target_text_fr"": ""Assurez-vous que le store enrouleur en aluminium est correctement positionné dans le rail de guidage avant de commencer l'installation."",
+  ""target_text_es"": ""Asegúrese de que la persiana enrollable de aluminio esté correctamente posicionada en la pista de guía antes de iniciar la instalación.""
+}
+```"
+Assicurarsi che l'avvolgibile in alluminio sia correttamente posizionato nel binario di guida prima di avviare l'installazione.,Asegúrese de que la persiana enrollable de aluminio esté correctamente posicionada en la pista de guía antes de iniciar la instalación.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,avvolgibile in alluminio,shading,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che l'avvolgibile in alluminio sia correttamente posizionato nel binario di guida prima di avviare l'installazione."",
+  ""target_text_en"": ""Ensure that the aluminium roller shutter is correctly positioned in the guide track before starting the installation."",
+  ""target_text_fr"": ""Assurez-vous que le store enrouleur en aluminium est correctement positionné dans le rail de guidage avant de commencer l'installation."",
+  ""target_text_es"": ""Asegúrese de que la persiana enrollable de aluminio esté correctamente posicionada en la pista de guía antes de iniciar la instalación.""
+}
+```"
+Assicurarsi che il nodo primario sia correttamente installato prima di procedere con la posa dei pannelli.,Ensure that the primary node is correctly installed before proceeding with the panel installation.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nodo primario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo primario sia correttamente installato prima di procedere con la posa dei pannelli."",
+  ""target_text_en"": ""Ensure that the primary node is correctly installed before proceeding with the panel installation."",
+  ""target_text_fr"": ""Assurez-vous que le nœud primaire est correctement installé avant de procéder à la pose des panneaux."",
+  ""target_text_es"": ""Asegúrese de que el nodo primario esté correctamente instalado antes de proceder con la colocación de los paneles.""
+}
+```"
+Assicurarsi che il nodo primario sia correttamente installato prima di procedere con la posa dei pannelli.,Assurez-vous que le nœud primaire est correctement installé avant de procéder à la pose des panneaux.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nodo primario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo primario sia correttamente installato prima di procedere con la posa dei pannelli."",
+  ""target_text_en"": ""Ensure that the primary node is correctly installed before proceeding with the panel installation."",
+  ""target_text_fr"": ""Assurez-vous que le nœud primaire est correctement installé avant de procéder à la pose des panneaux."",
+  ""target_text_es"": ""Asegúrese de que el nodo primario esté correctamente instalado antes de proceder con la colocación de los paneles.""
+}
+```"
+Assicurarsi che il nodo primario sia correttamente installato prima di procedere con la posa dei pannelli.,Asegúrese de que el nodo primario esté correctamente instalado antes de proceder con la colocación de los paneles.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nodo primario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo primario sia correttamente installato prima di procedere con la posa dei pannelli."",
+  ""target_text_en"": ""Ensure that the primary node is correctly installed before proceeding with the panel installation."",
+  ""target_text_fr"": ""Assurez-vous que le nœud primaire est correctement installé avant de procéder à la pose des panneaux."",
+  ""target_text_es"": ""Asegúrese de que el nodo primario esté correctamente instalado antes de proceder con la colocación de los paneles.""
+}
+```"
+Assicurarsi che il nodo secondario sia correttamente posizionato prima di procedere con la fase di installazione delle finestre.,Ensure that the secondary node is correctly positioned before proceeding with the window installation phase.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nodo secondario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo secondario sia correttamente posizionato prima di procedere con la fase di installazione delle finestre."",
+  ""target_text_en"": ""Ensure that the secondary node is correctly positioned before proceeding with the window installation phase."",
+  ""target_text_fr"": ""Assurez-vous que le nœud secondaire est correctement positionné avant de procéder à la phase d'installation des fenêtres."",
+  ""target_text_es"": ""Asegúrese de que el nodo secundario esté correctamente posicionado antes de proceder con la fase de instalación de las ventanas.""
+}
+```"
+Assicurarsi che il nodo secondario sia correttamente posizionato prima di procedere con la fase di installazione delle finestre.,Assurez-vous que le nœud secondaire est correctement positionné avant de procéder à la phase d'installation des fenêtres.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nodo secondario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo secondario sia correttamente posizionato prima di procedere con la fase di installazione delle finestre."",
+  ""target_text_en"": ""Ensure that the secondary node is correctly positioned before proceeding with the window installation phase."",
+  ""target_text_fr"": ""Assurez-vous que le nœud secondaire est correctement positionné avant de procéder à la phase d'installation des fenêtres."",
+  ""target_text_es"": ""Asegúrese de que el nodo secundario esté correctamente posicionado antes de proceder con la fase de instalación de las ventanas.""
+}
+```"
+Assicurarsi che il nodo secondario sia correttamente posizionato prima di procedere con la fase di installazione delle finestre.,Asegúrese de que el nodo secundario esté correctamente posicionado antes de proceder con la fase de instalación de las ventanas.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nodo secondario,construction,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il nodo secondario sia correttamente posizionato prima di procedere con la fase di installazione delle finestre."",
+  ""target_text_en"": ""Ensure that the secondary node is correctly positioned before proceeding with the window installation phase."",
+  ""target_text_fr"": ""Assurez-vous que le nœud secondaire est correctement positionné avant de procéder à la phase d'installation des fenêtres."",
+  ""target_text_es"": ""Asegúrese de que el nodo secundario esté correctamente posicionado antes de proceder con la fase de instalación de las ventanas.""
+}
+```"
+Assicurarsi che il controtelaio sia correttamente allineato e fissato prima di procedere con l'installazione del telaio della finestra.,Ensure that the frame is correctly aligned and fixed before proceeding with the installation of the window frame.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,controtelaio,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il controtelaio sia correttamente allineato e fissato prima di procedere con l'installazione del telaio della finestra."",
+  ""target_text_en"": ""Ensure that the frame is correctly aligned and fixed before proceeding with the installation of the window frame."",
+  ""target_text_fr"": ""Assurez-vous que le contre-cadre est correctement aligné et fixé avant de procéder à l'installation du cadre de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que el contraMarco esté correctamente alineado y fijado antes de proceder con la instalación del marco de la ventana.""
+}
+```"
+Assicurarsi che il controtelaio sia correttamente allineato e fissato prima di procedere con l'installazione del telaio della finestra.,Assurez-vous que le contre-cadre est correctement aligné et fixé avant de procéder à l'installation du cadre de la fenêtre.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,controtelaio,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il controtelaio sia correttamente allineato e fissato prima di procedere con l'installazione del telaio della finestra."",
+  ""target_text_en"": ""Ensure that the frame is correctly aligned and fixed before proceeding with the installation of the window frame."",
+  ""target_text_fr"": ""Assurez-vous que le contre-cadre est correctement aligné et fixé avant de procéder à l'installation du cadre de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que el contraMarco esté correctamente alineado y fijado antes de proceder con la instalación del marco de la ventana.""
+}
+```"
+Assicurarsi che il controtelaio sia correttamente allineato e fissato prima di procedere con l'installazione del telaio della finestra.,Asegúrese de que el contraMarco esté correctamente alineado y fijado antes de proceder con la instalación del marco de la ventana.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,controtelaio,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il controtelaio sia correttamente allineato e fissato prima di procedere con l'installazione del telaio della finestra."",
+  ""target_text_en"": ""Ensure that the frame is correctly aligned and fixed before proceeding with the installation of the window frame."",
+  ""target_text_fr"": ""Assurez-vous que le contre-cadre est correctement aligné et fixé avant de procéder à l'installation du cadre de la fenêtre."",
+  ""target_text_es"": ""Asegúrese de que el contraMarco esté correctamente alineado y fijado antes de proceder con la instalación del marco de la ventana.""
+}
+```"
+Applicare il nastro autoespandente lungo il contorno della finestra per garantire una tenuta stagionale.,Apply the self-expanding tape along the window contour to ensure seasonal sealing.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nastro autoespandente,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro autoespandente lungo il contorno della finestra per garantire una tenuta stagionale."",
+  ""target_text_en"": ""Apply the self-expanding tape along the window contour to ensure seasonal sealing."",
+  ""target_text_fr"": ""Appliquer le ruban auto-agrippant le long du contour de la fenêtre pour assurer une étanchéité saisonnière."",
+  ""target_text_es"": ""Aplicar la cinta autoexpandente a lo largo del contorno de la ventana para garantizar un sellado estacional.""
+}
+```"
+Applicare il nastro autoespandente lungo il contorno della finestra per garantire una tenuta stagionale.,Appliquer le ruban auto-agrippant le long du contour de la fenêtre pour assurer une étanchéité saisonnière.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nastro autoespandente,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro autoespandente lungo il contorno della finestra per garantire una tenuta stagionale."",
+  ""target_text_en"": ""Apply the self-expanding tape along the window contour to ensure seasonal sealing."",
+  ""target_text_fr"": ""Appliquer le ruban auto-agrippant le long du contour de la fenêtre pour assurer une étanchéité saisonnière."",
+  ""target_text_es"": ""Aplicar la cinta autoexpandente a lo largo del contorno de la ventana para garantizar un sellado estacional.""
+}
+```"
+Applicare il nastro autoespandente lungo il contorno della finestra per garantire una tenuta stagionale.,Aplicar la cinta autoexpandente a lo largo del contorno de la ventana para garantizar un sellado estacional.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,nastro autoespandente,sealing,an installation manual,"```json
+{
+  ""source_text"": ""Applicare il nastro autoespandente lungo il contorno della finestra per garantire una tenuta stagionale."",
+  ""target_text_en"": ""Apply the self-expanding tape along the window contour to ensure seasonal sealing."",
+  ""target_text_fr"": ""Appliquer le ruban auto-agrippant le long du contour de la fenêtre pour assurer une étanchéité saisonnière."",
+  ""target_text_es"": ""Aplicar la cinta autoexpandente a lo largo del contorno de la ventana para garantizar un sellado estacional.""
+}
+```"
+Utilizzare le vite di fissaggio fornite nel kit per assicurare il montante al telaio della finestra.,Use the fixing screws provided in the kit to secure the mullion to the window frame.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,vite di fissaggio,hardware,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare le vite di fissaggio fornite nel kit per assicurare il montante al telaio della finestra."",
+  ""target_text_en"": ""Use the fixing screws provided in the kit to secure the mullion to the window frame."",
+  ""target_text_fr"": ""Utilisez les vis de fixation fournies dans le kit pour fixer le montant au châssis de la fenêtre."",
+  ""target_text_es"": ""Utilice los tornillos de fijación proporcionados en el kit para asegurar el montante al marco de la ventana.""
+}
+```"
+Utilizzare le vite di fissaggio fornite nel kit per assicurare il montante al telaio della finestra.,Utilisez les vis de fixation fournies dans le kit pour fixer le montant au châssis de la fenêtre.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,vite di fissaggio,hardware,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare le vite di fissaggio fornite nel kit per assicurare il montante al telaio della finestra."",
+  ""target_text_en"": ""Use the fixing screws provided in the kit to secure the mullion to the window frame."",
+  ""target_text_fr"": ""Utilisez les vis de fixation fournies dans le kit pour fixer le montant au châssis de la fenêtre."",
+  ""target_text_es"": ""Utilice los tornillos de fijación proporcionados en el kit para asegurar el montante al marco de la ventana.""
+}
+```"
+Utilizzare le vite di fissaggio fornite nel kit per assicurare il montante al telaio della finestra.,Utilice los tornillos de fijación proporcionados en el kit para asegurar el montante al marco de la ventana.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,vite di fissaggio,hardware,an installation manual,"```json
+{
+  ""source_text"": ""Utilizzare le vite di fissaggio fornite nel kit per assicurare il montante al telaio della finestra."",
+  ""target_text_en"": ""Use the fixing screws provided in the kit to secure the mullion to the window frame."",
+  ""target_text_fr"": ""Utilisez les vis de fixation fournies dans le kit pour fixer le montant au châssis de la fenêtre."",
+  ""target_text_es"": ""Utilice los tornillos de fijación proporcionados en el kit para asegurar el montante al marco de la ventana.""
+}
+```"
+"Durante l'installazione del sistema di isolamento termico e acustico, assicurarsi di posizionare correttamente la barriera al vapore per prevenire la condensa e garantire l'efficienza dell'isolamento.","During the installation of the thermal and acoustic insulation system, ensure to correctly position the vapor barrier to prevent condensation and guarantee the efficiency of the insulation.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,barriera al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione del sistema di isolamento termico e acustico, assicurarsi di posizionare correttamente la barriera al vapore per prevenire la condensa e garantire l'efficienza dell'isolamento."",
+  ""target_text_en"": ""During the installation of the thermal and acoustic insulation system, ensure to correctly position the vapor barrier to prevent condensation and guarantee the efficiency of the insulation."",
+  ""target_text_fr"": ""Lors de l'installation du système d'isolation thermique et acoustique, assurez-vous de bien positionner la barrière de vapeur pour éviter la condensation et garantir l'efficacité de l'isolation."",
+  ""target_text_es"": ""Durante la instalación del sistema de aislamiento térmico y acústico, asegúrese de posicionar correctamente la barrera de vapor para evitar la condensación y garantizar la eficiencia del aislamiento.""
+}
+```"
+"Durante l'installazione del sistema di isolamento termico e acustico, assicurarsi di posizionare correttamente la barriera al vapore per prevenire la condensa e garantire l'efficienza dell'isolamento.","Lors de l'installation du système d'isolation thermique et acoustique, assurez-vous de bien positionner la barrière de vapeur pour éviter la condensation et garantir l'efficacité de l'isolation.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,barriera al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione del sistema di isolamento termico e acustico, assicurarsi di posizionare correttamente la barriera al vapore per prevenire la condensa e garantire l'efficienza dell'isolamento."",
+  ""target_text_en"": ""During the installation of the thermal and acoustic insulation system, ensure to correctly position the vapor barrier to prevent condensation and guarantee the efficiency of the insulation."",
+  ""target_text_fr"": ""Lors de l'installation du système d'isolation thermique et acoustique, assurez-vous de bien positionner la barrière de vapeur pour éviter la condensation et garantir l'efficacité de l'isolation."",
+  ""target_text_es"": ""Durante la instalación del sistema de aislamiento térmico y acústico, asegúrese de posicionar correctamente la barrera de vapor para evitar la condensación y garantizar la eficiencia del aislamiento.""
+}
+```"
+"Durante l'installazione del sistema di isolamento termico e acustico, assicurarsi di posizionare correttamente la barriera al vapore per prevenire la condensa e garantire l'efficienza dell'isolamento.","Durante la instalación del sistema de aislamiento térmico y acústico, asegúrese de posicionar correctamente la barrera de vapor para evitar la condensación y garantizar la eficiencia del aislamiento.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,barriera al vapore,insulation,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione del sistema di isolamento termico e acustico, assicurarsi di posizionare correttamente la barriera al vapore per prevenire la condensa e garantire l'efficienza dell'isolamento."",
+  ""target_text_en"": ""During the installation of the thermal and acoustic insulation system, ensure to correctly position the vapor barrier to prevent condensation and guarantee the efficiency of the insulation."",
+  ""target_text_fr"": ""Lors de l'installation du système d'isolation thermique et acoustique, assurez-vous de bien positionner la barrière de vapeur pour éviter la condensation et garantir l'efficacité de l'isolation."",
+  ""target_text_es"": ""Durante la instalación del sistema de aislamiento térmico y acústico, asegúrese de posicionar correctamente la barrera de vapor para evitar la condensación y garantizar la eficiencia del aislamiento.""
+}
+```"
+"Durante l'installazione delle finestre, è fondamentale ridurre i ponti termici per migliorare le prestazioni energetiche dell'edificio.","During the installation of windows, it is crucial to reduce thermal bridges to improve the energy performance of the building.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,ponte termico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è fondamentale ridurre i ponti termici per migliorare le prestazioni energetiche dell'edificio."",
+  ""target_text_en"": ""During the installation of windows, it is crucial to reduce thermal bridges to improve the energy performance of the building."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel de réduire les ponts thermiques pour améliorer les performances énergétiques du bâtiment."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, es fundamental reducir los puentes térmicos para mejorar el rendimiento energético del edificio.""
+}
+```"
+"Durante l'installazione delle finestre, è fondamentale ridurre i ponti termici per migliorare le prestazioni energetiche dell'edificio.","Lors de l'installation des fenêtres, il est essentiel de réduire les ponts thermiques pour améliorer les performances énergétiques du bâtiment.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,ponte termico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è fondamentale ridurre i ponti termici per migliorare le prestazioni energetiche dell'edificio."",
+  ""target_text_en"": ""During the installation of windows, it is crucial to reduce thermal bridges to improve the energy performance of the building."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel de réduire les ponts thermiques pour améliorer les performances énergétiques du bâtiment."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, es fundamental reducir los puentes térmicos para mejorar el rendimiento energético del edificio.""
+}
+```"
+"Durante l'installazione delle finestre, è fondamentale ridurre i ponti termici per migliorare le prestazioni energetiche dell'edificio.","Durante la instalación de las ventanas, es fundamental reducir los puentes térmicos para mejorar el rendimiento energético del edificio.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,ponte termico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, è fondamentale ridurre i ponti termici per migliorare le prestazioni energetiche dell'edificio."",
+  ""target_text_en"": ""During the installation of windows, it is crucial to reduce thermal bridges to improve the energy performance of the building."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, il est essentiel de réduire les ponts thermiques pour améliorer les performances énergétiques du bâtiment."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, es fundamental reducir los puentes térmicos para mejorar el rendimiento energético del edificio.""
+}
+```"
+"Per garantire un adeguato abbattimento acustico, è fondamentale installare le finestre con guarnizioni adeguate e sigillanti acustici.","To ensure adequate sound attenuation, it is essential to install windows with proper gaskets and acoustic sealants.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,abbattimento acustico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un adeguato abbattimento acustico, è fondamentale installare le finestre con guarnizioni adeguate e sigillanti acustici."",
+  ""target_text_en"": ""To ensure adequate sound attenuation, it is essential to install windows with proper gaskets and acoustic sealants."",
+  ""target_text_fr"": ""Pour assurer une atténuation acoustique adéquate, il est essentiel d'installer les fenêtres avec des joints appropriés et des scellants acoustiques."",
+  ""target_text_es"": ""Para garantizar una adecuada atenuación acústica, es fundamental instalar las ventanas con juntas adecuadas y selladores acústicos.""
+}
+```"
+"Per garantire un adeguato abbattimento acustico, è fondamentale installare le finestre con guarnizioni adeguate e sigillanti acustici.","Pour assurer une atténuation acoustique adéquate, il est essentiel d'installer les fenêtres avec des joints appropriés et des scellants acoustiques.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,abbattimento acustico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un adeguato abbattimento acustico, è fondamentale installare le finestre con guarnizioni adeguate e sigillanti acustici."",
+  ""target_text_en"": ""To ensure adequate sound attenuation, it is essential to install windows with proper gaskets and acoustic sealants."",
+  ""target_text_fr"": ""Pour assurer une atténuation acoustique adéquate, il est essentiel d'installer les fenêtres avec des joints appropriés et des scellants acoustiques."",
+  ""target_text_es"": ""Para garantizar una adecuada atenuación acústica, es fundamental instalar las ventanas con juntas adecuadas y selladores acústicos.""
+}
+```"
+"Per garantire un adeguato abbattimento acustico, è fondamentale installare le finestre con guarnizioni adeguate e sigillanti acustici.","Para garantizar una adecuada atenuación acústica, es fundamental instalar las ventanas con juntas adecuadas y selladores acústicos.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,abbattimento acustico,physics,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un adeguato abbattimento acustico, è fondamentale installare le finestre con guarnizioni adeguate e sigillanti acustici."",
+  ""target_text_en"": ""To ensure adequate sound attenuation, it is essential to install windows with proper gaskets and acoustic sealants."",
+  ""target_text_fr"": ""Pour assurer une atténuation acoustique adéquate, il est essentiel d'installer les fenêtres avec des joints appropriés et des scellants acoustiques."",
+  ""target_text_es"": ""Para garantizar una adecuada atenuación acústica, es fundamental instalar las ventanas con juntas adecuadas y selladores acústicos.""
+}
+```"
+Assicurarsi che la trasmittanza termica del serramento non superi il valore di 1.3 W/m²K per garantire un'efficienza energetica ottimale.,Ensure that the thermal transmittance of the window does not exceed the value of 1.3 W/m²K to guarantee optimal energy efficiency.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,trasmittanza termica,physics,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la trasmittanza termica del serramento non superi il valore di 1.3 W/m²K per garantire un'efficienza energetica ottimale."",
+  ""target_text_en"": ""Ensure that the thermal transmittance of the window does not exceed the value of 1.3 W/m²K to guarantee optimal energy efficiency."",
+  ""target_text_fr"": ""Assurez-vous que la transmittance thermique de la fenêtre ne dépasse pas la valeur de 1,3 W/m²K pour garantir une efficacité énergétique optimale."",
+  ""target_text_es"": ""Asegúrese de que la transmitancia térmica del marco de la ventana no supere el valor de 1,3 W/m²K para garantizar una eficiencia energética óptima.""
+}
+```"
+Assicurarsi che la trasmittanza termica del serramento non superi il valore di 1.3 W/m²K per garantire un'efficienza energetica ottimale.,"Assurez-vous que la transmittance thermique de la fenêtre ne dépasse pas la valeur de 1,3 W/m²K pour garantir une efficacité énergétique optimale.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,trasmittanza termica,physics,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la trasmittanza termica del serramento non superi il valore di 1.3 W/m²K per garantire un'efficienza energetica ottimale."",
+  ""target_text_en"": ""Ensure that the thermal transmittance of the window does not exceed the value of 1.3 W/m²K to guarantee optimal energy efficiency."",
+  ""target_text_fr"": ""Assurez-vous que la transmittance thermique de la fenêtre ne dépasse pas la valeur de 1,3 W/m²K pour garantir une efficacité énergétique optimale."",
+  ""target_text_es"": ""Asegúrese de que la transmitancia térmica del marco de la ventana no supere el valor de 1,3 W/m²K para garantizar una eficiencia energética óptima.""
+}
+```"
+Assicurarsi che la trasmittanza termica del serramento non superi il valore di 1.3 W/m²K per garantire un'efficienza energetica ottimale.,"Asegúrese de que la transmitancia térmica del marco de la ventana no supere el valor de 1,3 W/m²K para garantizar una eficiencia energética óptima.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,trasmittanza termica,physics,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la trasmittanza termica del serramento non superi il valore di 1.3 W/m²K per garantire un'efficienza energetica ottimale."",
+  ""target_text_en"": ""Ensure that the thermal transmittance of the window does not exceed the value of 1.3 W/m²K to guarantee optimal energy efficiency."",
+  ""target_text_fr"": ""Assurez-vous que la transmittance thermique de la fenêtre ne dépasse pas la valeur de 1,3 W/m²K pour garantir une efficacité énergétique optimale."",
+  ""target_text_es"": ""Asegúrese de que la transmitancia térmica del marco de la ventana no supere el valor de 1,3 W/m²K para garantizar una eficiencia energética óptima.""
+}
+```"
+"Per garantire l'efficienza energetica e la performance ambientale ottimali, seguire attentamente le istruzioni di installazione per i serramenti.","To ensure optimal energy efficiency and environmental performance, carefully follow the installation instructions for the windows.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,efficienza energetica,ecology,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire l'efficienza energetica e la performance ambientale ottimali, seguire attentamente le istruzioni di installazione per i serramenti."",
+  ""target_text_en"": ""To ensure optimal energy efficiency and environmental performance, carefully follow the installation instructions for the windows."",
+  ""target_text_fr"": ""Pour garantir l'efficacité énergétique et les performances environnementales optimales, suivez attentivement les instructions d'installation pour les fenêtres."",
+  ""target_text_es"": ""Para garantizar la eficiencia energética y el rendimiento ambiental óptimo, siga cuidadosamente las instrucciones de instalación para las ventanas.""
+}
+```"
+"Per garantire l'efficienza energetica e la performance ambientale ottimali, seguire attentamente le istruzioni di installazione per i serramenti.","Pour garantir l'efficacité énergétique et les performances environnementales optimales, suivez attentivement les instructions d'installation pour les fenêtres.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,efficienza energetica,ecology,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire l'efficienza energetica e la performance ambientale ottimali, seguire attentamente le istruzioni di installazione per i serramenti."",
+  ""target_text_en"": ""To ensure optimal energy efficiency and environmental performance, carefully follow the installation instructions for the windows."",
+  ""target_text_fr"": ""Pour garantir l'efficacité énergétique et les performances environnementales optimales, suivez attentivement les instructions d'installation pour les fenêtres."",
+  ""target_text_es"": ""Para garantizar la eficiencia energética y el rendimiento ambiental óptimo, siga cuidadosamente las instrucciones de instalación para las ventanas.""
+}
+```"
+"Per garantire l'efficienza energetica e la performance ambientale ottimali, seguire attentamente le istruzioni di installazione per i serramenti.","Para garantizar la eficiencia energética y el rendimiento ambiental óptimo, siga cuidadosamente las instrucciones de instalación para las ventanas.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,efficienza energetica,ecology,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire l'efficienza energetica e la performance ambientale ottimali, seguire attentamente le istruzioni di installazione per i serramenti."",
+  ""target_text_en"": ""To ensure optimal energy efficiency and environmental performance, carefully follow the installation instructions for the windows."",
+  ""target_text_fr"": ""Pour garantir l'efficacité énergétique et les performances environnementales optimales, suivez attentivement les instructions d'installation pour les fenêtres."",
+  ""target_text_es"": ""Para garantizar la eficiencia energética y el rendimiento ambiental óptimo, siga cuidadosamente las instrucciones de instalación para las ventanas.""
+}
+```"
+Assicurarsi che il serramento sia conforme alla normativa UNI EN 1027 per garantire la tenuta all'aria richiesta.,Ensure that the window is compliant with the UNI EN 1027 standard to guarantee the required air tightness.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tenuta all'aria,performance,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il serramento sia conforme alla normativa UNI EN 1027 per garantire la tenuta all'aria richiesta."",
+  ""target_text_en"": ""Ensure that the window is compliant with the UNI EN 1027 standard to guarantee the required air tightness."",
+  ""target_text_fr"": ""Assurez-vous que la fenêtre soit conforme à la norme UNI EN 1027 pour garantir l'étanchéité à l'air requise."",
+  ""target_text_es"": ""Asegúrese de que la ventana sea conforme a la norma UNI EN 1027 para garantizar la tenida al aire requerida.""
+}
+```"
+Assicurarsi che il serramento sia conforme alla normativa UNI EN 1027 per garantire la tenuta all'aria richiesta.,Assurez-vous que la fenêtre soit conforme à la norme UNI EN 1027 pour garantir l'étanchéité à l'air requise.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tenuta all'aria,performance,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il serramento sia conforme alla normativa UNI EN 1027 per garantire la tenuta all'aria richiesta."",
+  ""target_text_en"": ""Ensure that the window is compliant with the UNI EN 1027 standard to guarantee the required air tightness."",
+  ""target_text_fr"": ""Assurez-vous que la fenêtre soit conforme à la norme UNI EN 1027 pour garantir l'étanchéité à l'air requise."",
+  ""target_text_es"": ""Asegúrese de que la ventana sea conforme a la norma UNI EN 1027 para garantizar la tenida al aire requerida.""
+}
+```"
+Assicurarsi che il serramento sia conforme alla normativa UNI EN 1027 per garantire la tenuta all'aria richiesta.,Asegúrese de que la ventana sea conforme a la norma UNI EN 1027 para garantizar la tenida al aire requerida.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tenuta all'aria,performance,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che il serramento sia conforme alla normativa UNI EN 1027 per garantire la tenuta all'aria richiesta."",
+  ""target_text_en"": ""Ensure that the window is compliant with the UNI EN 1027 standard to guarantee the required air tightness."",
+  ""target_text_fr"": ""Assurez-vous que la fenêtre soit conforme à la norme UNI EN 1027 pour garantir l'étanchéité à l'air requise."",
+  ""target_text_es"": ""Asegúrese de que la ventana sea conforme a la norma UNI EN 1027 para garantizar la tenida al aire requerida.""
+}
+```"
+"Per garantire la conformità alle normative vigenti, è fondamentale testare la tenuta all'acqua di ogni finestra prima della certificazione.","To ensure compliance with current regulations, it is essential to test the water tightness of each window before certification.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tenuta all'acqua,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità alle normative vigenti, è fondamentale testare la tenuta all'acqua di ogni finestra prima della certificazione."",
+  ""target_text_en"": ""To ensure compliance with current regulations, it is essential to test the water tightness of each window before certification."",
+  ""target_text_fr"": ""Pour garantir la conformité aux réglementations en vigueur, il est essentiel de tester l'étanchéité à l'eau de chaque fenêtre avant la certification."",
+  ""target_text_es"": ""Para garantizar el cumplimiento de las normativas vigentes, es fundamental probar la estanqueidad al agua de cada ventana antes de la certificación.""
+}
+```"
+"Per garantire la conformità alle normative vigenti, è fondamentale testare la tenuta all'acqua di ogni finestra prima della certificazione.","Pour garantir la conformité aux réglementations en vigueur, il est essentiel de tester l'étanchéité à l'eau de chaque fenêtre avant la certification.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tenuta all'acqua,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità alle normative vigenti, è fondamentale testare la tenuta all'acqua di ogni finestra prima della certificazione."",
+  ""target_text_en"": ""To ensure compliance with current regulations, it is essential to test the water tightness of each window before certification."",
+  ""target_text_fr"": ""Pour garantir la conformité aux réglementations en vigueur, il est essentiel de tester l'étanchéité à l'eau de chaque fenêtre avant la certification."",
+  ""target_text_es"": ""Para garantizar el cumplimiento de las normativas vigentes, es fundamental probar la estanqueidad al agua de cada ventana antes de la certificación.""
+}
+```"
+"Per garantire la conformità alle normative vigenti, è fondamentale testare la tenuta all'acqua di ogni finestra prima della certificazione.","Para garantizar el cumplimiento de las normativas vigentes, es fundamental probar la estanqueidad al agua de cada ventana antes de la certificación.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tenuta all'acqua,performance,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire la conformità alle normative vigenti, è fondamentale testare la tenuta all'acqua di ogni finestra prima della certificazione."",
+  ""target_text_en"": ""To ensure compliance with current regulations, it is essential to test the water tightness of each window before certification."",
+  ""target_text_fr"": ""Pour garantir la conformité aux réglementations en vigueur, il est essentiel de tester l'étanchéité à l'eau de chaque fenêtre avant la certification."",
+  ""target_text_es"": ""Para garantizar el cumplimiento de las normativas vigentes, es fundamental probar la estanqueidad al agua de cada ventana antes de la certificación.""
+}
+```"
+Assicurarsi di installare il sistema di ventilazione per prevenire la formazione di muffa sulle superfici interne delle finestre.,Ensure to install the ventilation system to prevent mold formation on the internal surfaces of the windows.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,formazione di muffa,problem,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi di installare il sistema di ventilazione per prevenire la formazione di muffa sulle superfici interne delle finestre."",
+  ""target_text_en"": ""Ensure to install the ventilation system to prevent mold formation on the internal surfaces of the windows."",
+  ""target_text_fr"": ""Assurez-vous d'installer le système de ventilation pour prévenir la formation de moisissure sur les surfaces internes des fenêtres."",
+  ""target_text_es"": ""Asegúrese de instalar el sistema de ventilación para prevenir la formación de moho en las superficies internas de las ventanas.""
+}
+```"
+Assicurarsi di installare il sistema di ventilazione per prevenire la formazione di muffa sulle superfici interne delle finestre.,Assurez-vous d'installer le système de ventilation pour prévenir la formation de moisissure sur les surfaces internes des fenêtres.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,formazione di muffa,problem,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi di installare il sistema di ventilazione per prevenire la formazione di muffa sulle superfici interne delle finestre."",
+  ""target_text_en"": ""Ensure to install the ventilation system to prevent mold formation on the internal surfaces of the windows."",
+  ""target_text_fr"": ""Assurez-vous d'installer le système de ventilation pour prévenir la formation de moisissure sur les surfaces internes des fenêtres."",
+  ""target_text_es"": ""Asegúrese de instalar el sistema de ventilación para prevenir la formación de moho en las superficies internas de las ventanas.""
+}
+```"
+Assicurarsi di installare il sistema di ventilazione per prevenire la formazione di muffa sulle superfici interne delle finestre.,Asegúrese de instalar el sistema de ventilación para prevenir la formación de moho en las superficies internas de las ventanas.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,formazione di muffa,problem,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi di installare il sistema di ventilazione per prevenire la formazione di muffa sulle superfici interne delle finestre."",
+  ""target_text_en"": ""Ensure to install the ventilation system to prevent mold formation on the internal surfaces of the windows."",
+  ""target_text_fr"": ""Assurez-vous d'installer le système de ventilation pour prévenir la formation de moisissure sur les surfaces internes des fenêtres."",
+  ""target_text_es"": ""Asegúrese de instalar el sistema de ventilación para prevenir la formación de moho en las superficies internas de las ventanas.""
+}
+```"
+"Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211.","During the load test, ensure that the window frame is capable of withstanding the wind load in accordance with standard EN 12211.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,carico del vento,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211."",
+  ""target_text_en"": ""During the load test, ensure that the window frame is capable of withstanding the wind load in accordance with standard EN 12211."",
+  ""target_text_fr"": ""Pendant l'essai de résistance, assurez-vous que le châssis de fenêtre est capable de supporter la charge du vent conformément à la norme EN 12211."",
+  ""target_text_es"": ""Durante la prueba de resistencia, asegúrese de que el marco de la ventana sea capaz de soportar la carga del viento conforme a la norma EN 12211.""
+}
+```"
+"Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211.","Pendant l'essai de résistance, assurez-vous que le châssis de fenêtre est capable de supporter la charge du vent conformément à la norme EN 12211.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,carico del vento,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211."",
+  ""target_text_en"": ""During the load test, ensure that the window frame is capable of withstanding the wind load in accordance with standard EN 12211."",
+  ""target_text_fr"": ""Pendant l'essai de résistance, assurez-vous que le châssis de fenêtre est capable de supporter la charge du vent conformément à la norme EN 12211."",
+  ""target_text_es"": ""Durante la prueba de resistencia, asegúrese de que el marco de la ventana sea capaz de soportar la carga del viento conforme a la norma EN 12211.""
+}
+```"
+"Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211.","Durante la prueba de resistencia, asegúrese de que el marco de la ventana sea capaz de soportar la carga del viento conforme a la norma EN 12211.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,carico del vento,performance,an installation manual,"```json
+{
+  ""source_text"": ""Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211."",
+  ""target_text_en"": ""During the load test, ensure that the window frame is capable of withstanding the wind load in accordance with standard EN 12211."",
+  ""target_text_fr"": ""Pendant l'essai de résistance, assurez-vous que le châssis de fenêtre est capable de supporter la charge du vent conformément à la norme EN 12211."",
+  ""target_text_es"": ""Durante la prueba de resistencia, asegúrese de que el marco de la ventana sea capaz de soportar la carga del viento conforme a la norma EN 12211.""
+}
+```"
+"Durante l'installazione delle finestre, assicurarsi che la condensa superficiale non si accumuli sul vetro, poiché potrebbe indicare un problema di tenuta stagionale.","During window installation, ensure that surface condensation does not accumulate on the glass, as it may indicate a seasonal sealing issue.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,condensa superficiale,problem,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, assicurarsi che la condensa superficiale non si accumuli sul vetro, poiché potrebbe indicare un problema di tenuta stagionale."",
+  ""target_text_en"": ""During window installation, ensure that surface condensation does not accumulate on the glass, as it may indicate a seasonal sealing issue."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, assurez-vous que la condensation superficielle ne s'accumule pas sur le verre, car cela peut indiquer un problème d'étanchéité saisonnière."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, asegúrese de que la condensación superficial no se acumule en el vidrio, ya que puede indicar un problema de estanqueidad estacional.""
+}
+```"
+"Durante l'installazione delle finestre, assicurarsi che la condensa superficiale non si accumuli sul vetro, poiché potrebbe indicare un problema di tenuta stagionale.","Lors de l'installation des fenêtres, assurez-vous que la condensation superficielle ne s'accumule pas sur le verre, car cela peut indiquer un problème d'étanchéité saisonnière.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,condensa superficiale,problem,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, assicurarsi che la condensa superficiale non si accumuli sul vetro, poiché potrebbe indicare un problema di tenuta stagionale."",
+  ""target_text_en"": ""During window installation, ensure that surface condensation does not accumulate on the glass, as it may indicate a seasonal sealing issue."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, assurez-vous que la condensation superficielle ne s'accumule pas sur le verre, car cela peut indiquer un problème d'étanchéité saisonnière."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, asegúrese de que la condensación superficial no se acumule en el vidrio, ya que puede indicar un problema de estanqueidad estacional.""
+}
+```"
+"Durante l'installazione delle finestre, assicurarsi che la condensa superficiale non si accumuli sul vetro, poiché potrebbe indicare un problema di tenuta stagionale.","Durante la instalación de las ventanas, asegúrese de que la condensación superficial no se acumule en el vidrio, ya que puede indicar un problema de estanqueidad estacional.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,condensa superficiale,problem,an installation manual,"```json
+{
+  ""source_text"": ""Durante l'installazione delle finestre, assicurarsi che la condensa superficiale non si accumuli sul vetro, poiché potrebbe indicare un problema di tenuta stagionale."",
+  ""target_text_en"": ""During window installation, ensure that surface condensation does not accumulate on the glass, as it may indicate a seasonal sealing issue."",
+  ""target_text_fr"": ""Lors de l'installation des fenêtres, assurez-vous que la condensation superficielle ne s'accumule pas sur le verre, car cela peut indiquer un problème d'étanchéité saisonnière."",
+  ""target_text_es"": ""Durante la instalación de las ventanas, asegúrese de que la condensación superficial no se acumule en el vidrio, ya que puede indicar un problema de estanqueidad estacional.""
+}
+```"
+Assicurarsi che la posa in opera qualificata delle finestre sia eseguita da personale certificato.,Ensure that the qualified installation of the windows is carried out by certified personnel.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,posa in opera qualificata,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la posa in opera qualificata delle finestre sia eseguita da personale certificato."",
+  ""target_text_en"": ""Ensure that the qualified installation of the windows is carried out by certified personnel."",
+  ""target_text_fr"": ""Assurez-vous que la pose qualifiée des fenêtres soit réalisée par du personnel certifié."",
+  ""target_text_es"": ""Asegúrese de que la instalación cualificada de las ventanas sea realizada por personal certificado.""
+}
+```"
+Assicurarsi che la posa in opera qualificata delle finestre sia eseguita da personale certificato.,Assurez-vous que la pose qualifiée des fenêtres soit réalisée par du personnel certifié.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,posa in opera qualificata,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la posa in opera qualificata delle finestre sia eseguita da personale certificato."",
+  ""target_text_en"": ""Ensure that the qualified installation of the windows is carried out by certified personnel."",
+  ""target_text_fr"": ""Assurez-vous que la pose qualifiée des fenêtres soit réalisée par du personnel certifié."",
+  ""target_text_es"": ""Asegúrese de que la instalación cualificada de las ventanas sea realizada por personal certificado.""
+}
+```"
+Assicurarsi che la posa in opera qualificata delle finestre sia eseguita da personale certificato.,Asegúrese de que la instalación cualificada de las ventanas sea realizada por personal certificado.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,posa in opera qualificata,installation,an installation manual,"```json
+{
+  ""source_text"": ""Assicurarsi che la posa in opera qualificata delle finestre sia eseguita da personale certificato."",
+  ""target_text_en"": ""Ensure that the qualified installation of the windows is carried out by certified personnel."",
+  ""target_text_fr"": ""Assurez-vous que la pose qualifiée des fenêtres soit réalisée par du personnel certifié."",
+  ""target_text_es"": ""Asegúrese de que la instalación cualificada de las ventanas sea realizada por personal certificado.""
+}
+```"
+"Per garantire un'efficiente dispersione termica, è necessario applicare un sistema di isolamento a cappotto sulle pareti esterne dell'edificio.","To ensure efficient thermal dispersion, it is necessary to apply an external thermal insulation composite system (ETICS) on the building's exterior walls.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,isolamento a cappotto,construction,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficiente dispersione termica, è necessario applicare un sistema di isolamento a cappotto sulle pareti esterne dell'edificio."",
+  ""target_text_en"": ""To ensure efficient thermal dispersion, it is necessary to apply an external thermal insulation composite system (ETICS) on the building's exterior walls."",
+  ""target_text_fr"": ""Pour garantir une dispersion thermique efficace, il est nécessaire d'appliquer un système d'isolation thermique par l'extérieur (SITE) sur les murs extérieurs du bâtiment."",
+  ""target_text_es"": ""Para garantizar una dispersión térmica eficiente, es necesario aplicar un sistema de aislamiento térmico por el exterior (SATE) en las paredes exteriores del edificio.""
+}
+```"
+"Per garantire un'efficiente dispersione termica, è necessario applicare un sistema di isolamento a cappotto sulle pareti esterne dell'edificio.","Pour garantir une dispersion thermique efficace, il est nécessaire d'appliquer un système d'isolation thermique par l'extérieur (SITE) sur les murs extérieurs du bâtiment.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,isolamento a cappotto,construction,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficiente dispersione termica, è necessario applicare un sistema di isolamento a cappotto sulle pareti esterne dell'edificio."",
+  ""target_text_en"": ""To ensure efficient thermal dispersion, it is necessary to apply an external thermal insulation composite system (ETICS) on the building's exterior walls."",
+  ""target_text_fr"": ""Pour garantir une dispersion thermique efficace, il est nécessaire d'appliquer un système d'isolation thermique par l'extérieur (SITE) sur les murs extérieurs du bâtiment."",
+  ""target_text_es"": ""Para garantizar una dispersión térmica eficiente, es necesario aplicar un sistema de aislamiento térmico por el exterior (SATE) en las paredes exteriores del edificio.""
+}
+```"
+"Per garantire un'efficiente dispersione termica, è necessario applicare un sistema di isolamento a cappotto sulle pareti esterne dell'edificio.","Para garantizar una dispersión térmica eficiente, es necesario aplicar un sistema de aislamiento térmico por el exterior (SATE) en las paredes exteriores del edificio.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,isolamento a cappotto,construction,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficiente dispersione termica, è necessario applicare un sistema di isolamento a cappotto sulle pareti esterne dell'edificio."",
+  ""target_text_en"": ""To ensure efficient thermal dispersion, it is necessary to apply an external thermal insulation composite system (ETICS) on the building's exterior walls."",
+  ""target_text_fr"": ""Pour garantir une dispersion thermique efficace, il est nécessaire d'appliquer un système d'isolation thermique par l'extérieur (SITE) sur les murs extérieurs du bâtiment."",
+  ""target_text_es"": ""Para garantizar una dispersión térmica eficiente, es necesario aplicar un sistema de aislamiento térmico por el exterior (SATE) en las paredes exteriores del edificio.""
+}
+```"
+"Prima di procedere con la riqualificazione del foro finestra, è necessario rimuovere con cura la vecchia finestra e verificare lo stato del telaio e della muratura circostante.","Before proceeding with the window opening refurbishment, it is necessary to carefully remove the old window and check the condition of the frame and surrounding masonry.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,riqualificazione del foro finestra,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Prima di procedere con la riqualificazione del foro finestra, è necessario rimuovere con cura la vecchia finestra e verificare lo stato del telaio e della muratura circostante."",
+  ""target_text_en"": ""Before proceeding with the window opening refurbishment, it is necessary to carefully remove the old window and check the condition of the frame and surrounding masonry."",
+  ""target_text_fr"": ""Avant de procéder à la rénovation de l'ouverture de la fenêtre, il est nécessaire de retirer soigneusement l'ancienne fenêtre et de vérifier l'état du cadre et de la maçonnerie environnante."",
+  ""target_text_es"": ""Antes de proceder con la renovación del hueco de la ventana, es necesario retirar con cuidado la ventana antigua y verificar el estado del marco y la mampostería circundante.""
+}
+```"
+"Prima di procedere con la riqualificazione del foro finestra, è necessario rimuovere con cura la vecchia finestra e verificare lo stato del telaio e della muratura circostante.","Avant de procéder à la rénovation de l'ouverture de la fenêtre, il est nécessaire de retirer soigneusement l'ancienne fenêtre et de vérifier l'état du cadre et de la maçonnerie environnante.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,riqualificazione del foro finestra,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Prima di procedere con la riqualificazione del foro finestra, è necessario rimuovere con cura la vecchia finestra e verificare lo stato del telaio e della muratura circostante."",
+  ""target_text_en"": ""Before proceeding with the window opening refurbishment, it is necessary to carefully remove the old window and check the condition of the frame and surrounding masonry."",
+  ""target_text_fr"": ""Avant de procéder à la rénovation de l'ouverture de la fenêtre, il est nécessaire de retirer soigneusement l'ancienne fenêtre et de vérifier l'état du cadre et de la maçonnerie environnante."",
+  ""target_text_es"": ""Antes de proceder con la renovación del hueco de la ventana, es necesario retirar con cuidado la ventana antigua y verificar el estado del marco y la mampostería circundante.""
+}
+```"
+"Prima di procedere con la riqualificazione del foro finestra, è necessario rimuovere con cura la vecchia finestra e verificare lo stato del telaio e della muratura circostante.","Antes de proceder con la renovación del hueco de la ventana, es necesario retirar con cuidado la ventana antigua y verificar el estado del marco y la mampostería circundante.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,riqualificazione del foro finestra,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Prima di procedere con la riqualificazione del foro finestra, è necessario rimuovere con cura la vecchia finestra e verificare lo stato del telaio e della muratura circostante."",
+  ""target_text_en"": ""Before proceeding with the window opening refurbishment, it is necessary to carefully remove the old window and check the condition of the frame and surrounding masonry."",
+  ""target_text_fr"": ""Avant de procéder à la rénovation de l'ouverture de la fenêtre, il est nécessaire de retirer soigneusement l'ancienne fenêtre et de vérifier l'état du cadre et de la maçonnerie environnante."",
+  ""target_text_es"": ""Antes de proceder con la renovación del hueco de la ventana, es necesario retirar con cuidado la ventana antigua y verificar el estado del marco y la mampostería circundante.""
+}
+```"
+"Dopo aver installato il profilo, procedere con la sigillatura del giunto utilizzando un sigillante silicone specifico per applicazioni esterne.","After installing the profile, proceed with the joint sealing using a specific silicone sealant for external applications.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sigillatura del giunto,action,an installation manual,"```json
+{
+  ""source_text"": ""Dopo aver installato il profilo, procedere con la sigillatura del giunto utilizzando un sigillante silicone specifico per applicazioni esterne."",
+  ""target_text_en"": ""After installing the profile, proceed with the joint sealing using a specific silicone sealant for external applications."",
+  ""target_text_fr"": ""Après avoir installé le profil, procédez au scellement du joint en utilisant un produit d'étanchéité au silicone spécifique pour les applications extérieures."",
+  ""target_text_es"": ""Después de instalar el perfil, proceda con el sellado de la junta utilizando un sellador de silicona específico para aplicaciones externas.""
+}
+```"
+"Dopo aver installato il profilo, procedere con la sigillatura del giunto utilizzando un sigillante silicone specifico per applicazioni esterne.","Après avoir installé le profil, procédez au scellement du joint en utilisant un produit d'étanchéité au silicone spécifique pour les applications extérieures.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sigillatura del giunto,action,an installation manual,"```json
+{
+  ""source_text"": ""Dopo aver installato il profilo, procedere con la sigillatura del giunto utilizzando un sigillante silicone specifico per applicazioni esterne."",
+  ""target_text_en"": ""After installing the profile, proceed with the joint sealing using a specific silicone sealant for external applications."",
+  ""target_text_fr"": ""Après avoir installé le profil, procédez au scellement du joint en utilisant un produit d'étanchéité au silicone spécifique pour les applications extérieures."",
+  ""target_text_es"": ""Después de instalar el perfil, proceda con el sellado de la junta utilizando un sellador de silicona específico para aplicaciones externas.""
+}
+```"
+"Dopo aver installato il profilo, procedere con la sigillatura del giunto utilizzando un sigillante silicone specifico per applicazioni esterne.","Después de instalar el perfil, proceda con el sellado de la junta utilizando un sellador de silicona específico para aplicaciones externas.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,sigillatura del giunto,action,an installation manual,"```json
+{
+  ""source_text"": ""Dopo aver installato il profilo, procedere con la sigillatura del giunto utilizzando un sigillante silicone specifico per applicazioni esterne."",
+  ""target_text_en"": ""After installing the profile, proceed with the joint sealing using a specific silicone sealant for external applications."",
+  ""target_text_fr"": ""Après avoir installé le profil, procédez au scellement du joint en utilisant un produit d'étanchéité au silicone spécifique pour les applications extérieures."",
+  ""target_text_es"": ""Después de instalar el perfil, proceda con el sellado de la junta utilizando un sellador de silicona específico para aplicaciones externas.""
+}
+```"
+"Dopo aver posizionato il telaio della finestra, assicurarsi di completare la coibentazione perimetrale utilizzando schiuma poliuretanica espandibile.","After positioning the window frame, ensure to complete the perimeter insulation using expanding polyurethane foam.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,coibentazione,action,an installation manual,"```json
+{
+  ""source_text"": ""Dopo aver posizionato il telaio della finestra, assicurarsi di completare la coibentazione perimetrale utilizzando schiuma poliuretanica espandibile."",
+  ""target_text_en"": ""After positioning the window frame, ensure to complete the perimeter insulation using expanding polyurethane foam."",
+  ""target_text_fr"": ""Après avoir positionné le cadre de la fenêtre, assurez-vous de compléter l'isolation périmétrique en utilisant de la mousse polyuréthane expansible."",
+  ""target_text_es"": ""Después de posicionar el marco de la ventana, asegúrese de completar el aislamiento perimetral utilizando espuma de poliuretano expansible.""
+}
+```"
+"Dopo aver posizionato il telaio della finestra, assicurarsi di completare la coibentazione perimetrale utilizzando schiuma poliuretanica espandibile.","Après avoir positionné le cadre de la fenêtre, assurez-vous de compléter l'isolation périmétrique en utilisant de la mousse polyuréthane expansible.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,coibentazione,action,an installation manual,"```json
+{
+  ""source_text"": ""Dopo aver posizionato il telaio della finestra, assicurarsi di completare la coibentazione perimetrale utilizzando schiuma poliuretanica espandibile."",
+  ""target_text_en"": ""After positioning the window frame, ensure to complete the perimeter insulation using expanding polyurethane foam."",
+  ""target_text_fr"": ""Après avoir positionné le cadre de la fenêtre, assurez-vous de compléter l'isolation périmétrique en utilisant de la mousse polyuréthane expansible."",
+  ""target_text_es"": ""Después de posicionar el marco de la ventana, asegúrese de completar el aislamiento perimetral utilizando espuma de poliuretano expansible.""
+}
+```"
+"Dopo aver posizionato il telaio della finestra, assicurarsi di completare la coibentazione perimetrale utilizzando schiuma poliuretanica espandibile.","Después de posicionar el marco de la ventana, asegúrese de completar el aislamiento perimetral utilizando espuma de poliuretano expansible.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,coibentazione,action,an installation manual,"```json
+{
+  ""source_text"": ""Dopo aver posizionato il telaio della finestra, assicurarsi di completare la coibentazione perimetrale utilizzando schiuma poliuretanica espandibile."",
+  ""target_text_en"": ""After positioning the window frame, ensure to complete the perimeter insulation using expanding polyurethane foam."",
+  ""target_text_fr"": ""Après avoir positionné le cadre de la fenêtre, assurez-vous de compléter l'isolation périmétrique en utilisant de la mousse polyuréthane expansible."",
+  ""target_text_es"": ""Después de posicionar el marco de la ventana, asegúrese de completar el aislamiento perimetral utilizando espuma de poliuretano expansible.""
+}
+```"
+"Durante la ristrutturazione non invasiva delle finestre, è fondamentale seguire le procedure indicate per garantire il corretto posizionamento dei nuovi telai.","During non-invasive window renovation, it is essential to follow the indicated procedures to ensure the correct positioning of the new frames.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,ristrutturazione non invasiva,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Durante la ristrutturazione non invasiva delle finestre, è fondamentale seguire le procedure indicate per garantire il corretto posizionamento dei nuovi telai."",
+  ""target_text_en"": ""During non-invasive window renovation, it is essential to follow the indicated procedures to ensure the correct positioning of the new frames."",
+  ""target_text_fr"": ""Lors de la rénovation non invasive des fenêtres, il est essentiel de suivre les procédures indiquées pour garantir le bon positionnement des nouveaux cadres."",
+  ""target_text_es"": ""Durante la reforma no invasiva de las ventanas, es esencial seguir los procedimientos indicados para garantizar el correcto posicionamiento de los nuevos marcos.""
+}
+```"
+"Durante la ristrutturazione non invasiva delle finestre, è fondamentale seguire le procedure indicate per garantire il corretto posizionamento dei nuovi telai.","Lors de la rénovation non invasive des fenêtres, il est essentiel de suivre les procédures indiquées pour garantir le bon positionnement des nouveaux cadres.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,ristrutturazione non invasiva,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Durante la ristrutturazione non invasiva delle finestre, è fondamentale seguire le procedure indicate per garantire il corretto posizionamento dei nuovi telai."",
+  ""target_text_en"": ""During non-invasive window renovation, it is essential to follow the indicated procedures to ensure the correct positioning of the new frames."",
+  ""target_text_fr"": ""Lors de la rénovation non invasive des fenêtres, il est essentiel de suivre les procédures indiquées pour garantir le bon positionnement des nouveaux cadres."",
+  ""target_text_es"": ""Durante la reforma no invasiva de las ventanas, es esencial seguir los procedimientos indicados para garantizar el correcto posicionamiento de los nuevos marcos.""
+}
+```"
+"Durante la ristrutturazione non invasiva delle finestre, è fondamentale seguire le procedure indicate per garantire il corretto posizionamento dei nuovi telai.","Durante la reforma no invasiva de las ventanas, es esencial seguir los procedimientos indicados para garantizar el correcto posicionamiento de los nuevos marcos.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,ristrutturazione non invasiva,renovation,an installation manual,"```json
+{
+  ""source_text"": ""Durante la ristrutturazione non invasiva delle finestre, è fondamentale seguire le procedure indicate per garantire il corretto posizionamento dei nuovi telai."",
+  ""target_text_en"": ""During non-invasive window renovation, it is essential to follow the indicated procedures to ensure the correct positioning of the new frames."",
+  ""target_text_fr"": ""Lors de la rénovation non invasive des fenêtres, il est essentiel de suivre les procédures indiquées pour garantir le bon positionnement des nouveaux cadres."",
+  ""target_text_es"": ""Durante la reforma no invasiva de las ventanas, es esencial seguir los procedimientos indicados para garantizar el correcto posicionamiento de los nuevos marcos.""
+}
+```"
+Le finestre da tetto della serie SkyView sono progettate per garantire un'eccellente illuminazione naturale e un'ottima ventilazione.,The SkyView roof windows are designed to provide excellent natural lighting and optimal ventilation.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,finestre da tetto,product,an installation manual,"```json
+{
+  ""source_text"": ""Le finestre da tetto della serie SkyView sono progettate per garantire un'eccellente illuminazione naturale e un'ottima ventilazione."",
+  ""target_text_en"": ""The SkyView roof windows are designed to provide excellent natural lighting and optimal ventilation."",
+  ""target_text_fr"": ""Les fenêtres de toit de la série SkyView sont conçues pour assurer une excellente éclairage naturel et une ventilation optimale."",
+  ""target_text_es"": ""Las ventanas para techos de la serie SkyView están diseñadas para proporcionar una excelente iluminación natural y una ventilación óptima.""
+}
+```"
+Le finestre da tetto della serie SkyView sono progettate per garantire un'eccellente illuminazione naturale e un'ottima ventilazione.,Les fenêtres de toit de la série SkyView sont conçues pour assurer une excellente éclairage naturel et une ventilation optimale.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,finestre da tetto,product,an installation manual,"```json
+{
+  ""source_text"": ""Le finestre da tetto della serie SkyView sono progettate per garantire un'eccellente illuminazione naturale e un'ottima ventilazione."",
+  ""target_text_en"": ""The SkyView roof windows are designed to provide excellent natural lighting and optimal ventilation."",
+  ""target_text_fr"": ""Les fenêtres de toit de la série SkyView sont conçues pour assurer une excellente éclairage naturel et une ventilation optimale."",
+  ""target_text_es"": ""Las ventanas para techos de la serie SkyView están diseñadas para proporcionar una excelente iluminación natural y una ventilación óptima.""
+}
+```"
+Le finestre da tetto della serie SkyView sono progettate per garantire un'eccellente illuminazione naturale e un'ottima ventilazione.,Las ventanas para techos de la serie SkyView están diseñadas para proporcionar una excelente iluminación natural y una ventilación óptima.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,finestre da tetto,product,an installation manual,"```json
+{
+  ""source_text"": ""Le finestre da tetto della serie SkyView sono progettate per garantire un'eccellente illuminazione naturale e un'ottima ventilazione."",
+  ""target_text_en"": ""The SkyView roof windows are designed to provide excellent natural lighting and optimal ventilation."",
+  ""target_text_fr"": ""Les fenêtres de toit de la série SkyView sont conçues pour assurer une excellente éclairage naturel et une ventilation optimale."",
+  ""target_text_es"": ""Las ventanas para techos de la serie SkyView están diseñadas para proporcionar una excelente iluminación natural y una ventilación óptima.""
+}
+```"
+I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti.,Solar tunnels must be installed in accordance with the technical specifications listed in the product catalog.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tunnel solari,product,an installation manual,"```json
+{
+  ""source_text"": ""I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti."",
+  ""target_text_en"": ""Solar tunnels must be installed in accordance with the technical specifications listed in the product catalog."",
+  ""target_text_fr"": ""Les tunnels solaires doivent être installés conformément aux spécifications techniques indiquées dans le catalogue des produits."",
+  ""target_text_es"": ""Los túneles solares deben instalarse de acuerdo con las especificaciones técnicas indicadas en el catálogo de productos.""
+}
+```"
+I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti.,Les tunnels solaires doivent être installés conformément aux spécifications techniques indiquées dans le catalogue des produits.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tunnel solari,product,an installation manual,"```json
+{
+  ""source_text"": ""I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti."",
+  ""target_text_en"": ""Solar tunnels must be installed in accordance with the technical specifications listed in the product catalog."",
+  ""target_text_fr"": ""Les tunnels solaires doivent être installés conformément aux spécifications techniques indiquées dans le catalogue des produits."",
+  ""target_text_es"": ""Los túneles solares deben instalarse de acuerdo con las especificaciones técnicas indicadas en el catálogo de productos.""
+}
+```"
+I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti.,Los túneles solares deben instalarse de acuerdo con las especificaciones técnicas indicadas en el catálogo de productos.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tunnel solari,product,an installation manual,"```json
+{
+  ""source_text"": ""I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti."",
+  ""target_text_en"": ""Solar tunnels must be installed in accordance with the technical specifications listed in the product catalog."",
+  ""target_text_fr"": ""Les tunnels solaires doivent être installés conformément aux spécifications techniques indiquées dans le catalogue des produits."",
+  ""target_text_es"": ""Los túneles solares deben instalarse de acuerdo con las especificaciones técnicas indicadas en el catálogo de productos.""
+}
+```"
+Le zanzariere devono essere installate seguendo le specifiche dimensionali indicate nel catalogo prodotti.,Mosquito nets must be installed following the dimensional specifications indicated in the product catalog.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,zanzariere,product,an installation manual,"```json
+{
+  ""source_text"": ""Le zanzariere devono essere installate seguendo le specifiche dimensionali indicate nel catalogo prodotti."",
+  ""target_text_en"": ""Mosquito nets must be installed following the dimensional specifications indicated in the product catalog."",
+  ""target_text_fr"": ""Les moustiquaires doivent être installées en suivant les spécifications dimensionnelles indiquées dans le catalogue des produits."",
+  ""target_text_es"": ""Las mosquiteras deben instalarse siguiendo las especificaciones dimensionales indicadas en el catálogo de productos.""
+}
+```"
+Le zanzariere devono essere installate seguendo le specifiche dimensionali indicate nel catalogo prodotti.,Les moustiquaires doivent être installées en suivant les spécifications dimensionnelles indiquées dans le catalogue des produits.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,zanzariere,product,an installation manual,"```json
+{
+  ""source_text"": ""Le zanzariere devono essere installate seguendo le specifiche dimensionali indicate nel catalogo prodotti."",
+  ""target_text_en"": ""Mosquito nets must be installed following the dimensional specifications indicated in the product catalog."",
+  ""target_text_fr"": ""Les moustiquaires doivent être installées en suivant les spécifications dimensionnelles indiquées dans le catalogue des produits."",
+  ""target_text_es"": ""Las mosquiteras deben instalarse siguiendo las especificaciones dimensionales indicadas en el catálogo de productos.""
+}
+```"
+Le zanzariere devono essere installate seguendo le specifiche dimensionali indicate nel catalogo prodotti.,Las mosquiteras deben instalarse siguiendo las especificaciones dimensionales indicadas en el catálogo de productos.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,zanzariere,product,an installation manual,"```json
+{
+  ""source_text"": ""Le zanzariere devono essere installate seguendo le specifiche dimensionali indicate nel catalogo prodotti."",
+  ""target_text_en"": ""Mosquito nets must be installed following the dimensional specifications indicated in the product catalog."",
+  ""target_text_fr"": ""Les moustiquaires doivent être installées en suivant les spécifications dimensionnelles indiquées dans le catalogue des produits."",
+  ""target_text_es"": ""Las mosquiteras deben instalarse siguiendo las especificaciones dimensionales indicadas en el catálogo de productos.""
+}
+```"
+"Per installare correttamente le veneziane, assicurarsi che la misura del davanzale corrisponda alla larghezza delle stecche delle veneziane.","To properly install the Venetian blinds, ensure that the window sill measurement matches the width of the Venetian blind slats.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,veneziane,shading,an installation manual,"```json
+{
+  ""source_text"": ""Per installare correttamente le veneziane, assicurarsi che la misura del davanzale corrisponda alla larghezza delle stecche delle veneziane."",
+  ""target_text_en"": ""To properly install the Venetian blinds, ensure that the window sill measurement matches the width of the Venetian blind slats."",
+  ""target_text_fr"": ""Pour installer correctement les stores vénitiens, assurez-vous que la mesure du rebord de la fenêtre correspond à la largeur des lames des stores vénitiens."",
+  ""target_text_es"": ""Para instalar correctamente las persianas venecianas, asegúrese de que la medida del alféizar corresponda al ancho de las lamas de las persianas venecianas.""
+}
+```"
+"Per installare correttamente le veneziane, assicurarsi che la misura del davanzale corrisponda alla larghezza delle stecche delle veneziane.","Pour installer correctement les stores vénitiens, assurez-vous que la mesure du rebord de la fenêtre correspond à la largeur des lames des stores vénitiens.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,veneziane,shading,an installation manual,"```json
+{
+  ""source_text"": ""Per installare correttamente le veneziane, assicurarsi che la misura del davanzale corrisponda alla larghezza delle stecche delle veneziane."",
+  ""target_text_en"": ""To properly install the Venetian blinds, ensure that the window sill measurement matches the width of the Venetian blind slats."",
+  ""target_text_fr"": ""Pour installer correctement les stores vénitiens, assurez-vous que la mesure du rebord de la fenêtre correspond à la largeur des lames des stores vénitiens."",
+  ""target_text_es"": ""Para instalar correctamente las persianas venecianas, asegúrese de que la medida del alféizar corresponda al ancho de las lamas de las persianas venecianas.""
+}
+```"
+"Per installare correttamente le veneziane, assicurarsi che la misura del davanzale corrisponda alla larghezza delle stecche delle veneziane.","Para instalar correctamente las persianas venecianas, asegúrese de que la medida del alféizar corresponda al ancho de las lamas de las persianas venecianas.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,veneziane,shading,an installation manual,"```json
+{
+  ""source_text"": ""Per installare correttamente le veneziane, assicurarsi che la misura del davanzale corrisponda alla larghezza delle stecche delle veneziane."",
+  ""target_text_en"": ""To properly install the Venetian blinds, ensure that the window sill measurement matches the width of the Venetian blind slats."",
+  ""target_text_fr"": ""Pour installer correctement les stores vénitiens, assurez-vous que la mesure du rebord de la fenêtre correspond à la largeur des lames des stores vénitiens."",
+  ""target_text_es"": ""Para instalar correctamente las persianas venecianas, asegúrese de que la medida del alféizar corresponda al ancho de las lamas de las persianas venecianas.""
+}
+```"
+"Per garantire un'efficace oscuramento e controllo termico, Roverplastik offre una vasta gamma di tapparelle e tende per lucernari, progettate per adattarsi a diverse dimensioni e forme.","To ensure effective blackout and thermal control, Roverplastik offers a wide range of shutters and blinds for skylights, designed to fit various sizes and shapes.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tapparelle e tende per lucernari,product,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace oscuramento e controllo termico, Roverplastik offre una vasta gamma di tapparelle e tende per lucernari, progettate per adattarsi a diverse dimensioni e forme."",
+  ""target_text_en"": ""To ensure effective blackout and thermal control, Roverplastik offers a wide range of shutters and blinds for skylights, designed to fit various sizes and shapes."",
+  ""target_text_fr"": ""Pour garantir un occultation efficace et un contrôle thermique, Roverplastik propose une large gamme de stores et de rideaux pour lucarnes, conçus pour s'adapter à différentes tailles et formes."",
+  ""target_text_es"": ""Para garantizar un oscurecimiento efectivo y control térmico, Roverplastik ofrece una amplia gama de persianas y cortinas para claraboyas, diseñadas para adaptarse a diferentes tamaños y formas.""
+}
+```"
+"Per garantire un'efficace oscuramento e controllo termico, Roverplastik offre una vasta gamma di tapparelle e tende per lucernari, progettate per adattarsi a diverse dimensioni e forme.","Pour garantir un occultation efficace et un contrôle thermique, Roverplastik propose une large gamme de stores et de rideaux pour lucarnes, conçus pour s'adapter à différentes tailles et formes.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tapparelle e tende per lucernari,product,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace oscuramento e controllo termico, Roverplastik offre una vasta gamma di tapparelle e tende per lucernari, progettate per adattarsi a diverse dimensioni e forme."",
+  ""target_text_en"": ""To ensure effective blackout and thermal control, Roverplastik offers a wide range of shutters and blinds for skylights, designed to fit various sizes and shapes."",
+  ""target_text_fr"": ""Pour garantir un occultation efficace et un contrôle thermique, Roverplastik propose une large gamme de stores et de rideaux pour lucarnes, conçus pour s'adapter à différentes tailles et formes."",
+  ""target_text_es"": ""Para garantizar un oscurecimiento efectivo y control térmico, Roverplastik ofrece una amplia gama de persianas y cortinas para claraboyas, diseñadas para adaptarse a diferentes tamaños y formas.""
+}
+```"
+"Per garantire un'efficace oscuramento e controllo termico, Roverplastik offre una vasta gamma di tapparelle e tende per lucernari, progettate per adattarsi a diverse dimensioni e forme.","Para garantizar un oscurecimiento efectivo y control térmico, Roverplastik ofrece una amplia gama de persianas y cortinas para claraboyas, diseñadas para adaptarse a diferentes tamaños y formas.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,tapparelle e tende per lucernari,product,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'efficace oscuramento e controllo termico, Roverplastik offre una vasta gamma di tapparelle e tende per lucernari, progettate per adattarsi a diverse dimensioni e forme."",
+  ""target_text_en"": ""To ensure effective blackout and thermal control, Roverplastik offers a wide range of shutters and blinds for skylights, designed to fit various sizes and shapes."",
+  ""target_text_fr"": ""Pour garantir un occultation efficace et un contrôle thermique, Roverplastik propose une large gamme de stores et de rideaux pour lucarnes, conçus pour s'adapter à différentes tailles et formes."",
+  ""target_text_es"": ""Para garantizar un oscurecimiento efectivo y control térmico, Roverplastik ofrece una amplia gama de persianas y cortinas para claraboyas, diseñadas para adaptarse a diferentes tamaños y formas.""
+}
+```"
+"Per garantire un'integrazione ottimale, è necessario selezionare le soluzioni per foro finestra più adatte alle specifiche del progetto.","To ensure optimal integration, it is necessary to select the most suitable window opening solutions for the project specifications.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,soluzioni per foro finestra,solution,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'integrazione ottimale, è necessario selezionare le soluzioni per foro finestra più adatte alle specifiche del progetto."",
+  ""target_text_en"": ""To ensure optimal integration, it is necessary to select the most suitable window opening solutions for the project specifications."",
+  ""target_text_fr"": ""Pour garantir une intégration optimale, il est nécessaire de sélectionner les solutions pour l'ouverture de fenêtre les plus adaptées aux spécifications du projet."",
+  ""target_text_es"": ""Para garantizar una integración óptima, es necesario seleccionar las soluciones para el hueco de ventana más adecuadas a las especificaciones del proyecto.""
+}
+```"
+"Per garantire un'integrazione ottimale, è necessario selezionare le soluzioni per foro finestra più adatte alle specifiche del progetto.","Pour garantir une intégration optimale, il est nécessaire de sélectionner les solutions pour l'ouverture de fenêtre les plus adaptées aux spécifications du projet.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,soluzioni per foro finestra,solution,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'integrazione ottimale, è necessario selezionare le soluzioni per foro finestra più adatte alle specifiche del progetto."",
+  ""target_text_en"": ""To ensure optimal integration, it is necessary to select the most suitable window opening solutions for the project specifications."",
+  ""target_text_fr"": ""Pour garantir une intégration optimale, il est nécessaire de sélectionner les solutions pour l'ouverture de fenêtre les plus adaptées aux spécifications du projet."",
+  ""target_text_es"": ""Para garantizar una integración óptima, es necesario seleccionar las soluciones para el hueco de ventana más adecuadas a las especificaciones del proyecto.""
+}
+```"
+"Per garantire un'integrazione ottimale, è necessario selezionare le soluzioni per foro finestra più adatte alle specifiche del progetto.","Para garantizar una integración óptima, es necesario seleccionar las soluciones para el hueco de ventana más adecuadas a las especificaciones del proyecto.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,soluzioni per foro finestra,solution,an installation manual,"```json
+{
+  ""source_text"": ""Per garantire un'integrazione ottimale, è necessario selezionare le soluzioni per foro finestra più adatte alle specifiche del progetto."",
+  ""target_text_en"": ""To ensure optimal integration, it is necessary to select the most suitable window opening solutions for the project specifications."",
+  ""target_text_fr"": ""Pour garantir une intégration optimale, il est nécessaire de sélectionner les solutions pour l'ouverture de fenêtre les plus adaptées aux spécifications du projet."",
+  ""target_text_es"": ""Para garantizar una integración óptima, es necesario seleccionar las soluciones para el hueco de ventana más adecuadas a las especificaciones del proyecto.""
+}
+```"
+I sigilli Deventer sono progettati per garantire un'ottimale tenuta contro gli agenti atmosferici e l'infiltrazione di polvere.,Deventer seals are designed to provide optimal protection against weather elements and dust infiltration.,ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,deventer seals,product,an installation manual,"```json
+{
+  ""source_text"": ""I sigilli Deventer sono progettati per garantire un'ottimale tenuta contro gli agenti atmosferici e l'infiltrazione di polvere."",
+  ""target_text_en"": ""Deventer seals are designed to provide optimal protection against weather elements and dust infiltration."",
+  ""target_text_fr"": ""Les joints Deventer sont conçus pour assurer une protection optimale contre les éléments climatiques et l'infiltration de poussière."",
+  ""target_text_es"": ""Los sellos Deventer están diseñados para proporcionar una protección óptima contra los elementos climáticos y la infiltración de polvo.""
+}
+```"
+I sigilli Deventer sono progettati per garantire un'ottimale tenuta contro gli agenti atmosferici e l'infiltrazione di polvere.,Les joints Deventer sont conçus pour assurer une protection optimale contre les éléments climatiques et l'infiltration de poussière.,ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,deventer seals,product,an installation manual,"```json
+{
+  ""source_text"": ""I sigilli Deventer sono progettati per garantire un'ottimale tenuta contro gli agenti atmosferici e l'infiltrazione di polvere."",
+  ""target_text_en"": ""Deventer seals are designed to provide optimal protection against weather elements and dust infiltration."",
+  ""target_text_fr"": ""Les joints Deventer sont conçus pour assurer une protection optimale contre les éléments climatiques et l'infiltration de poussière."",
+  ""target_text_es"": ""Los sellos Deventer están diseñados para proporcionar una protección óptima contra los elementos climáticos y la infiltración de polvo.""
+}
+```"
+I sigilli Deventer sono progettati per garantire un'ottimale tenuta contro gli agenti atmosferici e l'infiltrazione di polvere.,Los sellos Deventer están diseñados para proporcionar una protección óptima contra los elementos climáticos y la infiltración de polvo.,ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,deventer seals,product,an installation manual,"```json
+{
+  ""source_text"": ""I sigilli Deventer sono progettati per garantire un'ottimale tenuta contro gli agenti atmosferici e l'infiltrazione di polvere."",
+  ""target_text_en"": ""Deventer seals are designed to provide optimal protection against weather elements and dust infiltration."",
+  ""target_text_fr"": ""Les joints Deventer sont conçus pour assurer une protection optimale contre les éléments climatiques et l'infiltration de poussière."",
+  ""target_text_es"": ""Los sellos Deventer están diseñados para proporcionar una protección óptima contra los elementos climáticos y la infiltración de polvo.""
+}
+```"
+"Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia.","The monoblocco coibentato presystem is designed to ensure high thermal and acoustic efficiency, minimizing energy losses.",ita_Latn,eng_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,monoblocco coibentato presystem,product,an installation manual,"```json
+{
+  ""source_text"": ""Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia."",
+  ""target_text_en"": ""The monoblocco coibentato presystem is designed to ensure high thermal and acoustic efficiency, minimizing energy losses."",
+  ""target_text_fr"": ""Le monobloc coibenté presystem est conçu pour assurer une efficacité thermique et acoustique élevée, minimisant les pertes d'énergie."",
+  ""target_text_es"": ""El monobloc coibentado presystem está diseñado para garantizar una alta eficiencia térmica y acústica, minimizando las pérdidas de energía.""
+}
+```"
+"Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia.","Le monobloc coibenté presystem est conçu pour assurer une efficacité thermique et acoustique élevée, minimisant les pertes d'énergie.",ita_Latn,fra_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,monoblocco coibentato presystem,product,an installation manual,"```json
+{
+  ""source_text"": ""Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia."",
+  ""target_text_en"": ""The monoblocco coibentato presystem is designed to ensure high thermal and acoustic efficiency, minimizing energy losses."",
+  ""target_text_fr"": ""Le monobloc coibenté presystem est conçu pour assurer une efficacité thermique et acoustique élevée, minimisant les pertes d'énergie."",
+  ""target_text_es"": ""El monobloc coibentado presystem está diseñado para garantizar una alta eficiencia térmica y acústica, minimizando las pérdidas de energía.""
+}
+```"
+"Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia.","El monobloc coibentado presystem está diseñado para garantizar una alta eficiencia térmica y acústica, minimizando las pérdidas de energía.",ita_Latn,spa_Latn,glossary,ollama/mistral-small3.2,json_v1,2026-05-02T08:36:09.131281+00:00,monoblocco coibentato presystem,product,an installation manual,"```json
+{
+  ""source_text"": ""Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia."",
+  ""target_text_en"": ""The monoblocco coibentato presystem is designed to ensure high thermal and acoustic efficiency, minimizing energy losses."",
+  ""target_text_fr"": ""Le monobloc coibenté presystem est conçu pour assurer une efficacité thermique et acoustique élevée, minimisant les pertes d'énergie."",
+  ""target_text_es"": ""El monobloc coibentado presystem está diseñado para garantizar una alta eficiencia térmica y acústica, minimizando las pérdidas de energía.""
+}
+```"

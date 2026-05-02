@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_qwen2.5_32b__20260502T082824071296Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_aya-expanse_8b__20260502T082906192557Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+"Durante l'installazione, assicurati che tutte le parti in contatto con materiali combustibili siano conformi agli standard di resistenza al fuoco per garantire la sicurezza dell'edificio.","Pendant l'installation, assurez-vous que toutes les parties en contact avec des matériaux combustibles respectent les normes de résistance au feu pour garantir la sécurité du bâtiment.",ita_Latn,fra_Latn
+"Durante l'installazione, è fondamentale rispettare le dimensioni del profilo per garantire un allineamento perfetto e una funzionalità ottimale delle finestre.","Pendant l'installation, il est essentiel de respecter les dimensions du profil pour garantir un alignement parfait et une fonctionnalité optimale des fenêtres.",ita_Latn,fra_Latn
+"Durante l'installazione, assicuratevi di posizionare correttamente i tunnel solari per massimizzare la captazione della luce solare e garantire prestazioni ottimali durante tutto l'anno.","During installation, ensure proper positioning of the solar tunnels to maximize sunlight capture and achieve optimal performance throughout the year.",ita_Latn,eng_Latn
+"Durante il test di certificazione, è fondamentale valutare la prestazione acustica del prodotto installato per garantire un comfort acustico ottimale all'interno degli spazi.","Durante las pruebas de certificación, es fundamental evaluar el rendimiento acústico del producto instalado para garantizar una comodidad acústica óptima en los espacios.",ita_Latn,spa_Latn
+"L'installazione del nostro sistema di finestre è progettata per massimizzare l'efficienza energetica, riducendo il consumo di energia e contribuendo a un ambiente più sostenibile.","The installation of our window system is designed to maximize energy efficiency, reducing energy consumption and contributing to a more sustainable environment.",ita_Latn,eng_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+La posa in opera qualificata delle finestre garantirà l'adesione corretta e la resistenza necessaria alla struttura muraria.,La instalación de ventanas realizada por personal calificado garantizará la adhesión correcta y la resistencia necesaria a la estructura mural.,ita_Latn,spa_Latn
+"Durante la fase di montaggio, il nodo secondario deve essere fissato con precisione per garantire l'integrità strutturale dell'installazione.","Durante la fase de instalación, el nodo secundario debe ser fijado con precisión para garantizar la integridad estructural de la instalación.",ita_Latn,spa_Latn
+"Durante l'installazione della finestra, è necessario assicurarsi che la coibentazione del telaio con il muro sia perfetta per garantire un'infiltrazione minima di umidità.","Lors de l'installation de la fenêtre, il est nécessaire de s'assurer que le scellement du cadre avec le mur soit parfait pour garantir une infiltration d'humidité minimale.",ita_Latn,fra_Latn
+"Prima di installare le veneziane, assicurarsi che la struttura del soffitto sia in grado di supportarne il peso.","Antes de instalar las persianas venecianas, asegúrate de que la estructura del techo pueda soportar su peso.",ita_Latn,spa_Latn
+Le finestre devono essere progettate per resistere al carico del vento specificato nel certificato di conformità.,Windows must be designed to withstand the wind load specified in the conformity certificate.,ita_Latn,eng_Latn

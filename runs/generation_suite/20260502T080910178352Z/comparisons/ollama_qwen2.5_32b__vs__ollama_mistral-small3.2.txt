@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_qwen2.5_32b__20260502T082824071296Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_mistral-small3.2__20260502T083609186321Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso.,Ensure that you follow the instructions provided to guarantee the ease of installation of the new window frame.,ita_Latn,eng_Latn
+"Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra.","Apply the sealant for joints with a heat gun, ensuring it uniformly covers all joints between the panels and the window frame.",ita_Latn,eng_Latn
+"Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211.","Durante la prueba de resistencia, asegúrese de que el marco de la ventana sea capaz de soportar la carga del viento conforme a la norma EN 12211.",ita_Latn,spa_Latn
+I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti.,Los túneles solares deben instalarse de acuerdo con las especificaciones técnicas indicadas en el catálogo de productos.,ita_Latn,spa_Latn
+"Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia.","El monobloc coibentado presystem está diseñado para garantizar una alta eficiencia térmica y acústica, minimizando las pérdidas de energía.",ita_Latn,spa_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+La posa in opera qualificata delle finestre garantirà l'adesione corretta e la resistenza necessaria alla struttura muraria.,La instalación de ventanas realizada por personal calificado garantizará la adhesión correcta y la resistencia necesaria a la estructura mural.,ita_Latn,spa_Latn
+"Durante la fase di montaggio, il nodo secondario deve essere fissato con precisione per garantire l'integrità strutturale dell'installazione.","Durante la fase de instalación, el nodo secundario debe ser fijado con precisión para garantizar la integridad estructural de la instalación.",ita_Latn,spa_Latn
+"Durante l'installazione della finestra, è necessario assicurarsi che la coibentazione del telaio con il muro sia perfetta per garantire un'infiltrazione minima di umidità.","Lors de l'installation de la fenêtre, il est nécessaire de s'assurer que le scellement du cadre avec le mur soit parfait pour garantir une infiltration d'humidité minimale.",ita_Latn,fra_Latn
+"Prima di installare le veneziane, assicurarsi che la struttura del soffitto sia in grado di supportarne il peso.","Antes de instalar las persianas venecianas, asegúrate de que la estructura del techo pueda soportar su peso.",ita_Latn,spa_Latn
+Le finestre devono essere progettate per resistere al carico del vento specificato nel certificato di conformità.,Windows must be designed to withstand the wind load specified in the conformity certificate.,ita_Latn,eng_Latn

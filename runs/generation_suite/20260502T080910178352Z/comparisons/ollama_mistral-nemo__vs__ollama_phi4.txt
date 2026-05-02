@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_mistral-nemo__20260502T083151964421Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_phi4__20260502T084906058361Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+"Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra.","Lors de l'installation, assurez-vous que le coffret isolant est correctement positionné et solidement fixé pour garantir une isolation thermique optimale du système de fenêtre.",ita_Latn,fra_Latn
+"Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica.","Lors des tests de performances, la fenêtre a démontré une excellente étanchéité à l'air, dépassant les normes internationales pour l'efficacité énergétique.",ita_Latn,fra_Latn
+"Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti.","Las persianas y las cortinas para lucernarios están diseñadas para garantizar un control óptimo de la luz natural y del calor, ofreciendo una protección solar efectiva e mejorando el aislamiento térmico de los ambientes.",ita_Latn,spa_Latn
+È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra.,It is essential to use high-quality insulating material to ensure both the thermal and acoustic efficiency of the window.,ita_Latn,eng_Latn
+"Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria.","Utilice el cinta autoexpansible para garantizar un sellado hermético entre los marcos de las ventanas y las estructuras circundantes, mejorando el aislamiento térmico e eliminando filtraciones de aire.",ita_Latn,spa_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+"Per installare l'isolamento a cappotto, è necessario seguire le istruzioni specifiche per il vostro edificio e utilizzare solo materiali approvati.","Pour installer l'isolation par l'extérieur ('isolamento a cappotto'), suivez les instructions spécifiques à votre bâtiment et utilisez uniquement des matériaux approuvés.",ita_Latn,fra_Latn
+"Per eseguire una ristrutturazione non invasiva del vostro edificio, raccomandiamo l'installazione delle nostre finestre a basso consumo energetico.","Pour effectuer une rénovation non invasive de votre bâtiment, nous vous recommandons l'installation de nos fenêtres à faible consommation d'énergie.",ita_Latn,fra_Latn
+"Per garantire la tenuta all'acqua, è importante seguire le istruzioni di installazione del kit di sigillatura fornite con il prodotto.","Pour garantir l'étanchéité à l'eau, il est important de suivre les instructions d'installation du kit d'étanchéité fourni avec le produit.",ita_Latn,fra_Latn
+"Per ottenere una sigillatura ottimale, applicare il nastro autoespandente lungo i bordi interni dell'infisso.","To achieve optimal sealing, apply the self-expanding tape along the inner edges of the frame.",ita_Latn,eng_Latn
+"Per garantire la conformità alle specifiche del prodotto, si consiglia di testare la prestazione acustica della finestra secondo le norme ISO 140-3.","Pour garantir la conformité aux spécifications du produit, il est recommandé de tester les performances acoustiques de la fenêtre selon les normes ISO 140-3.",ita_Latn,fra_Latn

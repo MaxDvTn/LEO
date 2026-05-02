@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_mistral-nemo__20260502T083151964421Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_mistral-small3.2__20260502T083609186321Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso.,Ensure that you follow the instructions provided to guarantee the ease of installation of the new window frame.,ita_Latn,eng_Latn
+"Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra.","Apply the sealant for joints with a heat gun, ensuring it uniformly covers all joints between the panels and the window frame.",ita_Latn,eng_Latn
+"Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211.","Durante la prueba de resistencia, asegúrese de que el marco de la ventana sea capaz de soportar la carga del viento conforme a la norma EN 12211.",ita_Latn,spa_Latn
+I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti.,Los túneles solares deben instalarse de acuerdo con las especificaciones técnicas indicadas en el catálogo de productos.,ita_Latn,spa_Latn
+"Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia.","El monobloc coibentado presystem está diseñado para garantizar una alta eficiencia térmica y acústica, minimizando las pérdidas de energía.",ita_Latn,spa_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+"Per installare l'isolamento a cappotto, è necessario seguire le istruzioni specifiche per il vostro edificio e utilizzare solo materiali approvati.","Pour installer l'isolation par l'extérieur ('isolamento a cappotto'), suivez les instructions spécifiques à votre bâtiment et utilisez uniquement des matériaux approuvés.",ita_Latn,fra_Latn
+"Per eseguire una ristrutturazione non invasiva del vostro edificio, raccomandiamo l'installazione delle nostre finestre a basso consumo energetico.","Pour effectuer une rénovation non invasive de votre bâtiment, nous vous recommandons l'installation de nos fenêtres à faible consommation d'énergie.",ita_Latn,fra_Latn
+"Per garantire la tenuta all'acqua, è importante seguire le istruzioni di installazione del kit di sigillatura fornite con il prodotto.","Pour garantir l'étanchéité à l'eau, il est important de suivre les instructions d'installation du kit d'étanchéité fourni avec le produit.",ita_Latn,fra_Latn
+"Per ottenere una sigillatura ottimale, applicare il nastro autoespandente lungo i bordi interni dell'infisso.","To achieve optimal sealing, apply the self-expanding tape along the inner edges of the frame.",ita_Latn,eng_Latn
+"Per garantire la conformità alle specifiche del prodotto, si consiglia di testare la prestazione acustica della finestra secondo le norme ISO 140-3.","Pour garantir la conformité aux spécifications du produit, il est recommandé de tester les performances acoustiques de la fenêtre selon les normes ISO 140-3.",ita_Latn,fra_Latn

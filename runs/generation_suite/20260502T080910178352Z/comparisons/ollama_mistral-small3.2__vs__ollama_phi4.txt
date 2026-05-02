@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_mistral-small3.2__20260502T083609186321Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_phi4__20260502T084906058361Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+"Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra.","Lors de l'installation, assurez-vous que le coffret isolant est correctement positionné et solidement fixé pour garantir une isolation thermique optimale du système de fenêtre.",ita_Latn,fra_Latn
+"Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica.","Lors des tests de performances, la fenêtre a démontré une excellente étanchéité à l'air, dépassant les normes internationales pour l'efficacité énergétique.",ita_Latn,fra_Latn
+"Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti.","Las persianas y las cortinas para lucernarios están diseñadas para garantizar un control óptimo de la luz natural y del calor, ofreciendo una protección solar efectiva e mejorando el aislamiento térmico de los ambientes.",ita_Latn,spa_Latn
+È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra.,It is essential to use high-quality insulating material to ensure both the thermal and acoustic efficiency of the window.,ita_Latn,eng_Latn
+"Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria.","Utilice el cinta autoexpansible para garantizar un sellado hermético entre los marcos de las ventanas y las estructuras circundantes, mejorando el aislamiento térmico e eliminando filtraciones de aire.",ita_Latn,spa_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso.,Ensure that you follow the instructions provided to guarantee the ease of installation of the new window frame.,ita_Latn,eng_Latn
+"Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra.","Apply the sealant for joints with a heat gun, ensuring it uniformly covers all joints between the panels and the window frame.",ita_Latn,eng_Latn
+"Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211.","Durante la prueba de resistencia, asegúrese de que el marco de la ventana sea capaz de soportar la carga del viento conforme a la norma EN 12211.",ita_Latn,spa_Latn
+I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti.,Los túneles solares deben instalarse de acuerdo con las especificaciones técnicas indicadas en el catálogo de productos.,ita_Latn,spa_Latn
+"Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia.","El monobloc coibentado presystem está diseñado para garantizar una alta eficiencia térmica y acústica, minimizando las pérdidas de energía.",ita_Latn,spa_Latn

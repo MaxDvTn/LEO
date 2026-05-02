@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_qwen2.5_32b__20260502T082824071296Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_gemma3_27b__20260502T084603622162Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+"Per garantire prestazioni ottimali di isolamento termico e prevenire la condensa interstiziale, è fondamentale applicare una barriera al vapore sul lato caldo dell'isolante prima dell'installazione del rivestimento finale.","To ensure optimal thermal insulation performance and prevent interstitial condensation, it is crucial to apply a vapor barrier to the warm side of the insulation before installing the final cladding.",ita_Latn,eng_Latn
+"Per garantire la conformità alle normative vigenti, verifichi che la trasmittanza termica del nuovo infisso, calcolata secondo la norma UNI EN ISO 6746, sia inferiore al valore limite stabilito per la zona climatica di installazione.","Afin de garantir la conformité aux réglementations en vigueur, vérifiez que la transmittance thermique du nouveau châssis, calculée selon la norme UNI EN ISO 6746, est inférieure à la valeur limite établie pour la zone climatique d'installation.",ita_Latn,fra_Latn
+"Per prevenire la formazione di condensa superficiale sulle vetrate interne, è fondamentale garantire una corretta ventilazione dell'ambiente e l'utilizzo di guarnizioni perimetrali a tenuta stagna.","To prevent surface condensation on internal glazing, it is essential to ensure adequate ventilation of the environment and the use of airtight perimeter seals.",ita_Latn,eng_Latn
+"Per prevenire la formazione di muffa nelle aree critiche, come gli angoli delle finestre e i davanzali, è fondamentale garantire una corretta ventilazione e sigillatura durante l'installazione del telaio.","Afin de prévenir la formation de moisissures dans les zones critiques, telles que les angles des fenêtres et les rebords, il est essentiel de garantir une ventilation et une étanchéité adéquates lors de l'installation du cadre.",ita_Latn,fra_Latn
+"Prima di procedere con l'inserimento del serramento, è fondamentale verificare la planarità e la corretta fissaggio del controtelaio alla muratura, assicurandosi che sia a livello e perfettamente a piombo.","Avant de procéder à l'installation du châssis, il est essentiel de vérifier la planéité et la fixation correcte du contre-châssis à la maçonnerie, en s'assurant qu'il est de niveau et parfaitement d'aplomb.",ita_Latn,fra_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+La posa in opera qualificata delle finestre garantirà l'adesione corretta e la resistenza necessaria alla struttura muraria.,La instalación de ventanas realizada por personal calificado garantizará la adhesión correcta y la resistencia necesaria a la estructura mural.,ita_Latn,spa_Latn
+"Durante la fase di montaggio, il nodo secondario deve essere fissato con precisione per garantire l'integrità strutturale dell'installazione.","Durante la fase de instalación, el nodo secundario debe ser fijado con precisión para garantizar la integridad estructural de la instalación.",ita_Latn,spa_Latn
+"Durante l'installazione della finestra, è necessario assicurarsi che la coibentazione del telaio con il muro sia perfetta per garantire un'infiltrazione minima di umidità.","Lors de l'installation de la fenêtre, il est nécessaire de s'assurer que le scellement du cadre avec le mur soit parfait pour garantir une infiltration d'humidité minimale.",ita_Latn,fra_Latn
+"Prima di installare le veneziane, assicurarsi che la struttura del soffitto sia in grado di supportarne il peso.","Antes de instalar las persianas venecianas, asegúrate de que la estructura del techo pueda soportar su peso.",ita_Latn,spa_Latn
+Le finestre devono essere progettate per resistere al carico del vento specificato nel certificato di conformità.,Windows must be designed to withstand the wind load specified in the conformity certificate.,ita_Latn,eng_Latn

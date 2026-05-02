@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_aya-expanse_8b__20260502T082906192557Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_mistral-nemo__20260502T083151964421Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+"Per installare l'isolamento a cappotto, è necessario seguire le istruzioni specifiche per il vostro edificio e utilizzare solo materiali approvati.","Pour installer l'isolation par l'extérieur ('isolamento a cappotto'), suivez les instructions spécifiques à votre bâtiment et utilisez uniquement des matériaux approuvés.",ita_Latn,fra_Latn
+"Per eseguire una ristrutturazione non invasiva del vostro edificio, raccomandiamo l'installazione delle nostre finestre a basso consumo energetico.","Pour effectuer une rénovation non invasive de votre bâtiment, nous vous recommandons l'installation de nos fenêtres à faible consommation d'énergie.",ita_Latn,fra_Latn
+"Per garantire la tenuta all'acqua, è importante seguire le istruzioni di installazione del kit di sigillatura fornite con il prodotto.","Pour garantir l'étanchéité à l'eau, il est important de suivre les instructions d'installation du kit d'étanchéité fourni avec le produit.",ita_Latn,fra_Latn
+"Per ottenere una sigillatura ottimale, applicare il nastro autoespandente lungo i bordi interni dell'infisso.","To achieve optimal sealing, apply the self-expanding tape along the inner edges of the frame.",ita_Latn,eng_Latn
+"Per garantire la conformità alle specifiche del prodotto, si consiglia di testare la prestazione acustica della finestra secondo le norme ISO 140-3.","Pour garantir la conformité aux spécifications du produit, il est recommandé de tester les performances acoustiques de la fenêtre selon les normes ISO 140-3.",ita_Latn,fra_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+"Durante l'installazione, assicurati che tutte le parti in contatto con materiali combustibili siano conformi agli standard di resistenza al fuoco per garantire la sicurezza dell'edificio.","Pendant l'installation, assurez-vous que toutes les parties en contact avec des matériaux combustibles respectent les normes de résistance au feu pour garantir la sécurité du bâtiment.",ita_Latn,fra_Latn
+"Durante l'installazione, è fondamentale rispettare le dimensioni del profilo per garantire un allineamento perfetto e una funzionalità ottimale delle finestre.","Pendant l'installation, il est essentiel de respecter les dimensions du profil pour garantir un alignement parfait et une fonctionnalité optimale des fenêtres.",ita_Latn,fra_Latn
+"Durante l'installazione, assicuratevi di posizionare correttamente i tunnel solari per massimizzare la captazione della luce solare e garantire prestazioni ottimali durante tutto l'anno.","During installation, ensure proper positioning of the solar tunnels to maximize sunlight capture and achieve optimal performance throughout the year.",ita_Latn,eng_Latn
+"Durante il test di certificazione, è fondamentale valutare la prestazione acustica del prodotto installato per garantire un comfort acustico ottimale all'interno degli spazi.","Durante las pruebas de certificación, es fundamental evaluar el rendimiento acústico del producto instalado para garantizar una comodidad acústica óptima en los espacios.",ita_Latn,spa_Latn
+"L'installazione del nostro sistema di finestre è progettata per massimizzare l'efficienza energetica, riducendo il consumo di energia e contribuendo a un ambiente più sostenibile.","The installation of our window system is designed to maximize energy efficiency, reducing energy consumption and contributing to a more sustainable environment.",ita_Latn,eng_Latn

@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_aya-expanse_8b__20260502T082906192557Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_mistral-small3.2__20260502T083609186321Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+Assicurarsi di seguire le istruzioni fornite per garantire la facilità di posa del nuovo infisso.,Ensure that you follow the instructions provided to guarantee the ease of installation of the new window frame.,ita_Latn,eng_Latn
+"Applicare il sigillante per giunti con una pistola termica, assicurandosi che copra uniformemente tutti i giunti tra i pannelli e la struttura della finestra.","Apply the sealant for joints with a heat gun, ensuring it uniformly covers all joints between the panels and the window frame.",ita_Latn,eng_Latn
+"Durante la prova di resistenza, assicurarsi che il serramento sia in grado di sopportare il carico del vento conforme alla normativa EN 12211.","Durante la prueba de resistencia, asegúrese de que el marco de la ventana sea capaz de soportar la carga del viento conforme a la norma EN 12211.",ita_Latn,spa_Latn
+I tunnel solari devono essere installati in conformità con le specifiche tecniche riportate nel catalogo prodotti.,Los túneles solares deben instalarse de acuerdo con las especificaciones técnicas indicadas en el catálogo de productos.,ita_Latn,spa_Latn
+"Il monoblocco coibentato presystem è progettato per garantire un'elevata efficienza termica e acustica, riducendo al minimo le dispersioni di energia.","El monobloc coibentado presystem está diseñado para garantizar una alta eficiencia térmica y acústica, minimizando las pérdidas de energía.",ita_Latn,spa_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+"Durante l'installazione, assicurati che tutte le parti in contatto con materiali combustibili siano conformi agli standard di resistenza al fuoco per garantire la sicurezza dell'edificio.","Pendant l'installation, assurez-vous que toutes les parties en contact avec des matériaux combustibles respectent les normes de résistance au feu pour garantir la sécurité du bâtiment.",ita_Latn,fra_Latn
+"Durante l'installazione, è fondamentale rispettare le dimensioni del profilo per garantire un allineamento perfetto e una funzionalità ottimale delle finestre.","Pendant l'installation, il est essentiel de respecter les dimensions du profil pour garantir un alignement parfait et une fonctionnalité optimale des fenêtres.",ita_Latn,fra_Latn
+"Durante l'installazione, assicuratevi di posizionare correttamente i tunnel solari per massimizzare la captazione della luce solare e garantire prestazioni ottimali durante tutto l'anno.","During installation, ensure proper positioning of the solar tunnels to maximize sunlight capture and achieve optimal performance throughout the year.",ita_Latn,eng_Latn
+"Durante il test di certificazione, è fondamentale valutare la prestazione acustica del prodotto installato per garantire un comfort acustico ottimale all'interno degli spazi.","Durante las pruebas de certificación, es fundamental evaluar el rendimiento acústico del producto instalado para garantizar una comodidad acústica óptima en los espacios.",ita_Latn,spa_Latn
+"L'installazione del nostro sistema di finestre è progettata per massimizzare l'efficienza energetica, riducendo il consumo di energia e contribuendo a un ambiente più sostenibile.","The installation of our window system is designed to maximize energy efficiency, reducing energy consumption and contributing to a more sustainable environment.",ita_Latn,eng_Latn

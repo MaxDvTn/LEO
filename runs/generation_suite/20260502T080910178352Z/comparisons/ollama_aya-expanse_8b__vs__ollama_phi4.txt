@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_aya-expanse_8b__20260502T082906192557Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_phi4__20260502T084906058361Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+"Durante l'installazione, assicurarsi che il cassonetto coibentato sia posizionato correttamente e fissato saldamente per garantire un isolamento termico ottimale del sistema di finestra.","Lors de l'installation, assurez-vous que le coffret isolant est correctement positionné et solidement fixé pour garantir une isolation thermique optimale du système de fenêtre.",ita_Latn,fra_Latn
+"Durante i test di performance, la finestra ha dimostrato un'eccellente tenuta all'aria, superando le normative internazionali per l'efficienza energetica.","Lors des tests de performances, la fenêtre a démontré une excellente étanchéité à l'air, dépassant les normes internationales pour l'efficacité énergétique.",ita_Latn,fra_Latn
+"Le tapparelle e le tende per lucernari sono progettate per garantire un controllo ottimale della luce naturale e del calore, offrendo un'efficace protezione solare e migliorando l'isolamento termico degli ambienti.","Las persianas y las cortinas para lucernarios están diseñadas para garantizar un control óptimo de la luz natural y del calor, ofreciendo una protección solar efectiva e mejorando el aislamiento térmico de los ambientes.",ita_Latn,spa_Latn
+È fondamentale utilizzare un materiale isolante di alta qualità per garantire sia l'efficienza termica che acustica della finestra.,It is essential to use high-quality insulating material to ensure both the thermal and acoustic efficiency of the window.,ita_Latn,eng_Latn
+"Utilizzare il nastro autoespandente per garantire una tenuta ermetica tra i profili delle finestre e le strutture circostanti, migliorando l'isolamento termico ed eliminando infiltrazioni d'aria.","Utilice el cinta autoexpansible para garantizar un sellado hermético entre los marcos de las ventanas y las estructuras circundantes, mejorando el aislamiento térmico e eliminando filtraciones de aire.",ita_Latn,spa_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+"Durante l'installazione, assicurati che tutte le parti in contatto con materiali combustibili siano conformi agli standard di resistenza al fuoco per garantire la sicurezza dell'edificio.","Pendant l'installation, assurez-vous que toutes les parties en contact avec des matériaux combustibles respectent les normes de résistance au feu pour garantir la sécurité du bâtiment.",ita_Latn,fra_Latn
+"Durante l'installazione, è fondamentale rispettare le dimensioni del profilo per garantire un allineamento perfetto e una funzionalità ottimale delle finestre.","Pendant l'installation, il est essentiel de respecter les dimensions du profil pour garantir un alignement parfait et une fonctionnalité optimale des fenêtres.",ita_Latn,fra_Latn
+"Durante l'installazione, assicuratevi di posizionare correttamente i tunnel solari per massimizzare la captazione della luce solare e garantire prestazioni ottimali durante tutto l'anno.","During installation, ensure proper positioning of the solar tunnels to maximize sunlight capture and achieve optimal performance throughout the year.",ita_Latn,eng_Latn
+"Durante il test di certificazione, è fondamentale valutare la prestazione acustica del prodotto installato per garantire un comfort acustico ottimale all'interno degli spazi.","Durante las pruebas de certificación, es fundamental evaluar el rendimiento acústico del producto instalado para garantizar una comodidad acústica óptima en los espacios.",ita_Latn,spa_Latn
+"L'installazione del nostro sistema di finestre è progettata per massimizzare l'efficienza energetica, riducendo il consumo di energia e contribuendo a un ambiente più sostenibile.","The installation of our window system is designed to maximize energy efficiency, reducing energy consumption and contributing to a more sustainable environment.",ita_Latn,eng_Latn

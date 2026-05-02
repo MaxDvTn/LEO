@@ -1,0 +1,37 @@
+OLD: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_mistral-nemo__20260502T083151964421Z.csv (138 rows)
+NEW: /home/mbosetti/LEO/data/synthetic/runs/glossary_synthetic__ollama_gemma3_27b__20260502T084603622162Z.csv (138 rows)
+rows_delta: 0
+unique_old: 138
+unique_new: 138
+common_rows: 0
+added_rows: 138
+removed_rows: 138
+common_sources: 0
+added_sources: 46
+removed_sources: 46
+
+target_lang_counts
+value,old,new,delta
+eng_Latn,46,46,0
+fra_Latn,46,46,0
+spa_Latn,46,46,0
+
+origin_counts
+value,old,new,delta
+glossary,138,138,0
+
+added_sample
+source_text,target_text,source_lang,target_lang
+"Per garantire prestazioni ottimali di isolamento termico e prevenire la condensa interstiziale, è fondamentale applicare una barriera al vapore sul lato caldo dell'isolante prima dell'installazione del rivestimento finale.","To ensure optimal thermal insulation performance and prevent interstitial condensation, it is crucial to apply a vapor barrier to the warm side of the insulation before installing the final cladding.",ita_Latn,eng_Latn
+"Per garantire la conformità alle normative vigenti, verifichi che la trasmittanza termica del nuovo infisso, calcolata secondo la norma UNI EN ISO 6746, sia inferiore al valore limite stabilito per la zona climatica di installazione.","Afin de garantir la conformité aux réglementations en vigueur, vérifiez que la transmittance thermique du nouveau châssis, calculée selon la norme UNI EN ISO 6746, est inférieure à la valeur limite établie pour la zone climatique d'installation.",ita_Latn,fra_Latn
+"Per prevenire la formazione di condensa superficiale sulle vetrate interne, è fondamentale garantire una corretta ventilazione dell'ambiente e l'utilizzo di guarnizioni perimetrali a tenuta stagna.","To prevent surface condensation on internal glazing, it is essential to ensure adequate ventilation of the environment and the use of airtight perimeter seals.",ita_Latn,eng_Latn
+"Per prevenire la formazione di muffa nelle aree critiche, come gli angoli delle finestre e i davanzali, è fondamentale garantire una corretta ventilazione e sigillatura durante l'installazione del telaio.","Afin de prévenir la formation de moisissures dans les zones critiques, telles que les angles des fenêtres et les rebords, il est essentiel de garantir une ventilation et une étanchéité adéquates lors de l'installation du cadre.",ita_Latn,fra_Latn
+"Prima di procedere con l'inserimento del serramento, è fondamentale verificare la planarità e la corretta fissaggio del controtelaio alla muratura, assicurandosi che sia a livello e perfettamente a piombo.","Avant de procéder à l'installation du châssis, il est essentiel de vérifier la planéité et la fixation correcte du contre-châssis à la maçonnerie, en s'assurant qu'il est de niveau et parfaitement d'aplomb.",ita_Latn,fra_Latn
+
+removed_sample
+source_text,target_text,source_lang,target_lang
+"Per installare l'isolamento a cappotto, è necessario seguire le istruzioni specifiche per il vostro edificio e utilizzare solo materiali approvati.","Pour installer l'isolation par l'extérieur ('isolamento a cappotto'), suivez les instructions spécifiques à votre bâtiment et utilisez uniquement des matériaux approuvés.",ita_Latn,fra_Latn
+"Per eseguire una ristrutturazione non invasiva del vostro edificio, raccomandiamo l'installazione delle nostre finestre a basso consumo energetico.","Pour effectuer une rénovation non invasive de votre bâtiment, nous vous recommandons l'installation de nos fenêtres à faible consommation d'énergie.",ita_Latn,fra_Latn
+"Per garantire la tenuta all'acqua, è importante seguire le istruzioni di installazione del kit di sigillatura fornite con il prodotto.","Pour garantir l'étanchéité à l'eau, il est important de suivre les instructions d'installation du kit d'étanchéité fourni avec le produit.",ita_Latn,fra_Latn
+"Per ottenere una sigillatura ottimale, applicare il nastro autoespandente lungo i bordi interni dell'infisso.","To achieve optimal sealing, apply the self-expanding tape along the inner edges of the frame.",ita_Latn,eng_Latn
+"Per garantire la conformità alle specifiche del prodotto, si consiglia di testare la prestazione acustica della finestra secondo le norme ISO 140-3.","Pour garantir la conformité aux spécifications du produit, il est recommandé de tester les performances acoustiques de la fenêtre selon les normes ISO 140-3.",ita_Latn,fra_Latn
