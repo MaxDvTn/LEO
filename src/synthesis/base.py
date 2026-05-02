@@ -41,6 +41,11 @@ class BaseGenerator(ABC):
     # Shared concrete methods                                              #
     # ------------------------------------------------------------------ #
 
+    @property
+    def num_workers(self) -> int:
+        """Parallelism degree. Subclasses override for backend-specific defaults."""
+        return max(1, conf.gen.num_workers)
+
     def _chat_with_retry(
         self, system: str, user: str, max_tokens: int = 400, max_retries: int = 3
     ) -> str:
@@ -94,7 +99,7 @@ class BaseGenerator(ABC):
         ]
 
         effective_variants = max(1, num_variants)
-        num_workers = max(1, conf.gen.num_workers)
+        num_workers = self.num_workers
 
         # Flatten to individual (term_dict, variant_index) tasks
         tasks = [

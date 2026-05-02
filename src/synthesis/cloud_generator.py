@@ -36,7 +36,11 @@ class CloudGenerator(BaseGenerator):
         load_dotenv(_PROJECT_ROOT / ".env")
         raw = model_id or conf.gen.model_id
         self.model = self._remap(raw)
-        logger.info(f"CloudGenerator ready — model: {self.model}")
+        logger.info(f"CloudGenerator ready — model: {self.model}, workers: {conf.gen.cloud_num_workers}")
+
+    @property
+    def num_workers(self) -> int:
+        return max(1, conf.gen.cloud_num_workers)
 
     @staticmethod
     def _remap(model_id: str) -> str:
