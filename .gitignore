@@ -153,3 +153,6 @@ checkpoints_*/
 
 #data
 data/
+
+#add run
+runs/
