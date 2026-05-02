@@ -18,7 +18,7 @@ from src.synthesis.prompts import (
     TRANSLATION_SYSTEM_PROMPT,
     TRANSLATION_USER_TEMPLATE,
 )
-from src.synthesis.parsing import parse_prefixed_translations
+from src.synthesis.parsing import parse_translations
 from src.common.config import conf
 
 logger = logging.getLogger(__name__)
@@ -99,7 +99,7 @@ class OllamaGenerator(BaseGenerator):
             "target_text_es": None,
             "raw_output": generated_text,
         }
-        result.update(parse_prefixed_translations(generated_text, include_source=True))
+        result.update(parse_translations(generated_text, include_source=True))
 
         if result["source_text"] and any([result["target_text_en"], result["target_text_fr"], result["target_text_es"]]):
             return result
@@ -107,14 +107,10 @@ class OllamaGenerator(BaseGenerator):
         return None
 
     def translate_text(self, text: str) -> dict:
-        client = ollama.Client(host=self.base_url)
-        response = client.chat(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": TRANSLATION_SYSTEM_PROMPT},
-                {"role": "user", "content": TRANSLATION_USER_TEMPLATE.format(text=text)},
-            ],
-            options={"temperature": 0.1, "num_predict": 200},
+        out = self._chat_with_retry(
+            TRANSLATION_SYSTEM_PROMPT,
+            TRANSLATION_USER_TEMPLATE.format(text=text),
+            max_tokens=240,
         )
         result = {
             "source_text": text,
@@ -122,7 +118,7 @@ class OllamaGenerator(BaseGenerator):
             "target_text_fr": None,
             "target_text_es": None,
         }
-        result.update(parse_prefixed_translations(response.message.content, include_source=False))
+        result.update(parse_translations(out, include_source=False))
         return result
 
     def generate_dataset(self, terms=None, num_variants: int = 1) -> pd.DataFrame:

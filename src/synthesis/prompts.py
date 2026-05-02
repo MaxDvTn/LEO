@@ -37,11 +37,13 @@ _GENERATION_BODY = (
     "1. The sentence must be professional and realistic, written as part of {doc_type}.\n"
     "2. Domain context: {domain_context}.\n"
     "3. After the Italian sentence, translate it into technical English (EN), French (FR), and Spanish (ES).\n\n"
-    "Format exactly as follows:\n"
-    'IT: [Italian sentence containing "{term}"]\n'
-    "EN: [English technical translation]\n"
-    "FR: [French technical translation]\n"
-    "ES: [Spanish technical translation]"
+    "Return only valid JSON with these exact keys:\n"
+    "{{\n"
+    '  "source_text": "Italian sentence containing {term}",\n'
+    '  "target_text_en": "English technical translation",\n'
+    '  "target_text_fr": "French technical translation",\n'
+    '  "target_text_es": "Spanish technical translation"\n'
+    "}}"
 )
 
 # Legacy constant kept so existing callers that do GENERATION_USER_TEMPLATE.format(term=...) still work.
@@ -74,8 +76,10 @@ TRANSLATION_SYSTEM_PROMPT = "You are a professional translator for technical doc
 TRANSLATION_USER_TEMPLATE = (
     'Translate the following Italian technical sentence into English (EN), French (FR), and Spanish (ES).\n\n'
     'Sentence: "{text}"\n\n'
-    "Format exactly as follows:\n"
-    "EN: [English translation]\n"
-    "FR: [French translation]\n"
-    "ES: [Spanish translation]"
+    "Return only valid JSON with these exact keys:\n"
+    "{{\n"
+    '  "target_text_en": "English translation",\n'
+    '  "target_text_fr": "French translation",\n'
+    '  "target_text_es": "Spanish translation"\n'
+    "}}"
 )

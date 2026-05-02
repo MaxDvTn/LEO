@@ -15,7 +15,7 @@ import os
 # Project Imports
 from src.data_mining.pdf_processor import PdfMiner
 from src.synthesis.generator import get_generator
-from src.synthesis.glossary_data import get_terms_list, ROVER_GLOSSARY
+from src.synthesis.glossary_data import get_terms_list
 from src.data_mining.competitor_spider import CompetitorSpider
 from src.training.trainer_engine import TrainerEngine
 from src.training.model_module import SeamlessFineTuner
@@ -59,6 +59,42 @@ class DataFactory:
     def _safe_model_name(self):
         return re.sub(r"[^A-Za-z0-9_.-]+", "_", conf.gen.model_id).strip("_")
 
+    def _detect_source_lang(self, text: str) -> str:
+        """Lightweight PDF language guard for the languages used in this project."""
+        lowered = f" {str(text).lower()} "
+        stopwords = {
+            "ita_Latn": [" il ", " lo ", " la ", " gli ", " le ", " di ", " del ", " della ", " per ", " con ", " una ", " che ", " in "],
+            "eng_Latn": [" the ", " and ", " of ", " for ", " with ", " from ", " this ", " that ", " is ", " are "],
+            "fra_Latn": [" le ", " la ", " les ", " des ", " pour ", " avec ", " dans ", " une ", " que ", " est "],
+            "spa_Latn": [" el ", " la ", " los ", " las ", " para ", " con ", " una ", " que ", " del ", " en "],
+        }
+        scores = {
+            lang: sum(lowered.count(token) for token in tokens)
+            for lang, tokens in stopwords.items()
+        }
+        best_lang, best_score = max(scores.items(), key=lambda item: item[1])
+        return best_lang if best_score > 0 else "unknown"
+
+    def _looks_bad_translation(self, source: str, target: str) -> bool:
+        source_norm = re.sub(r"\s+", " ", str(source).strip().lower())
+        target_norm = re.sub(r"\s+", " ", str(target).strip().lower())
+        if not source_norm or not target_norm:
+            return True
+        if source_norm == target_norm:
+            return True
+        if any(marker in target_norm for marker in ["target_text_", "translation]", "[english", "[french", "[spanish"]):
+            return True
+        if re.search(r"\b(it|en|fr|es)\s*:", target_norm):
+            return True
+
+        source_words = source_norm.split()
+        target_words = target_norm.split()
+        if len(source_words) < 4 or len(target_words) < 3:
+            return True
+
+        ratio = len(target_words) / max(len(source_words), 1)
+        return ratio < 0.35 or ratio > 2.8
+
     def _normalize_synthetic_df(self, df: pd.DataFrame, label: str) -> pd.DataFrame:
         required = ["source_text", "target_text", "source_lang", "target_lang"]
         missing = [col for col in required if col not in df.columns]
@@ -67,7 +103,7 @@ class DataFactory:
 
         before = len(df)
         df = df.copy()
-        for col in required + ["origin"]:
+        for col in required + ["origin", "term", "context", "doc_type", "model_id", "prompt_version", "created_at", "raw_output"]:
             if col in df.columns:
                 df[col] = df[col].astype("string").str.strip()
 
@@ -75,11 +111,46 @@ class DataFactory:
         for col in required:
             df = df[df[col].astype(str).str.len() > 0]
 
+        bad_mask = df.apply(
+            lambda row: self._looks_bad_translation(row["source_text"], row["target_text"]),
+            axis=1,
+        )
+        df = df[~bad_mask]
         df = df.drop_duplicates(subset=required).reset_index(drop=True)
         removed = before - len(df)
         if removed:
             print(f"🧹 Removed {removed} invalid/duplicate rows from {label}")
         return df
+
+    def _wide_to_long(self, df: pd.DataFrame, origin: str, source_lang: str = "ita_Latn") -> pd.DataFrame:
+        lang_map = [
+            ("target_text_en", "eng_Latn"),
+            ("target_text_fr", "fra_Latn"),
+            ("target_text_es", "spa_Latn"),
+        ]
+        rows = []
+        created_at = datetime.now(timezone.utc).isoformat()
+        metadata_cols = ["term", "context", "doc_type", "raw_output"]
+
+        for _, row in df.iterrows():
+            for col, tgt_lang in lang_map:
+                value = row.get(col)
+                if pd.notna(value) and str(value).strip():
+                    item = {
+                        "source_text": row["source_text"],
+                        "target_text": value,
+                        "source_lang": row.get("source_lang", source_lang) or source_lang,
+                        "target_lang": tgt_lang,
+                        "origin": origin,
+                        "model_id": conf.gen.model_id,
+                        "prompt_version": "json_v1",
+                        "created_at": created_at,
+                    }
+                    for meta_col in metadata_cols:
+                        if meta_col in row and pd.notna(row.get(meta_col)):
+                            item[meta_col] = row.get(meta_col)
+                    rows.append(item)
+        return pd.DataFrame(rows)
 
     def _save_synthetic_dataset(self, df: pd.DataFrame, filename: str, label: str):
         """Save the active synthetic CSV and keep timestamped copies for comparison."""
