@@ -372,21 +372,16 @@ class DataFactory:
             test_df.to_csv(out_path, index=False)
             print(f"✅ Created gold-only Test Set: {out_path} ({len(test_df)} rows)")
 
-    def _dedup_near_duplicates(self, df: pd.DataFrame, threshold: float = 0.85) -> pd.DataFrame:
+    def _dedup_near_duplicates(self, df: pd.DataFrame, threshold: float = 0.90) -> pd.DataFrame:
         """Remove source groups whose source_text is nearly identical to an already-kept source.
 
-        The synthetic dataset is long-format: one Italian source appears in multiple
-        rows, one per target language. Deduplicating row-by-row would accidentally
-        keep only the first target language. This method deduplicates unique source
-        sentences, then keeps all target-language rows for each retained source.
+        The dataset is long-format (one Italian source × N target languages). Operates
+        on unique source texts, then re-includes all target-language rows for kept sources.
+
+        Uses sentence-transformers (paraphrase-multilingual-MiniLM-L12-v2) for semantic
+        similarity when available; falls back to TF-IDF char n-grams with threshold=0.60.
         """
         if len(df) <= 1:
-            return df
-        try:
-            from sklearn.feature_extraction.text import TfidfVectorizer
-            from sklearn.metrics.pairwise import cosine_similarity
-        except ImportError:
-            logger.warning("sklearn not available — skipping near-duplicate filter")
             return df
 
         source_df = df[["source_text"]].drop_duplicates().reset_index(drop=True)
@@ -394,20 +389,41 @@ class DataFactory:
         if len(texts) <= 1:
             return df
 
-        tfidf = TfidfVectorizer(analyzer="word", ngram_range=(1, 2), min_df=1).fit_transform(texts)
+        # --- similarity matrix ---
+        sim_matrix = None
+        effective_threshold = threshold
+        try:
+            from sentence_transformers import SentenceTransformer
+            from sklearn.metrics.pairwise import cosine_similarity as cos_sim
+            model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
+            embeddings = model.encode(texts, show_progress_bar=False)
+            sim_matrix = cos_sim(embeddings)
+        except Exception:
+            try:
+                from sklearn.feature_extraction.text import TfidfVectorizer
+                from sklearn.metrics.pairwise import cosine_similarity as cos_sim
+                tfidf = TfidfVectorizer(
+                    analyzer="char_wb", ngram_range=(3, 5), min_df=1
+                ).fit_transform(texts)
+                sim_matrix = cos_sim(tfidf)
+                effective_threshold = 0.60  # char n-gram similarity scale differs
+                logger.warning("sentence-transformers unavailable — using TF-IDF char n-gram fallback (threshold=0.60)")
+            except Exception:
+                logger.warning("No similarity backend available — skipping near-duplicate filter")
+                return df
 
         kept: list[int] = []
         for i in range(len(texts)):
             if not kept:
                 kept.append(i)
                 continue
-            sims = cosine_similarity(tfidf[i : i + 1], tfidf[kept]).flatten()
-            if sims.max() < threshold:
+            max_sim = max(sim_matrix[i][j] for j in kept)
+            if max_sim < effective_threshold:
                 kept.append(i)
 
         removed = len(texts) - len(kept)
         if removed:
-            print(f"🔁 Near-duplicate filter: removed {removed} similar source texts (threshold={threshold})")
+            print(f"🔁 Near-duplicate filter: removed {removed} similar source texts (threshold={effective_threshold})")
 
         kept_sources = set(source_df.iloc[kept]["source_text"].astype(str))
         return df[df["source_text"].astype(str).isin(kept_sources)].reset_index(drop=True)
