@@ -150,4 +150,6 @@ checkpoints/
 checkpoints_backup_*/
 checkpoints_*/
 *.log
-# data/
+
+#data
+data/

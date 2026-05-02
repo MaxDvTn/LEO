@@ -8,9 +8,9 @@ _FENCE_RE = re.compile(r"^\s*```(?:json)?\s*|\s*```\s*$", re.IGNORECASE | re.MUL
 
 _JSON_KEYS = {
     "source_text": ("source_text", "italian", "it", "source", "source_sentence"),
-    "target_text_en": ("target_text_en", "english", "en", "translation_en"),
-    "target_text_fr": ("target_text_fr", "french", "fr", "translation_fr"),
-    "target_text_es": ("target_text_es", "spanish", "es", "translation_es"),
+    "target_text_en": ("target_text_en", "english", "en", "translation_en", "en_translation"),
+    "target_text_fr": ("target_text_fr", "french", "fr", "translation_fr", "fr_translation"),
+    "target_text_es": ("target_text_es", "spanish", "es", "translation_es", "es_translation"),
 }
 
 
@@ -48,6 +48,22 @@ def _extract_json_object(text: str) -> dict | None:
             continue
         if isinstance(parsed, dict):
             return parsed
+        if isinstance(parsed, list) and parsed and isinstance(parsed[0], dict):
+            return parsed[0]
+    return None
+
+
+def _lookup_nested(parsed: dict, aliases: tuple[str, ...]) -> object | None:
+    for alias in aliases:
+        if alias in parsed:
+            return parsed[alias]
+
+    translations = parsed.get("translations")
+    if isinstance(translations, dict):
+        for alias in aliases:
+            if alias in translations:
+                return translations[alias]
+
     return None
 
 
@@ -60,12 +76,10 @@ def parse_json_translations(text: str, *, include_source: bool) -> dict:
     for output_key, aliases in _JSON_KEYS.items():
         if output_key == "source_text" and not include_source:
             continue
-        for alias in aliases:
-            value = parsed.get(alias)
-            cleaned = clean_generated_value(value)
-            if cleaned:
-                result[output_key] = cleaned
-                break
+        value = _lookup_nested(parsed, aliases)
+        cleaned = clean_generated_value(value)
+        if cleaned:
+            result[output_key] = cleaned
     return result
 
 
