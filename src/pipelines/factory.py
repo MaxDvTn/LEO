@@ -373,11 +373,12 @@ class DataFactory:
             print(f"✅ Created gold-only Test Set: {out_path} ({len(test_df)} rows)")
 
     def _dedup_near_duplicates(self, df: pd.DataFrame, threshold: float = 0.85) -> pd.DataFrame:
-        """Remove rows whose source_text is nearly identical to an already-kept row.
+        """Remove source groups whose source_text is nearly identical to an already-kept source.
 
-        Uses TF-IDF cosine similarity on the Italian source. Runs after exact
-        deduplication, so it only targets structurally similar but non-identical sentences.
-        Preserves the first occurrence (keeps provenance of the earlier model/run).
+        The synthetic dataset is long-format: one Italian source appears in multiple
+        rows, one per target language. Deduplicating row-by-row would accidentally
+        keep only the first target language. This method deduplicates unique source
+        sentences, then keeps all target-language rows for each retained source.
         """
         if len(df) <= 1:
             return df
@@ -388,7 +389,11 @@ class DataFactory:
             logger.warning("sklearn not available — skipping near-duplicate filter")
             return df
 
-        texts = df["source_text"].astype(str).tolist()
+        source_df = df[["source_text"]].drop_duplicates().reset_index(drop=True)
+        texts = source_df["source_text"].astype(str).tolist()
+        if len(texts) <= 1:
+            return df
+
         tfidf = TfidfVectorizer(analyzer="word", ngram_range=(1, 2), min_df=1).fit_transform(texts)
 
         kept: list[int] = []
@@ -403,7 +408,9 @@ class DataFactory:
         removed = len(texts) - len(kept)
         if removed:
             print(f"🔁 Near-duplicate filter: removed {removed} similar source texts (threshold={threshold})")
-        return df.iloc[kept].reset_index(drop=True)
+
+        kept_sources = set(source_df.iloc[kept]["source_text"].astype(str))
+        return df[df["source_text"].astype(str).isin(kept_sources)].reset_index(drop=True)
 
     def build_ensemble(
         self,
