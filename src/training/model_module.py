@@ -22,10 +22,13 @@ class SeamlessFineTuner(pl.LightningModule):
         
         self.model_name = model_name if model_name is not None else conf.model.model_name
         self.learning_rate = learning_rate if learning_rate is not None else conf.model.learning_rate
-        self.tokenizer = None 
-        # Metric
+        self.tokenizer = None
+        # Torchmetrics (stateful — accumulated across batches, reset each epoch by Lightning)
         self.bleu_metric = SacreBLEUScore()
         self.chrf_metric = CHRFScore()
+        # METEOR: not in torchmetrics, accumulated manually and computed in on_validation_epoch_end
+        self._val_meteor_preds: list[str] = []
+        self._val_meteor_targets: list[str] = []
 
     def setup(self, stage=None):
         """
@@ -149,11 +152,15 @@ class SeamlessFineTuner(pl.LightningModule):
                     tgt_text = self.tokenizer.decode(lbl_ids, skip_special_tokens=True)
                     targets.append([tgt_text]) # SacreBLEU expects list of references
                 
-                # Update Metric
+                # Update stateful metrics
                 self.bleu_metric.update(preds, targets)
                 self.chrf_metric.update(preds, targets)
                 self.log("val_bleu", self.bleu_metric, on_epoch=True, prog_bar=True, batch_size=batch_size)
                 self.log("val_chrf", self.chrf_metric, on_epoch=True, prog_bar=True, batch_size=batch_size)
+
+                # Accumulate for METEOR (computed corpus-level in on_validation_epoch_end)
+                self._val_meteor_preds.extend(preds)
+                self._val_meteor_targets.extend([t[0] for t in targets])
 
                 # 3. Log Examples (Only for first batch)
                 if batch_idx == 0:
@@ -186,6 +193,24 @@ class SeamlessFineTuner(pl.LightningModule):
                     print(f"\n🔍 [EPOCH {self.current_epoch}] Prediction: {data[0][3]}")
 
             return loss
+
+    def on_validation_epoch_end(self):
+        if not self._val_meteor_preds:
+            return
+        try:
+            import nltk
+            from nltk.translate.meteor_score import meteor_score as _meteor
+            nltk.download("wordnet", quiet=True)
+            scores = [
+                _meteor([ref.split()], hyp.split())
+                for hyp, ref in zip(self._val_meteor_preds, self._val_meteor_targets)
+            ]
+            self.log("val_meteor", sum(scores) / len(scores), prog_bar=True, on_epoch=True)
+        except Exception as e:
+            logger.warning(f"METEOR computation failed: {e}")
+        finally:
+            self._val_meteor_preds.clear()
+            self._val_meteor_targets.clear()
 
     def configure_optimizers(self):
         optimizer = torch.optim.AdamW(self.model.parameters(), lr=self.learning_rate)

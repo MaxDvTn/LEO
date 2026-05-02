@@ -59,6 +59,34 @@ class DataFactory:
     def _safe_model_name(self):
         return re.sub(r"[^A-Za-z0-9_.-]+", "_", conf.gen.model_id).strip("_")
 
+    def _is_relevant_web_term(self, term: str) -> bool:
+        normalized = re.sub(r"\s+", " ", str(term).strip().lower())
+        if not normalized:
+            return False
+
+        blacklist = {
+            "privacy", "cookie", "cookies", "contatti", "contact", "contacts",
+            "azienda", "company", "news", "blog", "login", "area riservata",
+            "newsletter", "catalogo", "catalogue", "download", "scarica",
+            "home", "menu", "search", "cerca", "seguici", "facebook",
+            "instagram", "linkedin", "youtube", "termini", "condizioni",
+            "copyright", "credits", "lavora con noi",
+        }
+        if normalized in blacklist:
+            return False
+        if any(part in blacklist for part in normalized.split()):
+            return False
+
+        domain_keywords = {
+            "casson", "coibent", "monobloc", "serrament", "finestr", "foro",
+            "telaio", "controtelaio", "avvolg", "tapparella", "frangisole",
+            "zanzar", "guarnizion", "sigill", "isol", "termic", "acustic",
+            "tenuta", "profil", "soglia", "bancale", "sottobancale",
+            "posa", "giunto", "vapore", "membrana", "nastro", "schiuma",
+            "oscurante", "facciata", "lucernar", "deventer", "presystem",
+        }
+        return any(keyword in normalized for keyword in domain_keywords)
+
     def _detect_source_lang(self, text: str) -> str:
         """Lightweight PDF language guard for the languages used in this project."""
         lowered = f" {str(text).lower()} "
@@ -172,6 +200,13 @@ class DataFactory:
                     rows.append(item)
         return pd.DataFrame(rows)
 
+    def _load_gold_dataset(self) -> pd.DataFrame | None:
+        gold_path = self.gold_dir / "rover_gold_dataset.csv"
+        if not gold_path.exists():
+            print(f"⚠️  Gold dataset not found: {gold_path}")
+            return None
+        return pd.read_csv(gold_path)
+
     def _save_synthetic_dataset(self, df: pd.DataFrame, filename: str, label: str):
         """Save the active synthetic CSV and keep timestamped copies for comparison."""
         self.synthetic_dir.mkdir(parents=True, exist_ok=True)
@@ -281,13 +316,19 @@ class DataFactory:
             all_terms.extend(spider.scrape_site(url))
 
         unique_terms = sorted(set(all_terms))
+        pre_filter_count = len(unique_terms)
+        unique_terms = [t for t in unique_terms if self._is_relevant_web_term(t)]
+        filtered_out = pre_filter_count - len(unique_terms)
 
         # --- ANTI-DUPLICATION FILTER ---
         _, known_terms = self._get_gold_sources()
         original_count = len(unique_terms)
         unique_terms = [t for t in unique_terms if t.strip() not in known_terms]
         skipped = original_count - len(unique_terms)
-        print(f"   🔍 Found {len(unique_terms)} unique terms. (Skipped {skipped} already validated)")
+        print(
+            f"   🔍 Found {len(unique_terms)} relevant unique terms. "
+            f"(Filtered {filtered_out} web-noise terms, skipped {skipped} already validated)"
+        )
         # -------------------------------
 
         if not unique_terms:
@@ -308,20 +349,13 @@ class DataFactory:
         return None, None
 
     def create_test_set(self):
-        """Creates a balanced test set from Gold and Synthetic data."""
+        """Creates a balanced test set from human-validated gold data only."""
         print("\n🧪 [Phase: Test Set Creation]")
-        gold_path = self.gold_dir / "rover_gold_dataset.csv"
-
-        dfs = []
-        if gold_path.exists():
-            dfs.append(pd.read_csv(gold_path))
-
-        all_files = list(self.synthetic_dir.glob("*.csv"))
-        for f in all_files:
-            dfs.append(pd.read_csv(f))
-
-        if not dfs: return
-        source_df = pd.concat(dfs, ignore_index=True)
+        source_df = self._load_gold_dataset()
+        if source_df is None or source_df.empty:
+            return
+        required = ["source_text", "target_text", "source_lang", "target_lang"]
+        source_df = source_df.dropna(subset=required)
 
         test_rows = []
         for lang in source_df['target_lang'].unique():
@@ -336,16 +370,16 @@ class DataFactory:
             out_path = self.gold_dir / "test_set.csv"
             out_path.parent.mkdir(parents=True, exist_ok=True)
             test_df.to_csv(out_path, index=False)
-            print(f"✅ Created Test Set: {out_path} ({len(test_df)} rows)")
+            print(f"✅ Created gold-only Test Set: {out_path} ({len(test_df)} rows)")
 
     def run_glossary_gen(self):
         """Generates synthetic sentences from the domain glossary using the configured backend."""
         print("\n📖 [Phase: Glossary Generation]")
         generator = get_generator()
 
-        _, known_terms = self._get_gold_sources()
-        # Pass full dicts so generators can use the context field for richer prompts.
-        terms = [t for t in get_terms_list(with_context=True) if t["term"].strip() not in known_terms]
+        # Keep all glossary terms, including already validated gold terms, so repeated
+        # generation can build diverse contexts around high-value terminology.
+        terms = get_terms_list(with_context=True)
         print(f"   📝 Generating for {len(terms)} terms (×{conf.gen.num_variants} variants)...")
 
         df = generator.generate_dataset(terms=terms, num_variants=conf.gen.num_variants)
@@ -654,6 +688,21 @@ class ModelFactory:
                 regression_table.add_data(direction, src_text, ref_text, base_pred, leo_pred, round(base_score, 4), round(leo_score, 4), round(diff, 4))
 
         # Plotting Top 15 Most Hallucinated / Missing Words
+        word_errors_df = pd.DataFrame(
+            [
+                {"type": "missing", "word": word, "count": count}
+                for word, count in missing_words.most_common()
+            ]
+            + [
+                {"type": "hallucinated", "word": word, "count": count}
+                for word, count in hallucinated_words.most_common()
+            ]
+        )
+        word_errors_path = conf.paths.project_root / "benchmarks" / "word_level_errors.csv"
+        word_errors_path.parent.mkdir(parents=True, exist_ok=True)
+        word_errors_df.to_csv(word_errors_path, index=False)
+        print(f"✅ Word-level errors saved: {word_errors_path}")
+
         fig2, axes = plt.subplots(1, 2, figsize=(14, 6))
 
         # Hallucinations
@@ -674,6 +723,7 @@ class ModelFactory:
         wandb.log({
             "benchmark_comparison": table,
             "regressions_table": regression_table,
+            "word_level_errors": wandb.Table(dataframe=word_errors_df.head(100)),
             "Word_Level_Errors_Analysis": wandb.Image(fig2)
         })
         plt.close(fig2)

@@ -2,6 +2,18 @@
 
 # Lista curata di termini tecnici Roverplastik per generare frasi di training
 ROVER_GLOSSARY = [
+    # --- FOCUS: MISSING WORDS DAL BENCHMARK ---
+    {"term": "profilo di tenuta", "context": "sealing"},
+    {"term": "nastro adesivo di sigillatura", "context": "sealing"},
+    {"term": "film protettivo", "context": "product"},
+    {"term": "resistenza al fuoco", "context": "performance"},
+    {"term": "materiale isolante", "context": "insulation"},
+    {"term": "dimensioni del profilo", "context": "window_frame"},
+    {"term": "prestazione acustica", "context": "performance"},
+    {"term": "sigillante per giunti", "context": "sealing"},
+    {"term": "membrana al vapore", "context": "insulation"},
+    {"term": "facilità di posa", "context": "installation"},
+
     # --- CATEGORIA: PRODOTTI E COMPONENTI (HARDWARE) ---
     {"term": "cassonetto coibentato", "context": "structure"},
     {"term": "guarnizione termoacustica", "context": "sealing"},
