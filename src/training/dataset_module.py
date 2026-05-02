@@ -137,13 +137,21 @@ class NMTDataModule(pl.LightningDataModule):
 
         # 2. Load and Combine Data
         dfs = []
-        
-        # Check gold data
-        gold_files = list(self.paths.data_gold.glob("*.csv"))
+
+        # Collect test-set source texts upfront so we can exclude them from training
+        test_set_sources: set[str] = set()
+        test_set_path = self.paths.data_gold / "test_set.csv"
+        if test_set_path.exists():
+            ts_df = pd.read_csv(test_set_path, usecols=lambda c: c == "source_text")
+            test_set_sources = set(ts_df["source_text"].dropna().astype(str).str.strip())
+            logger.info(f"Loaded {len(test_set_sources)} test-set source texts for leakage exclusion")
+
+        # Check gold data — skip test_set.csv itself
+        gold_files = [f for f in self.paths.data_gold.glob("*.csv") if f.name != "test_set.csv"]
         for f in gold_files:
             dfs.append(pd.read_csv(f))
             logger.info(f"Loaded gold data: {f.name}")
-            
+
         # Check synthetic data
         synth_files = list(self.paths.data_synthetic.glob("*.csv"))
         for f in synth_files:
@@ -154,9 +162,17 @@ class NMTDataModule(pl.LightningDataModule):
             raise FileNotFoundError(f"No CSV files found in {self.paths.data_gold} or {self.paths.data_synthetic}")
 
         df = pd.concat(dfs, ignore_index=True)
-        
+
         # Basic cleaning
         df = df.dropna(subset=['source_text', 'target_text', 'source_lang', 'target_lang'])
+
+        # Exclude test-set rows to prevent data leakage into training
+        if test_set_sources:
+            before = len(df)
+            df = df[~df["source_text"].astype(str).str.strip().isin(test_set_sources)]
+            excluded = before - len(df)
+            if excluded:
+                logger.info(f"Excluded {excluded} training rows whose source_text appears in the test set")
         
         # 3. Split Train/Validation
         train_df, val_df = train_test_split(df, test_size=0.1, random_state=self.config.seed)
