@@ -16,6 +16,7 @@ def run_data_command(args):
         "web-spider": factory.run_web_spider,
         "generate": factory.run_glossary_gen,
         "test-set": factory.create_test_set,
+        "build-ensemble": factory.build_ensemble,
     }
     commands[args.data_command]()
 
@@ -64,7 +65,7 @@ def build_parser():
 
     data_parser = subparsers.add_parser("data", help="Run data pipeline tasks")
     data_subparsers = data_parser.add_subparsers(dest="data_command", required=True)
-    for name in ("full", "pdf-mine", "web-spider", "generate", "test-set"):
+    for name in ("full", "pdf-mine", "web-spider", "generate", "test-set", "build-ensemble"):
         data_subparsers.add_parser(name)
     data_parser.set_defaults(func=run_data_command)
 

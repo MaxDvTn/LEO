@@ -372,6 +372,110 @@ class DataFactory:
             test_df.to_csv(out_path, index=False)
             print(f"✅ Created gold-only Test Set: {out_path} ({len(test_df)} rows)")
 
+    def _dedup_near_duplicates(self, df: pd.DataFrame, threshold: float = 0.85) -> pd.DataFrame:
+        """Remove rows whose source_text is nearly identical to an already-kept row.
+
+        Uses TF-IDF cosine similarity on the Italian source. Runs after exact
+        deduplication, so it only targets structurally similar but non-identical sentences.
+        Preserves the first occurrence (keeps provenance of the earlier model/run).
+        """
+        if len(df) <= 1:
+            return df
+        try:
+            from sklearn.feature_extraction.text import TfidfVectorizer
+            from sklearn.metrics.pairwise import cosine_similarity
+        except ImportError:
+            logger.warning("sklearn not available — skipping near-duplicate filter")
+            return df
+
+        texts = df["source_text"].astype(str).tolist()
+        tfidf = TfidfVectorizer(analyzer="word", ngram_range=(1, 2), min_df=1).fit_transform(texts)
+
+        kept: list[int] = []
+        for i in range(len(texts)):
+            if not kept:
+                kept.append(i)
+                continue
+            sims = cosine_similarity(tfidf[i : i + 1], tfidf[kept]).flatten()
+            if sims.max() < threshold:
+                kept.append(i)
+
+        removed = len(texts) - len(kept)
+        if removed:
+            print(f"🔁 Near-duplicate filter: removed {removed} similar source texts (threshold={threshold})")
+        return df.iloc[kept].reset_index(drop=True)
+
+    def build_ensemble(
+        self,
+        run_paths: list | None = None,
+        weights: dict | None = None,
+        dedup_threshold: float = 0.85,
+    ) -> Path | None:
+        """Build a training-ready ensemble CSV from multiple model run datasets.
+
+        Args:
+            run_paths: explicit list of CSV paths from runs/. If None, uses all
+                       glossary_synthetic__*.csv files in synthetic/runs/.
+            weights:   {model_id: fraction} for proportional sampling, e.g.
+                       {"ollama/mistral-small3.2": 0.4, "ollama/gemma3:27b": 0.3, ...}.
+                       If None, all rows from all files are included equally.
+            dedup_threshold: cosine-similarity cutoff for near-duplicate removal.
+        """
+        print("\n🧩 [Phase: Build Ensemble Dataset]")
+        runs_dir = self.synthetic_dir / "runs"
+        if run_paths is None:
+            run_paths = sorted(runs_dir.glob("glossary_synthetic__*.csv"))
+
+        if not run_paths:
+            print(f"⚠️  No run CSVs found in {runs_dir}")
+            return None
+
+        dfs = []
+        for path in run_paths:
+            try:
+                df = pd.read_csv(path)
+                dfs.append(df)
+                model_label = df["model_id"].iloc[0] if "model_id" in df.columns else path.stem
+                print(f"   📂 {path.name}: {len(df)} rows  [{model_label}]")
+            except Exception as e:
+                logger.warning(f"Could not load {path}: {e}")
+
+        if not dfs:
+            return None
+
+        if weights:
+            total = sum(len(d) for d in dfs)
+            sampled = []
+            for df in dfs:
+                model = df["model_id"].iloc[0] if "model_id" in df.columns else "unknown"
+                frac = weights.get(model, 1.0 / len(dfs))
+                n = max(1, int(total * frac))
+                sampled.append(df.sample(n=min(n, len(df)), random_state=42))
+            combined = pd.concat(sampled, ignore_index=True)
+        else:
+            combined = pd.concat(dfs, ignore_index=True)
+
+        print(f"\n   Combined: {len(combined)} rows from {len(dfs)} run files")
+
+        # 1. Exact dedup on source+target pair
+        before = len(combined)
+        combined = combined.drop_duplicates(
+            subset=["source_text", "target_text", "target_lang"]
+        ).reset_index(drop=True)
+        if len(combined) < before:
+            print(f"   Exact duplicates removed: {before - len(combined)}")
+
+        # 2. Cross-model near-duplicate filter on source_text
+        combined = self._dedup_near_duplicates(combined, threshold=dedup_threshold)
+
+        # 3. Final quality filter
+        combined = self._normalize_synthetic_df(combined, "ensemble")
+
+        out_path = self.synthetic_dir / "ensemble_training_set.csv"
+        combined.to_csv(out_path, index=False)
+        print(f"✅ Ensemble saved: {out_path} ({len(combined)} rows)")
+        return out_path
+
     def run_glossary_gen(self):
         """Generates synthetic sentences from the domain glossary using the configured backend."""
         print("\n📖 [Phase: Glossary Generation]")
