@@ -59,6 +59,19 @@ class DataFactory:
     def _safe_model_name(self):
         return re.sub(r"[^A-Za-z0-9_.-]+", "_", conf.gen.model_id).strip("_")
 
+    def _ensemble_model_priority(self, model_id: str) -> int:
+        """Lower number wins when near-duplicate source texts compete."""
+        priority = {
+            "ollama/mistral-small3.2": 0,
+            "ollama/gemma3:27b": 1,
+            "ollama/qwen2.5:32b": 2,
+            "google/gemini-2.5-flash": 3,
+            "ollama/aya-expanse:8b": 4,
+            "ollama/mistral-nemo": 5,
+            "ollama/phi4": 6,
+        }
+        return priority.get(str(model_id), 100)
+
     def _is_relevant_web_term(self, term: str) -> bool:
         normalized = re.sub(r"\s+", " ", str(term).strip().lower())
         if not normalized:
@@ -480,6 +493,16 @@ class DataFactory:
 
         print(f"\n   Combined: {len(combined)} rows from {len(dfs)} run files")
 
+        if "model_id" in combined.columns:
+            combined["_model_priority"] = combined["model_id"].map(self._ensemble_model_priority)
+            combined = combined.sort_values(
+                by=["_model_priority", "model_id", "source_text", "target_lang"],
+                kind="stable",
+            ).reset_index(drop=True)
+            print("   Priority order for near-dedup:")
+            for model_id in combined["model_id"].drop_duplicates().tolist():
+                print(f"      {self._ensemble_model_priority(model_id):>3}  {model_id}")
+
         # 1. Exact dedup on source+target pair
         before = len(combined)
         combined = combined.drop_duplicates(
@@ -493,6 +516,7 @@ class DataFactory:
 
         # 3. Final quality filter
         combined = self._normalize_synthetic_df(combined, "ensemble")
+        combined = combined.drop(columns=["_model_priority"], errors="ignore")
 
         out_path = self.synthetic_dir / "ensemble_training_set.csv"
         combined.to_csv(out_path, index=False)
