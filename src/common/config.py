@@ -79,6 +79,7 @@ class GenConfig:
     top_p: float = 0.95
     do_sample: bool = True
     num_variants: int = 1  # sentences generated per term (each uses a different doc-type prompt)
+    num_workers: int = 4   # parallel threads for generate_dataset (set to 1 to disable)
 
 @dataclass
 class WandbConfig:
