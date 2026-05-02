@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
+from tqdm import tqdm
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT))
@@ -18,6 +19,12 @@ from src.pipelines.factory import DataFactory
 from src.evaluation.stats import calculate_stats
 from src.evaluation.llm_judge import evaluate_with_llm
 from src.evaluation.perplexity import calculate_perplexity
+
+
+GLOBAL_BAR_FORMAT = (
+    "{l_bar}{bar}| {n_fmt}/{total_fmt} "
+    "[{elapsed}<{remaining}, {rate_fmt}]"
+)
 
 
 def _set_model(model_id: str):
@@ -43,7 +50,7 @@ def _compare_to_text(old_path: Path, new_path: Path, sample_size: int) -> str:
     return buffer.getvalue()
 
 
-def _write_comparisons(generated: list, output_dir: Path, sample_size: int):
+def _write_comparisons(generated: list, output_dir: Path, sample_size: int, progress=None):
     comparison_dir = output_dir / "comparisons"
     comparison_dir.mkdir(parents=True, exist_ok=True)
     comparison_paths = []
@@ -56,6 +63,8 @@ def _write_comparisons(generated: list, output_dir: Path, sample_size: int):
             out_path.write_text(_compare_to_text(left_path, right_path, sample_size), encoding="utf-8")
             comparison_paths.append(str(out_path))
             print(f"📎 Comparison: {out_path}")
+            if progress is not None:
+                progress.update(1)
 
     return comparison_paths
 
@@ -64,7 +73,7 @@ def _safe_model(model_id: str) -> str:
     return "".join(ch if ch.isalnum() or ch in "._-" else "_" for ch in model_id).strip("_")
 
 
-def _run_evaluations(generated: list, output_dir: Path, sample_size: int, skip_judge: bool, skip_ppl: bool, judge_model: str | None, nmt_baseline: str):
+def _run_evaluations(generated: list, output_dir: Path, sample_size: int, skip_judge: bool, skip_ppl: bool, judge_model: str | None, nmt_baseline: str, progress=None):
     evaluation_dir = output_dir / "evaluations"
     evaluation_dir.mkdir(parents=True, exist_ok=True)
     
@@ -88,6 +97,9 @@ def _run_evaluations(generated: list, output_dir: Path, sample_size: int, skip_j
             results[model_id] = {**stats_res, **judge_res, **ppl_res}
         except Exception as e:
             print(f"❌ Error evaluating {model_id}: {e}")
+        finally:
+            if progress is not None:
+                progress.update(1)
 
     report_path = evaluation_dir / "evaluation_report.json"
     report_path.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -100,7 +112,7 @@ def _run_evaluations(generated: list, output_dir: Path, sample_size: int, skip_j
     return {"report_json": str(report_path), "report_csv": str(report_csv)}
 
 
-def _run_benchmarks(models: list, test_set: Path, output_dir: Path, sample_size: int | None, use_generator_translate: bool):
+def _run_benchmarks(models: list, test_set: Path, output_dir: Path, sample_size: int | None, use_generator_translate: bool, progress=None):
     test_df = pd.read_csv(test_set).dropna(subset=["source_text", "target_text", "source_lang", "target_lang"])
     if sample_size is not None:
         test_df = test_df.head(sample_size)
@@ -110,14 +122,18 @@ def _run_benchmarks(models: list, test_set: Path, output_dir: Path, sample_size:
 
     summaries = []
     for model_id in models:
-        summaries.append(
-            benchmark_model(
-                model_id=model_id,
-                test_df=test_df,
-                output_dir=benchmark_dir,
-                use_generator_translate=use_generator_translate,
+        try:
+            summaries.append(
+                benchmark_model(
+                    model_id=model_id,
+                    test_df=test_df,
+                    output_dir=benchmark_dir,
+                    use_generator_translate=use_generator_translate,
+                )
             )
-        )
+        finally:
+            if progress is not None:
+                progress.update(1)
 
     summary_json = benchmark_dir / "summary.json"
     summary_csv = benchmark_dir / "summary.csv"
@@ -170,48 +186,87 @@ def main():
     output_dir = args.output_dir / run_id
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    max_comparisons = 0 if args.skip_compare else len(args.models) * (len(args.models) - 1) // 2
+    max_benchmarks = 0 if args.skip_benchmark else len(args.models)
+    max_evaluations = 0 if args.skip_eval else len(args.models)
+    global_total = len(args.models) + max_comparisons + max_benchmarks + max_evaluations
+
     generated = []
-    for model_id in args.models:
-        print(f"\n🧪 Dataset generation with {model_id}")
-        canonical_path, run_path = _generate_dataset(model_id, args.dataset_kind)
-        if not run_path:
-            print(f"⚠️ No dataset generated for {model_id}")
-            continue
-        generated.append(
-            {
-                "model": model_id,
-                "safe_model": _safe_model(model_id),
-                "canonical_path": str(canonical_path),
-                "run_path": str(run_path),
-            }
-        )
-
     comparison_paths = []
-    if not args.skip_compare and len(generated) > 1:
-        comparison_paths = _write_comparisons(generated, output_dir, args.compare_sample_size)
-
     benchmark = None
-    if not args.skip_benchmark:
-        benchmark_models = [item["model"] for item in generated] or args.models
-        benchmark = _run_benchmarks(
-            models=benchmark_models,
-            test_set=args.test_set,
-            output_dir=output_dir,
-            sample_size=args.benchmark_sample_size,
-            use_generator_translate=args.use_generator_translate,
-        )
-
     evaluation = None
-    if not args.skip_eval and generated:
-        evaluation = _run_evaluations(
-            generated=generated,
-            output_dir=output_dir,
-            sample_size=args.eval_sample_size,
-            skip_judge=args.skip_judge,
-            skip_ppl=args.skip_ppl,
-            judge_model=args.judge_model,
-            nmt_baseline=args.nmt_baseline,
-        )
+
+    with tqdm(
+        total=global_total,
+        desc="Suite globale",
+        unit="step",
+        bar_format=GLOBAL_BAR_FORMAT,
+    ) as global_progress:
+        for model_id in args.models:
+            global_progress.set_postfix(phase="generate", model=model_id)
+            print(f"\n🧪 Dataset generation with {model_id}")
+            try:
+                canonical_path, run_path = _generate_dataset(model_id, args.dataset_kind)
+                if not run_path:
+                    print(f"⚠️ No dataset generated for {model_id}")
+                    continue
+                generated.append(
+                    {
+                        "model": model_id,
+                        "safe_model": _safe_model(model_id),
+                        "canonical_path": str(canonical_path),
+                        "run_path": str(run_path),
+                    }
+                )
+            finally:
+                global_progress.update(1)
+
+        if not args.skip_compare and len(generated) > 1:
+            global_progress.set_postfix(phase="compare")
+            comparison_paths = _write_comparisons(
+                generated,
+                output_dir,
+                args.compare_sample_size,
+                progress=global_progress,
+            )
+            skipped_comparisons = max_comparisons - len(comparison_paths)
+            if skipped_comparisons > 0:
+                global_progress.update(skipped_comparisons)
+        elif max_comparisons:
+            global_progress.update(max_comparisons)
+
+        if not args.skip_benchmark:
+            benchmark_models = [item["model"] for item in generated] or args.models
+            skipped_benchmarks = len(args.models) - len(benchmark_models)
+            global_progress.set_postfix(phase="benchmark")
+            benchmark = _run_benchmarks(
+                models=benchmark_models,
+                test_set=args.test_set,
+                output_dir=output_dir,
+                sample_size=args.benchmark_sample_size,
+                use_generator_translate=args.use_generator_translate,
+                progress=global_progress,
+            )
+            if skipped_benchmarks > 0:
+                global_progress.update(skipped_benchmarks)
+
+        if not args.skip_eval and generated:
+            skipped_evaluations = len(args.models) - len(generated)
+            global_progress.set_postfix(phase="evaluate")
+            evaluation = _run_evaluations(
+                generated=generated,
+                output_dir=output_dir,
+                sample_size=args.eval_sample_size,
+                skip_judge=args.skip_judge,
+                skip_ppl=args.skip_ppl,
+                judge_model=args.judge_model,
+                nmt_baseline=args.nmt_baseline,
+                progress=global_progress,
+            )
+            if skipped_evaluations > 0:
+                global_progress.update(skipped_evaluations)
+        elif max_evaluations:
+            global_progress.update(max_evaluations)
 
     manifest = {
         "run_id": run_id,

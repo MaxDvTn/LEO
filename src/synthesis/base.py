@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict
 
 import pandas as pd
+from tqdm import tqdm
 
 from src.synthesis.glossary_data import get_terms_list
 from src.synthesis.prompts import (
@@ -17,6 +18,11 @@ from src.synthesis.parsing import parse_translations
 from src.common.config import conf
 
 logger = logging.getLogger(__name__)
+
+PROGRESS_BAR_FORMAT = (
+    "{l_bar}{bar}| {n_fmt}/{total_fmt} "
+    "[{elapsed}<{remaining}, {rate_fmt}]"
+)
 
 
 class BaseGenerator(ABC):
@@ -128,29 +134,33 @@ class BaseGenerator(ABC):
             return entry
 
         data = []
-        completed = 0
         total = len(tasks)
+        model_label = getattr(self, "model", self.__class__.__name__)
 
         with ThreadPoolExecutor(max_workers=num_workers) as executor:
             future_to_term = {
                 executor.submit(_run_task, term_dict, v): term_dict["term"]
                 for term_dict, v in tasks
             }
-            for future in as_completed(future_to_term):
-                term = future_to_term[future]
-                completed += 1
-                try:
-                    entry = future.result()
-                    if entry:
-                        data.append(entry)
-                        print(
-                            f"  [{completed}/{total}] {term}: "
-                            f"{entry['source_text'][:60]}"
-                        )
-                    else:
-                        logger.warning(f"  [{completed}/{total}] {term}: no valid output")
-                except Exception as e:
-                    logger.error(f"  [{completed}/{total}] {term}: error — {e}")
+            with tqdm(
+                total=total,
+                desc=f"Dataset {model_label}",
+                unit="task",
+                bar_format=PROGRESS_BAR_FORMAT,
+            ) as pbar:
+                for future in as_completed(future_to_term):
+                    term = future_to_term[future]
+                    try:
+                        entry = future.result()
+                        if entry:
+                            data.append(entry)
+                            pbar.set_postfix(valid=len(data), term=str(term)[:24])
+                        else:
+                            logger.warning(f"{term}: no valid output")
+                    except Exception as e:
+                        logger.error(f"{term}: error — {e}")
+                    finally:
+                        pbar.update(1)
 
         df = pd.DataFrame(data)
         logger.info(f"Done. {len(df)} samples generated.")
