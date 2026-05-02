@@ -84,7 +84,8 @@ class BaseGenerator(ABC):
             [result["target_text_en"], result["target_text_fr"], result["target_text_es"]]
         ):
             return result
-        logger.warning(f"Failed to parse output for term: {term}")
+        preview = " ".join(str(generated_text).split())[:300]
+        logger.warning(f"Failed to parse output for term: {term}. Raw preview: {preview}")
         return None
 
     def generate_dataset(self, terms=None, num_variants: int = 1) -> pd.DataFrame:

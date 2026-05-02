@@ -50,6 +50,10 @@ class CloudGenerator(BaseGenerator):
         return model_id
 
     def _chat(self, system: str, user: str, max_tokens: int = 400) -> str:
+        kwargs = {}
+        if self.model.startswith("gemini/gemini-2.5-flash"):
+            kwargs["thinking"] = {"type": "disabled", "budget_tokens": 0}
+
         response = litellm.completion(
             model=self.model,
             messages=[
@@ -58,6 +62,7 @@ class CloudGenerator(BaseGenerator):
             ],
             temperature=conf.gen.temperature,
             max_tokens=max_tokens,
+            **kwargs,
         )
         return response.choices[0].message.content
 
@@ -75,4 +80,3 @@ class CloudGenerator(BaseGenerator):
         }
         result.update(parse_translations(out, include_source=False))
         return result
-
