@@ -1,3 +1,4 @@
+import logging
 import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
@@ -11,6 +12,8 @@ from transformers import AutoModelForSeq2SeqLM, AutoProcessor, AutoTokenizer, Bi
 from peft import PeftModel
 import wandb
 import os
+
+logger = logging.getLogger(__name__)
 
 # Project Imports
 from src.data_mining.pdf_processor import PdfMiner
@@ -445,7 +448,7 @@ class DataFactory:
         self,
         run_paths: list | None = None,
         weights: dict | None = None,
-        dedup_threshold: float = 0.85,
+        dedup_threshold: float = 0.90,
     ) -> Path | None:
         """Build a training-ready ensemble CSV from multiple model run datasets.
 
@@ -455,7 +458,8 @@ class DataFactory:
             weights:   {model_id: fraction} for proportional sampling, e.g.
                        {"ollama/mistral-small3.2": 0.4, "ollama/gemma3:27b": 0.3, ...}.
                        If None, all rows from all files are included equally.
-            dedup_threshold: cosine-similarity cutoff for near-duplicate removal.
+            dedup_threshold: semantic cosine-similarity cutoff for near-duplicate removal
+                             (0.90 calibrated for paraphrase-multilingual-MiniLM-L12-v2).
         """
         print("\n🧩 [Phase: Build Ensemble Dataset]")
         runs_dir = self.synthetic_dir / "runs"
@@ -564,7 +568,7 @@ class ModelFactory:
     def __init__(self):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    def train(self):
+    def train(self, resume: bool = True):
         """Starts the training process using the TrainerEngine."""
         print("\n🏋️ [Phase: Training]")
         # Force log visibility
@@ -576,16 +580,19 @@ class ModelFactory:
 
         engine = TrainerEngine()
 
-        # Prefer end-of-epoch checkpoints over last.ckpt (which may be mid-epoch)
         ckpt_path = None
-        epoch_ckpts = sorted(conf.paths.output_dir.glob("leo-*.ckpt"))
-        last_ckpt = conf.paths.output_dir / "last.ckpt"
-        if epoch_ckpts:
-            ckpt_path = str(epoch_ckpts[-1])
-            print(f"🔄 Resuming from epoch checkpoint: {ckpt_path}")
-        elif last_ckpt.exists():
-            ckpt_path = str(last_ckpt)
-            print(f"⚠️  Resuming from last.ckpt (mid-epoch — results may vary): {ckpt_path}")
+        if resume:
+            # Prefer end-of-epoch checkpoints over last.ckpt (which may be mid-epoch)
+            epoch_ckpts = sorted(conf.paths.output_dir.glob("leo-*.ckpt"))
+            last_ckpt = conf.paths.output_dir / "last.ckpt"
+            if epoch_ckpts:
+                ckpt_path = str(epoch_ckpts[-1])
+                print(f"🔄 Resuming from epoch checkpoint: {ckpt_path}")
+            elif last_ckpt.exists():
+                ckpt_path = str(last_ckpt)
+                print(f"⚠️  Resuming from last.ckpt (mid-epoch — results may vary): {ckpt_path}")
+        else:
+            print("🆕 Starting fresh training run; existing checkpoints will not be resumed.")
 
         engine.run(ckpt_path=ckpt_path)
 

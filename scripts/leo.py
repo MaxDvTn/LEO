@@ -21,10 +21,10 @@ def run_data_command(args):
     commands[args.data_command]()
 
 
-def run_train_command(_args):
+def run_train_command(args):
     from src.pipelines.factory import ModelFactory
 
-    ModelFactory().train()
+    ModelFactory().train(resume=not args.fresh)
 
 
 def run_benchmark_command(_args):
@@ -70,6 +70,11 @@ def build_parser():
     data_parser.set_defaults(func=run_data_command)
 
     train_parser = subparsers.add_parser("train", help="Train or resume the model")
+    train_parser.add_argument(
+        "--fresh",
+        action="store_true",
+        help="Start a fresh training run instead of resuming from an existing checkpoint",
+    )
     train_parser.set_defaults(func=run_train_command)
 
     benchmark_parser = subparsers.add_parser("benchmark", help="Run model benchmark")

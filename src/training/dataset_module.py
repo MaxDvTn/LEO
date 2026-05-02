@@ -152,8 +152,27 @@ class NMTDataModule(pl.LightningDataModule):
             dfs.append(pd.read_csv(f))
             logger.info(f"Loaded gold data: {f.name}")
 
-        # Check synthetic data
-        synth_files = list(self.paths.data_synthetic.glob("*.csv"))
+        # Check synthetic data. If an ensemble has been built, combine it with
+        # the stable historical synthetic corpora and skip duplicated/noisy
+        # top-level files.
+        ensemble_path = self.paths.data_synthetic / "ensemble_training_set.csv"
+        if ensemble_path.exists():
+            preferred_synth_names = [
+                "rover_synthetic_multilingual.csv",
+                "competitor_synthetic.csv",
+                "ensemble_training_set.csv",
+            ]
+            synth_files = [
+                self.paths.data_synthetic / name
+                for name in preferred_synth_names
+                if (self.paths.data_synthetic / name).exists()
+            ]
+            logger.info(
+                "Using curated synthetic training pool: "
+                + ", ".join(f.name for f in synth_files)
+            )
+        else:
+            synth_files = list(self.paths.data_synthetic.glob("*.csv"))
         for f in synth_files:
             dfs.append(pd.read_csv(f))
             logger.info(f"Loaded synthetic data: {f.name}")
