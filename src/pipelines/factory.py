@@ -103,7 +103,24 @@ class DataFactory:
 
         before = len(df)
         df = df.copy()
-        for col in required + ["origin", "term", "context", "doc_type", "model_id", "prompt_version", "created_at", "raw_output"]:
+        if "model_id" not in df.columns:
+            df["model_id"] = conf.gen.model_id
+        if "prompt_version" not in df.columns:
+            df["prompt_version"] = "unknown"
+        if "created_at" not in df.columns:
+            df["created_at"] = datetime.now(timezone.utc).isoformat()
+
+        for col in required + [
+            "origin",
+            "term",
+            "context",
+            "doc_type",
+            "model_id",
+            "prompt_version",
+            "created_at",
+            "raw_output",
+            "detected_source_lang",
+        ]:
             if col in df.columns:
                 df[col] = df[col].astype("string").str.strip()
 
@@ -136,10 +153,13 @@ class DataFactory:
             for col, tgt_lang in lang_map:
                 value = row.get(col)
                 if pd.notna(value) and str(value).strip():
+                    row_source_lang = row.get("source_lang", source_lang)
+                    if pd.isna(row_source_lang) or not str(row_source_lang).strip():
+                        row_source_lang = source_lang
                     item = {
                         "source_text": row["source_text"],
                         "target_text": value,
-                        "source_lang": row.get("source_lang", source_lang) or source_lang,
+                        "source_lang": row_source_lang,
                         "target_lang": tgt_lang,
                         "origin": origin,
                         "model_id": conf.gen.model_id,
@@ -214,19 +234,34 @@ class DataFactory:
         print(f"   🚀 Starting Translation ({len(unique_sentences)} sentences)...")
         augmented_data = []
         lang_map = [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]
+        skipped_non_italian = 0
+        created_at = datetime.now(timezone.utc).isoformat()
 
         for sent in tqdm(unique_sentences, desc="AI Translation"):
             try:
+                detected_lang = self._detect_source_lang(sent)
+                if detected_lang not in {"ita_Latn", "unknown"}:
+                    skipped_non_italian += 1
+                    continue
                 row = generator.translate_text(sent)
                 for lang_code, key in lang_map:
                     if row.get(key):
                         augmented_data.append({
-                            "source_text": sent, "target_text": row[key],
-                            "source_lang": "ita_Latn", "target_lang": lang_code, "origin": "pdf_mining"
+                            "source_text": sent,
+                            "target_text": row[key],
+                            "source_lang": "ita_Latn",
+                            "detected_source_lang": detected_lang,
+                            "target_lang": lang_code,
+                            "origin": "pdf_mining",
+                            "model_id": conf.gen.model_id,
+                            "prompt_version": "translate_json_v1",
+                            "created_at": created_at,
                         })
             except Exception as e:
                 print(f"❌ Translation Error: {e}")
                 continue
+        if skipped_non_italian:
+            print(f"   🌐 Skipped {skipped_non_italian} non-Italian PDF sentences")
 
         if augmented_data:
             return self._save_synthetic_dataset(
@@ -259,29 +294,14 @@ class DataFactory:
             return None, None
 
         generator = get_generator()
-        df = generator.generate_dataset(terms=unique_terms)
+        df = generator.generate_dataset(terms=unique_terms, num_variants=conf.gen.num_variants)
         if df.empty:
             return None, None
 
-        lang_map = [
-            ("target_text_en", "eng_Latn"),
-            ("target_text_fr", "fra_Latn"),
-            ("target_text_es", "spa_Latn"),
-        ]
-        rows = []
-        for _, row in df.iterrows():
-            for col, tgt_lang in lang_map:
-                if pd.notna(row.get(col)) and row[col]:
-                    rows.append({
-                        "source_text": row["source_text"],
-                        "target_text": row[col],
-                        "source_lang": "ita_Latn",
-                        "target_lang": tgt_lang,
-                        "origin": "web_spider",
-                    })
-        if rows:
+        long_df = self._wide_to_long(df, origin="web_spider")
+        if not long_df.empty:
             return self._save_synthetic_dataset(
-                pd.DataFrame(rows),
+                long_df,
                 "competitor_synthetic.csv",
                 "Web data",
             )
@@ -330,26 +350,10 @@ class DataFactory:
 
         df = generator.generate_dataset(terms=terms, num_variants=conf.gen.num_variants)
         if not df.empty:
-            lang_map = [
-                ("target_text_en", "eng_Latn"),
-                ("target_text_fr", "fra_Latn"),
-                ("target_text_es", "spa_Latn"),
-            ]
-            rows = []
-            for _, row in df.iterrows():
-                for col, tgt_lang in lang_map:
-                    if pd.notna(row.get(col)) and row[col]:
-                        rows.append({
-                            "source_text": row["source_text"],
-                            "target_text": row[col],
-                            "source_lang": "ita_Latn",
-                            "target_lang": tgt_lang,
-                            "origin": "glossary",
-                        })
-            if not rows:
+            long_df = self._wide_to_long(df, origin="glossary")
+            if long_df.empty:
                 print("⚠️  No valid translations in generated data, skipping save.")
                 return None, None
-            long_df = pd.DataFrame(rows)
             return self._save_synthetic_dataset(
                 long_df,
                 "glossary_synthetic.csv",

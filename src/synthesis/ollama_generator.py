@@ -159,6 +159,7 @@ class OllamaGenerator(BaseGenerator):
                     )
                     entry = self.parse_output(generated_text, term)
                     if entry:
+                        entry["context"] = context
                         entry["doc_type"] = doc_type
                         data.append(entry)
                         print(f"  IT: {entry['source_text'][:60]}")
