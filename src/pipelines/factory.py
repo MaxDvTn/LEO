@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 from src.data_mining.pdf_processor import PdfMiner
 from src.synthesis.generator import get_generator
 from src.synthesis.glossary_data import get_terms_list
+from src.synthesis.cleaning import clean_competitor_df
 from src.data_mining.competitor_spider import CompetitorSpider
 from src.training.trainer_engine import TrainerEngine
 from src.training.model_module import SeamlessFineTuner
@@ -176,6 +177,15 @@ class DataFactory:
 
         before = len(df)
         df = df.copy()
+        if label == "Web data":
+            df, clean_stats = clean_competitor_df(df)
+            if clean_stats["removed_total"]:
+                print(
+                    f"🧹 Web cleaning: removed {clean_stats['removed_total']} rows "
+                    f"(generic={clean_stats['removed_generic']}, "
+                    f"forbidden={clean_stats['removed_forbidden']}, "
+                    f"duplicates={clean_stats['removed_duplicates']})"
+                )
         if "model_id" not in df.columns:
             df["model_id"] = conf.gen.model_id
         if "prompt_version" not in df.columns:

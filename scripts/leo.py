@@ -57,6 +57,10 @@ def run_maintenance_command(args):
         from scripts.maintenance.export_glossary import main
 
         main()
+    elif args.maintenance_command == "clean-competitor":
+        from scripts.data.clean_competitor_synthetic import main
+
+        main()
 
 
 def build_parser():
@@ -89,7 +93,7 @@ def build_parser():
 
     maintenance_parser = subparsers.add_parser("maintenance", help="Run maintenance utilities")
     maintenance_subparsers = maintenance_parser.add_subparsers(dest="maintenance_command", required=True)
-    for name in ("clean-data", "download-docs", "export-glossary"):
+    for name in ("clean-data", "download-docs", "export-glossary", "clean-competitor"):
         maintenance_subparsers.add_parser(name)
     maintenance_parser.set_defaults(func=run_maintenance_command)
 
