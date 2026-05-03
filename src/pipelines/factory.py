@@ -477,7 +477,7 @@ class DataFactory:
         all_terms: list[str] = []
 
         import json as _json
-        crawl_cache_version = 3
+        crawl_cache_version = 4
         crawl_cache_path = (self.synthetic_dir / "checkpoints" / "competitor_crawl_cache.json")
         crawl_cache_path.parent.mkdir(parents=True, exist_ok=True)
         crawled_urls: set[str] = set()
@@ -501,6 +501,8 @@ class DataFactory:
                 if cache.get("cache_version") == crawl_cache_version:
                     all_sentences = cache.get("sentences", [])
                     sentences_by_lang = cache.get("sentences_by_lang", {})
+                    if not sentences_by_lang and all_sentences:
+                        sentences_by_lang = {"ita_Latn": all_sentences}
                     all_terms = cache.get("terms", [])
                     crawled_urls = set(cache.get("crawled_urls", []))
                     by_lang_summary = ", ".join(f"{l}:{len(s)}" for l, s in sentences_by_lang.items())
@@ -696,7 +698,7 @@ class DataFactory:
                         "prompt_version": "web_to_it_v1", "created_at": created_at,
                     }]
 
-                _done2 = 0
+                _completed_since_flush2 = 0
                 with _TPE(max_workers=generator.num_workers) as exc:
                     futs = {exc.submit(_to_it_web, s): s for s in pending}
                     with tqdm(total=len(pending), desc=f"{src_lang}→IT (web)") as pbar:
@@ -706,10 +708,10 @@ class DataFactory:
                                 with _lock2:
                                     sentence_rows.extend(rows)
                                     _pending2.extend(rows)
-                                    _done2 += 1
-                                    if _done2 >= 25:
+                                    _completed_since_flush2 += 1
+                                    if _completed_since_flush2 >= 25:
                                         _flush2()
-                                        _done2 = 0
+                                        _completed_since_flush2 = 0
                             except Exception as e:
                                 print(f"❌ {e}")
                             finally:
