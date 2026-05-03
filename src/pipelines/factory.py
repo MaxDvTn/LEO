@@ -506,6 +506,7 @@ class DataFactory:
             except Exception as e:
                 print(f"   ⚠️  Could not load crawl cache: {e}")
 
+        site_reports: list[dict] = []
         pending_urls = [u for u in conf.spider.target_urls if u.rstrip("/") not in crawled_urls]
         if pending_urls:
             for url in tqdm(pending_urls, desc="Web sites", unit="site"):
@@ -515,16 +516,34 @@ class DataFactory:
                     site_terms = result.get("terms", [])
                     all_sentences.extend(site_sentences)
                     all_terms.extend(site_terms)
+                    site_reports.append({
+                        "url": url,
+                        "pages": result.get("pages_fetched", 0),
+                        **result.get("report", {}),
+                    })
                     if site_sentences or site_terms:
                         crawled_urls.add(url.rstrip("/"))
                         _write_crawl_cache()
                     else:
                         pages = result.get("pages_fetched", 0)
-                        print(f"   ⚠️  Not caching {url}: {pages} pages fetched but no useful content extracted")
+                        print(f"   ⚠️  Not caching {url}: {pages} pages fetched but no useful content")
                 except Exception as e:
                     print(f"⚠️  Spider error for {url}: {e}")
         else:
             print(f"   ✅ All {len(crawled_urls)} sites already cached — skipping crawl")
+
+        if site_reports:
+            print(f"\n   {'Site':<30} {'Pages':>5} {'Extract':>7} {'IT':>5} {'Domain':>7} {'Terms':>6}")
+            print(f"   {'─' * 30} {'─' * 5} {'─' * 7} {'─' * 5} {'─' * 7} {'─' * 6}")
+            for r in site_reports:
+                label = urlparse(r["url"]).netloc.replace("www.", "")[:30]
+                print(f"   {label:<30} {r.get('pages', 0):>5} "
+                      f"{r.get('n_extracted', 0):>7} {r.get('n_lang_ok', 0):>5} "
+                      f"{r.get('n_domain_ok', 0):>7} {r.get('n_terms', 0):>6}")
+            report_path = self.paths.project_root / "reports" / "web_spider_report.json"
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+            report_path.write_text(_json.dumps(site_reports, ensure_ascii=False, indent=2))
+            print(f"\n   📊 Full report: {report_path}")
 
         # ── Strategy 1: translate authentic web sentences ────────────────────
         unique_sentences = sorted(

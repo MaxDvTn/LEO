@@ -1,13 +1,13 @@
 """
 competitor_spider.py — multi-page web crawler for technical domain content.
 
-Improvements over the original:
-  A. Multi-page crawling (follows internal links up to max_depth / max_pages)
-  B. Full sentence extraction via trafilatura (with BeautifulSoup fallback)
-  C. Language detection — filters to Italian-only sentences
+  A. Multi-page crawling (BFS, max_depth / max_pages)
+  B. Full sentence extraction via trafilatura (BeautifulSoup fallback)
+  C. Language detection — keeps Italian-only sentences
   D. Schema.org / JSON-LD structured data extraction
   E. Rate limiting and per-domain page cap
   F. robots.txt respect
+  G. Per-site crawl report (pages, extracted, lang_ok, domain_ok, terms)
 """
 import json
 import logging
@@ -42,7 +42,9 @@ _STOPWORDS = {
                  " ein ", " eine ", " von ", " zu "],
 }
 
-_NOISE_TERMS = {
+# Exact-match noise: short standalone strings that are pure navigation/UI.
+# NOT used as substring — only matched against the full lowercased sentence.
+_NOISE_EXACT = {
     "privacy", "cookie", "cookies", "contatti", "contact", "contacts",
     "azienda", "company", "news", "blog", "login", "area riservata",
     "newsletter", "catalogo", "catalogue", "download", "scarica",
@@ -53,17 +55,41 @@ _NOISE_TERMS = {
 }
 
 _DOMAIN_KEYWORDS = {
-    "casson", "coibent", "monobloc", "serrament", "finestr", "foro",
-    "telaio", "controtelaio", "avvolg", "tapparella", "frangisole",
-    "zanzar", "guarnizion", "sigill", "isol", "termic", "acustic",
-    "tenuta", "profil", "soglia", "bancale", "sottobancale",
-    "posa", "giunto", "vapore", "membrana", "nastro", "schiuma",
-    "oscurante", "facciata", "lucernar", "deventer", "presystem",
+    # Core Roverplastik product line
+    "casson", "coibent", "monobloc", "presystem", "deventer",
+    # Window & frame components
+    "serrament", "infiss", "finestr", "lucernar", "facciata",
+    "telaio", "controtelaio", "foro finestra", "davanzale",
+    "soglia", "bancale", "sottobancale", "spalla",
+    # Profiles & seals
+    "profil", "guarnizion", "sigill", "tenuta", "nastro",
+    "schiuma", "giunto", "impermeab",
+    # Insulation & vapour
+    "isol", "coibent", "membrana", "vapore", "cappotto",
+    "intercapedin", "spessor",
+    # Thermal & acoustic physics
+    "termic", "acustic", "trasmittan", "ponte termic",
+    "abbattim", "condensa", "muffa",
+    # Shading & sun control
+    "avvolg", "tapparella", "frangisole", "zanzar",
+    "oscurante", "venezian", "persiana",
+    # Installation & process
+    "posa", "montaggio", "fissagg", "muratur", "rivestiment",
+    "riquali", "ristruttur", "retrofit",
+    # Glazing
+    "vetr", "doppio vetro", "triplo vetro", "lastr",
+    # Certification & performance
+    "certific", "prestazion", "classe energet", "norma uni",
+    "motorizzat",
+    # Multilingual synonyms (for sites with mixed-language pages)
     "casement", "shutter", "roller", "blind", "seal", "gasket",
     "thermal", "acoustic", "weatherstrip", "profile", "frame",
     "fenêtre", "volet", "store", "joint", "isolation", "thermique",
-    "ventana", "persiana", "sellado", "perfil", "aislamiento",
+    "ventana", "sellado", "perfil", "aislamiento",
 }
+
+_MD_BOLD_RE = re.compile(r"\*{1,2}(.+?)\*{1,2}")
+_MD_LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]+\)")
 
 
 def _detect_lang(text: str) -> str:
@@ -86,13 +112,19 @@ def _normalize_term_key(text: str) -> str:
 
 
 def _clean_sentence(text: str) -> str | None:
+    # Strip markdown formatting artifacts
+    text = _MD_BOLD_RE.sub(r"\1", text)
+    text = _MD_LINK_RE.sub(r"\1", text)
     text = re.sub(r"\s+", " ", text).strip()
+
     if len(text) < 25 or len(text) > 600:
         return None
-    if text.lower() in _NOISE_TERMS:
+
+    # Exact match only — do NOT use substring; legitimate sentences may
+    # contain words like "catalogo" or "newsletter" in a technical context.
+    if text.lower().strip() in _NOISE_EXACT:
         return None
-    if any(noise in text.lower() for noise in _NOISE_TERMS if len(noise) > 6):
-        return None
+
     return text
 
 
@@ -229,7 +261,7 @@ class CompetitorSpider:
                     candidates.setdefault(_normalize_term_key(text), text)
         return [
             term for key, term in candidates.items()
-            if key not in _NOISE_TERMS
+            if key not in _NOISE_EXACT
         ]
 
     # ------------------------------------------------------------------ #
@@ -238,7 +270,6 @@ class CompetitorSpider:
 
     def _same_domain_links(self, soup: BeautifulSoup, base_url: str) -> list[str]:
         base = urlparse(base_url)
-        origin = f"{base.scheme}://{base.netloc}"
         links = []
         for a in soup.find_all("a", href=True):
             href = a["href"].strip()
@@ -248,13 +279,11 @@ class CompetitorSpider:
             parsed = urlparse(full)
             if parsed.netloc != base.netloc:
                 continue
-            # Skip non-HTML resources
             if re.search(r"\.(pdf|jpg|jpeg|png|gif|svg|css|js|zip|doc|xls)$", parsed.path, re.I):
                 continue
-            # Drop query strings and fragments
             clean = f"{parsed.scheme}://{parsed.netloc}{parsed.path}".rstrip("/")
             links.append(clean)
-        return list(dict.fromkeys(links))  # preserve order, deduplicate
+        return list(dict.fromkeys(links))
 
     # ------------------------------------------------------------------ #
     # Public API                                                           #
@@ -273,9 +302,15 @@ class CompetitorSpider:
 
         Returns:
             {
-                "sentences": list[str],   # full Italian sentences for direct translation
-                "terms":     list[str],   # short term candidates for generate_dataset()
-                "pages_fetched": int,     # successfully fetched HTML pages
+                "sentences":    list[str],  # Italian domain sentences for translation
+                "terms":        list[str],  # short term candidates for generate_dataset()
+                "pages_fetched": int,
+                "report": {                 # per-site diagnostic counters
+                    "n_extracted":  int,    # sentences passing _clean_sentence
+                    "n_lang_ok":    int,    # sentences detected as Italian
+                    "n_domain_ok":  int,    # sentences also passing domain filter
+                    "n_terms":      int,    # heuristic term candidates
+                }
             }
         """
         visited: set[str] = set()
@@ -283,6 +318,8 @@ class CompetitorSpider:
         all_sentences: list[str] = []
         all_terms: list[str] = []
         pages_fetched = 0
+        n_extracted = 0
+        n_lang_ok = 0
 
         logger.info(f"Crawling {start_url} (depth≤{self.max_depth}, pages≤{self.max_pages_per_site})")
 
@@ -305,7 +342,6 @@ class CompetitorSpider:
 
                 jsonld_sents = self._extract_jsonld_sentences(soup)
 
-                # --- sentence extraction ---
                 if _HAS_TRAFILATURA:
                     sents = self._extract_sentences_trafilatura(raw_html, url)
                     if not sents:
@@ -314,18 +350,18 @@ class CompetitorSpider:
                     sents = self._extract_sentences_bs4(soup)
 
                 sents += jsonld_sents
+                n_extracted += len(sents)
 
-                # Strategy 1 assumes Italian source text downstream, so do not keep
-                # unknown-language sentences even when they contain technical terms.
                 for s in sents:
                     lang = _detect_lang(s)
-                    if lang == "ita_Latn" and _is_domain_relevant(s):
+                    if lang != "ita_Latn":
+                        continue
+                    n_lang_ok += 1
+                    if _is_domain_relevant(s):
                         all_sentences.append(s)
 
-                # --- term extraction ---
                 all_terms.extend(self._extract_terms_heuristic(soup))
 
-                # --- link discovery ---
                 if depth < self.max_depth:
                     for link in self._same_domain_links(soup, url):
                         if link not in visited:
@@ -333,12 +369,20 @@ class CompetitorSpider:
 
                 pbar.set_postfix(sent=len(all_sentences), terms=len(all_terms), refresh=False)
 
+        report = {
+            "n_extracted": n_extracted,
+            "n_lang_ok": n_lang_ok,
+            "n_domain_ok": len(all_sentences),
+            "n_terms": len(all_terms),
+        }
         logger.info(
             f"  {start_url}: {pages_fetched} pages → "
-            f"{len(all_sentences)} sentences, {len(all_terms)} terms"
+            f"{n_extracted} extracted, {n_lang_ok} Italian, "
+            f"{len(all_sentences)} domain-ok, {len(all_terms)} terms"
         )
         return {
             "sentences": all_sentences,
             "terms": all_terms,
             "pages_fetched": pages_fetched,
+            "report": report,
         }
