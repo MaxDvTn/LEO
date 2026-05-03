@@ -450,46 +450,97 @@ class DataFactory:
         return None, None
 
     def run_web_spider(self):
-        """Scrapes competitor websites for terms and generates synthetic sentences."""
+        """Crawls competitor websites and generates synthetic data via two strategies:
+        1. Direct translation of extracted Italian sentences (authentic web content)
+        2. Synthetic generation from extracted technical terms (LLM-created diversity)
+        """
         print("\n🕷️ [Phase: Web Spidering]")
-        spider = CompetitorSpider()
-        target_urls = conf.spider.target_urls
-        all_terms = []
-        for url in target_urls:
-            all_terms.extend(spider.scrape_site(url))
-
-        unique_terms = sorted(set(all_terms))
-        pre_filter_count = len(unique_terms)
-        unique_terms = [t for t in unique_terms if self._is_relevant_web_term(t)]
-        filtered_out = pre_filter_count - len(unique_terms)
-
-        # --- ANTI-DUPLICATION FILTER ---
-        _, known_terms = self._get_gold_sources()
-        original_count = len(unique_terms)
-        unique_terms = [t for t in unique_terms if t.strip() not in known_terms]
-        skipped = original_count - len(unique_terms)
-        print(
-            f"   🔍 Found {len(unique_terms)} relevant unique terms. "
-            f"(Filtered {filtered_out} web-noise terms, skipped {skipped} already validated)"
+        spider = CompetitorSpider(
+            max_depth=2,
+            max_pages_per_site=40,
+            request_delay=0.8,
         )
-        # -------------------------------
-
-        if not unique_terms:
-            return None, None
-
         generator = get_generator()
-        df = generator.generate_dataset(terms=unique_terms, num_variants=conf.gen.num_variants)
-        if df.empty:
+        known_sources, known_terms = self._get_gold_sources()
+
+        all_sentences: list[str] = []
+        all_terms: list[str] = []
+
+        for url in conf.spider.target_urls:
+            result = spider.crawl_site(url)
+            all_sentences.extend(result["sentences"])
+            all_terms.extend(result["terms"])
+
+        # ── Strategy 1: translate authentic web sentences ────────────────────
+        unique_sentences = sorted(
+            {s for s in all_sentences if s.strip() not in known_sources}
+        )
+        print(f"   📝 Unique Italian web sentences: {len(unique_sentences)}")
+
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        import threading
+
+        lang_map = [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]
+        created_at = datetime.now(timezone.utc).isoformat()
+        sentence_rows: list[dict] = []
+        lock = threading.Lock()
+
+        if unique_sentences:
+            def _translate_web(sent: str):
+                row = generator.translate_text(sent)
+                rows = []
+                for lang_code, key in lang_map:
+                    val = row.get(key)
+                    if val:
+                        rows.append({
+                            "source_text": sent, "target_text": val,
+                            "source_lang": "ita_Latn", "target_lang": lang_code,
+                            "origin": "web_spider", "model_id": conf.gen.model_id,
+                            "prompt_version": "translate_json_v1", "created_at": created_at,
+                        })
+                        rows.append({
+                            "source_text": val, "target_text": sent,
+                            "source_lang": lang_code, "target_lang": "ita_Latn",
+                            "origin": "web_spider", "model_id": conf.gen.model_id,
+                            "prompt_version": "translate_json_v1_rev", "created_at": created_at,
+                        })
+                return rows
+
+            with ThreadPoolExecutor(max_workers=generator.num_workers) as executor:
+                futures = {executor.submit(_translate_web, s): s for s in unique_sentences}
+                with tqdm(total=len(unique_sentences), desc="Web sentences →X") as pbar:
+                    for future in as_completed(futures):
+                        try:
+                            with lock:
+                                sentence_rows.extend(future.result())
+                        except Exception as e:
+                            print(f"❌ Translation Error: {e}")
+                        finally:
+                            pbar.update(1)
+
+        # ── Strategy 2: generate synthetic sentences from terms ──────────────
+        unique_terms = sorted(
+            {t for t in all_terms
+             if self._is_relevant_web_term(t) and t.strip() not in known_terms}
+        )
+        print(f"   🔑 Unique domain terms: {len(unique_terms)}")
+
+        term_rows: list[dict] = []
+        if unique_terms:
+            df = generator.generate_dataset(terms=unique_terms, num_variants=conf.gen.num_variants)
+            if not df.empty:
+                long_df = self._wide_to_long(df, origin="web_spider", add_reverse=True)
+                term_rows = long_df.to_dict("records")
+
+        all_rows = sentence_rows + term_rows
+        if not all_rows:
             return None, None
 
-        long_df = self._wide_to_long(df, origin="web_spider", add_reverse=True)
-        if not long_df.empty:
-            return self._save_synthetic_dataset(
-                long_df,
-                "competitor_synthetic.csv",
-                "Web data",
-            )
-        return None, None
+        return self._save_synthetic_dataset(
+            pd.DataFrame(all_rows),
+            "competitor_synthetic.csv",
+            "Web data",
+        )
 
     def create_test_set(self):
         """Creates a balanced test set from human-validated gold data only."""

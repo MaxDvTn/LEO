@@ -94,15 +94,25 @@ class WandbConfig:
 class SpiderConfig:
     """Configuration for Competitor Spider."""
     target_urls: List[str] = field(default_factory=lambda: [
+        # Italian competitors — cassonetti / serramenti
         "https://alpac.it/prodotti",
         "https://www.incovar.it/produzione-cassonetti-coibentati",
         "https://europlastik.it/cassonetti-coibentati",
         "https://www.defaverisrl.it/prodotti",
-        "https://www.trelleborg.com/en/seals-and-profiles/products-and-solutions",
-        "https://www.deventer-profile.com/en/products",
         "https://www.hella.info/it/finestre-e-facciata",
-        "https://www.gealan.de/en/systems",
         "https://www.velux.it/prodotti",
+        # Italian suppliers — guarnizioni / profili / isolamento
+        "https://www.rehau.com/it-it/edilizia",
+        "https://www.schueco.com/it/it/architettura",
+        "https://www.finstral.com/it/finestre",
+        "https://www.internorm.com/it",
+        "https://www.wuerth.it/frontend/it/IT/prodotti/fissaggio-e-montaggio",
+        "https://www.soudal.it/prodotti",
+        "https://edilportale.com/prodotti/cassonetti",
+        "https://www.profine-group.com/it",
+        # Italian technical portals
+        "https://www.casaeclima.com/ar_finestre-e-serramenti",
+        "https://www.costruire.it/finestre-e-serramenti",
     ])
 
 @dataclass
