@@ -481,13 +481,16 @@ class DataFactory:
         crawl_cache_path = (self.synthetic_dir / "checkpoints" / "competitor_crawl_cache.json")
         crawl_cache_path.parent.mkdir(parents=True, exist_ok=True)
         crawled_urls: set[str] = set()
+        # sentences_by_lang: {lang_code: [sentence, ...]} — persisted in cache v3
+        sentences_by_lang: dict[str, list[str]] = {}
 
         def _write_crawl_cache():
             tmp_path = crawl_cache_path.with_suffix(crawl_cache_path.suffix + ".tmp")
             tmp_path.write_text(_json.dumps({
                 "cache_version": crawl_cache_version,
                 "crawled_urls": sorted(crawled_urls),
-                "sentences": all_sentences,
+                "sentences": all_sentences,          # Italian only — legacy key
+                "sentences_by_lang": sentences_by_lang,
                 "terms": all_terms,
             }, ensure_ascii=False, indent=2))
             tmp_path.replace(crawl_cache_path)
@@ -497,12 +500,13 @@ class DataFactory:
                 cache = _json.loads(crawl_cache_path.read_text())
                 if cache.get("cache_version") == crawl_cache_version:
                     all_sentences = cache.get("sentences", [])
+                    sentences_by_lang = cache.get("sentences_by_lang", {})
                     all_terms = cache.get("terms", [])
                     crawled_urls = set(cache.get("crawled_urls", []))
-                    print(f"   ♻️  Crawl cache: {len(crawled_urls)} sites, "
-                          f"{len(all_sentences)} sentences, {len(all_terms)} terms")
+                    by_lang_summary = ", ".join(f"{l}:{len(s)}" for l, s in sentences_by_lang.items())
+                    print(f"   ♻️  Crawl cache: {len(crawled_urls)} sites — {by_lang_summary or len(all_sentences)}, {len(all_terms)} terms")
                 else:
-                    print("   ♻️  Ignoring stale crawl cache — spider extraction rules changed")
+                    print("   ♻️  Ignoring stale crawl cache — version mismatch, re-crawling")
             except Exception as e:
                 print(f"   ⚠️  Could not load crawl cache: {e}")
 
@@ -514,14 +518,17 @@ class DataFactory:
                     result = spider.crawl_site(url)
                     site_sentences = result.get("sentences", [])
                     site_terms = result.get("terms", [])
+                    site_by_lang = result.get("sentences_by_lang", {})
                     all_sentences.extend(site_sentences)
                     all_terms.extend(site_terms)
+                    for lang, sents in site_by_lang.items():
+                        sentences_by_lang.setdefault(lang, []).extend(sents)
                     site_reports.append({
                         "url": url,
                         "pages": result.get("pages_fetched", 0),
                         **result.get("report", {}),
                     })
-                    if site_sentences or site_terms:
+                    if site_sentences or site_terms or site_by_lang:
                         crawled_urls.add(url.rstrip("/"))
                         _write_crawl_cache()
                     else:
@@ -631,6 +638,84 @@ class DataFactory:
                             pbar.update(1)
                 with lock:
                     _flush_checkpoint(force=True)
+
+        # ── Strategy 1b: native EN/FR/ES/DE web sentences → IT ──────────────
+        _NATIVE_LANGS = {"eng_Latn", "fra_Latn", "spa_Latn", "deu_Latn"}
+        native_web_langs = {
+            lang: sents for lang, sents in sentences_by_lang.items()
+            if lang in _NATIVE_LANGS
+        }
+
+        if native_web_langs:
+            # Determine which native sentences have already been translated (from checkpoint)
+            done_native_web: dict[str, set[str]] = {l: set() for l in native_web_langs}
+            if checkpoint_path.exists():
+                try:
+                    ck = pd.read_csv(checkpoint_path)
+                    for lang in done_native_web:
+                        mask = (ck["source_lang"].astype(str) == lang) & \
+                               (ck["prompt_version"].astype(str) == "web_to_it_v1")
+                        done_native_web[lang] = set(ck.loc[mask, "source_text"].dropna().astype(str))
+                except Exception:
+                    pass
+
+            from concurrent.futures import ThreadPoolExecutor as _TPE, as_completed as _ac
+            import threading as _thr
+
+            _lock2 = _thr.Lock()
+            _pending2: list[dict] = []
+            _ckpt2_exists = checkpoint_path.exists()
+
+            def _flush2(force: bool = False):
+                nonlocal _ckpt2_exists
+                if not _pending2:
+                    return
+                pd.DataFrame(_pending2).to_csv(
+                    checkpoint_path, mode="a",
+                    header=not _ckpt2_exists, index=False,
+                )
+                _ckpt2_exists = True
+                _pending2.clear()
+
+            for src_lang, sents in native_web_langs.items():
+                pending = [s for s in sents
+                           if s.strip() not in known_sources and s not in done_native_web[src_lang]]
+                if not pending:
+                    continue
+                print(f"   🌐 {src_lang}→IT (web): {len(pending)} sentences, {generator.num_workers} workers...")
+
+                def _to_it_web(sent: str, sl: str = src_lang):
+                    row = generator.translate_to_italian(sent, sl)
+                    it_text = row.get("target_text_it")
+                    if not it_text:
+                        return []
+                    return [{
+                        "source_text": sent, "target_text": it_text,
+                        "source_lang": sl, "target_lang": "ita_Latn",
+                        "origin": "web_spider", "model_id": conf.gen.model_id,
+                        "prompt_version": "web_to_it_v1", "created_at": created_at,
+                    }]
+
+                _done2 = 0
+                with _TPE(max_workers=generator.num_workers) as exc:
+                    futs = {exc.submit(_to_it_web, s): s for s in pending}
+                    with tqdm(total=len(pending), desc=f"{src_lang}→IT (web)") as pbar:
+                        for fut in _ac(futs):
+                            try:
+                                rows = fut.result()
+                                with _lock2:
+                                    sentence_rows.extend(rows)
+                                    _pending2.extend(rows)
+                                    _done2 += 1
+                                    if _done2 >= 25:
+                                        _flush2()
+                                        _done2 = 0
+                            except Exception as e:
+                                print(f"❌ {e}")
+                            finally:
+                                pbar.update(1)
+                with _lock2:
+                    _flush2(force=True)
 
         # ── Strategy 2: generate synthetic sentences from terms ──────────────
         unique_terms = sorted(

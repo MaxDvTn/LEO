@@ -113,6 +113,22 @@ class SpiderConfig:
         # Italian technical portals
         "https://www.casaeclima.com/ar_finestre-e-serramenti",
         "https://www.costruire.it/finestre-e-serramenti",
+        # International — EN (window installation, profiles, sealing)
+        "https://www.tremco-illbruck.com/en/products/window-installation/",
+        "https://www.roto-frank.com/en/products/",
+        "https://www.swisspacer.com/en/products/",
+        "https://www.reynaers.com/en-GB/products/",
+        "https://www.gealan.de/en/products/profile-systems/",
+        "https://www.salamander-climate.com/en/profile-systems/",
+        "https://www.veka.com/en/products/profiles/",
+        "https://www.isover.com/en/products",
+        # International — FR (isolation, menuiserie)
+        "https://www.isover.fr/produits",
+        "https://www.technal.com/fr-FR/produits/",
+        # International — DE (Rollladenkästen, Profile, Dichtungen)
+        "https://www.tremco-illbruck.com/de/produkte/fenstermontage/",
+        "https://www.roto-frank.com/de/produkte/",
+        "https://www.koemmerling.com/de/produkte/",
     ])
 
 @dataclass

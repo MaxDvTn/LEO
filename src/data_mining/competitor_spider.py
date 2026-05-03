@@ -319,7 +319,9 @@ class CompetitorSpider:
         all_terms: list[str] = []
         pages_fetched = 0
         n_extracted = 0
-        n_lang_ok = 0
+        # sentences grouped by detected language, domain-filtered
+        sentences_by_lang: dict[str, list[str]] = {}
+        _TRACKED_LANGS = {"ita_Latn", "eng_Latn", "fra_Latn", "spa_Latn", "deu_Latn"}
 
         logger.info(f"Crawling {start_url} (depth≤{self.max_depth}, pages≤{self.max_pages_per_site})")
 
@@ -337,7 +339,8 @@ class CompetitorSpider:
 
                 pages_fetched += 1
                 pbar.update(1)
-                pbar.set_postfix(sent=len(all_sentences), terms=len(all_terms), refresh=False)
+                n_it = len(sentences_by_lang.get("ita_Latn", []))
+                pbar.set_postfix(it=n_it, terms=len(all_terms), refresh=False)
                 time.sleep(self.request_delay)
 
                 jsonld_sents = self._extract_jsonld_sentences(soup)
@@ -353,12 +356,11 @@ class CompetitorSpider:
                 n_extracted += len(sents)
 
                 for s in sents:
-                    lang = _detect_lang(s)
-                    if lang != "ita_Latn":
+                    if not _is_domain_relevant(s):
                         continue
-                    n_lang_ok += 1
-                    if _is_domain_relevant(s):
-                        all_sentences.append(s)
+                    lang = _detect_lang(s)
+                    if lang in _TRACKED_LANGS:
+                        sentences_by_lang.setdefault(lang, []).append(s)
 
                 all_terms.extend(self._extract_terms_heuristic(soup))
 
@@ -367,21 +369,27 @@ class CompetitorSpider:
                         if link not in visited:
                             queue.append((link, depth + 1))
 
-                pbar.set_postfix(sent=len(all_sentences), terms=len(all_terms), refresh=False)
+                n_it = len(sentences_by_lang.get("ita_Latn", []))
+                pbar.set_postfix(it=n_it, terms=len(all_terms), refresh=False)
 
+        it_sentences = sentences_by_lang.get("ita_Latn", [])
+        n_lang_ok = sum(len(v) for v in sentences_by_lang.values())
         report = {
             "n_extracted": n_extracted,
             "n_lang_ok": n_lang_ok,
-            "n_domain_ok": len(all_sentences),
+            "n_domain_ok": len(it_sentences),
             "n_terms": len(all_terms),
+            "by_lang": {lang: len(sents) for lang, sents in sentences_by_lang.items()},
         }
         logger.info(
             f"  {start_url}: {pages_fetched} pages → "
-            f"{n_extracted} extracted, {n_lang_ok} Italian, "
-            f"{len(all_sentences)} domain-ok, {len(all_terms)} terms"
+            f"{n_extracted} extracted, {n_lang_ok} domain-ok "
+            f"({', '.join(f'{l}:{len(s)}' for l, s in sentences_by_lang.items())}), "
+            f"{len(all_terms)} terms"
         )
         return {
-            "sentences": all_sentences,
+            "sentences": it_sentences,           # Italian only — backward compat with cache
+            "sentences_by_lang": sentences_by_lang,
             "terms": all_terms,
             "pages_fetched": pages_fetched,
             "report": report,
