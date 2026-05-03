@@ -716,13 +716,28 @@ class DataFactory:
         for path in run_paths:
             try:
                 df = pd.read_csv(path)
-                model_label = df["model_id"].iloc[0] if "model_id" in df.columns else path.stem
-                if (
-                    path.name.startswith("glossary_synthetic__")
-                    and str(model_label) in self._GLOSSARY_EXCLUDED_MODELS
-                ):
-                    print(f"   ⛔ Skipped {path.name} [{model_label}] — excluded from glossary (terminology errors)")
-                    continue
+                if "model_id" in df.columns:
+                    model_ids = sorted(df["model_id"].dropna().astype(str).unique().tolist())
+                    model_label = ", ".join(model_ids) if model_ids else path.stem
+                else:
+                    model_ids = []
+                    model_label = path.stem
+
+                if path.name.startswith("glossary_synthetic__") and "model_id" in df.columns:
+                    before_filter = len(df)
+                    excluded_mask = df["model_id"].astype(str).isin(self._GLOSSARY_EXCLUDED_MODELS)
+                    excluded_models = sorted(df.loc[excluded_mask, "model_id"].dropna().astype(str).unique().tolist())
+                    if excluded_models:
+                        df = df[~excluded_mask].reset_index(drop=True)
+                        print(
+                            f"   ⛔ Filtered {path.name}: removed {before_filter - len(df)} glossary rows "
+                            f"from excluded model(s): {', '.join(excluded_models)}"
+                        )
+                    if df.empty:
+                        print(f"   ⏭️  Skipped {path.name}: no glossary rows left after model exclusion")
+                        continue
+                    model_ids = sorted(df["model_id"].dropna().astype(str).unique().tolist())
+                    model_label = ", ".join(model_ids) if model_ids else path.stem
                 dfs.append(df)
                 print(f"   📂 {path.name}: {len(df)} rows  [{model_label}]")
             except Exception as e:

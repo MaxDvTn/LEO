@@ -33,9 +33,12 @@ class CloudGenerator(BaseGenerator):
     """
 
     def __init__(self, model_id: str = None):
+        import os
         load_dotenv(_PROJECT_ROOT / ".env")
         raw = model_id or conf.gen.model_id
         self.model = self._remap(raw)
+        if self.model.startswith("gemini/") and not os.getenv("GEMINI_API_KEY"):
+            raise EnvironmentError("GEMINI_API_KEY is not set — add it to .env or export it before running")
         logger.info(f"CloudGenerator ready — model: {self.model}, workers: {conf.gen.cloud_num_workers}")
 
     @property
@@ -52,7 +55,7 @@ class CloudGenerator(BaseGenerator):
     def _chat(self, system: str, user: str, max_tokens: int = 400) -> str:
         kwargs = {}
         if self.model.startswith("gemini/gemini-2.5-flash"):
-            kwargs["thinking"] = {"type": "disabled", "budget_tokens": 0}
+            kwargs["thinking"] = {"type": "disabled"}
 
         response = litellm.completion(
             model=self.model,
@@ -70,7 +73,7 @@ class CloudGenerator(BaseGenerator):
         out = self._chat_with_retry(
             TRANSLATION_SYSTEM_PROMPT,
             TRANSLATION_USER_TEMPLATE.format(text=text),
-            max_tokens=240,
+            max_tokens=400,
         )
         result = {
             "source_text": text,

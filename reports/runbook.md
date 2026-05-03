@@ -54,6 +54,9 @@ Output: `data/synthetic/runs/glossary_synthetic__<model>__<timestamp>.csv`
 python scripts/leo.py data web-spider
 ```
 
+```bash
+LEO_GEN_MODEL_ID=google/gemini-2.5-flash python scripts/leo.py data web-spider 
+
 Output: `data/synthetic/runs/competitor_synthetic__<model>__<timestamp>.csv`
 
 ---
