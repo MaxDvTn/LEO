@@ -7,6 +7,7 @@ import torch
 import re
 import shutil
 from datetime import datetime, timezone
+from urllib.parse import urlparse
 from torchmetrics.text import SacreBLEUScore, CHRFScore
 from transformers import AutoModelForSeq2SeqLM, AutoProcessor, AutoTokenizer, BitsAndBytesConfig
 from peft import PeftModel
