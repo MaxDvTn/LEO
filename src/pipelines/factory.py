@@ -477,7 +477,7 @@ class DataFactory:
         all_terms: list[str] = []
 
         import json as _json
-        crawl_cache_version = 2
+        crawl_cache_version = 3
         crawl_cache_path = (self.synthetic_dir / "checkpoints" / "competitor_crawl_cache.json")
         crawl_cache_path.parent.mkdir(parents=True, exist_ok=True)
         crawled_urls: set[str] = set()
