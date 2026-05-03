@@ -63,6 +63,24 @@ class DataFactory:
     def _safe_model_name(self):
         return re.sub(r"[^A-Za-z0-9_.-]+", "_", conf.gen.model_id).strip("_")
 
+    def _attach_run_file_logger(self, run_name: str) -> Path:
+        log_dir = self.paths.project_root / "logs"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+        log_path = log_dir / f"{run_name}__{self._safe_model_name()}__{timestamp}.log"
+
+        handler = logging.FileHandler(log_path, encoding="utf-8")
+        handler.setLevel(logging.INFO)
+        handler.setFormatter(logging.Formatter(
+            "%(asctime)sZ %(levelname)s %(name)s:%(lineno)d - %(message)s"
+        ))
+
+        root_logger = logging.getLogger()
+        root_logger.addHandler(handler)
+        if root_logger.level > logging.INFO:
+            root_logger.setLevel(logging.INFO)
+        return log_path
+
     # Models whose glossary runs are excluded due to systematic terminology errors:
     # mistral-nemo/qwen2.5:32b translate "cassonetto" as "waste bin",
     # phi4 as "cowl", aya-expanse as "container" — all wrong for roller shutter boxes.
@@ -466,6 +484,13 @@ class DataFactory:
         2. Synthetic generation from extracted technical terms (LLM-created diversity)
         """
         print("\n🕷️ [Phase: Web Spidering]")
+        log_path = self._attach_run_file_logger("web_spider")
+        print(f"   🧾 Log file: {log_path}")
+        logger.info(
+            "Web spider started model_id=%s target_urls=%d",
+            conf.gen.model_id,
+            len(conf.spider.target_urls),
+        )
         spider = CompetitorSpider(
             max_depth=2,
             max_pages_per_site=40,
@@ -495,6 +520,14 @@ class DataFactory:
                 "terms": all_terms,
             }, ensure_ascii=False, indent=2))
             tmp_path.replace(crawl_cache_path)
+            logger.info(
+                "Crawl cache written path=%s crawled_urls=%d sentences=%d terms=%d by_lang=%s",
+                crawl_cache_path,
+                len(crawled_urls),
+                len(all_sentences),
+                len(all_terms),
+                {lang: len(sents) for lang, sents in sentences_by_lang.items()},
+            )
 
         if crawl_cache_path.exists():
             try:
@@ -508,16 +541,32 @@ class DataFactory:
                     crawled_urls = set(cache.get("crawled_urls", []))
                     by_lang_summary = ", ".join(f"{l}:{len(s)}" for l, s in sentences_by_lang.items())
                     print(f"   ♻️  Crawl cache: {len(crawled_urls)} sites — {by_lang_summary or len(all_sentences)}, {len(all_terms)} terms")
+                    logger.info(
+                        "Loaded crawl cache path=%s crawled_urls=%d terms=%d by_lang=%s",
+                        crawl_cache_path,
+                        len(crawled_urls),
+                        len(all_terms),
+                        {lang: len(sents) for lang, sents in sentences_by_lang.items()},
+                    )
                 else:
                     print("   ♻️  Ignoring stale crawl cache — version mismatch, re-crawling")
+                    logger.info(
+                        "Ignoring stale crawl cache path=%s found_version=%s expected_version=%s",
+                        crawl_cache_path,
+                        cache.get("cache_version"),
+                        crawl_cache_version,
+                    )
             except Exception as e:
                 print(f"   ⚠️  Could not load crawl cache: {e}")
+                logger.exception("Could not load crawl cache path=%s", crawl_cache_path)
 
         site_reports: list[dict] = []
         pending_urls = [u for u in conf.spider.target_urls if u.rstrip("/") not in crawled_urls]
+        logger.info("Pending crawl URLs=%d already_cached=%d", len(pending_urls), len(crawled_urls))
         if pending_urls:
             for url in tqdm(pending_urls, desc="Web sites", unit="site"):
                 try:
+                    logger.info("Crawling URL start url=%s", url)
                     result = spider.crawl_site(url)
                     site_sentences = result.get("sentences", [])
                     site_terms = result.get("terms", [])
@@ -531,16 +580,27 @@ class DataFactory:
                         "pages": result.get("pages_fetched", 0),
                         **result.get("report", {}),
                     })
+                    logger.info(
+                        "Crawling URL done url=%s pages=%s sentences_it=%d terms=%d by_lang=%s",
+                        url,
+                        result.get("pages_fetched", 0),
+                        len(site_sentences),
+                        len(site_terms),
+                        {lang: len(sents) for lang, sents in site_by_lang.items()},
+                    )
                     if site_sentences or site_terms or site_by_lang:
                         crawled_urls.add(url.rstrip("/"))
                         _write_crawl_cache()
                     else:
                         pages = result.get("pages_fetched", 0)
                         print(f"   ⚠️  Not caching {url}: {pages} pages fetched but no useful content")
+                        logger.warning("Not caching URL url=%s pages=%s no useful content", url, pages)
                 except Exception as e:
                     print(f"⚠️  Spider error for {url}: {e}")
+                    logger.exception("Spider error for url=%s", url)
         else:
             print(f"   ✅ All {len(crawled_urls)} sites already cached — skipping crawl")
+            logger.info("All crawl URLs already cached count=%d", len(crawled_urls))
 
         if site_reports:
             print(f"\n   {'Site':<30} {'Pages':>5} {'Extract':>7} {'IT':>5} {'Domain':>7} {'Terms':>6}")
@@ -554,12 +614,14 @@ class DataFactory:
             report_path.parent.mkdir(parents=True, exist_ok=True)
             report_path.write_text(_json.dumps(site_reports, ensure_ascii=False, indent=2))
             print(f"\n   📊 Full report: {report_path}")
+            logger.info("Web spider report written path=%s entries=%d", report_path, len(site_reports))
 
         # ── Strategy 1: translate authentic web sentences ────────────────────
         unique_sentences = sorted(
             {s for s in all_sentences if s.strip() not in known_sources}
         )
         print(f"   📝 Unique Italian web sentences: {len(unique_sentences)}")
+        logger.info("Unique Italian web sentences=%d", len(unique_sentences))
 
         from concurrent.futures import ThreadPoolExecutor, as_completed
         import threading
@@ -587,10 +649,24 @@ class DataFactory:
                             checkpoint_df.loc[processed_mask, "source_text"].dropna().astype(str)
                         )
                     print(f"   ♻️  Loaded web checkpoint: {len(sentence_rows)} rows")
+                    logger.info(
+                        "Loaded web checkpoint path=%s rows=%d processed_it=%d",
+                        checkpoint_path,
+                        len(sentence_rows),
+                        len(processed_sentences),
+                    )
             except Exception as e:
                 print(f"⚠️  Could not load web checkpoint {checkpoint_path}: {e}")
+                logger.exception("Could not load web checkpoint path=%s", checkpoint_path)
 
         pending_sentences = [s for s in unique_sentences if s not in processed_sentences]
+        logger.info(
+            "IT web translation pending=%d unique_it=%d already_done=%d checkpoint=%s",
+            len(pending_sentences),
+            len(unique_sentences),
+            len(processed_sentences),
+            checkpoint_path,
+        )
 
         if pending_sentences:
             def _translate_web(sent: str):
@@ -624,6 +700,7 @@ class DataFactory:
                 pd.DataFrame(sentence_rows).drop_duplicates(
                     subset=["source_text", "target_text", "source_lang", "target_lang"]
                 ).to_csv(checkpoint_path, index=False)
+                logger.info("Web IT→X checkpoint flushed path=%s rows=%d", checkpoint_path, len(sentence_rows))
                 completed_since_flush = 0
 
             with ThreadPoolExecutor(max_workers=generator.num_workers) as executor:
@@ -637,6 +714,7 @@ class DataFactory:
                                 _flush_checkpoint()
                         except Exception as e:
                             print(f"❌ Translation Error: {e}")
+                            logger.exception("IT→X web translation error")
                         finally:
                             pbar.update(1)
                 with lock:
@@ -650,6 +728,10 @@ class DataFactory:
         }
 
         if native_web_langs:
+            logger.info(
+                "Native web languages available=%s",
+                {lang: len(sents) for lang, sents in native_web_langs.items()},
+            )
             # Determine which native sentences have already been translated (from checkpoint)
             done_native_web: dict[str, set[str]] = {l: set() for l in native_web_langs}
             if checkpoint_path.exists():
@@ -660,6 +742,7 @@ class DataFactory:
                                (ck["prompt_version"].astype(str) == "web_to_it_v1")
                         done_native_web[lang] = set(ck.loc[mask, "source_text"].dropna().astype(str))
                 except Exception:
+                    logger.exception("Could not load checkpoint for native web done set path=%s", checkpoint_path)
                     pass
 
             from concurrent.futures import ThreadPoolExecutor as _TPE, as_completed as _ac
@@ -673,19 +756,34 @@ class DataFactory:
                 nonlocal _ckpt2_exists
                 if not _pending2:
                     return
+                n_rows = len(_pending2)
                 pd.DataFrame(_pending2).to_csv(
                     checkpoint_path, mode="a",
                     header=not _ckpt2_exists, index=False,
                 )
                 _ckpt2_exists = True
                 _pending2.clear()
+                logger.info(
+                    "Native web checkpoint flushed path=%s rows=%d force=%s",
+                    checkpoint_path,
+                    n_rows,
+                    force,
+                )
 
             for src_lang, sents in native_web_langs.items():
                 pending = [s for s in sents
                            if s.strip() not in known_sources and s not in done_native_web[src_lang]]
                 if not pending:
+                    logger.info("No pending native web translations source_lang=%s", src_lang)
                     continue
                 print(f"   🌐 {src_lang}→IT (web): {len(pending)} sentences, {generator.num_workers} workers...")
+                logger.info(
+                    "Native web translation pending source_lang=%s pending=%d done=%d workers=%d",
+                    src_lang,
+                    len(pending),
+                    len(done_native_web[src_lang]),
+                    generator.num_workers,
+                )
 
                 def _to_it_web(sent: str, sl: str = src_lang):
                     row = generator.translate_to_italian(sent, sl)
@@ -715,6 +813,7 @@ class DataFactory:
                                         _completed_since_flush2 = 0
                             except Exception as e:
                                 print(f"❌ {e}")
+                                logger.exception("Native web translation error source_lang=%s", src_lang)
                             finally:
                                 pbar.update(1)
                 with _lock2:
@@ -726,6 +825,7 @@ class DataFactory:
              if self._is_relevant_web_term(t) and t.strip() not in known_terms}
         )
         print(f"   🔑 Unique domain terms: {len(unique_terms)}")
+        logger.info("Web term generation unique_terms=%d raw_terms=%d", len(unique_terms), len(all_terms))
 
         term_rows: list[dict] = []
         if unique_terms:
@@ -740,10 +840,13 @@ class DataFactory:
                 checkpoint_rows = pd.read_csv(checkpoint_path).to_dict("records")
                 all_rows = checkpoint_rows + term_rows
             except Exception:
+                logger.exception("Could not reload web checkpoint before final save path=%s", checkpoint_path)
                 pass
         if not all_rows:
+            logger.warning("No web rows generated; returning without save")
             return None, None
 
+        logger.info("Web spider completed rows_before_save=%d term_rows=%d", len(all_rows), len(term_rows))
         return self._save_synthetic_dataset(
             pd.DataFrame(all_rows),
             "competitor_synthetic.csv",
