@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 from src.data_mining.pdf_processor import PdfMiner
 from src.synthesis.generator import get_generator
 from src.synthesis.glossary_data import get_terms_list
-from src.synthesis.cleaning import clean_competitor_df
+from src.synthesis.cleaning import clean_competitor_df, clean_competitor_term
 from src.data_mining.competitor_spider import CompetitorSpider
 from src.training.trainer_engine import TrainerEngine
 from src.training.model_module import SeamlessFineTuner
@@ -489,9 +489,10 @@ class DataFactory:
         return None, None
 
     def run_web_spider(self):
-        """Crawls competitor websites and generates synthetic data via two strategies:
-        1. Direct translation of extracted Italian sentences (authentic web content)
-        2. Synthetic generation from extracted technical terms (LLM-created diversity)
+        """Crawl competitor websites and translate authentic web sentences.
+
+        Term generation is handled by run_glossary_gen(), which can augment the
+        static glossary with terms discovered and cached by this crawler.
         """
         print("\n🕷️ [Phase: Web Spidering]")
         log_path = self._attach_run_file_logger("web_spider")
@@ -1102,9 +1103,14 @@ class DataFactory:
                 cache = _json.loads(crawl_cache_path.read_text())
                 raw_web_terms = cache.get("terms", [])
                 for t in raw_web_terms:
-                    if self._is_relevant_web_term(t) and _term_key(t) not in static_keys:
-                        web_terms.append({"term": t, "context": "general"})
-                        static_keys.add(_term_key(t))
+                    cleaned_term = clean_competitor_term(t)
+                    if (
+                        cleaned_term
+                        and self._is_relevant_web_term(cleaned_term)
+                        and _term_key(cleaned_term) not in static_keys
+                    ):
+                        web_terms.append({"term": cleaned_term, "context": "general"})
+                        static_keys.add(_term_key(cleaned_term))
                 print(f"   🕸️  Web terms from cache: {len(web_terms)} new (from {len(raw_web_terms)} raw)")
                 logger.info("Glossary web terms loaded web_new=%d raw=%d", len(web_terms), len(raw_web_terms))
             except Exception as e:

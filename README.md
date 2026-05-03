@@ -102,10 +102,15 @@ compare, score, and merge the generated CSVs into a curated ensemble. This is
 the recommended workflow before fine-tuning NLLB or Seamless.
 
 Generation backend is selected with `conf.gen.model_id` in
-[src/common/config.py](src/common/config.py):
+[src/common/config.py](src/common/config.py), or per run with
+`LEO_GEN_MODEL_ID`:
 
 ```python
 model_id = "ollama/qwen2.5:32b"
+```
+
+```bash
+LEO_GEN_MODEL_ID=google/gemini-2.5-flash python scripts/leo.py data generate
 ```
 
 Supported prefixes:
@@ -131,8 +136,10 @@ Gemini is accessed through LiteLLM with the `google/` prefix. If credentials are
 stored in `.env`, keep the file out of git and load it in the shell/session
 before running the suite.
 
-Generate glossary-based synthetic data with the single model configured in
-`conf.gen.model_id`:
+Generate glossary-based synthetic data with the configured model. Glossary
+generation uses the curated static glossary and, when available, cleaned
+technical terms discovered by the web spider and stored in
+`data/synthetic/checkpoints/competitor_crawl_cache.json`:
 
 ```bash
 python scripts/leo.py data generate
@@ -146,17 +153,21 @@ Every generated synthetic CSV is saved in multiple places:
 - for PDF mining, partial checkpoint CSVs are written under
   `data/synthetic/checkpoints/` so long runs can resume without losing all
   completed rows
+- for web spidering, crawl state is cached in
+  `data/synthetic/checkpoints/competitor_crawl_cache.json`, translation rows
+  are checkpointed per model, and run logs are written under `logs/`
 
 The main dataset kinds are:
 
 | Kind | Command value | Source | Output shape |
 |------|---------------|--------|--------------|
-| Glossary | `glossary` | curated technical terms in `src/synthesis/glossary_data.py` | one row per generated translation pair |
-| Web | `web` | competitor/industry pages from `SpiderConfig.target_urls` | scraped terms expanded into translation pairs |
+| Glossary | `glossary` | curated terms in `src/synthesis/glossary_data.py` plus cleaned web terms from the crawl cache | one row per generated translation pair |
+| Web | `web` | competitor/industry pages from `SpiderConfig.target_urls` | authentic web sentences translated IT→EN/FR/ES and native EN/FR/ES/DE→IT |
 | PDF | `pdf` | PDFs in `data/raw/pdfs/` | mined sentences translated IT→EN/FR/ES and native EN/FR/ES→IT |
 
-Glossary and web generation call `generator.generate_dataset()` and normalize
-the LLM output into this long format:
+Glossary generation calls `generator.generate_dataset()` and normalizes the LLM
+output into this long format. Web spidering uses direct translation calls for
+authentic scraped sentences and writes the same normalized schema:
 
 ```text
 source_text,target_text,source_lang,target_lang,origin,model_id,prompt_version,created_at,term,context
@@ -175,6 +186,26 @@ example:
 
 ```text
 data/synthetic/checkpoints/rover_pdf_augmented__ollama_mistral-small3.2.csv
+```
+
+Web spidering is intentionally split from term generation:
+
+```bash
+# Crawl competitor/industry websites and translate authentic sentences.
+LEO_GEN_MODEL_ID=google/gemini-2.5-flash python scripts/leo.py data web-spider
+
+# Generate synthetic glossary data from curated terms plus cleaned web terms.
+LEO_GEN_MODEL_ID=google/gemini-2.5-flash python scripts/leo.py data generate
+```
+
+`web-spider` does not generate term-based synthetic rows anymore. It caches raw
+web terms for `data generate`, so model-specific term generation stays in the
+glossary pipeline where it can be compared and ensembled with other glossary
+runs. The active web CSV is cleaned automatically before saving; to clean an
+existing competitor CSV manually:
+
+```bash
+python scripts/leo.py maintenance clean-competitor
 ```
 
 ### Multi-Model Dataset Suite
@@ -198,7 +229,8 @@ python scripts/data/run_generation_suite.py \
   --dataset-kind glossary \
   --skip-benchmark
 
-# Run the suite on web-spidered terms instead of the glossary
+# Run the suite on web-spidered authentic sentences.
+# Term-based web vocabulary is now folded into glossary generation.
 python scripts/data/run_generation_suite.py \
   --models openai/gpt-5-mini google/gemini-2.5-flash \
   --dataset-kind web
@@ -315,7 +347,21 @@ for p in sorted(glob.glob('data/synthetic/runs/*.csv')):
     required = ['source_text', 'target_text', 'source_lang', 'target_lang']
     bad = df[df[required].isna().any(axis=1)]
     empty = df[(df['source_text'].astype(str).str.strip() == '') | (df['target_text'].astype(str).str.strip() == '')]
-    print(p, 'rows=', len(df), 'bad_na=', len(bad), 'empty=', len(empty))"
+	    print(p, 'rows=', len(df), 'bad_na=', len(bad), 'empty=', len(empty))"
+```
+
+For active web-spider runs, monitor the model-specific checkpoint rather than
+`competitor_synthetic.csv`; the active CSV is rewritten at the end:
+
+```bash
+watch -n 5 'python -c "import pandas as pd; p=\"data/synthetic/checkpoints/competitor_synthetic__google_gemini-2.5-flash__checkpoint.csv\"; df=pd.read_csv(p); print(\"rows\", len(df)); print(df[\"prompt_version\"].value_counts())"'
+```
+
+The web-spider log printed at run start can be tailed to inspect crawl failures,
+parse failures, and checkpoint flushes:
+
+```bash
+tail -f logs/web_spider__google_gemini-2.5-flash__<timestamp>.log
 ```
 
 ### Dataset Comparison
