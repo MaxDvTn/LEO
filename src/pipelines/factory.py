@@ -476,7 +476,7 @@ class DataFactory:
         all_sentences: list[str] = []
         all_terms: list[str] = []
 
-        for url in conf.spider.target_urls:
+        for url in tqdm(conf.spider.target_urls, desc="Web sites", unit="site"):
             try:
                 result = spider.crawl_site(url)
                 all_sentences.extend(result["sentences"])

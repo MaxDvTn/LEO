@@ -19,6 +19,7 @@ from urllib.robotparser import RobotFileParser
 
 import requests
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 
 try:
     import trafilatura
@@ -284,46 +285,52 @@ class CompetitorSpider:
 
         logger.info(f"Crawling {start_url} (depth≤{self.max_depth}, pages≤{self.max_pages_per_site})")
 
-        while queue and pages_fetched < self.max_pages_per_site:
-            url, depth = queue.popleft()
-            if url in visited:
-                continue
-            visited.add(url)
+        site_label = urlparse(start_url).netloc.replace("www.", "")
+        with tqdm(total=self.max_pages_per_site, desc=f"Crawl {site_label}", unit="page", leave=False) as pbar:
+            while queue and pages_fetched < self.max_pages_per_site:
+                url, depth = queue.popleft()
+                if url in visited:
+                    continue
+                visited.add(url)
 
-            raw_html, soup = self._fetch(url)
-            if soup is None:
-                continue
+                raw_html, soup = self._fetch(url)
+                if soup is None:
+                    continue
 
-            pages_fetched += 1
-            time.sleep(self.request_delay)
+                pages_fetched += 1
+                pbar.update(1)
+                pbar.set_postfix(sent=len(all_sentences), terms=len(all_terms), refresh=False)
+                time.sleep(self.request_delay)
 
-            jsonld_sents = self._extract_jsonld_sentences(soup)
+                jsonld_sents = self._extract_jsonld_sentences(soup)
 
-            # --- sentence extraction ---
-            if _HAS_TRAFILATURA:
-                sents = self._extract_sentences_trafilatura(raw_html, url)
-                if not sents:
+                # --- sentence extraction ---
+                if _HAS_TRAFILATURA:
+                    sents = self._extract_sentences_trafilatura(raw_html, url)
+                    if not sents:
+                        sents = self._extract_sentences_bs4(soup)
+                else:
                     sents = self._extract_sentences_bs4(soup)
-            else:
-                sents = self._extract_sentences_bs4(soup)
 
-            sents += jsonld_sents
+                sents += jsonld_sents
 
-            # Strategy 1 assumes Italian source text downstream, so do not keep
-            # unknown-language sentences even when they contain technical terms.
-            for s in sents:
-                lang = _detect_lang(s)
-                if lang == "ita_Latn" and _is_domain_relevant(s):
-                    all_sentences.append(s)
+                # Strategy 1 assumes Italian source text downstream, so do not keep
+                # unknown-language sentences even when they contain technical terms.
+                for s in sents:
+                    lang = _detect_lang(s)
+                    if lang == "ita_Latn" and _is_domain_relevant(s):
+                        all_sentences.append(s)
 
-            # --- term extraction ---
-            all_terms.extend(self._extract_terms_heuristic(soup))
+                # --- term extraction ---
+                all_terms.extend(self._extract_terms_heuristic(soup))
 
-            # --- link discovery ---
-            if depth < self.max_depth:
-                for link in self._same_domain_links(soup, url):
-                    if link not in visited:
-                        queue.append((link, depth + 1))
+                # --- link discovery ---
+                if depth < self.max_depth:
+                    for link in self._same_domain_links(soup, url):
+                        if link not in visited:
+                            queue.append((link, depth + 1))
+
+                pbar.set_postfix(sent=len(all_sentences), terms=len(all_terms), refresh=False)
 
         logger.info(
             f"  {start_url}: {pages_fetched} pages → "
