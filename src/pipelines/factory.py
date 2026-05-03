@@ -62,13 +62,23 @@ class DataFactory:
     def _safe_model_name(self):
         return re.sub(r"[^A-Za-z0-9_.-]+", "_", conf.gen.model_id).strip("_")
 
+    # Models whose glossary runs are excluded due to systematic terminology errors:
+    # mistral-nemo/qwen2.5:32b translate "cassonetto" as "waste bin",
+    # phi4 as "cowl", aya-expanse as "container" — all wrong for roller shutter boxes.
+    _GLOSSARY_EXCLUDED_MODELS: frozenset = frozenset({
+        "ollama/mistral-nemo",
+        "ollama/qwen2.5:32b",
+        "ollama/phi4",
+        "ollama/aya-expanse:8b",
+    })
+
     def _ensemble_model_priority(self, model_id: str) -> int:
         """Lower number wins when near-duplicate source texts compete."""
         priority = {
             "ollama/mistral-small3.2": 0,
             "ollama/gemma3:27b": 1,
-            "ollama/qwen2.5:32b": 2,
-            "google/gemini-2.5-flash": 3,
+            "google/gemini-2.5-flash": 2,
+            "ollama/qwen2.5:32b": 3,
             "ollama/aya-expanse:8b": 4,
             "ollama/mistral-nemo": 5,
             "ollama/phi4": 6,
@@ -706,8 +716,14 @@ class DataFactory:
         for path in run_paths:
             try:
                 df = pd.read_csv(path)
-                dfs.append(df)
                 model_label = df["model_id"].iloc[0] if "model_id" in df.columns else path.stem
+                if (
+                    path.name.startswith("glossary_synthetic__")
+                    and str(model_label) in self._GLOSSARY_EXCLUDED_MODELS
+                ):
+                    print(f"   ⛔ Skipped {path.name} [{model_label}] — excluded from glossary (terminology errors)")
+                    continue
+                dfs.append(df)
                 print(f"   📂 {path.name}: {len(df)} rows  [{model_label}]")
             except Exception as e:
                 logger.warning(f"Could not load {path}: {e}")

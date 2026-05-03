@@ -66,7 +66,7 @@ class GenConfig:
       "ollama/<name>"  → OllamaGenerator  (e.g. "ollama/qwen2.5:32b")
       anything else    → HFChatGenerator  (e.g. "Qwen/Qwen2.5-32B-Instruct")
     """
-    model_id: str = "ollama/qwen2.5:32b"
+    model_id: str = field(default_factory=lambda: os.getenv("LEO_GEN_MODEL_ID", "ollama/qwen2.5:32b"))
     ollama_base_url: str = "http://localhost:11434"
 
     # HuggingFace-only options (ignored by OllamaGenerator)
