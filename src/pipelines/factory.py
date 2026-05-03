@@ -507,7 +507,7 @@ class DataFactory:
             request_delay=0.8,
         )
         generator = get_generator()
-        known_sources, known_terms = self._get_gold_sources()
+        known_sources, _ = self._get_gold_sources()
 
         all_sentences: list[str] = []
         all_terms: list[str] = []
@@ -874,34 +874,18 @@ class DataFactory:
                 with _lock2:
                     _flush2(force=True)
 
-        # ── Strategy 2: generate synthetic sentences from terms ──────────────
-        unique_terms = sorted(
-            {t for t in all_terms
-             if self._is_relevant_web_term(t) and t.strip() not in known_terms}
-        )
-        print(f"   🔑 Unique domain terms: {len(unique_terms)}")
-        logger.info("Web term generation unique_terms=%d raw_terms=%d", len(unique_terms), len(all_terms))
-
-        term_rows: list[dict] = []
-        if unique_terms:
-            df = generator.generate_dataset(terms=unique_terms, num_variants=conf.gen.num_variants)
-            if not df.empty:
-                long_df = self._wide_to_long(df, origin="web_spider", add_reverse=True)
-                term_rows = long_df.to_dict("records")
-
-        all_rows = sentence_rows + term_rows
+        all_rows = list(sentence_rows)
         if checkpoint_path.exists():
             try:
                 checkpoint_rows = pd.read_csv(checkpoint_path).to_dict("records")
-                all_rows = checkpoint_rows + term_rows
+                all_rows = checkpoint_rows
             except Exception:
                 logger.exception("Could not reload web checkpoint before final save path=%s", checkpoint_path)
-                pass
         if not all_rows:
             logger.warning("No web rows generated; returning without save")
             return None, None
 
-        logger.info("Web spider completed rows_before_save=%d term_rows=%d", len(all_rows), len(term_rows))
+        logger.info("Web spider completed rows_before_save=%d", len(all_rows))
         return self._save_synthetic_dataset(
             pd.DataFrame(all_rows),
             "competitor_synthetic.csv",
@@ -1098,14 +1082,37 @@ class DataFactory:
         return out_path
 
     def run_glossary_gen(self):
-        """Generates synthetic sentences from the domain glossary using the configured backend."""
+        """Generates synthetic sentences from the domain glossary + web-discovered terms."""
         print("\n📖 [Phase: Glossary Generation]")
         generator = get_generator()
 
-        # Keep all glossary terms, including already validated gold terms, so repeated
-        # generation can build diverse contexts around high-value terminology.
-        terms = get_terms_list(with_context=True)
-        print(f"   📝 Generating for {len(terms)} terms (×{conf.gen.num_variants} variants)...")
+        static_terms = get_terms_list(with_context=True)
+
+        def _term_key(t) -> str:
+            term = t["term"] if isinstance(t, dict) else t
+            return re.sub(r"\s+", " ", str(term).strip().lower())
+
+        static_keys = {_term_key(t) for t in static_terms}
+
+        import json as _json
+        crawl_cache_path = self.synthetic_dir / "checkpoints" / "competitor_crawl_cache.json"
+        web_terms: list[dict] = []
+        if crawl_cache_path.exists():
+            try:
+                cache = _json.loads(crawl_cache_path.read_text())
+                raw_web_terms = cache.get("terms", [])
+                for t in raw_web_terms:
+                    if self._is_relevant_web_term(t) and _term_key(t) not in static_keys:
+                        web_terms.append({"term": t, "context": "general"})
+                        static_keys.add(_term_key(t))
+                print(f"   🕸️  Web terms from cache: {len(web_terms)} new (from {len(raw_web_terms)} raw)")
+                logger.info("Glossary web terms loaded web_new=%d raw=%d", len(web_terms), len(raw_web_terms))
+            except Exception as e:
+                print(f"   ⚠️  Could not load web terms: {e}")
+                logger.exception("Could not load web terms from crawl cache")
+
+        terms = static_terms + web_terms
+        print(f"   📝 Generating for {len(terms)} terms ({len(static_terms)} static + {len(web_terms)} web) ×{conf.gen.num_variants} variants...")
 
         df = generator.generate_dataset(terms=terms, num_variants=conf.gen.num_variants)
         if not df.empty:
