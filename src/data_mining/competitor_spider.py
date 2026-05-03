@@ -275,6 +275,7 @@ class CompetitorSpider:
             {
                 "sentences": list[str],   # full Italian sentences for direct translation
                 "terms":     list[str],   # short term candidates for generate_dataset()
+                "pages_fetched": int,     # successfully fetched HTML pages
             }
         """
         visited: set[str] = set()
@@ -336,4 +337,8 @@ class CompetitorSpider:
             f"  {start_url}: {pages_fetched} pages → "
             f"{len(all_sentences)} sentences, {len(all_terms)} terms"
         )
-        return {"sentences": all_sentences, "terms": all_terms}
+        return {
+            "sentences": all_sentences,
+            "terms": all_terms,
+            "pages_fetched": pages_fetched,
+        }

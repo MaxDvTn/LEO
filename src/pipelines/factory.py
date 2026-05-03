@@ -476,19 +476,33 @@ class DataFactory:
         all_sentences: list[str] = []
         all_terms: list[str] = []
 
+        import json as _json
+        crawl_cache_version = 2
         crawl_cache_path = (self.synthetic_dir / "checkpoints" / "competitor_crawl_cache.json")
         crawl_cache_path.parent.mkdir(parents=True, exist_ok=True)
         crawled_urls: set[str] = set()
 
+        def _write_crawl_cache():
+            tmp_path = crawl_cache_path.with_suffix(crawl_cache_path.suffix + ".tmp")
+            tmp_path.write_text(_json.dumps({
+                "cache_version": crawl_cache_version,
+                "crawled_urls": sorted(crawled_urls),
+                "sentences": all_sentences,
+                "terms": all_terms,
+            }, ensure_ascii=False, indent=2))
+            tmp_path.replace(crawl_cache_path)
+
         if crawl_cache_path.exists():
             try:
-                import json as _json
                 cache = _json.loads(crawl_cache_path.read_text())
-                all_sentences = cache.get("sentences", [])
-                all_terms = cache.get("terms", [])
-                crawled_urls = set(cache.get("crawled_urls", []))
-                print(f"   ♻️  Crawl cache: {len(crawled_urls)} sites, "
-                      f"{len(all_sentences)} sentences, {len(all_terms)} terms")
+                if cache.get("cache_version") == crawl_cache_version:
+                    all_sentences = cache.get("sentences", [])
+                    all_terms = cache.get("terms", [])
+                    crawled_urls = set(cache.get("crawled_urls", []))
+                    print(f"   ♻️  Crawl cache: {len(crawled_urls)} sites, "
+                          f"{len(all_sentences)} sentences, {len(all_terms)} terms")
+                else:
+                    print("   ♻️  Ignoring stale crawl cache — spider extraction rules changed")
             except Exception as e:
                 print(f"   ⚠️  Could not load crawl cache: {e}")
 
@@ -497,15 +511,16 @@ class DataFactory:
             for url in tqdm(pending_urls, desc="Web sites", unit="site"):
                 try:
                     result = spider.crawl_site(url)
-                    all_sentences.extend(result["sentences"])
-                    all_terms.extend(result["terms"])
-                    crawled_urls.add(url.rstrip("/"))
-                    import json as _json
-                    crawl_cache_path.write_text(_json.dumps({
-                        "crawled_urls": sorted(crawled_urls),
-                        "sentences": all_sentences,
-                        "terms": all_terms,
-                    }, ensure_ascii=False, indent=2))
+                    site_sentences = result.get("sentences", [])
+                    site_terms = result.get("terms", [])
+                    all_sentences.extend(site_sentences)
+                    all_terms.extend(site_terms)
+                    if site_sentences or site_terms:
+                        crawled_urls.add(url.rstrip("/"))
+                        _write_crawl_cache()
+                    else:
+                        pages = result.get("pages_fetched", 0)
+                        print(f"   ⚠️  Not caching {url}: {pages} pages fetched but no useful content extracted")
                 except Exception as e:
                     print(f"⚠️  Spider error for {url}: {e}")
         else:
