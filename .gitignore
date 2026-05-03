@@ -147,6 +147,7 @@ wandb/
 wandb_logs/
 lightning_logs/
 checkpoints/
+logs/
 checkpoints_backup_*/
 checkpoints_*/
 *.log
