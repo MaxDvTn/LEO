@@ -80,6 +80,10 @@ def _is_domain_relevant(text: str) -> bool:
     return any(kw in lowered for kw in _DOMAIN_KEYWORDS)
 
 
+def _normalize_term_key(text: str) -> str:
+    return re.sub(r"\s+", " ", str(text).strip().lower())
+
+
 def _clean_sentence(text: str) -> str | None:
     text = re.sub(r"\s+", " ", text).strip()
     if len(text) < 25 or len(text) > 600:
@@ -185,11 +189,21 @@ class CompetitorSpider:
 
     def _extract_jsonld_sentences(self, soup: BeautifulSoup) -> list[str]:
         sentences = []
+
+        def _walk_jsonld(node):
+            if isinstance(node, list):
+                for item in node:
+                    yield from _walk_jsonld(item)
+            elif isinstance(node, dict):
+                yield node
+                graph = node.get("@graph")
+                if graph is not None:
+                    yield from _walk_jsonld(graph)
+
         for script in soup.find_all("script", type="application/ld+json"):
             try:
                 data = json.loads(script.string or "")
-                items = data if isinstance(data, list) else [data]
-                for item in items:
+                for item in _walk_jsonld(data):
                     for field in ("description", "name", "headline", "text"):
                         val = item.get(field, "")
                         if isinstance(val, str):
@@ -201,18 +215,21 @@ class CompetitorSpider:
         return sentences
 
     def _extract_terms_heuristic(self, soup: BeautifulSoup) -> list[str]:
-        candidates = set()
+        candidates: dict[str, str] = {}
         for tag in soup.find_all(["h1", "h2", "h3"]):
             text = tag.get_text().strip()
             if 3 < len(text) < 60:
-                candidates.add(text.lower())
+                candidates.setdefault(_normalize_term_key(text), text)
         for li in soup.find_all("li"):
             strong = li.find("strong")
             if strong:
                 text = strong.get_text().strip()
                 if 3 < len(text) < 50:
-                    candidates.add(text.lower())
-        return [t for t in candidates if t not in _NOISE_TERMS]
+                    candidates.setdefault(_normalize_term_key(text), text)
+        return [
+            term for key, term in candidates.items()
+            if key not in _NOISE_TERMS
+        ]
 
     # ------------------------------------------------------------------ #
     # Link discovery                                                       #
@@ -280,6 +297,8 @@ class CompetitorSpider:
             pages_fetched += 1
             time.sleep(self.request_delay)
 
+            jsonld_sents = self._extract_jsonld_sentences(soup)
+
             # --- sentence extraction ---
             if _HAS_TRAFILATURA:
                 sents = self._extract_sentences_trafilatura(raw_html, url)
@@ -288,12 +307,13 @@ class CompetitorSpider:
             else:
                 sents = self._extract_sentences_bs4(soup)
 
-            sents += self._extract_jsonld_sentences(soup)
+            sents += jsonld_sents
 
-            # filter Italian + domain-relevant
+            # Strategy 1 assumes Italian source text downstream, so do not keep
+            # unknown-language sentences even when they contain technical terms.
             for s in sents:
                 lang = _detect_lang(s)
-                if lang in {"ita_Latn", "unknown"} and _is_domain_relevant(s):
+                if lang == "ita_Latn" and _is_domain_relevant(s):
                     all_sentences.append(s)
 
             # --- term extraction ---

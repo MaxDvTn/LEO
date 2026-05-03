@@ -467,9 +467,12 @@ class DataFactory:
         all_terms: list[str] = []
 
         for url in conf.spider.target_urls:
-            result = spider.crawl_site(url)
-            all_sentences.extend(result["sentences"])
-            all_terms.extend(result["terms"])
+            try:
+                result = spider.crawl_site(url)
+                all_sentences.extend(result["sentences"])
+                all_terms.extend(result["terms"])
+            except Exception as e:
+                print(f"⚠️  Spider error for {url}: {e}")
 
         # ── Strategy 1: translate authentic web sentences ────────────────────
         unique_sentences = sorted(
@@ -484,8 +487,31 @@ class DataFactory:
         created_at = datetime.now(timezone.utc).isoformat()
         sentence_rows: list[dict] = []
         lock = threading.Lock()
+        checkpoint_dir = self.synthetic_dir / "checkpoints"
+        checkpoint_dir.mkdir(parents=True, exist_ok=True)
+        checkpoint_path = checkpoint_dir / f"competitor_synthetic__{self._safe_model_name()}__checkpoint.csv"
+        processed_sentences: set[str] = set()
 
-        if unique_sentences:
+        if checkpoint_path.exists():
+            try:
+                checkpoint_df = pd.read_csv(checkpoint_path)
+                if not checkpoint_df.empty:
+                    sentence_rows = checkpoint_df.to_dict("records")
+                    if {"source_text", "source_lang", "target_lang"}.issubset(checkpoint_df.columns):
+                        processed_mask = (
+                            (checkpoint_df["source_lang"].astype(str) == "ita_Latn")
+                            & (checkpoint_df["target_lang"].astype(str) != "ita_Latn")
+                        )
+                        processed_sentences = set(
+                            checkpoint_df.loc[processed_mask, "source_text"].dropna().astype(str)
+                        )
+                    print(f"   ♻️  Loaded web checkpoint: {len(sentence_rows)} rows")
+            except Exception as e:
+                print(f"⚠️  Could not load web checkpoint {checkpoint_path}: {e}")
+
+        pending_sentences = [s for s in unique_sentences if s not in processed_sentences]
+
+        if pending_sentences:
             def _translate_web(sent: str):
                 row = generator.translate_text(sent)
                 rows = []
@@ -506,17 +532,34 @@ class DataFactory:
                         })
                 return rows
 
+            completed_since_flush = 0
+
+            def _flush_checkpoint(force: bool = False):
+                nonlocal completed_since_flush
+                if not sentence_rows:
+                    return
+                if not force and completed_since_flush < 25:
+                    return
+                pd.DataFrame(sentence_rows).drop_duplicates(
+                    subset=["source_text", "target_text", "source_lang", "target_lang"]
+                ).to_csv(checkpoint_path, index=False)
+                completed_since_flush = 0
+
             with ThreadPoolExecutor(max_workers=generator.num_workers) as executor:
-                futures = {executor.submit(_translate_web, s): s for s in unique_sentences}
-                with tqdm(total=len(unique_sentences), desc="Web sentences →X") as pbar:
+                futures = {executor.submit(_translate_web, s): s for s in pending_sentences}
+                with tqdm(total=len(pending_sentences), desc="Web sentences →X") as pbar:
                     for future in as_completed(futures):
                         try:
                             with lock:
                                 sentence_rows.extend(future.result())
+                                completed_since_flush += 1
+                                _flush_checkpoint()
                         except Exception as e:
                             print(f"❌ Translation Error: {e}")
                         finally:
                             pbar.update(1)
+                with lock:
+                    _flush_checkpoint(force=True)
 
         # ── Strategy 2: generate synthetic sentences from terms ──────────────
         unique_terms = sorted(
@@ -533,6 +576,12 @@ class DataFactory:
                 term_rows = long_df.to_dict("records")
 
         all_rows = sentence_rows + term_rows
+        if checkpoint_path.exists():
+            try:
+                checkpoint_rows = pd.read_csv(checkpoint_path).to_dict("records")
+                all_rows = checkpoint_rows + term_rows
+            except Exception:
+                pass
         if not all_rows:
             return None, None
 
