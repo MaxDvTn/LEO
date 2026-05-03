@@ -23,6 +23,29 @@ def clean_generated_value(value: str | None) -> str | None:
     return cleaned
 
 
+def _remove_trailing_commas(text: str) -> str:
+    return re.sub(r",\s*([}\]])", r"\1", text)
+
+
+def _normalize_quotes(text: str) -> str:
+    """Replace Unicode curly/smart quotes with straight ASCII equivalents."""
+    return (
+        text.replace("“", '"').replace("”", '"')
+            .replace("‘", "'").replace("’", "'")
+            .replace("„", '"').replace("‟", '"')
+    )
+
+
+def _flatten_string_newlines(text: str) -> str:
+    """Replace literal newlines that appear inside JSON string values with a space.
+
+    LLMs (especially Gemini) sometimes line-wrap long string values without escaping
+    the newline, producing invalid JSON. Replacing them with a space is safe for
+    single-sentence translation data.
+    """
+    return text.replace("\r\n", " ").replace("\r", " ").replace("\n", " ")
+
+
 def _empty_translation_result() -> dict:
     return {
         "source_text": None,
@@ -34,35 +57,55 @@ def _empty_translation_result() -> dict:
 
 def _extract_json_object(text: str) -> dict | None:
     cleaned = _FENCE_RE.sub("", str(text)).strip()
-    candidates = [cleaned]
 
     start = cleaned.find("{")
     end = cleaned.rfind("}")
-    if start != -1 and end != -1 and end > start:
-        candidates.append(cleaned[start:end + 1])
+    substring = cleaned[start : end + 1] if start != -1 and end != -1 and end > start else None
+
+    candidates = [cleaned]
+    if substring and substring != cleaned:
+        candidates.append(substring)
+
+    def _transforms(s: str):
+        yield s
+        normalized = _normalize_quotes(s)
+        if normalized != s:
+            yield normalized
+        flattened = _flatten_string_newlines(s)
+        if flattened != s:
+            yield flattened
+            yield _remove_trailing_commas(flattened)
+            norm_flat = _normalize_quotes(flattened)
+            if norm_flat != flattened:
+                yield norm_flat
+                yield _remove_trailing_commas(norm_flat)
+        yield _remove_trailing_commas(s)
 
     for candidate in candidates:
-        try:
-            parsed = json.loads(candidate)
-        except json.JSONDecodeError:
-            continue
-        if isinstance(parsed, dict):
-            return parsed
-        if isinstance(parsed, list) and parsed and isinstance(parsed[0], dict):
-            return parsed[0]
+        for attempt in _transforms(candidate):
+            try:
+                parsed = json.loads(attempt)
+            except (json.JSONDecodeError, ValueError):
+                continue
+            if isinstance(parsed, dict):
+                return parsed
+            if isinstance(parsed, list) and parsed and isinstance(parsed[0], dict):
+                return parsed[0]
     return None
 
 
 def _lookup_nested(parsed: dict, aliases: tuple[str, ...]) -> object | None:
-    for alias in aliases:
-        if alias in parsed:
-            return parsed[alias]
+    lower_parsed = {k.lower(): v for k, v in parsed.items()}
+    for alias in aliases:  # aliases are already lowercase
+        if alias in lower_parsed:
+            return lower_parsed[alias]
 
-    translations = parsed.get("translations")
+    translations = lower_parsed.get("translations")
     if isinstance(translations, dict):
+        lower_trans = {k.lower(): v for k, v in translations.items()}
         for alias in aliases:
-            if alias in translations:
-                return translations[alias]
+            if alias in lower_trans:
+                return lower_trans[alias]
 
     return None
 
