@@ -74,7 +74,7 @@ class GenConfig:
     load_in_8bit: bool = False
 
     # Generation params
-    max_new_tokens: int = 512
+    max_new_tokens: int = 1024
     temperature: float = 0.7
     top_p: float = 0.95
     do_sample: bool = True

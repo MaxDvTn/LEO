@@ -177,16 +177,17 @@ class CompetitorSpider:
 
     def _fetch(self, url: str) -> tuple[str, BeautifulSoup | None]:
         if not self._can_fetch(url):
-            logger.debug(f"Blocked by robots.txt: {url}")
+            logger.info("Blocked by robots.txt: %s", url)
             return "", None
         try:
             resp = requests.get(url, headers=self.headers, timeout=self.timeout)
             if resp.status_code != 200:
+                logger.info("Non-200 response url=%s status=%d final_url=%s", url, resp.status_code, resp.url)
                 return "", None
             soup = BeautifulSoup(resp.text, "html.parser")
             return resp.text, soup
         except Exception as e:
-            logger.debug(f"Fetch error {url}: {e}")
+            logger.info("Fetch error url=%s error=%s", url, e)
             return "", None
 
     # ------------------------------------------------------------------ #

@@ -507,6 +507,7 @@ class DataFactory:
         crawl_cache_path = (self.synthetic_dir / "checkpoints" / "competitor_crawl_cache.json")
         crawl_cache_path.parent.mkdir(parents=True, exist_ok=True)
         crawled_urls: set[str] = set()
+        failed_urls: set[str] = set()   # unreachable / non-200 / robots-blocked
         # sentences_by_lang: {lang_code: [sentence, ...]} — persisted in cache v3
         sentences_by_lang: dict[str, list[str]] = {}
 
@@ -515,15 +516,17 @@ class DataFactory:
             tmp_path.write_text(_json.dumps({
                 "cache_version": crawl_cache_version,
                 "crawled_urls": sorted(crawled_urls),
+                "failed_urls": sorted(failed_urls),
                 "sentences": all_sentences,          # Italian only — legacy key
                 "sentences_by_lang": sentences_by_lang,
                 "terms": all_terms,
             }, ensure_ascii=False, indent=2))
             tmp_path.replace(crawl_cache_path)
             logger.info(
-                "Crawl cache written path=%s crawled_urls=%d sentences=%d terms=%d by_lang=%s",
+                "Crawl cache written path=%s crawled_urls=%d failed_urls=%d sentences=%d terms=%d by_lang=%s",
                 crawl_cache_path,
                 len(crawled_urls),
+                len(failed_urls),
                 len(all_sentences),
                 len(all_terms),
                 {lang: len(sents) for lang, sents in sentences_by_lang.items()},
@@ -539,12 +542,15 @@ class DataFactory:
                         sentences_by_lang = {"ita_Latn": all_sentences}
                     all_terms = cache.get("terms", [])
                     crawled_urls = set(cache.get("crawled_urls", []))
+                    failed_urls = set(cache.get("failed_urls", []))
                     by_lang_summary = ", ".join(f"{l}:{len(s)}" for l, s in sentences_by_lang.items())
-                    print(f"   ♻️  Crawl cache: {len(crawled_urls)} sites — {by_lang_summary or len(all_sentences)}, {len(all_terms)} terms")
+                    print(f"   ♻️  Crawl cache: {len(crawled_urls)} sites — {by_lang_summary or len(all_sentences)}, {len(all_terms)} terms"
+                          + (f" ({len(failed_urls)} permanently skipped)" if failed_urls else ""))
                     logger.info(
-                        "Loaded crawl cache path=%s crawled_urls=%d terms=%d by_lang=%s",
+                        "Loaded crawl cache path=%s crawled_urls=%d failed_urls=%d terms=%d by_lang=%s",
                         crawl_cache_path,
                         len(crawled_urls),
+                        len(failed_urls),
                         len(all_terms),
                         {lang: len(sents) for lang, sents in sentences_by_lang.items()},
                     )
@@ -561,7 +567,8 @@ class DataFactory:
                 logger.exception("Could not load crawl cache path=%s", crawl_cache_path)
 
         site_reports: list[dict] = []
-        pending_urls = [u for u in conf.spider.target_urls if u.rstrip("/") not in crawled_urls]
+        _skip = crawled_urls | failed_urls
+        pending_urls = [u for u in conf.spider.target_urls if u.rstrip("/") not in _skip]
         logger.info("Pending crawl URLs=%d already_cached=%d", len(pending_urls), len(crawled_urls))
         if pending_urls:
             for url in tqdm(pending_urls, desc="Web sites", unit="site"):
@@ -591,7 +598,14 @@ class DataFactory:
                     if site_sentences or site_terms or site_by_lang:
                         crawled_urls.add(url.rstrip("/"))
                         _write_crawl_cache()
+                    elif result.get("pages_fetched", 0) == 0:
+                        # Unreachable (non-200, robots-blocked, connection error) — skip permanently.
+                        failed_urls.add(url.rstrip("/"))
+                        _write_crawl_cache()
+                        print(f"   🚫 Marked as permanently failed: {url}")
+                        logger.warning("Marked as failed url=%s pages=0", url)
                     else:
+                        # Reachable but no domain-relevant content — not cached (may improve later).
                         pages = result.get("pages_fetched", 0)
                         print(f"   ⚠️  Not caching {url}: {pages} pages fetched but no useful content")
                         logger.warning("Not caching URL url=%s pages=%s no useful content", url, pages)
