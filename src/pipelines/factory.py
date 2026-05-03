@@ -476,13 +476,40 @@ class DataFactory:
         all_sentences: list[str] = []
         all_terms: list[str] = []
 
-        for url in tqdm(conf.spider.target_urls, desc="Web sites", unit="site"):
+        crawl_cache_path = (self.synthetic_dir / "checkpoints" / "competitor_crawl_cache.json")
+        crawl_cache_path.parent.mkdir(parents=True, exist_ok=True)
+        crawled_urls: set[str] = set()
+
+        if crawl_cache_path.exists():
             try:
-                result = spider.crawl_site(url)
-                all_sentences.extend(result["sentences"])
-                all_terms.extend(result["terms"])
+                import json as _json
+                cache = _json.loads(crawl_cache_path.read_text())
+                all_sentences = cache.get("sentences", [])
+                all_terms = cache.get("terms", [])
+                crawled_urls = set(cache.get("crawled_urls", []))
+                print(f"   ♻️  Crawl cache: {len(crawled_urls)} sites, "
+                      f"{len(all_sentences)} sentences, {len(all_terms)} terms")
             except Exception as e:
-                print(f"⚠️  Spider error for {url}: {e}")
+                print(f"   ⚠️  Could not load crawl cache: {e}")
+
+        pending_urls = [u for u in conf.spider.target_urls if u.rstrip("/") not in crawled_urls]
+        if pending_urls:
+            for url in tqdm(pending_urls, desc="Web sites", unit="site"):
+                try:
+                    result = spider.crawl_site(url)
+                    all_sentences.extend(result["sentences"])
+                    all_terms.extend(result["terms"])
+                    crawled_urls.add(url.rstrip("/"))
+                    import json as _json
+                    crawl_cache_path.write_text(_json.dumps({
+                        "crawled_urls": sorted(crawled_urls),
+                        "sentences": all_sentences,
+                        "terms": all_terms,
+                    }, ensure_ascii=False, indent=2))
+                except Exception as e:
+                    print(f"⚠️  Spider error for {url}: {e}")
+        else:
+            print(f"   ✅ All {len(crawled_urls)} sites already cached — skipping crawl")
 
         # ── Strategy 1: translate authentic web sentences ────────────────────
         unique_sentences = sorted(
