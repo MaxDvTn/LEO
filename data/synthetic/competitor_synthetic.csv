@@ -1,278 +1,230 @@
-source_text,target_text,source_lang,target_lang,origin,model_id,prompt_version,created_at,term,context,doc_type,raw_output
-DOP – Dichiarazione di prestazione - Alpac,DOP – Declaration of Performance - Alpac,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-DOP – Declaration of Performance - Alpac,DOP – Dichiarazione di prestazione - Alpac,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-DOP – Dichiarazione di prestazione - Alpac,DOP – Déclaration de performance - Alpac,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-DOP – Déclaration de performance - Alpac,DOP – Dichiarazione di prestazione - Alpac,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-DOP – Dichiarazione di prestazione - Alpac,DOP – Declaración de prestaciones - Alpac,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-DOP – Declaración de prestaciones - Alpac,DOP – Dichiarazione di prestazione - Alpac,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.","INGENIUS VMC insulating monoblocks are intelligent systems, designed to improve comfort and healthiness in the home.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"INGENIUS VMC insulating monoblocks are intelligent systems, designed to improve comfort and healthiness in the home.","I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.","Les monoblocs thermo-isolants INGENIUS VMC sont des systèmes intelligents, conçus pour améliorer le confort et la salubrité de l'habitat.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"Les monoblocs thermo-isolants INGENIUS VMC sont des systèmes intelligents, conçus pour améliorer le confort et la salubrité de l'habitat.","I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.","Los monobloques termoaislantes INGENIUS VMC son sistemas inteligentes, pensados para mejorar el confort y la salubridad del hogar.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"Los monobloques termoaislantes INGENIUS VMC son sistemas inteligentes, pensados para mejorar el confort y la salubridad del hogar.","I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Il tipo di installazione dipende dalla posizione della finestra.,The type of installation depends on the window's position.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-The type of installation depends on the window's position.,Il tipo di installazione dipende dalla posizione della finestra.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Il tipo di installazione dipende dalla posizione della finestra.,Le type d'installation dépend de la position de la fenêtre.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-Le type d'installation dépend de la position de la fenêtre.,Il tipo di installazione dipende dalla posizione della finestra.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Il tipo di installazione dipende dalla posizione della finestra.,El tipo de instalación depende de la posición de la ventana.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-El tipo de instalación depende de la posición de la ventana.,Il tipo di installazione dipende dalla posizione della finestra.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.","Furthermore, the project includes the creation of extensive green spaces, public parks, and pedestrian areas to encourage sustainable mobility and improve the quality of life for residents,"" added Marco Ferretti.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"Furthermore, the project includes the creation of extensive green spaces, public parks, and pedestrian areas to encourage sustainable mobility and improve the quality of life for residents,"" added Marco Ferretti.","Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.","« En outre, le projet prévoit la création de vastes espaces verts, de parcs publics et de zones piétonnes pour encourager la mobilité durable et améliorer la qualité de vie des habitants », a ajouté Marco Ferretti.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"« En outre, le projet prévoit la création de vastes espaces verts, de parcs publics et de zones piétonnes pour encourager la mobilité durable et améliorer la qualité de vie des habitants », a ajouté Marco Ferretti.","Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.","« Además, el proyecto contempla la creación de amplias zonas verdes, parques públicos y áreas peatonales para fomentar la movilidad sostenible y mejorar la calidad de vida de los habitantes », añadió Marco Ferretti.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"« Además, el proyecto contempla la creación de amplias zonas verdes, parques públicos y áreas peatonales para fomentar la movilidad sostenible y mejorar la calidad de vida de los habitantes », añadió Marco Ferretti.","Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
+source_text,target_text,source_lang,target_lang,origin,model_id,prompt_version,created_at
+DOP – Dichiarazione di prestazione - Alpac,DOP – Declaration of Performance - Alpac,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+DOP – Declaration of Performance - Alpac,DOP – Dichiarazione di prestazione - Alpac,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+DOP – Dichiarazione di prestazione - Alpac,DOP – Déclaration de performance - Alpac,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+DOP – Déclaration de performance - Alpac,DOP – Dichiarazione di prestazione - Alpac,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+DOP – Dichiarazione di prestazione - Alpac,DOP – Declaración de prestaciones - Alpac,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+DOP – Declaración de prestaciones - Alpac,DOP – Dichiarazione di prestazione - Alpac,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.","INGENIUS VMC insulating monoblocks are intelligent systems, designed to improve comfort and healthiness in the home.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"INGENIUS VMC insulating monoblocks are intelligent systems, designed to improve comfort and healthiness in the home.","I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.","Les monoblocs thermo-isolants INGENIUS VMC sont des systèmes intelligents, conçus pour améliorer le confort et la salubrité de l'habitat.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"Les monoblocs thermo-isolants INGENIUS VMC sont des systèmes intelligents, conçus pour améliorer le confort et la salubrité de l'habitat.","I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.","Los monobloques termoaislantes INGENIUS VMC son sistemas inteligentes, pensados para mejorar el confort y la salubridad del hogar.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"Los monobloques termoaislantes INGENIUS VMC son sistemas inteligentes, pensados para mejorar el confort y la salubridad del hogar.","I monoblocchi termoisolanti INGENIUS VMC sono sistemi intelligenti, pensati per migliorare il comfort e la salubrità della casa.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Il tipo di installazione dipende dalla posizione della finestra.,The type of installation depends on the window's position.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+The type of installation depends on the window's position.,Il tipo di installazione dipende dalla posizione della finestra.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Il tipo di installazione dipende dalla posizione della finestra.,Le type d'installation dépend de la position de la fenêtre.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+Le type d'installation dépend de la position de la fenêtre.,Il tipo di installazione dipende dalla posizione della finestra.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Il tipo di installazione dipende dalla posizione della finestra.,El tipo de instalación depende de la posición de la ventana.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+El tipo de instalación depende de la posición de la ventana.,Il tipo di installazione dipende dalla posizione della finestra.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.","Furthermore, the project includes the creation of extensive green spaces, public parks, and pedestrian areas to encourage sustainable mobility and improve the quality of life for residents,"" added Marco Ferretti.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"Furthermore, the project includes the creation of extensive green spaces, public parks, and pedestrian areas to encourage sustainable mobility and improve the quality of life for residents,"" added Marco Ferretti.","Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.","« En outre, le projet prévoit la création de vastes espaces verts, de parcs publics et de zones piétonnes pour encourager la mobilité durable et améliorer la qualité de vie des habitants », a ajouté Marco Ferretti.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"« En outre, le projet prévoit la création de vastes espaces verts, de parcs publics et de zones piétonnes pour encourager la mobilité durable et améliorer la qualité de vie des habitants », a ajouté Marco Ferretti.","Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.","« Además, el proyecto contempla la creación de amplias zonas verdes, parques públicos y áreas peatonales para fomentar la movilidad sostenible y mejorar la calidad de vida de los habitantes », añadió Marco Ferretti.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"« Además, el proyecto contempla la creación de amplias zonas verdes, parques públicos y áreas peatonales para fomentar la movilidad sostenible y mejorar la calidad de vida de los habitantes », añadió Marco Ferretti.","Inoltre, il progetto prevede la creazione di ampi spazi verdi, parchi pubblici e zone pedonali per incentivare la mobilità sostenibile e migliorare la qualità della vita degli abitanti.” Ha aggiunto Marco Ferretti.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
 "Installazione
 Installa la tenda parasole dall'esterno tra la cupola e la finestra.","Installation
-Install the sunshade from the outside between the dome and the window.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
+Install the sunshade from the outside between the dome and the window.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
 "Installation
 Install the sunshade from the outside between the dome and the window.","Installazione
-Installa la tenda parasole dall'esterno tra la cupola e la finestra.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
+Installa la tenda parasole dall'esterno tra la cupola e la finestra.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
 "Installazione
 Installa la tenda parasole dall'esterno tra la cupola e la finestra.","Installation
-Installez le pare-soleil par l'extérieur entre le dôme et la fenêtre.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
+Installez le pare-soleil par l'extérieur entre le dôme et la fenêtre.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
 "Installation
 Installez le pare-soleil par l'extérieur entre le dôme et la fenêtre.","Installazione
-Installa la tenda parasole dall'esterno tra la cupola e la finestra.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
+Installa la tenda parasole dall'esterno tra la cupola e la finestra.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
 "Installazione
 Installa la tenda parasole dall'esterno tra la cupola e la finestra.","Instalación
-Instala el parasol desde el exterior entre la cúpula y la ventana.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
+Instala el parasol desde el exterior entre la cúpula y la ventana.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
 "Instalación
 Instala el parasol desde el exterior entre la cúpula y la ventana.","Installazione
-Installa la tenda parasole dall'esterno tra la cupola e la finestra.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,VELUX flat roof windows are available in various sizes.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-VELUX flat roof windows are available in various sizes.,Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,Les fenêtres pour toits plats VELUX sont disponibles en plusieurs dimensions.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-Les fenêtres pour toits plats VELUX sont disponibles en plusieurs dimensions.,Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,Las ventanas para tejados planos VELUX están disponibles en varias dimensiones.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-Las ventanas para tejados planos VELUX están disponibles en varias dimensiones.,Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Pistola per schiuma dedicata al sistema Click&Fix,Foam gun dedicated to the Click&Fix system,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-Foam gun dedicated to the Click&Fix system,Pistola per schiuma dedicata al sistema Click&Fix,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Pistola per schiuma dedicata al sistema Click&Fix,Pistolet à mousse dédié au système Click&Fix,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-Pistolet à mousse dédié au système Click&Fix,Pistola per schiuma dedicata al sistema Click&Fix,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Pistola per schiuma dedicata al sistema Click&Fix,Pistola para espuma dedicada al sistema Click&Fix,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-Pistola para espuma dedicada al sistema Click&Fix,Pistola per schiuma dedicata al sistema Click&Fix,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.","VELUX offers a wide range of original products, from roller shutters to internal blinds available in various designs, and even mosquito nets.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"VELUX offers a wide range of original products, from roller shutters to internal blinds available in various designs, and even mosquito nets.","VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.","VELUX propose une large gamme de produits originaux, des volets roulants aux stores intérieurs disponibles dans divers designs, jusqu'aux moustiquaires.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"VELUX propose une large gamme de produits originaux, des volets roulants aux stores intérieurs disponibles dans divers designs, jusqu'aux moustiquaires.","VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-"VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.","VELUX ofrece una amplia gama de productos originales, desde persianas enrollables hasta estores interiores disponibles en varios diseños, e incluso mosquiteras.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00,,,,
-"VELUX ofrece una amplia gama de productos originales, desde persianas enrollables hasta estores interiores disponibles en varios diseños, e incluso mosquiteras.","VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00,,,,
-Very good isothermal flow – the risk of condensation or thermal bridges is minimized.,Ottimo flusso isotermico – il rischio di condensa o ponti termici è minimizzato.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,web_to_it_v1,2026-05-03T12:52:52.955951+00:00,,,,
+Installa la tenda parasole dall'esterno tra la cupola e la finestra.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,VELUX flat roof windows are available in various sizes.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+VELUX flat roof windows are available in various sizes.,Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,Les fenêtres pour toits plats VELUX sont disponibles en plusieurs dimensions.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+Les fenêtres pour toits plats VELUX sont disponibles en plusieurs dimensions.,Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,Las ventanas para tejados planos VELUX están disponibles en varias dimensiones.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+Las ventanas para tejados planos VELUX están disponibles en varias dimensiones.,Le finestre per tetti piani VELUX sono disponibili in varie dimensioni.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Pistola per schiuma dedicata al sistema Click&Fix,Foam gun dedicated to the Click&Fix system,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+Foam gun dedicated to the Click&Fix system,Pistola per schiuma dedicata al sistema Click&Fix,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Pistola per schiuma dedicata al sistema Click&Fix,Pistolet à mousse dédié au système Click&Fix,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+Pistolet à mousse dédié au système Click&Fix,Pistola per schiuma dedicata al sistema Click&Fix,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Pistola per schiuma dedicata al sistema Click&Fix,Pistola para espuma dedicada al sistema Click&Fix,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+Pistola para espuma dedicada al sistema Click&Fix,Pistola per schiuma dedicata al sistema Click&Fix,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.","VELUX offers a wide range of original products, from roller shutters to internal blinds available in various designs, and even mosquito nets.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"VELUX offers a wide range of original products, from roller shutters to internal blinds available in various designs, and even mosquito nets.","VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.","VELUX propose une large gamme de produits originaux, des volets roulants aux stores intérieurs disponibles dans divers designs, jusqu'aux moustiquaires.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"VELUX propose une large gamme de produits originaux, des volets roulants aux stores intérieurs disponibles dans divers designs, jusqu'aux moustiquaires.","VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+"VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.","VELUX ofrece una amplia gama de productos originales, desde persianas enrollables hasta estores interiores disponibles en varios diseños, e incluso mosquiteras.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T12:52:52.955951+00:00
+"VELUX ofrece una amplia gama de productos originales, desde persianas enrollables hasta estores interiores disponibles en varios diseños, e incluso mosquiteras.","VELUX offre un'ampia gamma di prodotti originali, dalle tapparelle alle tende interne disponibili in vari design, fino alle zanzariere.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T12:52:52.955951+00:00
+Very good isothermal flow – the risk of condensation or thermal bridges is minimized.,Ottimo flusso isotermico – il rischio di condensa o ponti termici è minimizzato.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,web_to_it_v1,2026-05-03T12:52:52.955951+00:00
 "Finestra balcone
 Da finestra a balcone in pochi secondi.","Balcony window
-From window to balcony in a few seconds.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+From window to balcony in a few seconds.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "Balcony window
 From window to balcony in a few seconds.","Finestra balcone
-Da finestra a balcone in pochi secondi.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+Da finestra a balcone in pochi secondi.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "Finestra balcone
 Da finestra a balcone in pochi secondi.","Fenêtre balcon
-De fenêtre à balcon en quelques secondes.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+De fenêtre à balcon en quelques secondes.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "Fenêtre balcon
 De fenêtre à balcon en quelques secondes.","Finestra balcone
-Da finestra a balcone in pochi secondi.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+Da finestra a balcone in pochi secondi.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "Finestra balcone
 Da finestra a balcone in pochi secondi.","Ventana balcón
-De ventana a balcón en pocos segundos.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+De ventana a balcón en pocos segundos.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "Ventana balcón
 De ventana a balcón en pocos segundos.","Finestra balcone
-Da finestra a balcone in pochi secondi.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
-GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,GEALAN Fenster-Systeme GmbH is one of the leading European manufacturers of PVC profiles for doors and windows.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
-GEALAN Fenster-Systeme GmbH is one of the leading European manufacturers of PVC profiles for doors and windows.,GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
-GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,GEALAN Fenster-Systeme GmbH est l'un des principaux fabricants européens de profilés en PVC pour portes et fenêtres.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
-GEALAN Fenster-Systeme GmbH est l'un des principaux fabricants européens de profilés en PVC pour portes et fenêtres.,GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
-GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,GEALAN Fenster-Systeme GmbH es uno de los principales fabricantes europeos de perfiles de PVC para puertas y ventanas.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
-GEALAN Fenster-Systeme GmbH es uno de los principales fabricantes europeos de perfiles de PVC para puertas y ventanas.,GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+Da finestra a balcone in pochi secondi.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
+GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,GEALAN Fenster-Systeme GmbH is one of the leading European manufacturers of PVC profiles for doors and windows.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
+GEALAN Fenster-Systeme GmbH is one of the leading European manufacturers of PVC profiles for doors and windows.,GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
+GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,GEALAN Fenster-Systeme GmbH est l'un des principaux fabricants européens de profilés en PVC pour portes et fenêtres.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
+GEALAN Fenster-Systeme GmbH est l'un des principaux fabricants européens de profilés en PVC pour portes et fenêtres.,GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
+GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,GEALAN Fenster-Systeme GmbH es uno de los principales fabricantes europeos de perfiles de PVC para puertas y ventanas.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
+GEALAN Fenster-Systeme GmbH es uno de los principales fabricantes europeos de perfiles de PVC para puertas y ventanas.,GEALAN Fenster-Systeme GmbH è uno dei principali produttori europei di profili in PVC per porte e finestre.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "I vantaggi per voi:
 - Montaggio semplice
 - Particolarmente resistente agli agenti atmosferici
 - Possibilità di fissaggio senza viti","Your advantages:
 - Simple assembly
 - Particularly weather-resistant
-- Screw-free fastening option",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+- Screw-free fastening option",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "Your advantages:
 - Simple assembly
 - Particularly weather-resistant
 - Screw-free fastening option","I vantaggi per voi:
 - Montaggio semplice
 - Particolarmente resistente agli agenti atmosferici
-- Possibilità di fissaggio senza viti",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+- Possibilità di fissaggio senza viti",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "I vantaggi per voi:
 - Montaggio semplice
 - Particolarmente resistente agli agenti atmosferici
 - Possibilità di fissaggio senza viti","Vos avantages :
 - Montage simple
 - Particulièrement résistant aux intempéries
-- Possibilité de fixation sans vis",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+- Possibilité de fixation sans vis",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "Vos avantages :
 - Montage simple
 - Particulièrement résistant aux intempéries
 - Possibilité de fixation sans vis","I vantaggi per voi:
 - Montaggio semplice
 - Particolarmente resistente agli agenti atmosferici
-- Possibilità di fissaggio senza viti",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+- Possibilità di fissaggio senza viti",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "I vantaggi per voi:
 - Montaggio semplice
 - Particolarmente resistente agli agenti atmosferici
 - Possibilità di fissaggio senza viti","Sus ventajas:
 - Montaje sencillo
 - Particularmente resistente a la intemperie
-- Posibilidad de fijación sin tornillos",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+- Posibilidad de fijación sin tornillos",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "Sus ventajas:
 - Montaje sencillo
 - Particularmente resistente a la intemperie
 - Posibilidad de fijación sin tornillos","I vantaggi per voi:
 - Montaggio semplice
 - Particolarmente resistente agli agenti atmosferici
-- Possibilità di fissaggio senza viti",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+- Possibilità di fissaggio senza viti",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "L’importanza delle zanzariere
 Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.","The Importance of Mosquito Nets
-In recent years, a very dangerous virus transmitted by mosquito bites has been discovered.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+In recent years, a very dangerous virus transmitted by mosquito bites has been discovered.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "The Importance of Mosquito Nets
 In recent years, a very dangerous virus transmitted by mosquito bites has been discovered.","L’importanza delle zanzariere
-Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "L’importanza delle zanzariere
 Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.","L'importance des moustiquaires
-Ces dernières années, un virus très dangereux transmis par les piqûres de moustiques a été découvert.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+Ces dernières années, un virus très dangereux transmis par les piqûres de moustiques a été découvert.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "L'importance des moustiquaires
 Ces dernières années, un virus très dangereux transmis par les piqûres de moustiques a été découvert.","L’importanza delle zanzariere
-Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "L’importanza delle zanzariere
 Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.","La importancia de los mosquiteros
-En los últimos años, se ha descubierto un virus muy peligroso transmitido por la picadura de mosquitos.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
+En los últimos años, se ha descubierto un virus muy peligroso transmitido por la picadura de mosquitos.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
 "La importancia de los mosquiteros
 En los últimos años, se ha descubierto un virus muy peligroso transmitido por la picadura de mosquitos.","L’importanza delle zanzariere
-Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
-Ottimizzazione perfetta per ogni porta e ogni finestra.,Perfect optimization for every door and every window.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
-Perfect optimization for every door and every window.,Ottimizzazione perfetta per ogni porta e ogni finestra.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
-Ottimizzazione perfetta per ogni porta e ogni finestra.,Optimisation parfaite pour chaque porte et chaque fenêtre.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
-Optimisation parfaite pour chaque porte et chaque fenêtre.,Ottimizzazione perfetta per ogni porta e ogni finestra.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
-Ottimizzazione perfetta per ogni porta e ogni finestra.,Optimización perfecta para cada puerta y cada ventana.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00,,,,
-Optimización perfecta para cada puerta y cada ventana.,Ottimizzazione perfetta per ogni porta e ogni finestra.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00,,,,
+Negli ultimi anni si è scoperto un virus molto pericoloso trasmesso dalla puntura di zanzara.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
+Ottimizzazione perfetta per ogni porta e ogni finestra.,Perfect optimization for every door and every window.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
+Perfect optimization for every door and every window.,Ottimizzazione perfetta per ogni porta e ogni finestra.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
+Ottimizzazione perfetta per ogni porta e ogni finestra.,Optimisation parfaite pour chaque porte et chaque fenêtre.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
+Optimisation parfaite pour chaque porte et chaque fenêtre.,Ottimizzazione perfetta per ogni porta e ogni finestra.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
+Ottimizzazione perfetta per ogni porta e ogni finestra.,Optimización perfecta para cada puerta y cada ventana.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:04:07.188183+00:00
+Optimización perfecta para cada puerta y cada ventana.,Ottimizzazione perfetta per ogni porta e ogni finestra.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:04:07.188183+00:00
 "About us
 The GEALAN Group is one of the leading manufacturers of PVC profiles for windows and doors in Europe.","Chi siamo
-Il Gruppo GEALAN è uno dei principali produttori di profili in PVC per finestre e porte in Europa.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,web_to_it_v1,2026-05-03T13:04:07.188183+00:00,,,,
-La risposta si chiama TRAV frame.,The answer is called TRAV frame.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00,,,,
-The answer is called TRAV frame.,La risposta si chiama TRAV frame.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00,,,,
-La risposta si chiama TRAV frame.,La réponse s'appelle TRAV frame.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00,,,,
-La réponse s'appelle TRAV frame.,La risposta si chiama TRAV frame.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00,,,,
-La risposta si chiama TRAV frame.,La respuesta se llama TRAV frame.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00,,,,
-La respuesta se llama TRAV frame.,La risposta si chiama TRAV frame.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00,,,,
+Il Gruppo GEALAN è uno dei principali produttori di profili in PVC per finestre e porte in Europa.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,web_to_it_v1,2026-05-03T13:04:07.188183+00:00
+La risposta si chiama TRAV frame.,The answer is called TRAV frame.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00
+The answer is called TRAV frame.,La risposta si chiama TRAV frame.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00
+La risposta si chiama TRAV frame.,La réponse s'appelle TRAV frame.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00
+La réponse s'appelle TRAV frame.,La risposta si chiama TRAV frame.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00
+La risposta si chiama TRAV frame.,La respuesta se llama TRAV frame.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00
+La respuesta se llama TRAV frame.,La risposta si chiama TRAV frame.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00
 "Oscuramento ottimale per riposare al buio
 Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.","Optimal blackout for resting in the dark.
-The blackout fabric completely blocks light to ensure good sleep quality both at night and during the day.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00,,,,
+The blackout fabric completely blocks light to ensure good sleep quality both at night and during the day.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00
 "Optimal blackout for resting in the dark.
 The blackout fabric completely blocks light to ensure good sleep quality both at night and during the day.","Oscuramento ottimale per riposare al buio
-Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00,,,,
+Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00
 "Oscuramento ottimale per riposare al buio
 Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.","Obscurcissement optimal pour se reposer dans l'obscurité.
-Le tissu occultant bloque complètement la lumière pour garantir une bonne qualité de sommeil, de nuit comme de jour.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00,,,,
+Le tissu occultant bloque complètement la lumière pour garantir une bonne qualité de sommeil, de nuit comme de jour.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00
 "Obscurcissement optimal pour se reposer dans l'obscurité.
 Le tissu occultant bloque complètement la lumière pour garantir une bonne qualité de sommeil, de nuit comme de jour.","Oscuramento ottimale per riposare al buio
-Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00,,,,
+Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00
 "Oscuramento ottimale per riposare al buio
 Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.","Oscurecimiento óptimo para descansar en la oscuridad.
-El tejido opaco bloquea completamente la luz para garantizar una buena calidad del sueño tanto de noche como de día.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00,,,,
+El tejido opaco bloquea completamente la luz para garantizar una buena calidad del sueño tanto de noche como de día.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:13:06.449264+00:00
 "Oscurecimiento óptimo para descansar en la oscuridad.
 El tejido opaco bloquea completamente la luz para garantizar una buena calidad del sueño tanto de noche como de día.","Oscuramento ottimale per riposare al buio
-Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00,,,,
+Il tessuto oscurante blocca completamente la luce, per garantire una buona qualità del sonno sia di notte che di giorno.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:13:06.449264+00:00
 "-
 Aluminium
-Aluminium eröffnet neue architektonische Dimensionen: Schlanke Profile, hohe strukturelle Festigkeit und maximale Flexibilität bieten größtmögliche Gestaltungsfreiheit für anspruchsvolle Designs.","L'alluminio apre nuove dimensioni architettoniche: profili sottili, elevata resistenza strutturale e massima flessibilità offrono la massima libertà di progettazione per design sofisticati.",deu_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,web_to_it_v1,2026-05-03T13:13:06.449264+00:00,,,,
-Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale.,Ensure the balcony window frame is perfectly plumb and level before proceeding with final fastening and perimeter insulation.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Finestra balcone,general,an installation manual,"```json
-{
-  ""source_text"": ""Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale."",
-  ""target_text_en"": ""Ensure the balcony window frame is perfectly plumb and level before proceeding with final fastening and perimeter insulation."",
-  ""target_text_fr"": ""Assurez-vous que le cadre de la fenêtre balcon est parfaitement d'aplomb et de niveau avant de procéder à la fixation définitive et à l'isolation périmétrique."",
-  ""target_text_es"": ""Asegúrese de que el marco de la ventana balcón esté perfectamente a plomo y nivelado antes de proceder con la fijación definitiva y el aislamiento perimetral.""
-}
-```"
-Ensure the balcony window frame is perfectly plumb and level before proceeding with final fastening and perimeter insulation.,Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Finestra balcone,general,an installation manual,"```json
-{
-  ""source_text"": ""Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale."",
-  ""target_text_en"": ""Ensure the balcony window frame is perfectly plumb and level before proceeding with final fastening and perimeter insulation."",
-  ""target_text_fr"": ""Assurez-vous que le cadre de la fenêtre balcon est parfaitement d'aplomb et de niveau avant de procéder à la fixation définitive et à l'isolation périmétrique."",
-  ""target_text_es"": ""Asegúrese de que el marco de la ventana balcón esté perfectamente a plomo y nivelado antes de proceder con la fijación definitiva y el aislamiento perimetral.""
-}
-```"
-Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale.,Assurez-vous que le cadre de la fenêtre balcon est parfaitement d'aplomb et de niveau avant de procéder à la fixation définitive et à l'isolation périmétrique.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Finestra balcone,general,an installation manual,"```json
-{
-  ""source_text"": ""Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale."",
-  ""target_text_en"": ""Ensure the balcony window frame is perfectly plumb and level before proceeding with final fastening and perimeter insulation."",
-  ""target_text_fr"": ""Assurez-vous que le cadre de la fenêtre balcon est parfaitement d'aplomb et de niveau avant de procéder à la fixation définitive et à l'isolation périmétrique."",
-  ""target_text_es"": ""Asegúrese de que el marco de la ventana balcón esté perfectamente a plomo y nivelado antes de proceder con la fijación definitiva y el aislamiento perimetral.""
-}
-```"
-Assurez-vous que le cadre de la fenêtre balcon est parfaitement d'aplomb et de niveau avant de procéder à la fixation définitive et à l'isolation périmétrique.,Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Finestra balcone,general,an installation manual,"```json
-{
-  ""source_text"": ""Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale."",
-  ""target_text_en"": ""Ensure the balcony window frame is perfectly plumb and level before proceeding with final fastening and perimeter insulation."",
-  ""target_text_fr"": ""Assurez-vous que le cadre de la fenêtre balcon est parfaitement d'aplomb et de niveau avant de procéder à la fixation définitive et à l'isolation périmétrique."",
-  ""target_text_es"": ""Asegúrese de que el marco de la ventana balcón esté perfectamente a plomo y nivelado antes de proceder con la fijación definitiva y el aislamiento perimetral.""
-}
-```"
-Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale.,Asegúrese de que el marco de la ventana balcón esté perfectamente a plomo y nivelado antes de proceder con la fijación definitiva y el aislamiento perimetral.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Finestra balcone,general,an installation manual,"```json
-{
-  ""source_text"": ""Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale."",
-  ""target_text_en"": ""Ensure the balcony window frame is perfectly plumb and level before proceeding with final fastening and perimeter insulation."",
-  ""target_text_fr"": ""Assurez-vous que le cadre de la fenêtre balcon est parfaitement d'aplomb et de niveau avant de procéder à la fixation définitive et à l'isolation périmétrique."",
-  ""target_text_es"": ""Asegúrese de que el marco de la ventana balcón esté perfectamente a plomo y nivelado antes de proceder con la fijación definitiva y el aislamiento perimetral.""
-}
-```"
-Asegúrese de que el marco de la ventana balcón esté perfectamente a plomo y nivelado antes de proceder con la fijación definitiva y el aislamiento perimetral.,Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Finestra balcone,general,an installation manual,"```json
-{
-  ""source_text"": ""Assicurarsi che il telaio della finestra balcone sia perfettamente a piombo e in bolla prima di procedere con il fissaggio definitivo e l'isolamento perimetrale."",
-  ""target_text_en"": ""Ensure the balcony window frame is perfectly plumb and level before proceeding with final fastening and perimeter insulation."",
-  ""target_text_fr"": ""Assurez-vous que le cadre de la fenêtre balcon est parfaitement d'aplomb et de niveau avant de procéder à la fixation définitive et à l'isolation périmétrique."",
-  ""target_text_es"": ""Asegúrese de que el marco de la ventana balcón esté perfectamente a plomo y nivelado antes de proceder con la fijación definitiva y el aislamiento perimetral.""
-}
-```"
-"Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente.","To ensure maximum energy performance and effective thermal and acoustic insulation, ensure all joints are properly sealed.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Isolamento,general,an installation manual,"```json
-{
-  ""source_text"": ""Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente."",
-  ""target_text_en"": ""To ensure maximum energy performance and effective thermal and acoustic insulation, ensure all joints are properly sealed."",
-  ""target_text_fr"": ""Afin de garantir des performances énergétiques maximales et une isolation thermique et acoustique efficace, assurez-vous que tous les joints sont correctement scellés."",
-  ""target_text_es"": ""Para garantizar el máximo rendimiento energético y un aislamiento térmico y acústico eficaz, asegúrese de que todas las juntas estén correctamente selladas.""
-}
-```"
-"To ensure maximum energy performance and effective thermal and acoustic insulation, ensure all joints are properly sealed.","Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Isolamento,general,an installation manual,"```json
-{
-  ""source_text"": ""Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente."",
-  ""target_text_en"": ""To ensure maximum energy performance and effective thermal and acoustic insulation, ensure all joints are properly sealed."",
-  ""target_text_fr"": ""Afin de garantir des performances énergétiques maximales et une isolation thermique et acoustique efficace, assurez-vous que tous les joints sont correctement scellés."",
-  ""target_text_es"": ""Para garantizar el máximo rendimiento energético y un aislamiento térmico y acústico eficaz, asegúrese de que todas las juntas estén correctamente selladas.""
-}
-```"
-"Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente.","Afin de garantir des performances énergétiques maximales et une isolation thermique et acoustique efficace, assurez-vous que tous les joints sont correctement scellés.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Isolamento,general,an installation manual,"```json
-{
-  ""source_text"": ""Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente."",
-  ""target_text_en"": ""To ensure maximum energy performance and effective thermal and acoustic insulation, ensure all joints are properly sealed."",
-  ""target_text_fr"": ""Afin de garantir des performances énergétiques maximales et une isolation thermique et acoustique efficace, assurez-vous que tous les joints sont correctement scellés."",
-  ""target_text_es"": ""Para garantizar el máximo rendimiento energético y un aislamiento térmico y acústico eficaz, asegúrese de que todas las juntas estén correctamente selladas.""
-}
-```"
-"Afin de garantir des performances énergétiques maximales et une isolation thermique et acoustique efficace, assurez-vous que tous les joints sont correctement scellés.","Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Isolamento,general,an installation manual,"```json
-{
-  ""source_text"": ""Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente."",
-  ""target_text_en"": ""To ensure maximum energy performance and effective thermal and acoustic insulation, ensure all joints are properly sealed."",
-  ""target_text_fr"": ""Afin de garantir des performances énergétiques maximales et une isolation thermique et acoustique efficace, assurez-vous que tous les joints sont correctement scellés."",
-  ""target_text_es"": ""Para garantizar el máximo rendimiento energético y un aislamiento térmico y acústico eficaz, asegúrese de que todas las juntas estén correctamente selladas.""
-}
-```"
-"Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente.","Para garantizar el máximo rendimiento energético y un aislamiento térmico y acústico eficaz, asegúrese de que todas las juntas estén correctamente selladas.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Isolamento,general,an installation manual,"```json
-{
-  ""source_text"": ""Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente."",
-  ""target_text_en"": ""To ensure maximum energy performance and effective thermal and acoustic insulation, ensure all joints are properly sealed."",
-  ""target_text_fr"": ""Afin de garantir des performances énergétiques maximales et une isolation thermique et acoustique efficace, assurez-vous que tous les joints sont correctement scellés."",
-  ""target_text_es"": ""Para garantizar el máximo rendimiento energético y un aislamiento térmico y acústico eficaz, asegúrese de que todas las juntas estén correctamente selladas.""
-}
-```"
-"Para garantizar el máximo rendimiento energético y un aislamiento térmico y acústico eficaz, asegúrese de que todas las juntas estén correctamente selladas.","Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,json_v1,2026-05-03T13:19:27.751807+00:00,Isolamento,general,an installation manual,"```json
-{
-  ""source_text"": ""Per garantire le massime prestazioni energetiche e un efficace isolamento termico e acustico, assicurarsi che tutti i giunti siano sigillati correttamente."",
-  ""target_text_en"": ""To ensure maximum energy performance and effective thermal and acoustic insulation, ensure all joints are properly sealed."",
-  ""target_text_fr"": ""Afin de garantir des performances énergétiques maximales et une isolation thermique et acoustique efficace, assurez-vous que tous les joints sont correctement scellés."",
-  ""target_text_es"": ""Para garantizar el máximo rendimiento energético y un aislamiento térmico y acústico eficaz, asegúrese de que todas las juntas estén correctamente selladas.""
-}
-```"
+Aluminium eröffnet neue architektonische Dimensionen: Schlanke Profile, hohe strukturelle Festigkeit und maximale Flexibilität bieten größtmögliche Gestaltungsfreiheit für anspruchsvolle Designs.","L'alluminio apre nuove dimensioni architettoniche: profili sottili, elevata resistenza strutturale e massima flessibilità offrono la massima libertà di progettazione per design sofisticati.",deu_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,web_to_it_v1,2026-05-03T13:13:06.449264+00:00
+"Isolamento acustico
+L'isolamento acustico riduce il rumore causato, ad esempio, dal traffico esterno.","Sound insulation
+Sound insulation reduces noise caused, for example, by external traffic.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+"Sound insulation
+Sound insulation reduces noise caused, for example, by external traffic.","Isolamento acustico
+L'isolamento acustico riduce il rumore causato, ad esempio, dal traffico esterno.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+"Isolamento acustico
+L'isolamento acustico riduce il rumore causato, ad esempio, dal traffico esterno.","Isolation acoustique
+L'isolation acoustique réduit le bruit causé, par exemple, par le trafic extérieur.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+"Isolation acoustique
+L'isolation acoustique réduit le bruit causé, par exemple, par le trafic extérieur.","Isolamento acustico
+L'isolamento acustico riduce il rumore causato, ad esempio, dal traffico esterno.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+"Isolamento acustico
+L'isolamento acustico riduce il rumore causato, ad esempio, dal traffico esterno.","Aislamiento acústico
+El aislamiento acústico reduce el ruido causado, por ejemplo, por el tráfico exterior.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+"Aislamiento acústico
+El aislamiento acústico reduce el ruido causado, por ejemplo, por el tráfico exterior.","Isolamento acustico
+L'isolamento acustico riduce il rumore causato, ad esempio, dal traffico esterno.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+Questo rivestimento aiuta a ridurre le dispersioni di calore e i rumori esterni.,This coating helps to reduce heat loss and external noise.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+This coating helps to reduce heat loss and external noise.,Questo rivestimento aiuta a ridurre le dispersioni di calore e i rumori esterni.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+Questo rivestimento aiuta a ridurre le dispersioni di calore e i rumori esterni.,Ce revêtement aide à réduire les déperditions de chaleur et les bruits extérieurs.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Ce revêtement aide à réduire les déperditions de chaleur et les bruits extérieurs.,Questo rivestimento aiuta a ridurre le dispersioni di calore e i rumori esterni.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+Questo rivestimento aiuta a ridurre le dispersioni di calore e i rumori esterni.,Este revestimiento ayuda a reducir las pérdidas de calor y los ruidos externos.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Este revestimiento ayuda a reducir las pérdidas de calor y los ruidos externos.,Questo rivestimento aiuta a ridurre le dispersioni di calore e i rumori esterni.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+"Sono disponibili due colori per il telaio, bianco e argento.",Two colors are available for the frame: white and silver.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Two colors are available for the frame: white and silver.,"Sono disponibili due colori per il telaio, bianco e argento.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+"Sono disponibili due colori per il telaio, bianco e argento.",Deux couleurs sont disponibles pour le cadre : blanc et argent.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Deux couleurs sont disponibles pour le cadre : blanc et argent.,"Sono disponibili due colori per il telaio, bianco e argento.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+"Sono disponibili due colori per il telaio, bianco e argento.",Hay dos colores disponibles para el chasis: blanco y plata.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Hay dos colores disponibles para el chasis: blanco y plata.,"Sono disponibili due colori per il telaio, bianco e argento.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+"VELUX ACTIVE monitora temperatura, umidità e livelli di CO2 , aprendo e chiudendo finestre, tende e tapparelle quando serve, per un clima interno piacevole.","VELUX ACTIVE monitors temperature, humidity, and CO2 levels, opening and closing windows, blinds, and roller shutters as needed for a pleasant indoor climate.",ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+"VELUX ACTIVE monitors temperature, humidity, and CO2 levels, opening and closing windows, blinds, and roller shutters as needed for a pleasant indoor climate.","VELUX ACTIVE monitora temperatura, umidità e livelli di CO2 , aprendo e chiudendo finestre, tende e tapparelle quando serve, per un clima interno piacevole.",eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+"VELUX ACTIVE monitora temperatura, umidità e livelli di CO2 , aprendo e chiudendo finestre, tende e tapparelle quando serve, per un clima interno piacevole.","VELUX ACTIVE surveille la température, l'humidité et les niveaux de CO2, ouvrant et fermant les fenêtres, stores et volets roulants si nécessaire, pour un climat intérieur agréable.",ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+"VELUX ACTIVE surveille la température, l'humidité et les niveaux de CO2, ouvrant et fermant les fenêtres, stores et volets roulants si nécessaire, pour un climat intérieur agréable.","VELUX ACTIVE monitora temperatura, umidità e livelli di CO2 , aprendo e chiudendo finestre, tende e tapparelle quando serve, per un clima interno piacevole.",fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+"VELUX ACTIVE monitora temperatura, umidità e livelli di CO2 , aprendo e chiudendo finestre, tende e tapparelle quando serve, per un clima interno piacevole.","VELUX ACTIVE monitoriza la temperatura, la humedad y los niveles de CO2, abriendo y cerrando ventanas, cortinas y persianas cuando es necesario, para un clima interior agradable.",ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+"VELUX ACTIVE monitoriza la temperatura, la humedad y los niveles de CO2, abriendo y cerrando ventanas, cortinas y persianas cuando es necesario, para un clima interior agradable.","VELUX ACTIVE monitora temperatura, umidità e livelli di CO2 , aprendo e chiudendo finestre, tende e tapparelle quando serve, per un clima interno piacevole.",spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+Zanzariere per finestre per tetti piani con vetro curvo o piano,Mosquito nets for flat roof windows with curved or flat glass,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Mosquito nets for flat roof windows with curved or flat glass,Zanzariere per finestre per tetti piani con vetro curvo o piano,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+Zanzariere per finestre per tetti piani con vetro curvo o piano,Moustiquaires pour fenêtres de toit plat avec verre incurvé ou plat,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Moustiquaires pour fenêtres de toit plat avec verre incurvé ou plat,Zanzariere per finestre per tetti piani con vetro curvo o piano,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+Zanzariere per finestre per tetti piani con vetro curvo o piano,Mosquiteras para ventanas de techo plano con vidrio curvo o plano,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Mosquiteras para ventanas de techo plano con vidrio curvo o plano,Zanzariere per finestre per tetti piani con vetro curvo o piano,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+“Guida alla progettazione del sistema finestra secondo la UNI 11673-1.,Guide to window system design according to UNI 11673-1.,ita_Latn,eng_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Guide to window system design according to UNI 11673-1.,“Guida alla progettazione del sistema finestra secondo la UNI 11673-1.,eng_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+“Guida alla progettazione del sistema finestra secondo la UNI 11673-1.,Guide de conception du système de fenêtre selon la UNI 11673-1.,ita_Latn,fra_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Guide de conception du système de fenêtre selon la UNI 11673-1.,“Guida alla progettazione del sistema finestra secondo la UNI 11673-1.,fra_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
+“Guida alla progettazione del sistema finestra secondo la UNI 11673-1.,Guía de diseño del sistema de ventana según la UNI 11673-1.,ita_Latn,spa_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1,2026-05-03T13:32:47.638031+00:00
+Guía de diseño del sistema de ventana según la UNI 11673-1.,“Guida alla progettazione del sistema finestra secondo la UNI 11673-1.,spa_Latn,ita_Latn,web_spider,google/gemini-2.5-flash,translate_json_v1_rev,2026-05-03T13:32:47.638031+00:00
