@@ -635,6 +635,11 @@ class DataFactory:
         checkpoint_path = checkpoint_dir / f"competitor_synthetic__{self._safe_model_name()}__checkpoint.csv"
         processed_sentences: set[str] = set()
 
+        def _source_key(text: str) -> str:
+            return re.sub(r"\s+", " ", str(text).strip())
+
+        known_source_keys = {_source_key(s) for s in known_sources if _source_key(s)}
+
         if checkpoint_path.exists():
             try:
                 checkpoint_df = pd.read_csv(checkpoint_path)
@@ -646,7 +651,10 @@ class DataFactory:
                             & (checkpoint_df["target_lang"].astype(str) != "ita_Latn")
                         )
                         processed_sentences = set(
-                            checkpoint_df.loc[processed_mask, "source_text"].dropna().astype(str)
+                            checkpoint_df.loc[processed_mask, "source_text"]
+                            .dropna()
+                            .astype(str)
+                            .map(_source_key)
                         )
                     print(f"   ♻️  Loaded web checkpoint: {len(sentence_rows)} rows")
                     logger.info(
@@ -659,7 +667,14 @@ class DataFactory:
                 print(f"⚠️  Could not load web checkpoint {checkpoint_path}: {e}")
                 logger.exception("Could not load web checkpoint path=%s", checkpoint_path)
 
-        pending_sentences = [s for s in unique_sentences if s not in processed_sentences]
+        pending_sentences = []
+        seen_pending_it: set[str] = set()
+        for sent in unique_sentences:
+            key = _source_key(sent)
+            if not key or key in known_source_keys or key in processed_sentences or key in seen_pending_it:
+                continue
+            seen_pending_it.add(key)
+            pending_sentences.append(sent)
         logger.info(
             "IT web translation pending=%d unique_it=%d already_done=%d checkpoint=%s",
             len(pending_sentences),
@@ -740,7 +755,12 @@ class DataFactory:
                     for lang in done_native_web:
                         mask = (ck["source_lang"].astype(str) == lang) & \
                                (ck["prompt_version"].astype(str) == "web_to_it_v1")
-                        done_native_web[lang] = set(ck.loc[mask, "source_text"].dropna().astype(str))
+                        done_native_web[lang] = set(
+                            ck.loc[mask, "source_text"]
+                            .dropna()
+                            .astype(str)
+                            .map(_source_key)
+                        )
                 except Exception:
                     logger.exception("Could not load checkpoint for native web done set path=%s", checkpoint_path)
                     pass
@@ -771,8 +791,19 @@ class DataFactory:
                 )
 
             for src_lang, sents in native_web_langs.items():
-                pending = [s for s in sents
-                           if s.strip() not in known_sources and s not in done_native_web[src_lang]]
+                pending = []
+                seen_pending_native: set[str] = set()
+                for sent in sents:
+                    key = _source_key(sent)
+                    if (
+                        not key
+                        or key in known_source_keys
+                        or key in done_native_web[src_lang]
+                        or key in seen_pending_native
+                    ):
+                        continue
+                    seen_pending_native.add(key)
+                    pending.append(sent)
                 if not pending:
                     logger.info("No pending native web translations source_lang=%s", src_lang)
                     continue
