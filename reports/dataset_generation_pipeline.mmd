@@ -1,0 +1,92 @@
+crea un png dal flowchart TD
+    %% LEO synthetic dataset generation pipeline
+
+    A[Start generation suite] --> B[Select dataset kind]
+
+    B -->|glossary| C1[Load curated glossary terms<br/>src/synthesis/glossary_data.py]
+    B -->|web| C2[Scrape competitor websites<br/>SpiderConfig.target_urls]
+    B -->|pdf| C3[Extract and segment PDFs<br/>data/raw/pdfs]
+
+    C2 --> C2F[Filter non-technical noise<br/>cookie, privacy, contacts]
+    C3 --> C3D[Deduplicate sentences]
+    C3D --> C3L[Detect coarse source language]
+
+    C1 --> D[For each configured model]
+    C2F --> D
+    C3L --> D
+
+    D --> E[Set conf.gen.model_id]
+    E --> F{Backend prefix}
+
+    F -->|ollama/*| G1[OllamaGenerator<br/>local Ollama]
+    F -->|google/*| G2[CloudGenerator<br/>Gemini via LiteLLM]
+    F -->|openai/*| G3[CloudGenerator<br/>OpenAI via LiteLLM]
+    F -->|anthropic/*| G4[CloudGenerator<br/>Anthropic via LiteLLM]
+    F -->|deepseek/*| G5[CloudGenerator<br/>DeepSeek via LiteLLM]
+
+    G1 --> H[BaseGenerator common logic]
+    G2 --> H
+    G3 --> H
+    G4 --> H
+    G5 --> H
+
+    H --> H1[Build prompt]
+    H1 --> H2[Parallel requests<br/>ThreadPoolExecutor]
+    H2 --> H3[Retry failed calls]
+    H3 --> H4[Parse model output]
+    H4 --> H5[Normalize to long format]
+
+    H5 --> I{Dataset kind}
+
+    I -->|glossary/web| J1[Rows:<br/>source_text, target_text,<br/>source_lang, target_lang,<br/>origin, model_id, term, context]
+
+    I -->|pdf| J2[PDF translation plan]
+    J2 --> J2A[IT or unknown -> EN/FR/ES]
+    J2 --> J2B[Generated EN/FR/ES -> IT<br/>reverse pairs]
+    J2 --> J2C[Native EN/FR/ES -> IT]
+    J2A --> J2D[Append rows]
+    J2B --> J2D
+    J2C --> J2D
+
+    J2D --> K0[Incremental checkpoint<br/>data/synthetic/checkpoints]
+    K0 --> K[Final normalized CSV]
+    J1 --> K
+
+    K --> L1[Canonical active file<br/>data/synthetic/*.csv]
+    K --> L2[Archive previous active file<br/>data/synthetic/archive]
+    K --> L3[Versioned run file<br/>data/synthetic/runs]
+
+    L3 --> M{More models?}
+    M -->|yes| D
+    M -->|no| N[Generation suite artifacts]
+
+    N --> N1[Manifest<br/>runs/generation_suite/timestamp/manifest.json]
+    N --> N2[Pairwise dataset comparisons]
+    N --> N3[Optional evaluation metrics]
+    N --> N4[Optional generator benchmark]
+
+    L3 --> O[Build ensemble]
+    O --> O1[Load versioned run CSVs]
+    O1 --> O2[Exact deduplication]
+    O2 --> O3[Near-duplicate filtering]
+    O3 --> O4[Quality filtering]
+    O4 --> O5[Model priority selection]
+    O5 --> P[ensemble_training_set.csv<br/>data/synthetic/ensemble_training_set.csv]
+
+    P --> Q[Training dataloader]
+    Q --> Q1[Load curated synthetic pool]
+    Q1 --> Q2[rover_synthetic_multilingual.csv]
+    Q1 --> Q3[competitor_synthetic.csv]
+    Q1 --> Q4[ensemble_training_set.csv]
+
+    Q2 --> R[Fine-tune NMT models]
+    Q3 --> R
+    Q4 --> R
+
+    R --> R1[NLLB fine-tuning]
+    R --> R2[Seamless-M4T fine-tuning]
+    R1 --> S[Benchmark on human test set]
+    R2 --> S
+
+    S --> T[Select best model]
+

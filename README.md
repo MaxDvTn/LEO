@@ -97,7 +97,12 @@ The `scripts/` root is intentionally kept small:
 
 ### Synthetic Dataset Generation
 
-Synthetic generation is selected with `conf.gen.model_id` in [src/common/config.py](src/common/config.py):
+LEO can generate synthetic training data with several LLM backends and then
+compare, score, and merge the generated CSVs into a curated ensemble. This is
+the recommended workflow before fine-tuning NLLB or Seamless.
+
+Generation backend is selected with `conf.gen.model_id` in
+[src/common/config.py](src/common/config.py):
 
 ```python
 model_id = "ollama/qwen2.5:32b"
@@ -122,35 +127,74 @@ export ANTHROPIC_API_KEY=...
 export DEEPSEEK_API_KEY=...
 ```
 
-Generate glossary-based synthetic data:
+Gemini is accessed through LiteLLM with the `google/` prefix. If credentials are
+stored in `.env`, keep the file out of git and load it in the shell/session
+before running the suite.
+
+Generate glossary-based synthetic data with the single model configured in
+`conf.gen.model_id`:
 
 ```bash
 python scripts/leo.py data generate
 ```
 
-Every generated synthetic CSV is saved in three places:
+Every generated synthetic CSV is saved in multiple places:
 
 - active training file, e.g. `data/synthetic/glossary_synthetic.csv`
 - previous active file archived under `data/synthetic/archive/`
 - versioned copy under `data/synthetic/runs/`, including model name and timestamp
+- for PDF mining, partial checkpoint CSVs are written under
+  `data/synthetic/checkpoints/` so long runs can resume without losing all
+  completed rows
 
-### Dataset Suite
+The main dataset kinds are:
+
+| Kind | Command value | Source | Output shape |
+|------|---------------|--------|--------------|
+| Glossary | `glossary` | curated technical terms in `src/synthesis/glossary_data.py` | one row per generated translation pair |
+| Web | `web` | competitor/industry pages from `SpiderConfig.target_urls` | scraped terms expanded into translation pairs |
+| PDF | `pdf` | PDFs in `data/raw/pdfs/` | mined sentences translated IT→EN/FR/ES and native EN/FR/ES→IT |
+
+Glossary and web generation call `generator.generate_dataset()` and normalize
+the LLM output into this long format:
+
+```text
+source_text,target_text,source_lang,target_lang,origin,model_id,prompt_version,created_at,term,context
+```
+
+PDF generation is heavier. It extracts and segments all PDFs, detects a coarse
+source language, then translates:
+
+- Italian/unknown sentences to English, French, and Spanish.
+- Generated English/French/Spanish translations back to Italian as reverse pairs.
+- Native English/French/Spanish PDF sentences directly to Italian.
+
+Because PDF runs can involve tens of thousands of sentences, they should be run
+separately from glossary runs. The checkpoint file name includes the model, for
+example:
+
+```text
+data/synthetic/checkpoints/rover_pdf_augmented__ollama_mistral-small3.2.csv
+```
+
+### Multi-Model Dataset Suite
 
 Use the suite runner to generate datasets with multiple models, compare the outputs, and benchmark the same generators on the test set in one command:
 
 ```bash
 python scripts/data/run_generation_suite.py \
-  --models ollama/mistral:latest openai/gpt-5-mini \
+  --models ollama/mistral-small3.2 ollama/gemma3:27b ollama/qwen2.5:32b google/gemini-2.5-flash ollama/aya-expanse:8b \
   --dataset-kind glossary \
-  --benchmark-sample-size 10
+  --benchmark-sample-size 20 \
+  --skip-ppl
 ```
 
 Useful options:
 
 ```bash
-# Generate and compare only, without benchmark cost
+# Generate and compare only, without benchmark cost.
 python scripts/data/run_generation_suite.py \
-  --models ollama/mistral:latest ollama/qwen2.5:32b \
+  --models ollama/mistral-small3.2 ollama/qwen2.5:32b google/gemini-2.5-flash \
   --dataset-kind glossary \
   --skip-benchmark
 
@@ -158,12 +202,120 @@ python scripts/data/run_generation_suite.py \
 python scripts/data/run_generation_suite.py \
   --models openai/gpt-5-mini google/gemini-2.5-flash \
   --dataset-kind web
+
+# Run PDF mining separately. This can be very long and should use checkpointing.
+python scripts/data/run_generation_suite.py \
+  --models ollama/mistral-small3.2 google/gemini-2.5-flash \
+  --dataset-kind pdf \
+  --skip-benchmark \
+  --skip-judge \
+  --skip-ppl
 ```
 
 The suite writes a manifest and artifacts under:
 
 ```text
 runs/generation_suite/<timestamp>/
+```
+
+For each model, the suite:
+
+1. Sets `conf.gen.model_id` to the requested model.
+2. Instantiates the matching generator backend.
+3. Generates a model-specific CSV.
+4. Saves a canonical active file and a versioned run file.
+5. Optionally compares all generated datasets pairwise.
+6. Optionally evaluates dataset statistics, LLM judge scores, perplexity, and
+   generator benchmark results.
+
+Local Ollama worker counts are chosen conservatively by model size:
+
+| Model size | Typical examples | Workers |
+|------------|------------------|---------|
+| 20B+ | `qwen2.5:32b`, `gemma3:27b`, `mistral-small3.2` | 2 |
+| 12B-14B | `mistral-nemo`, `phi4` | 3 |
+| Smaller/unknown | `aya-expanse:8b` | `conf.gen.num_workers` |
+| Cloud APIs | Gemini/OpenAI/etc. | `conf.gen.cloud_num_workers` |
+
+If Ollama is managed by systemd, parallel requests require:
+
+```ini
+[Service]
+Environment="OLLAMA_NUM_PARALLEL=4"
+```
+
+followed by:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart ollama
+systemctl show ollama --property=Environment
+```
+
+### Ensemble Dataset
+
+After several model runs have been generated, build the training ensemble:
+
+```bash
+python scripts/leo.py data build-ensemble
+```
+
+The ensemble builder reads versioned CSVs from `data/synthetic/runs/`, applies:
+
+- exact duplicate removal
+- near-duplicate removal on `source_text`
+- quality filtering
+- model priority ordering, so stronger generators are preferred when several
+  models produce near-identical samples
+
+The result is:
+
+```text
+data/synthetic/ensemble_training_set.csv
+```
+
+When this file exists, the training dataloader uses a curated synthetic pool:
+
+```text
+data/synthetic/rover_synthetic_multilingual.csv
+data/synthetic/competitor_synthetic.csv
+data/synthetic/ensemble_training_set.csv
+```
+
+This avoids accidentally training on duplicated top-level files such as older
+`glossary_synthetic.csv` outputs while keeping the stable historical synthetic
+corpus.
+
+### Dataset Quality Checks
+
+While a suite is running, inspect generated files with:
+
+```bash
+ls -lh data/synthetic/runs | tail -20
+```
+
+Check row counts, languages, and model distribution:
+
+```bash
+python -c "import glob, pandas as pd
+for p in sorted(glob.glob('data/synthetic/runs/*.csv')):
+    df = pd.read_csv(p)
+    print('\n', p)
+    print('rows:', len(df))
+    print('langs:', df['target_lang'].value_counts().to_dict() if 'target_lang' in df else {})
+    print('models:', df['model_id'].value_counts().to_dict() if 'model_id' in df else {})"
+```
+
+Check malformed rows:
+
+```bash
+python -c "import glob, pandas as pd
+for p in sorted(glob.glob('data/synthetic/runs/*.csv')):
+    df = pd.read_csv(p)
+    required = ['source_text', 'target_text', 'source_lang', 'target_lang']
+    bad = df[df[required].isna().any(axis=1)]
+    empty = df[(df['source_text'].astype(str).str.strip() == '') | (df['target_text'].astype(str).str.strip() == '')]
+    print(p, 'rows=', len(df), 'bad_na=', len(bad), 'empty=', len(empty))"
 ```
 
 ### Dataset Comparison

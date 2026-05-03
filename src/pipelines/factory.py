@@ -306,7 +306,32 @@ class DataFactory:
             lang: sents for lang, sents in by_lang.items()
             if lang in {"eng_Latn", "fra_Latn", "spa_Latn"}
         }
-        print(f"   📊 Language split: {len(italian_sentences)} IT/unknown"
+
+        # --- Checkpoint: resume from previous partial run ---
+        checkpoint_dir = self.synthetic_dir / "checkpoints"
+        checkpoint_dir.mkdir(parents=True, exist_ok=True)
+        checkpoint_path = checkpoint_dir / f"rover_pdf_augmented__{self._safe_model_name()}.csv"
+
+        done_it: set[str] = set()
+        done_native: dict[str, set[str]] = {l: set() for l in native_langs}
+        if checkpoint_path.exists():
+            try:
+                ckpt = pd.read_csv(checkpoint_path)
+                fwd = ckpt[ckpt["prompt_version"] == "translate_json_v1"]
+                done_it = set(fwd["source_text"].dropna().astype(str))
+                for lang in done_native:
+                    mask = (ckpt["source_lang"] == lang) & (ckpt["prompt_version"] == "translate_to_it_v1")
+                    done_native[lang] = set(ckpt.loc[mask, "source_text"].dropna().astype(str))
+                print(f"   ♻️  Checkpoint: {len(ckpt)} rows — resuming ({len(done_it)} IT, "
+                      + ", ".join(f"{len(v)} {k}" for k, v in done_native.items()) + " done)")
+            except Exception as e:
+                print(f"   ⚠️  Could not load checkpoint: {e}")
+
+        italian_sentences = [s for s in italian_sentences if s not in done_it]
+        for lang in native_langs:
+            native_langs[lang] = [s for s in native_langs[lang] if s not in done_native.get(lang, set())]
+
+        print(f"   📊 To translate: {len(italian_sentences)} IT/unknown"
               + "".join(f", {len(v)} {k}" for k, v in native_langs.items()))
 
         from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -314,10 +339,31 @@ class DataFactory:
 
         lang_map = [("eng_Latn", "target_text_en"), ("fra_Latn", "target_text_fr"), ("spa_Latn", "target_text_es")]
         created_at = datetime.now(timezone.utc).isoformat()
-        augmented_data = []
+        augmented_data: list[dict] = []
         lock = threading.Lock()
 
-        # --- IT/unknown → EN/FR/ES  (+ free reverse pairs EN→IT, FR→IT, ES→IT) ---
+        _CHECKPOINT_EVERY = 300
+        _pending: list[dict] = []
+        _ckpt_header_exists = checkpoint_path.exists()
+
+        def _flush(force: bool = False):
+            nonlocal _ckpt_header_exists
+            if not _pending:
+                return
+            pd.DataFrame(_pending).to_csv(
+                checkpoint_path, mode="a",
+                header=not _ckpt_header_exists, index=False,
+            )
+            _ckpt_header_exists = True
+            _pending.clear()
+
+        def _collect(rows: list[dict]):
+            augmented_data.extend(rows)
+            _pending.extend(rows)
+            if len(_pending) >= _CHECKPOINT_EVERY:
+                _flush()
+
+        # --- IT/unknown → EN/FR/ES  (+  free reverse pairs) ---
         print(f"   🚀 IT→EN/FR/ES: {len(italian_sentences)} sentences, {generator.num_workers} workers...")
 
         def _translate_one(sent: str):
@@ -332,7 +378,6 @@ class DataFactory:
                         "origin": "pdf_mining", "model_id": conf.gen.model_id,
                         "prompt_version": "translate_json_v1", "created_at": created_at,
                     })
-                    # free reverse pair
                     rows.append({
                         "source_text": val, "target_text": sent,
                         "source_lang": lang_code, "target_lang": "ita_Latn",
@@ -347,11 +392,14 @@ class DataFactory:
                 for future in as_completed(futures):
                     try:
                         with lock:
-                            augmented_data.extend(future.result())
+                            _collect(future.result())
                     except Exception as e:
                         print(f"❌ Translation Error: {e}")
                     finally:
                         pbar.update(1)
+
+        with lock:
+            _flush(force=True)
 
         # --- Native EN/FR/ES → IT ---
         for src_lang, sents in native_langs.items():
@@ -375,15 +423,27 @@ class DataFactory:
                     for future in as_completed(futures):
                         try:
                             with lock:
-                                augmented_data.extend(future.result())
+                                _collect(future.result())
                         except Exception as e:
                             print(f"❌ Translation Error: {e}")
                         finally:
                             pbar.update(1)
 
-        if augmented_data:
+            with lock:
+                _flush(force=True)
+
+        # The checkpoint already contains both previous rows and rows flushed
+        # during this run, so use it as the source of truth for the final save.
+        all_rows = augmented_data
+        if checkpoint_path.exists():
+            try:
+                all_rows = pd.read_csv(checkpoint_path).to_dict("records")
+            except Exception:
+                pass
+
+        if all_rows:
             return self._save_synthetic_dataset(
-                pd.DataFrame(augmented_data),
+                pd.DataFrame(all_rows),
                 "rover_pdf_augmented.csv",
                 "PDF data",
             )
